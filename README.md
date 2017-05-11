@@ -63,5 +63,3 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 	- fejlécének bal oldalán a default back button található, ami visszanavigál a navigációs stacken.
 	- címe a hírfolyam címe.
 	- tartalma egy webview, amiben a hír betöltődik.
-
-#### Implementációs Terv
