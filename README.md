@@ -57,7 +57,7 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 	- fejlécének bal oldalán a default back button található, ami visszanavigál a navigációs stacken.
 	- címe a hírfolyam címe.
 	- egy cellája egy hírt reprezentál. A cella tartalmazza a hír címét, leírását és egy képet. A kép a bal oldalon jelenik meg, a két szöveg pedig a kép mellett a jobb oldalon, középre igazítva. Fölül a cím, ami megfelelő stílussal van kiemelve. Alul a leírás, kevésbé figyelemfelhívó stílusban, mint a cím. Legfeljebb 2 sor lehet a cím és 2 sor a leírás. A lista egy elemére kattintva egy show segue visz el a hír képernyőre.
-	- listája a a szokásos módon frissíthető. TODO frissítés
+	- listája a szokásos módon frissíthető. TODO frissítés
 5. A hír képernyő:
 	- csak navigation controlleren keresztül érhető el, ezért mindig van a tetején egy fejléc.
 	- fejlécének bal oldalán a default back button található, ami visszanavigál a navigációs stacken.

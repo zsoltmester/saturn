@@ -14,6 +14,7 @@
 		E74D100C1EC4FE870057E519 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E74D100B1EC4FE870057E519 /* Assets.xcassets */; };
 		E74D100F1EC4FE870057E519 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74D100D1EC4FE870057E519 /* LaunchScreen.storyboard */; };
 		E74D101A1EC4FE870057E519 /* SaturnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74D10191EC4FE870057E519 /* SaturnTests.swift */; };
+		E74E59801EC9085C008F8248 /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74E597F1EC9085C008F8248 /* ModelContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		E74D10151EC4FE870057E519 /* SaturnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaturnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E74D10191EC4FE870057E519 /* SaturnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturnTests.swift; sourceTree = "<group>"; };
 		E74D101B1EC4FE870057E519 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E74E597F1EC9085C008F8248 /* ModelContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				E74D10011EC4FE870057E519 /* AppDelegate.swift */,
+				E74E597F1EC9085C008F8248 /* ModelContainer.swift */,
 				E74D100B1EC4FE870057E519 /* Assets.xcassets */,
 				E74D10101EC4FE870057E519 /* Info.plist */,
 				E74D10241EC50E120057E519 /* Model */,
@@ -109,8 +112,8 @@
 		E74D10251EC50E2B0057E519 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E74D10051EC4FE870057E519 /* Main.storyboard */,
 				E74D100D1EC4FE870057E519 /* LaunchScreen.storyboard */,
+				E74D10051EC4FE870057E519 /* Main.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				E74D10041EC4FE870057E519 /* ViewController.swift in Sources */,
 				E74D100A1EC4FE870057E519 /* Saturn.xcdatamodeld in Sources */,
 				E74D10021EC4FE870057E519 /* AppDelegate.swift in Sources */,
+				E74E59801EC9085C008F8248 /* ModelContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +446,7 @@
 				E74D10201EC4FE870057E519 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E74D10211EC4FE870057E519 /* Build configuration list for PBXNativeTarget "SaturnTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +455,7 @@
 				E74D10231EC4FE870057E519 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
