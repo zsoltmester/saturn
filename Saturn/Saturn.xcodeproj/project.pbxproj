@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E715F7741ECA4EDA002CA22B /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E715F7731ECA4EDA002CA22B /* UserDefaultsKey.swift */; };
 		E74D10021EC4FE870057E519 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74D10011EC4FE870057E519 /* AppDelegate.swift */; };
 		E74D10041EC4FE870057E519 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74D10031EC4FE870057E519 /* ViewController.swift */; };
 		E74D10071EC4FE870057E519 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74D10051EC4FE870057E519 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E715F7731ECA4EDA002CA22B /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		E74D0FFE1EC4FE870057E519 /* Saturn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Saturn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E74D10011EC4FE870057E519 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E74D10031EC4FE870057E519 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			children = (
 				E74D10011EC4FE870057E519 /* AppDelegate.swift */,
 				E74E597F1EC9085C008F8248 /* ModelContainer.swift */,
+				E715F7731ECA4EDA002CA22B /* UserDefaultsKey.swift */,
 				E74D100B1EC4FE870057E519 /* Assets.xcassets */,
 				E74D10101EC4FE870057E519 /* Info.plist */,
 				E74D10241EC50E120057E519 /* Model */,
@@ -235,6 +238,7 @@
 				E74D100A1EC4FE870057E519 /* Saturn.xcdatamodeld in Sources */,
 				E74D10021EC4FE870057E519 /* AppDelegate.swift in Sources */,
 				E74E59801EC9085C008F8248 /* ModelContainer.swift in Sources */,
+				E715F7741ECA4EDA002CA22B /* UserDefaultsKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,32 +11,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
-	override func viewDidLoad() {
+	/*override func viewDidLoad() {
 		super.viewDidLoad()
-
-		saveFeed(withName: "HVG")
 
 		let feeds = loadFeeds()
 		NSLog(feeds.description)
-	}
-
-	func saveFeed(withName name: String) {
-
-		let appDelegate = UIApplication.shared.delegate as! AppDelegate
-		guard let modelContext = appDelegate.model.context else {
-			fatalError("Model didn't load yet.")
-		}
-
-		let newsFeedEntity = NSEntityDescription.entity(forEntityName: "NewsFeed", in: modelContext)!
-
-		let feed = NSManagedObject(entity: newsFeedEntity, insertInto: modelContext)
-		feed.setValue(name, forKeyPath: "name")
-
-		do {
-			try modelContext.save()
-		} catch let error as NSError {
-			fatalError("Couldn't save the feeds. Error: \(error), \(error.userInfo)")
-		}
 	}
 
 	func loadFeeds() -> [NewsFeed] {
@@ -56,6 +35,6 @@ class ViewController: UIViewController {
 		} catch let error as NSError {
 			fatalError("Couldn't fetch the feeds. Error:  \(error), \(error.userInfo)")
 		}
-	}
+	}*/
 }
 

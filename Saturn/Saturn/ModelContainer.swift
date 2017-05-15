@@ -13,7 +13,7 @@ class ModelContainer {
 
 	// MARK: - Properties
 
-	var context: NSManagedObjectContext?
+	private var context: NSManagedObjectContext?
 
 	// MARK: - Initialization
 
@@ -34,7 +34,63 @@ class ModelContainer {
 			}
 
 			self.context = container.viewContext
+
+			let isModelPreloaded = UserDefaults.standard.bool(forKey: UserDefaultsKey.isModelPreloaded.rawValue)
+			if !isModelPreloaded {
+				self.preloadModel()
+				UserDefaults.standard.set(true, forKey: UserDefaultsKey.isModelPreloaded.rawValue)
+			}
 		})
+	}
+
+	private func preloadModel() {
+		addNewsSource(name: "Reddit - Programming")
+		addNewsSource(name: "Hacker News")
+		addNewsSource(name: "HVG")
+		addNewsSource(name: "Index")
+	}
+
+	// MARK: - Public Functions
+
+	func addNewsSource(name: String, logo: UIImage? = nil) {
+
+		let context = getContext()
+
+		let newsSourceEntityDescription = getEntityDescription(for: "NewsSource", in: context)
+		let newsSource = NSManagedObject(entity: newsSourceEntityDescription, insertInto: context)
+		newsSource.setValue(name, forKeyPath: "name")
+		if let logo = logo {
+			guard let logoData = UIImagePNGRepresentation(logo) else {
+				fatalError("Couldn't convert image to binary.")
+			}
+			newsSource.setValue(logoData, forKey: "logo")
+		}
+
+		do {
+			try context.save()
+		} catch let error as NSError {
+			fatalError("Couldn't add the news source. Error: \(error)")
+		}
+	}
+
+	// MARK: - Private Functions
+
+	private func getContext() -> NSManagedObjectContext {
+
+		guard let context = self.context else {
+			fatalError("The context is unavailable.")
+		}
+
+		return context
+	}
+
+	private func getEntityDescription(for entityName: String, in context: NSManagedObjectContext) -> NSEntityDescription {
+
+		guard let entityDescription = NSEntityDescription.entity(forEntityName: entityName, in: context) else {
+			fatalError("Didn't find entity with name: \(entityName)")
+		}
+
+		return entityDescription
 	}
 
 }

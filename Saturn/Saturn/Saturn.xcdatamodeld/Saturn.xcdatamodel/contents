@@ -14,6 +14,11 @@
         <attribute name="logo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" maxValueString="16" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <relationship name="feeds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NewsFeed" inverseName="sources" inverseEntity="NewsFeed" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="NewsFeed" positionX="79" positionY="36" width="128" height="88"/>
