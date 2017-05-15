@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="News" representedClassName="News" syncable="YES" codeGenerationType="class">
-        <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="url" attributeType="String" syncable="YES"/>
-        <relationship name="source" maxCount="1" deletionRule="Nullify" destinationEntity="NewsSource" inverseName="news" inverseEntity="NewsSource" syncable="YES"/>
-    </entity>
     <entity name="NewsFeed" representedClassName="NewsFeed" syncable="YES" codeGenerationType="class">
-        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="name" attributeType="String" minValueString="1" maxValueString="15" syncable="YES"/>
-        <relationship name="sources" toMany="YES" deletionRule="Nullify" destinationEntity="NewsSource" inverseName="feeds" inverseEntity="NewsSource" syncable="YES"/>
+        <attribute name="logo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" minValueString="1" maxValueString="16" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
+        <relationship name="sources" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="NewsSource" inverseName="feeds" inverseEntity="NewsSource" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="NewsSource" representedClassName="NewsSource" syncable="YES" codeGenerationType="class">
-        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="main" attributeType="String" syncable="YES"/>
-        <attribute name="sub" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" minValueString="1" maxValueString="16" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <relationship name="feeds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NewsFeed" inverseName="sources" inverseEntity="NewsFeed" syncable="YES"/>
-        <relationship name="news" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="News" inverseName="source" inverseEntity="News" syncable="YES"/>
     </entity>
     <elements>
-        <element name="News" positionX="-270" positionY="45" width="128" height="105"/>
-        <element name="NewsFeed" positionX="79" positionY="45" width="128" height="88"/>
-        <element name="NewsSource" positionX="-99" positionY="188" width="128" height="118"/>
+        <element name="NewsFeed" positionX="79" positionY="36" width="128" height="88"/>
+        <element name="NewsSource" positionX="-128" positionY="32" width="128" height="88"/>
     </elements>
 </model>

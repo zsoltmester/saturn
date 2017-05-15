@@ -20,7 +20,7 @@ class ViewController: UIViewController {
 		NSLog(feeds.description)
 	}
 
-	func saveFeed(withName: String) {
+	func saveFeed(withName name: String) {
 
 		let appDelegate = UIApplication.shared.delegate as! AppDelegate
 		guard let modelContext = appDelegate.model.context else {
@@ -29,11 +29,8 @@ class ViewController: UIViewController {
 
 		let newsFeedEntity = NSEntityDescription.entity(forEntityName: "NewsFeed", in: modelContext)!
 
-		let hvgFeed = NSManagedObject(entity: newsFeedEntity, insertInto: modelContext)
-		hvgFeed.setValue("HVG", forKeyPath: "name")
-
-		let indexFeed = NSManagedObject(entity: newsFeedEntity, insertInto: modelContext)
-		indexFeed.setValue("Index", forKeyPath: "name")
+		let feed = NSManagedObject(entity: newsFeedEntity, insertInto: modelContext)
+		feed.setValue(name, forKeyPath: "name")
 
 		do {
 			try modelContext.save()
