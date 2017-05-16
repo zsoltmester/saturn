@@ -14,15 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	// MARK: - Properties
 
-	var model: ModelContainer!
+	var model: ModelController!
 	var window: UIWindow?
 
 	// MARK: - Application Lifecycle
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
-
-		model = ModelContainer()
+		
+		model = ModelController()
 
 		return true
 	}

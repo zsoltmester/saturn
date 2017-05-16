@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class ModelContainer {
+class ModelController {
 
 	// MARK: - Entity Names
 
@@ -30,9 +30,9 @@ class ModelContainer {
 		case sources
 	}
 
-	// MARK: - Private Properties
+	// MARK: - Properties
 
-	private var context: NSManagedObjectContext?
+	var context: NSManagedObjectContext?
 
 	// MARK: - Initialization
 
@@ -65,23 +65,35 @@ class ModelContainer {
 	private func preloadModel() {
 
 		var sources = Set<NewsSource>()
-		createNewsSource(name: "Reddit - Programming")
+		insertNewsSource(name: "Reddit - Programming")
 		sources.insert(getNewsSource(forName: "Reddit - Programming")!)
-		createNewsSource(name: "Hacker News")
+		insertNewsSource(name: "Hacker News")
 		sources.insert(getNewsSource(forName: "Hacker News")!)
-		createNewsFeed(name: "Developer's Heaven", sources: sources)
+		insertNewsFeed(name: "Developer's Heaven", sources: sources)
 
-		sources = Set<NewsSource>()
-		createNewsSource(name: "HVG")
+		sources.removeAll()
+		insertNewsSource(name: "HVG")
 		sources.insert(getNewsSource(forName: "HVG")!)
-		createNewsSource(name: "Index")
+		insertNewsSource(name: "Index")
 		sources.insert(getNewsSource(forName: "Index")!)
-		createNewsFeed(name: "Essentials", sources: sources)
+		insertNewsFeed(name: "Daily Essentials", sources: sources)
+
+		sources.removeAll()
+		insertNewsSource(name: "9gag")
+		sources.insert(getNewsSource(forName: "9gag")!)
+		insertNewsSource(name: "Reddit - Aww")
+		sources.insert(getNewsSource(forName: "Reddit - Aww")!)
+		insertNewsFeed(name: "Chill", sources: sources)
+
+		sources.removeAll()
+		insertNewsSource(name: "Heartstone")
+		sources.insert(getNewsSource(forName: "Heartstone")!)
+		insertNewsFeed(name: "Hearthstone", sources: sources)
 	}
 
 	// MARK: - Public Functions
 
-	func createNewsSource(name: String, logo: UIImage? = nil) {
+	func insertNewsSource(name: String, logo: UIImage? = nil) {
 
 		let context = getContext()
 
@@ -98,11 +110,11 @@ class ModelContainer {
 		do {
 			try context.save()
 		} catch let error as NSError {
-			fatalError("Couldn't create the news source. Error: \(error)")
+			fatalError("Couldn't insert the news source. Error: \(error)")
 		}
 	}
 
-	func createNewsFeed(name: String, logo: UIImage? = nil, sources: Set<NewsSource>) {
+	func insertNewsFeed(name: String, logo: UIImage? = nil, sources: Set<NewsSource>) {
 
 		let context = getContext()
 
@@ -120,7 +132,7 @@ class ModelContainer {
 		do {
 			try context.save()
 		} catch let error as NSError {
-			fatalError("Couldn't create the news feed. Error: \(error)")
+			fatalError("Couldn't insert the news feed. Error: \(error)")
 		}
 	}
 
@@ -129,7 +141,7 @@ class ModelContainer {
 		let context = getContext()
 
 		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: newsSourceEntityName)
-		fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+		fetchRequest.predicate = NSPredicate(format: "\(NewsSourceEntityProperty.name.rawValue) == \"\(name)\"")
 
 		do {
 			guard let sources = try context.fetch(fetchRequest) as? [NewsSource] else {
