@@ -11,7 +11,26 @@ import UIKit
 
 class ModelContainer {
 
-	// MARK: - Properties
+	// MARK: - Entity Names
+
+	private let newsSourceEntityName = "NewsSource"
+	private let newsFeedEntityName = "NewsFeed"
+
+	// MARK: - Entity Properties
+
+	private enum NewsSourceEntityProperty: String {
+		case name
+		case logo
+		case feeds
+	}
+
+	private enum NewsFeedEntityProperty: String {
+		case name
+		case logo
+		case sources
+	}
+
+	// MARK: - Private Properties
 
 	private var context: NSManagedObjectContext?
 
@@ -44,32 +63,81 @@ class ModelContainer {
 	}
 
 	private func preloadModel() {
-		addNewsSource(name: "Reddit - Programming")
-		addNewsSource(name: "Hacker News")
-		addNewsSource(name: "HVG")
-		addNewsSource(name: "Index")
+
+		var sources = Set<NewsSource>()
+		createNewsSource(name: "Reddit - Programming")
+		sources.insert(getNewsSource(forName: "Reddit - Programming")!)
+		createNewsSource(name: "Hacker News")
+		sources.insert(getNewsSource(forName: "Hacker News")!)
+		createNewsFeed(name: "Developer's Heaven", sources: sources)
+
+		sources = Set<NewsSource>()
+		createNewsSource(name: "HVG")
+		sources.insert(getNewsSource(forName: "HVG")!)
+		createNewsSource(name: "Index")
+		sources.insert(getNewsSource(forName: "Index")!)
+		createNewsFeed(name: "Essentials", sources: sources)
 	}
 
 	// MARK: - Public Functions
 
-	func addNewsSource(name: String, logo: UIImage? = nil) {
+	func createNewsSource(name: String, logo: UIImage? = nil) {
 
 		let context = getContext()
 
-		let newsSourceEntityDescription = getEntityDescription(for: "NewsSource", in: context)
+		let newsSourceEntityDescription = getEntityDescription(for: newsSourceEntityName, in: context)
 		let newsSource = NSManagedObject(entity: newsSourceEntityDescription, insertInto: context)
-		newsSource.setValue(name, forKeyPath: "name")
+		newsSource.setValue(name, forKeyPath: NewsSourceEntityProperty.name.rawValue)
 		if let logo = logo {
 			guard let logoData = UIImagePNGRepresentation(logo) else {
 				fatalError("Couldn't convert image to binary.")
 			}
-			newsSource.setValue(logoData, forKey: "logo")
+			newsSource.setValue(logoData, forKey: NewsSourceEntityProperty.logo.rawValue)
 		}
 
 		do {
 			try context.save()
 		} catch let error as NSError {
-			fatalError("Couldn't add the news source. Error: \(error)")
+			fatalError("Couldn't create the news source. Error: \(error)")
+		}
+	}
+
+	func createNewsFeed(name: String, logo: UIImage? = nil, sources: Set<NewsSource>) {
+
+		let context = getContext()
+
+		let newsFeedEntityDescription = getEntityDescription(for: newsFeedEntityName, in: context)
+		let newsFeed = NSManagedObject(entity: newsFeedEntityDescription, insertInto: context)
+		newsFeed.setValue(name, forKeyPath: NewsFeedEntityProperty.name.rawValue)
+		if let logo = logo {
+			guard let logoData = UIImagePNGRepresentation(logo) else {
+				fatalError("Couldn't convert image to binary.")
+			}
+			newsFeed.setValue(logoData, forKey: NewsFeedEntityProperty.logo.rawValue)
+		}
+		newsFeed.setValue(sources, forKey: NewsFeedEntityProperty.sources.rawValue)
+
+		do {
+			try context.save()
+		} catch let error as NSError {
+			fatalError("Couldn't create the news feed. Error: \(error)")
+		}
+	}
+
+	func getNewsSource(forName name: String) -> NewsSource? {
+
+		let context = getContext()
+
+		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: newsSourceEntityName)
+		fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+
+		do {
+			guard let sources = try context.fetch(fetchRequest) as? [NewsSource] else {
+				fatalError("Couldn't convert the fetched results to [NewsSource].")
+			}
+			return sources.first;
+		} catch let error as NSError {
+			fatalError("Couldn't fetch the news source: \(name). Error:  \(error)")
 		}
 	}
 

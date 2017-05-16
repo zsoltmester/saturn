@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="NewsFeed" representedClassName="NewsFeed" syncable="YES" codeGenerationType="class">
         <attribute name="logo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <attribute name="name" attributeType="String" minValueString="1" maxValueString="16" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
+        <attribute name="name" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <relationship name="sources" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="NewsSource" inverseName="feeds" inverseEntity="NewsSource" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -12,7 +12,7 @@
     </entity>
     <entity name="NewsSource" representedClassName="NewsSource" syncable="YES" codeGenerationType="class">
         <attribute name="logo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <attribute name="name" attributeType="String" minValueString="1" maxValueString="16" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
+        <attribute name="name" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <relationship name="feeds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NewsFeed" inverseName="sources" inverseEntity="NewsFeed" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -21,7 +21,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="NewsFeed" positionX="79" positionY="36" width="128" height="88"/>
-        <element name="NewsSource" positionX="-128" positionY="32" width="128" height="88"/>
+        <element name="NewsFeed" positionX="79" positionY="36" width="128" height="90"/>
+        <element name="NewsSource" positionX="-128" positionY="32" width="128" height="90"/>
     </elements>
 </model>
