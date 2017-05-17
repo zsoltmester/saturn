@@ -6,22 +6,22 @@
 //  Copyright © 2017. Zsolt Mester. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	// MARK: - Properties
 
-	var model: ModelController!
+	var modelController: ModelController!
 	var window: UIWindow?
 
 	// MARK: - Application Lifecycle
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
-		model = ModelController()
+		modelController = ModelController()
 
 		return true
 	}

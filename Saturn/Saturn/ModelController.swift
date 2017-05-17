@@ -11,27 +11,10 @@ import UIKit
 
 class ModelController {
 
-	// MARK: - Entity Names
-
-	private let newsSourceEntityName = "NewsSource"
-	private let newsFeedEntityName = "NewsFeed"
-
-	// MARK: - Entity Properties
-
-	private enum NewsSourceEntityProperty: String {
-		case name
-		case logo
-		case feeds
-	}
-
-	private enum NewsFeedEntityProperty: String {
-		case name
-		case logo
-		case sources
-	}
-
 	// MARK: - Properties
 
+	private static let userDefaultsKeyIsModelPreloaded = "isModelPreloaded"
+	
 	var context: NSManagedObjectContext?
 
 	// MARK: - Initialization
@@ -54,10 +37,10 @@ class ModelController {
 
 			self.context = container.viewContext
 
-			let isModelPreloaded = UserDefaults.standard.bool(forKey: UserDefaultsKey.isModelPreloaded.rawValue)
+			let isModelPreloaded = UserDefaults.standard.bool(forKey: ModelController.userDefaultsKeyIsModelPreloaded)
 			if !isModelPreloaded {
 				self.preloadModel()
-				UserDefaults.standard.set(true, forKey: UserDefaultsKey.isModelPreloaded.rawValue)
+				UserDefaults.standard.set(true, forKey: ModelController.userDefaultsKeyIsModelPreloaded)
 			}
 		})
 	}
@@ -97,14 +80,14 @@ class ModelController {
 
 		let context = getContext()
 
-		let newsSourceEntityDescription = getEntityDescription(for: newsSourceEntityName, in: context)
+		let newsSourceEntityDescription = getEntityDescription(for: String(describing: NewsSource.self), in: context)
 		let newsSource = NSManagedObject(entity: newsSourceEntityDescription, insertInto: context)
-		newsSource.setValue(name, forKeyPath: NewsSourceEntityProperty.name.rawValue)
+		newsSource.setValue(name, forKeyPath: #keyPath(NewsSource.name))
 		if let logo = logo {
 			guard let logoData = UIImagePNGRepresentation(logo) else {
 				fatalError("Couldn't convert image to binary.")
 			}
-			newsSource.setValue(logoData, forKey: NewsSourceEntityProperty.logo.rawValue)
+			newsSource.setValue(logoData, forKey: #keyPath(NewsSource.logo))
 		}
 
 		do {
@@ -118,16 +101,16 @@ class ModelController {
 
 		let context = getContext()
 
-		let newsFeedEntityDescription = getEntityDescription(for: newsFeedEntityName, in: context)
+		let newsFeedEntityDescription = getEntityDescription(for: String(describing: NewsFeed.self), in: context)
 		let newsFeed = NSManagedObject(entity: newsFeedEntityDescription, insertInto: context)
-		newsFeed.setValue(name, forKeyPath: NewsFeedEntityProperty.name.rawValue)
+		newsFeed.setValue(name, forKeyPath: #keyPath(NewsFeed.name))
 		if let logo = logo {
 			guard let logoData = UIImagePNGRepresentation(logo) else {
 				fatalError("Couldn't convert image to binary.")
 			}
-			newsFeed.setValue(logoData, forKey: NewsFeedEntityProperty.logo.rawValue)
+			newsFeed.setValue(logoData, forKey: #keyPath(NewsFeed.logo))
 		}
-		newsFeed.setValue(sources, forKey: NewsFeedEntityProperty.sources.rawValue)
+		newsFeed.setValue(sources, forKey: #keyPath(NewsFeed.sources))
 
 		do {
 			try context.save()
@@ -140,8 +123,8 @@ class ModelController {
 
 		let context = getContext()
 
-		let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: newsSourceEntityName)
-		fetchRequest.predicate = NSPredicate(format: "\(NewsSourceEntityProperty.name.rawValue) == \"\(name)\"")
+		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsSource.fetchRequest()
+		fetchRequest.predicate = NSPredicate(format: "\(#keyPath(NewsSource.name)) == \"\(name)\"")
 
 		do {
 			guard let sources = try context.fetch(fetchRequest) as? [NewsSource] else {
