@@ -1,0 +1,13 @@
+platform :ios, '10.0'
+
+target 'Saturn' do
+
+  use_frameworks!
+
+  pod 'Pastel', '~> 0.3.0'
+
+  target 'SaturnTests' do
+    inherit! :search_paths
+  end
+
+end
