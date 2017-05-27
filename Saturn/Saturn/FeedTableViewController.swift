@@ -69,6 +69,32 @@ class FeedTableViewController: ModelTableViewController {
 		}
 	}
 
+	override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+
+		guard var feeds = self.fetchedResultsController?.fetchedObjects as? [NewsFeed] else {
+			fatalError("Couldn't get fetched feeds.")
+		}
+
+		self.fetchedResultsController!.delegate = nil
+
+		let movedFeed = feeds.remove(at: sourceIndexPath.row)
+		feeds.insert(movedFeed, at: destinationIndexPath.row)
+
+		var order: Int16 = 0
+		for feed in feeds {
+			feed.order = order
+			order += 1
+		}
+
+		do {
+			try getModelController().context!.save()
+		} catch {
+			fatalError("Couldn't save the reordered feeds.")
+		}
+
+		self.fetchedResultsController!.delegate = self
+	}
+
 	// MARK: - Private Functions
 
 	func getSourcesText(sources: NSSet?) -> String {
