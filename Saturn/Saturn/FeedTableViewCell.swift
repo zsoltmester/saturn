@@ -18,4 +18,5 @@ class FeedTableViewCell: UITableViewCell {
 	@IBOutlet weak var colorsPastelView: PastelView!
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var sourcesLabel: UILabel!
+
 }

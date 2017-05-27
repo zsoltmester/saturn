@@ -122,4 +122,5 @@ class FeedTableViewController: ModelTableViewController {
 
 		return colors;
 	}
+
 }
