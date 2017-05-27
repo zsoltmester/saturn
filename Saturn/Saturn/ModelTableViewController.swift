@@ -21,7 +21,7 @@ class ModelTableViewController: UITableViewController, NSFetchedResultsControlle
 		}
 	}
 
-	// MARK: - Table View Data Source
+	// MARK: - UITableViewDataSource
 
 	override func numberOfSections(in tableView: UITableView) -> Int {
 
@@ -51,7 +51,38 @@ class ModelTableViewController: UITableViewController, NSFetchedResultsControlle
 		return sectionInfo.numberOfObjects
 	}
 
+	// MARK: - NSFetchedResultsControllerDelegate
+
+	func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+
+		tableView.beginUpdates()
+	}
+
+	func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+
+		switch type {
+		case .insert:
+			tableView.insertRows(at: [newIndexPath!], with: .fade)
+		case .delete:
+			tableView.deleteRows(at: [indexPath!], with: .fade)
+		case .update:
+			tableView.reloadRows(at: [indexPath!], with: .fade)
+		case .move:
+			tableView.moveRow(at: indexPath!, to: newIndexPath!)
+		}
+	}
+
+	func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+		tableView.endUpdates()
+	}
+
 	// MARK: - Public Functions
+
+	func getModelController() -> ModelController {
+
+		let appDelegate = UIApplication.shared.delegate as! AppDelegate
+		return appDelegate.modelController
+	}
 
 	func getObject<Type>(at indexPath: IndexPath) -> Type {
 

@@ -132,6 +132,18 @@ class ModelController {
 		}
 	}
 
+	func deleteNewsFeed(_ feed: NewsFeed) {
+
+		let context = getContext()
+
+		do {
+			context.delete(feed)
+			try context.save()
+		} catch let error as NSError {
+			fatalError("Couldn't delete news feed. Error: \(error)")
+		}
+	}
+
 	func getNewsSource(forName name: String) -> NewsSource? {
 
 		let context = getContext()

@@ -18,6 +18,8 @@ class FeedTableViewController: ModelTableViewController {
         super.viewDidLoad()
 
 		prepareFetchedResultsController()
+
+		navigationItem.leftBarButtonItem = editButtonItem
     }
 
 	func prepareFetchedResultsController() {
@@ -25,13 +27,10 @@ class FeedTableViewController: ModelTableViewController {
 		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsFeed.fetchRequest()
 		fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(NewsFeed.order), ascending: true)]
 
-		let appDelegate = UIApplication.shared.delegate as! AppDelegate
-		let context = appDelegate.modelController.context!
-
-		fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+		fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: getModelController().context!, sectionNameKeyPath: nil, cacheName: nil)
 	}
 
-	// MARK: - Table View Data Source
+	// MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
@@ -61,6 +60,13 @@ class FeedTableViewController: ModelTableViewController {
 		}
 
 		cell.colorsPastelView.startAnimation()
+	}
+
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+
+		if editingStyle == .delete {
+			getModelController().deleteNewsFeed(getObject(at: indexPath))
+		}
 	}
 
 	// MARK: - Private Functions
