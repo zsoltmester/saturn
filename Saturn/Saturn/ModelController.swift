@@ -52,26 +52,41 @@ class ModelController {
 		sources.insert(getNewsSource(forName: "Reddit - Programming")!)
 		insertNewsSource(name: "Hacker News")
 		sources.insert(getNewsSource(forName: "Hacker News")!)
-		insertNewsFeed(name: "Developer's Heaven", sources: sources)
+		insertNewsFeed(name: "Developer's Heaven", colorsIdentifier:6, sources: sources)
 
 		sources.removeAll()
 		insertNewsSource(name: "HVG")
 		sources.insert(getNewsSource(forName: "HVG")!)
 		insertNewsSource(name: "Index")
 		sources.insert(getNewsSource(forName: "Index")!)
-		insertNewsFeed(name: "Daily Essentials", sources: sources)
+		insertNewsSource(name: "444")
+		sources.insert(getNewsSource(forName: "444")!)
+		insertNewsFeed(name: "Daily Essentials", colorsIdentifier:4, sources: sources)
+
+		sources.removeAll()
+		insertNewsSource(name: "BBC News")
+		sources.insert(getNewsSource(forName: "BBC News")!)
+		insertNewsSource(name: "CNN")
+		sources.insert(getNewsSource(forName: "CNN")!)
+		insertNewsSource(name: "Telegraph")
+		sources.insert(getNewsSource(forName: "Telegraph")!)
+		insertNewsSource(name: "The Guardian")
+		sources.insert(getNewsSource(forName: "The Guardian")!)
+		insertNewsSource(name: "The New York Times")
+		sources.insert(getNewsSource(forName: "The New York Times")!)
+		insertNewsFeed(name: "International News", colorsIdentifier:1, sources: sources)
 
 		sources.removeAll()
 		insertNewsSource(name: "9gag")
 		sources.insert(getNewsSource(forName: "9gag")!)
 		insertNewsSource(name: "Reddit - Aww")
 		sources.insert(getNewsSource(forName: "Reddit - Aww")!)
-		insertNewsFeed(name: "Chill", sources: sources)
+		insertNewsFeed(name: "Chill", colorsIdentifier:5, sources: sources)
 
 		sources.removeAll()
-		insertNewsSource(name: "Heartstone")
-		sources.insert(getNewsSource(forName: "Heartstone")!)
-		insertNewsFeed(name: "Hearthstone", sources: sources)
+		insertNewsSource(name: "heartstone.com")
+		sources.insert(getNewsSource(forName: "heartstone.com")!)
+		insertNewsFeed(name: "Hearthstone", colorsIdentifier:9, sources: sources)
 	}
 
 	// MARK: - Public Functions
@@ -97,19 +112,14 @@ class ModelController {
 		}
 	}
 
-	func insertNewsFeed(name: String, logo: UIImage? = nil, sources: Set<NewsSource>) {
+	func insertNewsFeed(name: String, colorsIdentifier: Int16? = -1, sources: Set<NewsSource>) {
 
 		let context = getContext()
 
 		let newsFeedEntityDescription = getEntityDescription(for: String(describing: NewsFeed.self), in: context)
 		let newsFeed = NSManagedObject(entity: newsFeedEntityDescription, insertInto: context)
 		newsFeed.setValue(name, forKeyPath: #keyPath(NewsFeed.name))
-		if let logo = logo {
-			guard let logoData = UIImagePNGRepresentation(logo) else {
-				fatalError("Couldn't convert image to binary.")
-			}
-			newsFeed.setValue(logoData, forKey: #keyPath(NewsFeed.logo))
-		}
+		newsFeed.setValue(colorsIdentifier, forKey: #keyPath(NewsFeed.colorsIdentifier))
 		newsFeed.setValue(sources, forKey: #keyPath(NewsFeed.sources))
 
 		do {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="NewsFeed" representedClassName="NewsFeed" syncable="YES" codeGenerationType="class">
-        <attribute name="logo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="colorsIdentifier" optional="YES" attributeType="Integer 16" minValueString="-1" maxValueString="9" defaultValueString="-1" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <relationship name="sources" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="NewsSource" inverseName="feeds" inverseEntity="NewsSource" syncable="YES"/>
         <uniquenessConstraints>

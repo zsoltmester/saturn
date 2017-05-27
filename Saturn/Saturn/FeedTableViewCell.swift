@@ -6,6 +6,7 @@
 //  Copyright © 2017. Zsolt Mester. All rights reserved.
 //
 
+import Pastel
 import UIKit
 
 class FeedTableViewCell: UITableViewCell {
@@ -14,6 +15,7 @@ class FeedTableViewCell: UITableViewCell {
 
 	static let reuseIdentifier = "Feed Cell"
 	
-	@IBOutlet weak var logoImageView: UIImageView!
+	@IBOutlet weak var colorsPastelView: PastelView!
 	@IBOutlet weak var nameLabel: UILabel!
+	@IBOutlet weak var sourcesLabel: UILabel!
 }
