@@ -72,11 +72,61 @@
                             <outlet property="delegate" destination="b3M-Fj-s2L" id="9d9-Dg-Lpt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Your Feeds" id="NOp-nw-YqJ"/>
+                    <navigationItem key="navigationItem" title="Your Feeds" id="NOp-nw-YqJ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="eCv-Ce-iWK">
+                            <connections>
+                                <segue destination="fLC-tR-T8g" kind="presentation" id="p4u-Ci-c6H"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6K-Yr-yuq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1128.8" y="142.57871064467767"/>
+        </scene>
+        <!--Choose Sources-->
+        <scene sceneID="4pU-70-mlD">
+            <objects>
+                <tableViewController id="y6w-Qv-FOw" customClass="SourcesTableViewController" customModule="Saturn" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="pFN-Qn-uN9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Source Cell" textLabel="3sB-Fn-wdY" style="IBUITableViewCellStyleDefault" id="cU6-kj-cTA" customClass="SourceTableViewCell" customModule="Saturn" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cU6-kj-cTA" id="gRL-pq-rpc">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sources" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3sB-Fn-wdY">
+                                            <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="y6w-Qv-FOw" id="nCS-hd-yO5"/>
+                            <outlet property="delegate" destination="y6w-Qv-FOw" id="PdX-GI-4BC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Choose Sources" id="iBW-mn-k7N">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="lPs-H1-3v3">
+                            <connections>
+                                <action selector="cancel:" destination="y6w-Qv-FOw" id="zUI-07-dW2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7DX-CP-iex" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2122.5" y="923.23943661971828"/>
         </scene>
         <!--Main Navigation Stack-->
         <scene sceneID="Fj9-OO-aqX">
@@ -99,6 +149,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Roj-2J-7dh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="189.59999999999999" y="142.57871064467767"/>
+        </scene>
+        <!--Add Feed Navigation Stack-->
+        <scene sceneID="AIp-hL-NAx">
+            <objects>
+                <navigationController title="Add Feed Navigation Stack" automaticallyAdjustsScrollViewInsets="NO" id="fLC-tR-T8g" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="omL-BD-tSc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="y6w-Qv-FOw" kind="relationship" relationship="rootViewController" id="1CL-Az-fTt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9ct-04-fz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1129" y="925"/>
         </scene>
     </scenes>
 </document>

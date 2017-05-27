@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2C909CA9D7957523A29ADFF5 /* Pods_Saturn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC2930327899FDC17D1AA8E4 /* Pods_Saturn.framework */; };
 		E6E0EC07653133F60BDDF149 /* Pods_SaturnTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58F3B0A7944D9C2A12B28BC /* Pods_SaturnTests.framework */; };
+		E70AA8121ED9E30E004AE8AF /* SourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70AA8111ED9E30E004AE8AF /* SourcesTableViewController.swift */; };
+		E70AA8141ED9E9B9004AE8AF /* SourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70AA8131ED9E9B9004AE8AF /* SourceTableViewCell.swift */; };
 		E74D10021EC4FE870057E519 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74D10011EC4FE870057E519 /* AppDelegate.swift */; };
 		E74D10071EC4FE870057E519 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74D10051EC4FE870057E519 /* Main.storyboard */; };
 		E74D100A1EC4FE870057E519 /* Saturn.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E74D10081EC4FE870057E519 /* Saturn.xcdatamodeld */; };
@@ -37,6 +39,8 @@
 		DC2930327899FDC17D1AA8E4 /* Pods_Saturn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Saturn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCB95582176E9F5C8A61E078 /* Pods-Saturn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Saturn.release.xcconfig"; path = "Pods/Target Support Files/Pods-Saturn/Pods-Saturn.release.xcconfig"; sourceTree = "<group>"; };
 		E58F3B0A7944D9C2A12B28BC /* Pods_SaturnTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaturnTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E70AA8111ED9E30E004AE8AF /* SourcesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourcesTableViewController.swift; sourceTree = "<group>"; };
+		E70AA8131ED9E9B9004AE8AF /* SourceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceTableViewCell.swift; sourceTree = "<group>"; };
 		E737F8A199BAEFDEE9FD8C6B /* Pods-SaturnTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaturnTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SaturnTests/Pods-SaturnTests.release.xcconfig"; sourceTree = "<group>"; };
 		E74D0FFE1EC4FE870057E519 /* Saturn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Saturn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E74D10011EC4FE870057E519 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				E74D100D1EC4FE870057E519 /* LaunchScreen.storyboard */,
 				E74D10051EC4FE870057E519 /* Main.storyboard */,
 				E787C8B91ECB9267000D7728 /* FeedTableViewCell.swift */,
+				E70AA8131ED9E9B9004AE8AF /* SourceTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 			children = (
 				E787C8B71ECB9175000D7728 /* FeedTableViewController.swift */,
 				E7705E561ECCDE2C0047D1E7 /* ModelTableViewController.swift */,
+				E70AA8111ED9E30E004AE8AF /* SourcesTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -368,8 +374,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E70AA8141ED9E9B9004AE8AF /* SourceTableViewCell.swift in Sources */,
 				E74D100A1EC4FE870057E519 /* Saturn.xcdatamodeld in Sources */,
 				E7705E571ECCDE2C0047D1E7 /* ModelTableViewController.swift in Sources */,
+				E70AA8121ED9E30E004AE8AF /* SourcesTableViewController.swift in Sources */,
 				E787C8BA1ECB9267000D7728 /* FeedTableViewCell.swift in Sources */,
 				E74D10021EC4FE870057E519 /* AppDelegate.swift in Sources */,
 				E787C8B81ECB9175000D7728 /* FeedTableViewController.swift in Sources */,
