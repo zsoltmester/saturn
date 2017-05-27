@@ -48,6 +48,20 @@ class ModelController {
 	private func preloadModel() {
 
 		var sources = Set<NewsSource>()
+		insertNewsSource(name: "heartstone.com")
+		sources.insert(getNewsSource(forName: "heartstone.com")!)
+		insertNewsFeed(name: "Hearthstone", colorsIdentifier:9, sources: sources)
+
+		sources.removeAll()
+		insertNewsSource(name: "9gag")
+		sources.insert(getNewsSource(forName: "9gag")!)
+		insertNewsSource(name: "Reddit - Aww")
+		sources.insert(getNewsSource(forName: "Reddit - Aww")!)
+		insertNewsSource(name: "Youtube - Videómánia")
+		sources.insert(getNewsSource(forName: "Youtube - Videómánia")!)
+		insertNewsFeed(name: "Chill", colorsIdentifier:5, sources: sources)
+
+		sources.removeAll()
 		insertNewsSource(name: "BBC News")
 		sources.insert(getNewsSource(forName: "BBC News")!)
 		insertNewsSource(name: "CNN")
@@ -59,19 +73,6 @@ class ModelController {
 		insertNewsSource(name: "The New York Times")
 		sources.insert(getNewsSource(forName: "The New York Times")!)
 		insertNewsFeed(name: "International News", colorsIdentifier:6, sources: sources)
-
-		sources.removeAll()
-		insertNewsSource(name: "heartstone.com")
-		sources.insert(getNewsSource(forName: "heartstone.com")!)
-		insertNewsFeed(name: "Hearthstone", colorsIdentifier:9, sources: sources)
-
-		sources.removeAll()
-		insertNewsSource(name: "9gag")
-		sources.insert(getNewsSource(forName: "9gag")!)
-		insertNewsSource(name: "Reddit - Aww")
-		sources.insert(getNewsSource(forName: "Reddit - Aww")!)
-		insertNewsFeed(name: "Chill", colorsIdentifier:5, sources: sources)
-
 
 		sources.removeAll()
 		insertNewsSource(name: "Reddit - Programming")
