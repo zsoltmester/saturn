@@ -50,10 +50,18 @@ class FeedTableViewController: ModelTableViewController {
 		cell.colorsPastelView.endPastelPoint = .bottom
 		cell.colorsPastelView.setPastelGradient(getPastelGradient(colorsIdentifier: feed.colorsIdentifier))
 		cell.colorsPastelView.animationDuration = 2;
-		cell.colorsPastelView.startAnimation()
 
         return cell
     }
+
+	override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+		guard let cell = cell as? FeedTableViewCell else {
+			fatalError("Invalid cell type. Expected FeedTableViewCell.")
+		}
+
+		cell.colorsPastelView.startAnimation()
+	}
 
 	// MARK: - Private Functions
 
