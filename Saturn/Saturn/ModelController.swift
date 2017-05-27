@@ -48,22 +48,6 @@ class ModelController {
 	private func preloadModel() {
 
 		var sources = Set<NewsSource>()
-		insertNewsSource(name: "Reddit - Programming")
-		sources.insert(getNewsSource(forName: "Reddit - Programming")!)
-		insertNewsSource(name: "Hacker News")
-		sources.insert(getNewsSource(forName: "Hacker News")!)
-		insertNewsFeed(name: "Developer's Heaven", colorsIdentifier:6, sources: sources)
-
-		sources.removeAll()
-		insertNewsSource(name: "HVG")
-		sources.insert(getNewsSource(forName: "HVG")!)
-		insertNewsSource(name: "Index")
-		sources.insert(getNewsSource(forName: "Index")!)
-		insertNewsSource(name: "444")
-		sources.insert(getNewsSource(forName: "444")!)
-		insertNewsFeed(name: "Daily Essentials", colorsIdentifier:4, sources: sources)
-
-		sources.removeAll()
 		insertNewsSource(name: "BBC News")
 		sources.insert(getNewsSource(forName: "BBC News")!)
 		insertNewsSource(name: "CNN")
@@ -74,7 +58,12 @@ class ModelController {
 		sources.insert(getNewsSource(forName: "The Guardian")!)
 		insertNewsSource(name: "The New York Times")
 		sources.insert(getNewsSource(forName: "The New York Times")!)
-		insertNewsFeed(name: "International News", colorsIdentifier:1, sources: sources)
+		insertNewsFeed(name: "International News", colorsIdentifier:6, sources: sources)
+
+		sources.removeAll()
+		insertNewsSource(name: "heartstone.com")
+		sources.insert(getNewsSource(forName: "heartstone.com")!)
+		insertNewsFeed(name: "Hearthstone", colorsIdentifier:9, sources: sources)
 
 		sources.removeAll()
 		insertNewsSource(name: "9gag")
@@ -83,10 +72,22 @@ class ModelController {
 		sources.insert(getNewsSource(forName: "Reddit - Aww")!)
 		insertNewsFeed(name: "Chill", colorsIdentifier:5, sources: sources)
 
+
 		sources.removeAll()
-		insertNewsSource(name: "heartstone.com")
-		sources.insert(getNewsSource(forName: "heartstone.com")!)
-		insertNewsFeed(name: "Hearthstone", colorsIdentifier:9, sources: sources)
+		insertNewsSource(name: "Reddit - Programming")
+		sources.insert(getNewsSource(forName: "Reddit - Programming")!)
+		insertNewsSource(name: "Hacker News")
+		sources.insert(getNewsSource(forName: "Hacker News")!)
+		insertNewsFeed(name: "Developer's Heaven", colorsIdentifier:1, sources: sources)
+
+		sources.removeAll()
+		insertNewsSource(name: "HVG")
+		sources.insert(getNewsSource(forName: "HVG")!)
+		insertNewsSource(name: "Index")
+		sources.insert(getNewsSource(forName: "Index")!)
+		insertNewsSource(name: "444")
+		sources.insert(getNewsSource(forName: "444")!)
+		insertNewsFeed(name: "Daily Essentials", colorsIdentifier:4, sources: sources)
 	}
 
 	// MARK: - Public Functions
@@ -121,6 +122,7 @@ class ModelController {
 		newsFeed.setValue(name, forKeyPath: #keyPath(NewsFeed.name))
 		newsFeed.setValue(colorsIdentifier, forKey: #keyPath(NewsFeed.colorsIdentifier))
 		newsFeed.setValue(sources, forKey: #keyPath(NewsFeed.sources))
+		newsFeed.setValue(getNewsFeedOrderMin() - 1, forKey: #keyPath(NewsFeed.order))
 
 		do {
 			try context.save()
@@ -142,7 +144,7 @@ class ModelController {
 			}
 			return sources.first;
 		} catch let error as NSError {
-			fatalError("Couldn't fetch the news source: \(name). Error:  \(error)")
+			fatalError("Couldn't fetch the news source: \(name). Error: \(error)")
 		}
 	}
 
@@ -164,6 +166,34 @@ class ModelController {
 		}
 
 		return entityDescription
+	}
+
+	private func getNewsFeedOrderMin() -> Int16 {
+
+		let context = getContext()
+
+		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsFeed.fetchRequest()
+		fetchRequest.resultType = .dictionaryResultType;
+
+		let expressionForNewsFeedOrderMin = NSExpression(forFunction: "min:", arguments: [NSExpression(forKeyPath: #keyPath(NewsFeed.order))])
+
+		let propertyNameForNewsFeedOrderMin = "newsFeedOrderMin"
+
+		let propertyDescriptionForNewsFeedOrderMin = NSExpressionDescription()
+		propertyDescriptionForNewsFeedOrderMin.name = propertyNameForNewsFeedOrderMin
+		propertyDescriptionForNewsFeedOrderMin.expression = expressionForNewsFeedOrderMin
+		propertyDescriptionForNewsFeedOrderMin.expressionResultType = .integer16AttributeType
+
+		fetchRequest.propertiesToFetch = [propertyDescriptionForNewsFeedOrderMin]
+
+		do {
+			guard let newsFeedOrderMin: Int16 = try (context.fetch(fetchRequest) as? [[String: Int16]])?.first?[propertyNameForNewsFeedOrderMin] else {
+				fatalError("Couldn't convert fetch result to Int16.")
+			}
+			return newsFeedOrderMin
+		} catch let error as NSError {
+			fatalError("Couldn't get the news feed orders' minimum. Error: \(error)")
+		}
 	}
 
 }

@@ -23,7 +23,7 @@ class FeedTableViewController: ModelTableViewController {
 	func prepareFetchedResultsController() {
 
 		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsFeed.fetchRequest()
-		fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(NewsFeed.name), ascending: true)]
+		fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(NewsFeed.order), ascending: true)]
 
 		let appDelegate = UIApplication.shared.delegate as! AppDelegate
 		let context = appDelegate.modelController.context!
