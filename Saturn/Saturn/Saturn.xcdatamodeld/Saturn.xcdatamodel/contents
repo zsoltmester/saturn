@@ -9,15 +9,19 @@
             <uniquenessConstraint>
                 <constraint value="name"/>
             </uniquenessConstraint>
+            <uniquenessConstraint>
+                <constraint value="order"/>
+            </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
     <entity name="NewsSource" representedClassName="NewsSource" syncable="YES" codeGenerationType="class">
-        <attribute name="logo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <attribute name="name" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
+        <attribute name="provider" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
+        <attribute name="service" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <relationship name="feeds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NewsFeed" inverseName="sources" inverseEntity="NewsFeed" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="name"/>
+                <constraint value="provider"/>
+                <constraint value="service"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>

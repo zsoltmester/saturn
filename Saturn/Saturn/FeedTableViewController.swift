@@ -99,14 +99,16 @@ class FeedTableViewController: ModelTableViewController {
 
 	func getSourcesText(sources: NSSet?) -> String {
 
-		let sourcesSorter = [NSSortDescriptor(key: #keyPath(NewsSource.name), ascending: true, selector: #selector(NSString.compare(_:)))]
-		guard let orderedSources: [NewsSource] = sources?.sortedArray(using: sourcesSorter) as? [NewsSource] else {
+		let sourcesProviderSorter = NSSortDescriptor(key: #keyPath(NewsSource.provider), ascending: true, selector: #selector(NSString.compare(_:)))
+		let sourcesServiceSorter = NSSortDescriptor(key: #keyPath(NewsSource.service), ascending: true, selector: #selector(NSString.compare(_:)))
+		guard let orderedSources: [NewsSource] = sources?.sortedArray(using: [sourcesProviderSorter, sourcesServiceSorter]) as? [NewsSource] else {
 			fatalError("No sources given.")
 		}
 
 		var sourcesText: String = ""
 		for source in orderedSources {
-			sourcesText = sourcesText.isEmpty ? source.name! : "\(sourcesText), \(source.name!)"
+			let sourceText: String = source.provider! == source.service ? source.provider! : "\(source.provider!) - \(source.service!)"
+			sourcesText = sourcesText.isEmpty ? sourceText : "\(sourcesText), \(sourceText)"
 		}
 
 		return sourcesText

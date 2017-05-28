@@ -48,70 +48,55 @@ class ModelController {
 	private func preloadModel() {
 
 		var sources = Set<NewsSource>()
-		insertNewsSource(name: "heartstone.com")
-		sources.insert(getNewsSource(forName: "heartstone.com")!)
+		sources.insert(insertNewsSource(provider: "Battle.net", service: "Hearthstone"))
 		insertNewsFeed(name: "Hearthstone", colorsIdentifier:9, sources: sources)
 
 		sources.removeAll()
-		insertNewsSource(name: "9gag")
-		sources.insert(getNewsSource(forName: "9gag")!)
-		insertNewsSource(name: "Reddit - Aww")
-		sources.insert(getNewsSource(forName: "Reddit - Aww")!)
-		insertNewsSource(name: "Youtube - Videómánia")
-		sources.insert(getNewsSource(forName: "Youtube - Videómánia")!)
+		sources.insert(insertNewsSource(provider: "9gag", service: "9gag"))
+		sources.insert(insertNewsSource(provider: "Reddit", service: "Aww"))
+		sources.insert(insertNewsSource(provider: "Youtube", service: "Videómánia"))
 		insertNewsFeed(name: "Chill", colorsIdentifier:5, sources: sources)
 
 		sources.removeAll()
-		insertNewsSource(name: "BBC News")
-		sources.insert(getNewsSource(forName: "BBC News")!)
-		insertNewsSource(name: "CNN")
-		sources.insert(getNewsSource(forName: "CNN")!)
-		insertNewsSource(name: "Telegraph")
-		sources.insert(getNewsSource(forName: "Telegraph")!)
-		insertNewsSource(name: "The Guardian")
-		sources.insert(getNewsSource(forName: "The Guardian")!)
-		insertNewsSource(name: "The New York Times")
-		sources.insert(getNewsSource(forName: "The New York Times")!)
+		sources.insert(insertNewsSource(provider: "BBC News", service: "BBC News"))
+		sources.insert(insertNewsSource(provider: "CNN", service: "CNN"))
+		sources.insert(insertNewsSource(provider: "Telegraph", service: "Telegraph"))
+		sources.insert(insertNewsSource(provider: "The Guardian", service: "The Guardian"))
+		sources.insert(insertNewsSource(provider: "The New York Times", service: "The New York Times"))
 		insertNewsFeed(name: "International News", colorsIdentifier:6, sources: sources)
 
 		sources.removeAll()
-		insertNewsSource(name: "Reddit - Programming")
-		sources.insert(getNewsSource(forName: "Reddit - Programming")!)
-		insertNewsSource(name: "Hacker News")
-		sources.insert(getNewsSource(forName: "Hacker News")!)
+		sources.insert(insertNewsSource(provider: "Reddit", service: "Programming"))
+		sources.insert(insertNewsSource(provider: "Hacker News", service: "Hacker News"))
 		insertNewsFeed(name: "Developer's Heaven", colorsIdentifier:1, sources: sources)
 
 		sources.removeAll()
-		insertNewsSource(name: "HVG")
-		sources.insert(getNewsSource(forName: "HVG")!)
-		insertNewsSource(name: "Index")
-		sources.insert(getNewsSource(forName: "Index")!)
-		insertNewsSource(name: "444")
-		sources.insert(getNewsSource(forName: "444")!)
+		sources.insert(insertNewsSource(provider: "HVG", service: "HVG"))
+		sources.insert(insertNewsSource(provider: "Index", service: "Index"))
+		sources.insert(insertNewsSource(provider: "444", service: "444"))
 		insertNewsFeed(name: "Daily Essentials", colorsIdentifier:4, sources: sources)
 	}
 
 	// MARK: - Public Functions
 
-	func insertNewsSource(name: String, logo: UIImage? = nil) {
+	func insertNewsSource(provider: String, service: String) -> NewsSource {
 
 		let context = getContext()
 
 		let newsSourceEntityDescription = getEntityDescription(for: String(describing: NewsSource.self), in: context)
-		let newsSource = NSManagedObject(entity: newsSourceEntityDescription, insertInto: context)
-		newsSource.setValue(name, forKeyPath: #keyPath(NewsSource.name))
-		if let logo = logo {
-			guard let logoData = UIImagePNGRepresentation(logo) else {
-				fatalError("Couldn't convert image to binary.")
-			}
-			newsSource.setValue(logoData, forKey: #keyPath(NewsSource.logo))
+		guard let newsSource: NewsSource = NSManagedObject(entity: newsSourceEntityDescription, insertInto: context) as? NewsSource else {
+			fatalError("Couldn't convert the inserted news source to NewsSource.")
 		}
+		newsSource.setValue(provider, forKeyPath: #keyPath(NewsSource.provider))
+		newsSource.setValue(service, forKeyPath: #keyPath(NewsSource.service))
 
 		do {
 			try context.save()
 		} catch let error as NSError {
 			fatalError("Couldn't insert the news source. Error: \(error)")
 		}
+
+		return newsSource
 	}
 
 	func insertNewsFeed(name: String, colorsIdentifier: Int16? = -1, sources: Set<NewsSource>) {
@@ -144,12 +129,12 @@ class ModelController {
 		}
 	}
 
-	func getNewsSource(forName name: String) -> NewsSource? {
+	func getNewsSource(provider: String, service: String) -> NewsSource? {
 
 		let context = getContext()
 
 		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsSource.fetchRequest()
-		fetchRequest.predicate = NSPredicate(format: "\(#keyPath(NewsSource.name)) == \"\(name)\"")
+		fetchRequest.predicate = NSPredicate(format: "\(#keyPath(NewsSource.provider)) == \"\(provider)\" AND \(#keyPath(NewsSource.service)) == \"\(service)\"")
 
 		do {
 			guard let sources = try context.fetch(fetchRequest) as? [NewsSource] else {
@@ -157,7 +142,7 @@ class ModelController {
 			}
 			return sources.first;
 		} catch let error as NSError {
-			fatalError("Couldn't fetch the news source: \(name). Error: \(error)")
+			fatalError("Couldn't fetch a news source. Error: \(error)")
 		}
 	}
 
@@ -175,7 +160,7 @@ class ModelController {
 	private func getEntityDescription(for entityName: String, in context: NSManagedObjectContext) -> NSEntityDescription {
 
 		guard let entityDescription = NSEntityDescription.entity(forEntityName: entityName, in: context) else {
-			fatalError("Didn't find entity with name: \(entityName)")
+			fatalError("Couldn't find entity with name: \(entityName)")
 		}
 
 		return entityDescription
