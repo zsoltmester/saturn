@@ -42,12 +42,13 @@ class FeedTableViewController: ModelTableViewController {
 
 		cell.nameLabel.text = feed.name
 		cell.sourcesLabel.text = getSourcesText(sources: feed.sources)
+		cell.colorsPastelView.setPastelGradient(getPastelGradient(colorsIdentifier: feed.colorsIdentifier))
 
+		// FIXME: should be in the view (FeedTableViewCell)
 		cell.colorsPastelView.layer.cornerRadius = 10.0
 		cell.colorsPastelView.layer.masksToBounds = true
 		cell.colorsPastelView.startPastelPoint = .top
 		cell.colorsPastelView.endPastelPoint = .bottom
-		cell.colorsPastelView.setPastelGradient(getPastelGradient(colorsIdentifier: feed.colorsIdentifier))
 		cell.colorsPastelView.animationDuration = 2;
 
         return cell
@@ -59,6 +60,7 @@ class FeedTableViewController: ModelTableViewController {
 			fatalError("Invalid cell type. Expected FeedTableViewCell.")
 		}
 
+		// FIXME: should be in the view (FeedTableViewCell)
 		cell.colorsPastelView.startAnimation()
 	}
 

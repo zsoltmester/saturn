@@ -64,3 +64,11 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 	- fejlécének bal oldalán a default back button található, ami visszanavigál a navigációs stacken.
 	- címe a hírfolyam címe.
 	- tartalma egy webview, amiben a hír betöltődik.
+
+# Notes
+
+*provider*, *service*
+
+**Csatorna feliratkozás**: FB profile, Insta profile, Twitter profile, Youtube channel, Reddit subreddit, SoundCloud musician, ...
+**Oldalak követése**: Index, HVG, The New York Time, Hacker News, ...
+**Oldalak aloldalainak követése**: TechCrunch - Android, HVG - Itthon, Index - Itthon, The New York Time - Syria, ...
