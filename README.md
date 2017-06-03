@@ -20,7 +20,7 @@ Egy olyan applikáció, ami képes egy felületen kezelni az engem érdeklő hí
 
 Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 
-Úgy gondolom, hogy a fönt leírt probléma sok embert érint, ezért egy bárki által könnyen használható, testreszabható appot készítek. A felület és a UX megfelel az Apple ajánlásainak és a jelenlegi trendeknek. A legfrissebb OS főverzióval rendelkező iPhoneok és iPadek támogatottak.
+Úgy gondolom, hogy a fönt leírt probléma sok embert érint, ezért egy bárki által könnyen használható, testreszabható appot készítek. A felület és a UX megfelel az Apple ajánlásainak és a jelenlegi trendeknek. A legalább 10-es OS főverzióval rendelkező iPhoneok és iPadek a támogatottak.
 
 ### Specifikáció
 
@@ -33,42 +33,49 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 #### Funkcionális Specifikáció
 
 1. Telepíthető legyen az app storeból és azon keresztül frissüljön.
-2. A hírfolyamválasztó lista:
+- A hírfolyamválasztó képernyő:
 	- a kezdőképernyő.
-	- egy navigation controllerbe van beágyazva.
-	- címe arra utal, hogy ez a lista a user hírfolyamait tartalmazza. Példa cím: *Your Feeds*.
-	- egy cellája egy hírfolyamot reprezentál. A cella tartalmazza a hírfolyam nevét, egy képként a színárnyalatát és felsorolja a forrásokat. A kép a bal oldalon jelenik meg, a hírfolyam neve és a források pedig a kép mellett a jobb oldalon, középre igazítva, fölül a hírfolyam nevével. A hírfolyam neve nem, de a forráslista 2 sorba lehet törve. A lista egy elemére kattintva egy show segue visz el a hírfolyam képernyőre.
-	- fejlécének bal oldalán található egy edit button, amivel a lista a szokásos edit módba kapcsol, ahol a lista elemeit mozgatni, törölni és módosítani is lehet. A módosítás az előtöltött hírfolyamlétrehozó flowt indítja el. Ha mentéssel érkeztünk vissza, akkor frissüljön a lista.
+	- egy navigation controllerbe van ágyazva.
+	- címe arra utal, hogy ez a lista a user hírfolyamait tartalmazza. Például *Your Feeds*.
+	- fejlécének bal oldalán található egy edit button, amivel a lista edit módba kapcsol, ahol a lista elemeit mozgatni, törölni és módosítani is lehet. A módosítás a hírfolyamódosító képernyőt indítja el, modal segue-el. Ha mentéssel érkeztünk vissza, akkor frissüljön a lista.
 	- fejlécének jobb oldalán található egy add button, amire kattintva egy modal segue visz el a hírfolyamlétrehozó képernyőre. Ha mentéssel érkeztünk vissza, akkor frissüljön a lista.
-3. A hírfolyamlétrehozó flow:
-	- 2 screenből áll, amik egy navigation controllerbe vannak beágyazva.
-	- mindkét képernyő fejlécének bal oldalán egy cancel button található, ami eldobja a képernyőt.
-	- első képernyőjének címe arra utal, hogy a hírfolyam forrásait tudja kiválasztani a user. Például: *Choose Sources*.
-	- első képernyője egy hírforrás választó táblázat. A táblázatban annyi szekció van, amennyi különböző hírforráscsoport, minden szekció megfeleltetve egynek. Egy hírforráscsoporthoz tartozik pontosan 1 főhírforrás és legalább 1 alhírforrás. A szekció címe a hozzá tartozó főhírforrás. Főhírforrás például: *HVG*. Alhírforrás például: *Sport, Belpolitika, VR*. Az alhírforrások név szerint növekvő sorrendbe vannak rendezve. Egy cella bal oldalán az alhírforrás neve van. A táblázat egyszerre több cella is ki lehet választva. Kezdetben nincs kiválasztott cella. Ha egy cellát kiválaszt a user, annak a jobb oldalán megjelenik/eltűnik egy checkmark.
-	- első képernyő fejlécének jobb oldalán egy next button található, ami tovább navigál a második képernyőre. A gomb csak akkor aktív, ha legalább 1 cella ki van választva.
-	- második képernyője egy név és színárnyalat választó, illetve hírforrás megerősítő oldal.
-	- második képernyőjének címe arra utal, hogy egy új hírfolyamot hoz létre a user. Például: *Add Feed*. A név leíró text field meg fogja változtatni ennek az értékét.
-	- második képernyője következő elemeket tartalmazza, középre igazítva:
-		1. Egy text field, amivel a hírfolyam nevét lehet megadni. Ez kapja meg a fókuszt a képernyő megnyitásakor (tehát a keyboard is feljön). A fókuszt az enter megnyomásával lehet megszüntetni. Csak 1 sort lehet beírni és legfeljebb 16 karaktert. Fókusz elvesztésekor frissíti a képernyő címét a field tartalmára, ha az valid. Különben pedig a default címet teszi ki a képernyőre.
-		2. A színárnyalatok képként felsorolva, egy grid view-ban. Ezek közül pontosan egy lehet aktív, azaz kiválasztott. Válogatni tappolással lehet. A kiválasztott kép szélének a global tintnek megfelelő színű szegélye van.
-		3. Az első képernyőn összeválogatott hírforrások felsorolása, megerősítés jeleggel. Egymás alatt vannak felsorolva az elemek, szöveg szerint növekvő sorrendben. Egy elem bal oldalán a hírforrás képe található. A kép jobb oldalán pedig egy cím, ami a hírforrás neve, például *HVG - Itthon, Index, TechCrunch, TechCrunch - Android*, stb.
-	- második képernyő fejlécének jobb oldalán egy save button található, ami elmenti a megadott értékek alapján a hírfolyamot és eldobja a képernyőt. A gomb csak akkor aktív, ha valid a név. Mentés után a hírfolyamválasztó lista első helyére kerül a létrehozott hírfolyam.
-4. A hírfolyam képernyő:
+	- egy plain table viewt tartalmaz.
+	- egy cellája egy hírfolyamot reprezentál. A cella tartalmazza a hírfolyam nevét, egy képként a színárnyalatát és felsorolja a forrásokat. A kép a bal oldalon jelenik meg, a hírfolyam neve és a források pedig a kép mellett a jobb oldalon, középre igazítva, fölül a hírfolyam nevével. A hírfolyam neve nem, de a forráslista 2 sorba lehet törve. A lista egy elemére kattintva egy show segue visz el a hírfolyam képernyőre.
+- A hírfolyamlétrehozó képernyő:
+	- egy navigation controllerbe van ágyazva.
+	- címe arra utal, hogy egy új hírfolyamot hoz létre a user. Például: *Add Feed*.
+	- fejlécének bal oldalán egy cancel button található, ami eldobja a képernyőt.
+	- fejlécének jobb oldalán egy done button található, ami elmenti a megadott értékek alapján a hírfolyamot, úgy, hogy a hírfolyamválasztó lista első helyére kerüljün. Ezután eldobja a képernyőt. A gomb csak akkor aktív, ha valid a név és legalább 1 hírforrás ki van választva.
+	- egy grouped table viewt tartalmaz.
+	- szekcióinak nincs neve.
+	- első szekciójának egy eleme van. Ebbe a nevet lehet beírni, hasonlóan, ahogy a calendar alkalmazásban egy új event nevét lehet beírni.
+	- második szekciójának egy eleme van. Ennek bal oldalán egy színre utaló szöveg szerepel, például *Color*. Jobb oldalán a kiválasztott szín neve és egy disclosure indicator. Az elemre kattintva a színválasztó képernyőre jutunk, ahonnan visszaérkezve frissítjük a szín nevét.
+	- harmadik szekciója hasonlít a contact alkalmazás hozzáadás funkciójában lévő URL szekcióra. A különbség, hogy
+		- a felirat egy feed hozzáadására utal, például *add feed*.
+		- a választható típusok az RSS és az Atom. A default az RSS. A választó címe a típusra utal, például *Type*.
+	Amint a user végzett az URL beírásával, validáljuk a háttérben. Ezt egy activity indicator jelzi az input field végén. Ha megfelelt, akkor egy pipát teszünk a végére, különben pedig egy x-et.
+	- negyedik szekciója hasonlít a harmadikra, annyi különbséggel, hogy
+		- a felirat egy szolgáltatás hozzáadására utal, például *add others*.
+		- a választható szolgáltatások az elkészült integrációknak megfellően folyamatosan bővülnek. Ilyen például a Facebook, Instagram, Twitter, Reddit. A default a Twitter. A választó címe az oldalra utal, például *Page*.
+- A hírfolyammódosító képernyő:
+	- csak az alábbiakban különbözik a hírfolyamlétrehozó képernyőtől:
+		- címe arra utal, hogy egy hírfolyamot módosít a user. Például: *Edit Feed*.
+		- minden szekciója elő van töltve.
+		- a források validálása a képernyő első betöltésénél elindul.
+- Színválasztó képernyő:
+	- csak navigation controlleren keresztül érhető el, ezért mindig van a tetején egy fejléc.
+	- címe arra utal, hogy egy színt tud kiválasztani a user. Például: *Color*.
+	- fejlécének bal oldalán egy cancel button található, ami eldobja a képernyőt.
+	- fejlécének jobb oldalán egy done button található, ami visszaküldi a hívónak a kiválasztott értéket és eldobja a képernyőt.
+	- egy collection viewban tartalmazza a színárnyalatokat, képként felsorolva. Ezek közül pontosan egy lehet aktív, azaz kiválasztott. Válogatni tappolással lehet. A kiválasztott kép szélének a global tintnek megfelelő színű szegélye van.
+- A hírfolyam képernyő:
 	- csak navigation controlleren keresztül érhető el, ezért mindig van a tetején egy fejléc.
 	- fejlécének bal oldalán a default back button található, ami visszanavigál a navigációs stacken.
 	- címe a hírfolyam címe.
 	- egy cellája egy hírt reprezentál. A cella tartalmazza a hír címét, leírását és egy képet. A kép a bal oldalon jelenik meg, a két szöveg pedig a kép mellett a jobb oldalon, középre igazítva, fölül a címmel. Legfeljebb 2 sor lehet a cím és 2 sor a leírás. A lista egy elemére kattintva egy show segue visz el a hír képernyőre.
 	- listája a szokásos módon frissíthető. **TODO**: mennyi hírt töltsünk be / le és hogy frissítsük?
-5. A hír képernyő:
+- A hír képernyő:
 	- csak navigation controlleren keresztül érhető el, ezért mindig van a tetején egy fejléc.
 	- fejlécének bal oldalán a default back button található, ami visszanavigál a navigációs stacken.
 	- címe a hírfolyam címe.
 	- tartalma egy webview, amiben a hír betöltődik.
-
-# Notes
-
-*provider*, *service*
-
-**Csatorna feliratkozás**: FB profile, Insta profile, Twitter profile, Youtube channel, Reddit subreddit, SoundCloud musician, ...
-**Oldalak követése**: Index, HVG, The New York Time, Hacker News, ...
-**Oldalak aloldalainak követése**: TechCrunch - Android, HVG - Itthon, Index - Itthon, The New York Time - Syria, ...
