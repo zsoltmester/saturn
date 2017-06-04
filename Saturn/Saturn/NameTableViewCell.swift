@@ -8,10 +8,25 @@
 
 import UIKit
 
-class NameTableViewCell: UITableViewCell {
+class NameTableViewCell: UITableViewCell, UITextFieldDelegate {
 
 	// MARK: - Properties
 
 	static let reuseIdentifier = "Name Cell"
 
+	@IBOutlet weak var nameTextField: UITextField! {
+
+		didSet {
+			nameTextField.delegate = self
+		}
+	}
+
+	//MARK: - UITextFieldDelegate
+
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+		textField.resignFirstResponder()
+
+		return true
+	}
 }

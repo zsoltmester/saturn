@@ -12,11 +12,12 @@ class AddTableViewController: UITableViewController {
 
 	private enum SectionItem {
 		case Name
+		case Color
 	}
 
 	// MARK: - Properties
 
-	private var sections: [[SectionItem]] = [[.Name]]
+	private var sections: [[SectionItem]] = [ [.Name], [.Color] ]
 
 	// MARK: - UITableViewDataSource
 
@@ -36,6 +37,8 @@ class AddTableViewController: UITableViewController {
 		switch item {
 		case .Name:
 			cellIdentifier = NameTableViewCell.reuseIdentifier
+		case .Color:
+			cellIdentifier = ColorTableViewCell.reuseIdentifier
 		}
 
 		let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)

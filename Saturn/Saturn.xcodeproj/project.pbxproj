@@ -19,6 +19,7 @@
 		E75961931EE470C40030921F /* AddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75961921EE470C40030921F /* AddTableViewController.swift */; };
 		E75961951EE470EB0030921F /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E75961941EE470EB0030921F /* Add.storyboard */; };
 		E75961971EE4B0DE0030921F /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75961961EE4B0DE0030921F /* NameTableViewCell.swift */; };
+		E75961991EE4B3060030921F /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75961981EE4B3060030921F /* ColorTableViewCell.swift */; };
 		E7705E571ECCDE2C0047D1E7 /* ModelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7705E561ECCDE2C0047D1E7 /* ModelTableViewController.swift */; };
 		E787C8B81ECB9175000D7728 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787C8B71ECB9175000D7728 /* FeedTableViewController.swift */; };
 		E787C8BA1ECB9267000D7728 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787C8B91ECB9267000D7728 /* FeedTableViewCell.swift */; };
@@ -55,6 +56,7 @@
 		E75961921EE470C40030921F /* AddTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTableViewController.swift; sourceTree = "<group>"; };
 		E75961941EE470EB0030921F /* Add.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Add.storyboard; sourceTree = "<group>"; };
 		E75961961EE4B0DE0030921F /* NameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
+		E75961981EE4B3060030921F /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		E7705E561ECCDE2C0047D1E7 /* ModelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTableViewController.swift; sourceTree = "<group>"; };
 		E787C8B71ECB9175000D7728 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		E787C8B91ECB9267000D7728 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				E75961941EE470EB0030921F /* Add.storyboard */,
 				E74D100D1EC4FE870057E519 /* LaunchScreen.storyboard */,
 				E74D10051EC4FE870057E519 /* Main.storyboard */,
+				E75961981EE4B3060030921F /* ColorTableViewCell.swift */,
 				E787C8B91ECB9267000D7728 /* FeedTableViewCell.swift */,
 				E75961961EE4B0DE0030921F /* NameTableViewCell.swift */,
 			);
@@ -383,6 +386,7 @@
 				E7705E571ECCDE2C0047D1E7 /* ModelTableViewController.swift in Sources */,
 				E787C8BA1ECB9267000D7728 /* FeedTableViewCell.swift in Sources */,
 				E74D10021EC4FE870057E519 /* AppDelegate.swift in Sources */,
+				E75961991EE4B3060030921F /* ColorTableViewCell.swift in Sources */,
 				E787C8B81ECB9175000D7728 /* FeedTableViewController.swift in Sources */,
 				E75961971EE4B0DE0030921F /* NameTableViewCell.swift in Sources */,
 				E74E59801EC9085C008F8248 /* ModelController.swift in Sources */,
