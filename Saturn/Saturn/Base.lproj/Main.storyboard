@@ -10,6 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Add-->
+        <scene sceneID="Dw1-lS-AiG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Add" id="1ah-zJ-0ac" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d9d-GW-faW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1130" y="739"/>
+        </scene>
         <!--Feed-->
         <scene sceneID="tS7-Ty-bbH">
             <objects>
@@ -73,7 +81,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Your Feeds" id="NOp-nw-YqJ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="eCv-Ce-iWK"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="eCv-Ce-iWK">
+                            <connections>
+                                <segue destination="1ah-zJ-0ac" kind="presentation" id="v2e-O9-jOF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6K-Yr-yuq" userLabel="First Responder" sceneMemberID="firstResponder"/>
