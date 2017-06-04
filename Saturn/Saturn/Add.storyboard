@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Add Table View Controller-->
+        <!--Add Feed-->
         <scene sceneID="1Qt-Sa-9rS">
             <objects>
                 <tableViewController id="sYe-az-q7Z" customClass="AddTableViewController" customModule="Saturn" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,7 +32,14 @@
                             <outlet property="delegate" destination="sYe-az-q7Z" id="5RC-Yw-ek8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="x2I-O1-IQr"/>
+                    <navigationItem key="navigationItem" title="Add Feed" id="x2I-O1-IQr">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gWl-RJ-81D">
+                            <connections>
+                                <action selector="cancel:" destination="sYe-az-q7Z" id="WJH-Pl-IUF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="zRe-t2-U2t"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5P7-E1-vYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
