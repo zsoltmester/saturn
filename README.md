@@ -49,7 +49,7 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 	- egy grouped table viewt tartalmaz.
 	- szekcióinak nincs neve.
 	- első szekciójának egy eleme van. Ebbe a nevet lehet beírni, hasonlóan, ahogy a calendar alkalmazásban egy új event nevét lehet beírni.
-	- második szekciójának egy eleme van. Ennek bal oldalán egy színre utaló szöveg szerepel, például *Color*. Jobb oldalán a kiválasztott szín neve és egy disclosure indicator. Az elemre kattintva a színválasztó képernyőre jutunk, ahonnan visszaérkezve frissítjük a szín nevét.
+	- második szekciójának egy eleme van. Ennek bal oldalán egy színre utaló szöveg szerepel, például *Color*. Jobb oldalán és egy disclosure indicator. Az elemre kattintva a színválasztó képernyőre jutunk.
 	- harmadik szekciója hasonlít a contact alkalmazás hozzáadás funkciójában lévő URL szekcióra. A különbség, hogy
 		- a felirat egy feed hozzáadására utal, például *add feed*.
 		- a választható típusok az RSS és az Atom. A default az RSS. A választó címe a típusra utal, például *Type*.

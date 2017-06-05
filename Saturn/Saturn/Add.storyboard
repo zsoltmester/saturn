@@ -56,26 +56,16 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ete-l8-7vV">
-                                            <rect key="frame" x="20" y="0.0" width="267" height="43.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="2es-ra-Cvc" firstAttribute="leading" secondItem="ObI-sS-hmW" secondAttribute="leading" constant="20" id="408-Vq-IjK"/>
                                         <constraint firstItem="2es-ra-Cvc" firstAttribute="centerY" secondItem="ObI-sS-hmW" secondAttribute="centerY" id="6Uy-ST-Q8c"/>
-                                        <constraint firstItem="Ete-l8-7vV" firstAttribute="top" secondItem="ObI-sS-hmW" secondAttribute="top" id="NSo-VT-eEh"/>
                                         <constraint firstItem="2es-ra-Cvc" firstAttribute="trailing" secondItem="ObI-sS-hmW" secondAttribute="trailing" id="PZi-vr-XVh"/>
-                                        <constraint firstItem="Ete-l8-7vV" firstAttribute="centerY" secondItem="ObI-sS-hmW" secondAttribute="centerY" id="VMF-uU-tRR"/>
                                         <constraint firstItem="2es-ra-Cvc" firstAttribute="top" secondItem="ObI-sS-hmW" secondAttribute="top" id="hqC-Gt-m8R"/>
-                                        <constraint firstItem="Ete-l8-7vV" firstAttribute="trailing" secondItem="2es-ra-Cvc" secondAttribute="trailing" id="nI4-Ew-GXc"/>
-                                        <constraint firstItem="Ete-l8-7vV" firstAttribute="leading" secondItem="2es-ra-Cvc" secondAttribute="leading" id="xA2-A6-ulK"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="khB-uI-n2P" kind="show" id="RqS-P7-e16"/>
+                                    <segue destination="khB-uI-n2P" kind="show" identifier="Show Color" id="RqS-P7-e16"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

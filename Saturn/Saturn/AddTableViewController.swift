@@ -19,6 +19,8 @@ class AddTableViewController: UITableViewController {
 
 	private var sections: [[SectionItem]] = [ [.Name], [.Color] ]
 
+	var selectedColor = 0
+
 	// MARK: - UITableViewDataSource
 
 	override func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,6 +46,26 @@ class AddTableViewController: UITableViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
 
 		return cell
+	}
+
+	// MARK: - Navigation
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		super.prepare(for: segue, sender: sender)
+
+		switch segue.identifier ?? "" {
+
+		case "Show Color":
+			guard let colorCollectionViewController = segue.destination as? ColorCollectionViewController else {
+				fatalError("Unexpected destination: \(segue.destination)")
+			}
+
+			colorCollectionViewController.selectedColor = selectedColor
+
+		default:
+			fatalError("Unexpected segue identifier: \(String(describing: segue.identifier))")
+
+		}
 	}
 
 	// MARK: - Actions

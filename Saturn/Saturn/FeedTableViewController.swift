@@ -47,15 +47,6 @@ class FeedTableViewController: ModelTableViewController {
         return cell
     }
 
-	override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-
-		guard let cell = cell as? FeedTableViewCell else {
-			fatalError("Invalid cell type. Expected FeedTableViewCell.")
-		}
-
-		cell.colorPastelView.startAnimation()
-	}
-
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 
 		if editingStyle == .delete {
@@ -87,6 +78,17 @@ class FeedTableViewController: ModelTableViewController {
 		}
 
 		self.fetchedResultsController!.delegate = self
+	}
+
+	// MARK: - UITableViewDelegate
+
+	override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+		guard let cell = cell as? FeedTableViewCell else {
+			fatalError("Invalid cell type. Expected FeedTableViewCell.")
+		}
+
+		cell.colorPastelView.startAnimation()
 	}
 
 	// MARK: - Private Functions
