@@ -65,8 +65,7 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 - Színválasztó képernyő:
 	- csak navigation controlleren keresztül érhető el, ezért mindig van a tetején egy fejléc.
 	- címe arra utal, hogy egy színt tud kiválasztani a user. Például: *Color*.
-	- fejlécének bal oldalán egy cancel button található, ami eldobja a képernyőt.
-	- fejlécének jobb oldalán egy done button található, ami visszaküldi a hívónak a kiválasztott értéket és eldobja a képernyőt.
+	- fejlécének bal oldalán a default back button található, ami visszanavigál a navigációs stacken.
 	- egy collection viewban tartalmazza a színárnyalatokat, képként felsorolva. Ezek közül pontosan egy lehet aktív, azaz kiválasztott. Válogatni tappolással lehet. A kiválasztott kép szélének a global tintnek megfelelő színű szegélye van.
 - A hírfolyam képernyő:
 	- csak navigation controlleren keresztül érhető el, ezért mindig van a tetején egy fejléc.

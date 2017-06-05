@@ -69,7 +69,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="colorsPastelView" destination="zAh-k7-GyS" id="Ccz-Jn-LFZ"/>
+                                    <outlet property="colorPastelView" destination="zAh-k7-GyS" id="aXP-qV-JXr"/>
                                     <outlet property="nameLabel" destination="aeR-Xq-blD" id="o8d-gF-JOj"/>
                                     <outlet property="sourcesLabel" destination="uAY-8f-2Rd" id="A5B-VI-qY6"/>
                                 </connections>

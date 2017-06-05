@@ -42,7 +42,7 @@ class FeedTableViewController: ModelTableViewController {
 
 		cell.nameLabel.text = feed.name
 		cell.sourcesLabel.text = getSourcesText(sources: feed.sources)
-		cell.colorsPastelView.setPastelGradient(getPastelGradient(colorsIdentifier: feed.colorsIdentifier))
+		cell.colorPastelView.setPastelGradient(getPastelGradient(colorIdentifier: feed.colorIdentifier))
 
         return cell
     }
@@ -53,7 +53,7 @@ class FeedTableViewController: ModelTableViewController {
 			fatalError("Invalid cell type. Expected FeedTableViewCell.")
 		}
 
-		cell.colorsPastelView.startAnimation()
+		cell.colorPastelView.startAnimation()
 	}
 
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -108,12 +108,12 @@ class FeedTableViewController: ModelTableViewController {
 		return sourcesText
 	}
 
-	func getPastelGradient(colorsIdentifier: Int16) -> PastelGradient {
+	func getPastelGradient(colorIdentifier: Int16) -> PastelGradient {
 		
-		let colorsIdentifier = colorsIdentifier == -1 ? Int(arc4random_uniform(9)) : Int(colorsIdentifier)
+		let colorIdentifier = colorIdentifier == -1 ? Int(arc4random_uniform(9)) : Int(colorIdentifier)
 
-		guard let colors: PastelGradient = PastelGradient(rawValue: colorsIdentifier) else {
-			fatalError("Invalid colorsIdentifier for a feed.")
+		guard let colors: PastelGradient = PastelGradient(rawValue: colorIdentifier) else {
+			fatalError("Invalid colorIdentifier for a feed.")
 		}
 
 		return colors;

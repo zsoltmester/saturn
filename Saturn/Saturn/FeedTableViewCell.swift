@@ -15,16 +15,16 @@ class FeedTableViewCell: UITableViewCell {
 
 	static let reuseIdentifier = "Feed Cell"
 	
-	@IBOutlet weak var colorsPastelView: PastelView! {
+	@IBOutlet weak var colorPastelView: PastelView! {
 
 		didSet {
-			colorsPastelView.layer.cornerRadius = 10.0
-			colorsPastelView.layer.masksToBounds = true
+			colorPastelView.layer.cornerRadius = 10.0
+			colorPastelView.layer.masksToBounds = true
 
-			colorsPastelView.startPastelPoint = .top
-			colorsPastelView.endPastelPoint = .bottom
+			colorPastelView.startPastelPoint = .top
+			colorPastelView.endPastelPoint = .bottom
 			
-			colorsPastelView.animationDuration = 2;
+			colorPastelView.animationDuration = 2;
 		}
 	}
 

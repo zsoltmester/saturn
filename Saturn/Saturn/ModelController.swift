@@ -49,13 +49,13 @@ class ModelController {
 
 		var sources = Set<NewsSource>()
 		sources.insert(insertNewsSource(provider: "Battle.net", service: "Hearthstone"))
-		insertNewsFeed(name: "Hearthstone", colorsIdentifier:9, sources: sources)
+		insertNewsFeed(name: "Hearthstone", colorIdentifier:9, sources: sources)
 
 		sources.removeAll()
 		sources.insert(insertNewsSource(provider: "9gag", service: "9gag"))
 		sources.insert(insertNewsSource(provider: "Reddit", service: "Aww"))
 		sources.insert(insertNewsSource(provider: "Youtube", service: "Videómánia"))
-		insertNewsFeed(name: "Chill", colorsIdentifier:5, sources: sources)
+		insertNewsFeed(name: "Chill", colorIdentifier:5, sources: sources)
 
 		sources.removeAll()
 		sources.insert(insertNewsSource(provider: "BBC News", service: "BBC News"))
@@ -63,18 +63,18 @@ class ModelController {
 		sources.insert(insertNewsSource(provider: "Telegraph", service: "Telegraph"))
 		sources.insert(insertNewsSource(provider: "The Guardian", service: "The Guardian"))
 		sources.insert(insertNewsSource(provider: "The New York Times", service: "The New York Times"))
-		insertNewsFeed(name: "International News", colorsIdentifier:6, sources: sources)
+		insertNewsFeed(name: "International News", colorIdentifier:6, sources: sources)
 
 		sources.removeAll()
 		sources.insert(insertNewsSource(provider: "Reddit", service: "Programming"))
 		sources.insert(insertNewsSource(provider: "Hacker News", service: "Hacker News"))
-		insertNewsFeed(name: "Developer's Heaven", colorsIdentifier:1, sources: sources)
+		insertNewsFeed(name: "Developer's Heaven", colorIdentifier:1, sources: sources)
 
 		sources.removeAll()
 		sources.insert(insertNewsSource(provider: "HVG", service: "HVG"))
 		sources.insert(insertNewsSource(provider: "Index", service: "Index"))
 		sources.insert(insertNewsSource(provider: "444", service: "444"))
-		insertNewsFeed(name: "Daily Essentials", colorsIdentifier:4, sources: sources)
+		insertNewsFeed(name: "Daily Essentials", colorIdentifier:4, sources: sources)
 	}
 
 	// MARK: - Public Functions
@@ -99,14 +99,14 @@ class ModelController {
 		return newsSource
 	}
 
-	func insertNewsFeed(name: String, colorsIdentifier: Int16? = -1, sources: Set<NewsSource>) {
+	func insertNewsFeed(name: String, colorIdentifier: Int16? = -1, sources: Set<NewsSource>) {
 
 		let context = getContext()
 
 		let newsFeedEntityDescription = getEntityDescription(for: String(describing: NewsFeed.self), in: context)
 		let newsFeed = NSManagedObject(entity: newsFeedEntityDescription, insertInto: context)
 		newsFeed.setValue(name, forKeyPath: #keyPath(NewsFeed.name))
-		newsFeed.setValue(colorsIdentifier, forKey: #keyPath(NewsFeed.colorsIdentifier))
+		newsFeed.setValue(colorIdentifier, forKey: #keyPath(NewsFeed.colorIdentifier))
 		newsFeed.setValue(sources, forKey: #keyPath(NewsFeed.sources))
 		newsFeed.setValue(getNewsFeedOrderMin() - 1, forKey: #keyPath(NewsFeed.order))
 
