@@ -51,7 +51,7 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 	- első szekciójának egy eleme van. Ebbe a nevet lehet beírni, hasonlóan, ahogy a calendar alkalmazásban egy új event nevét lehet beírni.
 	- második szekciójának egy eleme van. Ennek bal oldalán egy színre utaló szöveg szerepel, például *Color*. Jobb oldalán és egy disclosure indicator. Az elemre kattintva a színválasztó képernyőre jutunk.
 	- harmadik szekciója hasonlít a contact alkalmazás hozzáadás funkciójában lévő URL szekcióra. A különbség, hogy
-		- a felirat egy forrás hozzáadására utal, például *add feed*.
+		- a felirat egy forrás hozzáadására utal, például *add source*.
 		- a választható típusok 2 kategóriába vannak osztva:
 			- az egyikbe van az RSS és az Atom,
 			- a másikban pedig azok a szolgáltatások, amikhez van integrációnk. Ilyen például a Facebook, Instagram, Twitter, Reddit. A default a Twitter. **TODO: Pontosan milyen szolgáltatások legyenek?**

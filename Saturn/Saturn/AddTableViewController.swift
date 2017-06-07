@@ -13,13 +13,22 @@ class AddTableViewController: UITableViewController {
 	private enum SectionItem {
 		case Name
 		case Color
+		case AddSource
 	}
 
 	// MARK: - Properties
 
-	private var sections: [[SectionItem]] = [ [.Name], [.Color] ]
+	private var sections: [[SectionItem]] = [ [.Name, .Color], [.AddSource] ]
 
 	var selectedColor = 0
+
+	// MARK: - Initialization
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+
+		self.setEditing(true, animated: false)
+	}
 
 	// MARK: - UITableViewDataSource
 
@@ -41,11 +50,48 @@ class AddTableViewController: UITableViewController {
 			cellIdentifier = NameTableViewCell.reuseIdentifier
 		case .Color:
 			cellIdentifier = ColorTableViewCell.reuseIdentifier
+		case .AddSource:
+			cellIdentifier = AddSourceTableViewCell.reuseIdentifier
 		}
 
 		let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
 
 		return cell
+	}
+
+	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+
+		let item = sections[indexPath.section][indexPath.row]
+
+		switch item {
+		case .AddSource:
+			return true
+		default:
+			return false
+		}
+	}
+
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+
+		// TODO handle the action
+	}
+
+	// MARK: - UITableViewDelegate
+
+	override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+
+		let item = sections[indexPath.section][indexPath.row]
+
+		switch item {
+		case .AddSource:
+			return .insert
+		default:
+			return .none
+		}
+	}
+
+	override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+		return false
 	}
 
 	// MARK: - Navigation

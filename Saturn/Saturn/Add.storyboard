@@ -13,12 +13,12 @@
         <scene sceneID="1Qt-Sa-9rS">
             <objects>
                 <tableViewController id="sYe-az-q7Z" customClass="AddTableViewController" customModule="Saturn" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="dcK-PE-d01">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="dcK-PE-d01">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Name Cell" rowHeight="44" id="o3S-qG-Ocl" customClass="NameTableViewCell" customModule="Saturn" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="Name Cell" rowHeight="44" id="o3S-qG-Ocl" customClass="NameTableViewCell" customModule="Saturn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o3S-qG-Ocl" id="9vg-qY-GAO">
@@ -29,7 +29,7 @@
                                             <rect key="frame" x="20" y="0.0" width="300" height="45"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -43,7 +43,7 @@
                                     <outlet property="nameTextField" destination="rqF-XO-N8M" id="9Qk-bT-JS3"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Color Cell" rowHeight="44" id="ehP-oS-3sO" customClass="ColorTableViewCell" customModule="Saturn" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="Color Cell" rowHeight="44" id="ehP-oS-3sO" customClass="ColorTableViewCell" customModule="Saturn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ehP-oS-3sO" id="ObI-sS-hmW">
@@ -67,6 +67,28 @@
                                 <connections>
                                     <segue destination="khB-uI-n2P" kind="show" identifier="Show Color" id="RqS-P7-e16"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="Add Source Cell" rowHeight="44" id="D7c-xI-s4P" customClass="AddSourceTableViewCell" customModule="Saturn" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="143.5" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D7c-xI-s4P" id="csi-cf-awi">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add source" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hC9-ii-Kut">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="hC9-ii-Kut" firstAttribute="centerY" secondItem="csi-cf-awi" secondAttribute="centerY" id="13V-6Y-MDZ"/>
+                                        <constraint firstItem="hC9-ii-Kut" firstAttribute="top" secondItem="csi-cf-awi" secondAttribute="top" id="965-fd-1qG"/>
+                                        <constraint firstItem="hC9-ii-Kut" firstAttribute="leading" secondItem="csi-cf-awi" secondAttribute="leading" id="9ap-b2-Etc"/>
+                                        <constraint firstItem="hC9-ii-Kut" firstAttribute="trailing" secondItem="csi-cf-awi" secondAttribute="trailing" id="yaH-7C-kLa"/>
+                                    </constraints>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
