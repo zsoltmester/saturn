@@ -51,17 +51,16 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 	- első szekciójának egy eleme van. Ebbe a nevet lehet beírni, hasonlóan, ahogy a calendar alkalmazásban egy új event nevét lehet beírni.
 	- második szekciójának egy eleme van. Ennek bal oldalán egy színre utaló szöveg szerepel, például *Color*. Jobb oldalán és egy disclosure indicator. Az elemre kattintva a színválasztó képernyőre jutunk.
 	- harmadik szekciója hasonlít a contact alkalmazás hozzáadás funkciójában lévő URL szekcióra. A különbség, hogy
-		- a felirat egy feed hozzáadására utal, például *add feed*.
-		- a választható típusok az RSS és az Atom. A default az RSS. A választó címe a típusra utal, például *Type*.
-	Amint a user végzett az URL beírásával, validáljuk a háttérben. Ezt egy activity indicator jelzi az input field végén. Ha megfelelt, akkor egy pipát teszünk a végére, különben pedig egy x-et.
-	- negyedik szekciója hasonlít a harmadikra, annyi különbséggel, hogy
-		- a felirat egy szolgáltatás hozzáadására utal, például *add others*.
-		- a választható szolgáltatások az elkészült integrációknak megfellően folyamatosan bővülnek. Ilyen például a Facebook, Instagram, Twitter, Reddit. A default a Twitter. A választó címe az oldalra utal, például *Page*.
+		- a felirat egy forrás hozzáadására utal, például *add feed*.
+		- a választható típusok 2 kategóriába vannak osztva:
+			- az egyikbe van az RSS és az Atom,
+			- a másikban pedig azok a szolgáltatások, amikhez van integrációnk. Ilyen például a Facebook, Instagram, Twitter, Reddit. A default a Twitter. **TODO: Pontosan milyen szolgáltatások legyenek?**
+		- a választó címe az típusra utal, például *Type*.
+		- **TODO: Hol legyen info gomb és mit csináljon?**
 - A hírfolyammódosító képernyő:
 	- csak az alábbiakban különbözik a hírfolyamlétrehozó képernyőtől:
 		- címe arra utal, hogy egy hírfolyamot módosít a user. Például: *Edit Feed*.
 		- minden szekciója elő van töltve.
-		- a források validálása a képernyő első betöltésénél elindul.
 - Színválasztó képernyő:
 	- csak navigation controlleren keresztül érhető el, ezért mindig van a tetején egy fejléc.
 	- címe arra utal, hogy egy színt tud kiválasztani a user. Például: *Color*.
@@ -72,7 +71,7 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 	- fejlécének bal oldalán a default back button található, ami visszanavigál a navigációs stacken.
 	- címe a hírfolyam címe.
 	- egy cellája egy hírt reprezentál. A cella tartalmazza a hír címét, leírását és egy képet. A kép a bal oldalon jelenik meg, a két szöveg pedig a kép mellett a jobb oldalon, középre igazítva, fölül a címmel. Legfeljebb 2 sor lehet a cím és 2 sor a leírás. A lista egy elemére kattintva egy show segue visz el a hír képernyőre.
-	- listája a szokásos módon frissíthető. **TODO**: mennyi hírt töltsünk be / le és hogy frissítsük?
+	- listája a szokásos módon frissíthető. **TODO: Mennyi hírt töltsünk be / le és hogy frissítsük?**
 - A hír képernyő:
 	- csak navigation controlleren keresztül érhető el, ezért mindig van a tetején egy fejléc.
 	- fejlécének bal oldalán a default back button található, ami visszanavigál a navigációs stacken.
