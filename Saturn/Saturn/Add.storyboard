@@ -13,7 +13,7 @@
         <scene sceneID="1Qt-Sa-9rS">
             <objects>
                 <tableViewController id="sYe-az-q7Z" customClass="AddTableViewController" customModule="Saturn" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="dcK-PE-d01">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="dcK-PE-d01">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -88,6 +88,14 @@
                                         <constraint firstItem="hC9-ii-Kut" firstAttribute="leading" secondItem="csi-cf-awi" secondAttribute="leading" id="9ap-b2-Etc"/>
                                         <constraint firstItem="hC9-ii-Kut" firstAttribute="trailing" secondItem="csi-cf-awi" secondAttribute="trailing" id="yaH-7C-kLa"/>
                                     </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="Source Cell" rowHeight="44" id="UDa-Ta-FpR" customClass="SourceTableViewCell" customModule="Saturn" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="187.5" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UDa-Ta-FpR" id="P95-bc-hvp">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>

@@ -14,6 +14,7 @@ class AddTableViewController: UITableViewController {
 		case Name
 		case Color
 		case AddSource
+		case Source
 	}
 
 	// MARK: - Properties
@@ -52,6 +53,8 @@ class AddTableViewController: UITableViewController {
 			cellIdentifier = ColorTableViewCell.reuseIdentifier
 		case .AddSource:
 			cellIdentifier = AddSourceTableViewCell.reuseIdentifier
+		case .Source:
+			cellIdentifier = SourceTableViewCell.reuseIdentifier
 		}
 
 		let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
@@ -64,16 +67,28 @@ class AddTableViewController: UITableViewController {
 		let item = sections[indexPath.section][indexPath.row]
 
 		switch item {
-		case .AddSource:
+		case .AddSource, .Source:
 			return true
 		default:
 			return false
 		}
 	}
 
-	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+	override func tableView(_ editedTableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 
-		// TODO handle the action
+		switch editingStyle {
+
+		case .insert:
+			editedTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+			tableView(editedTableView, didSelectRowAt: indexPath)
+
+		case .delete:
+			sections[indexPath.section].remove(at: indexPath.row)
+			editedTableView.deleteRows(at: [indexPath], with: .automatic)
+
+		default:
+			fatalError("Invalid editing style: \(editingStyle)")
+		}
 	}
 
 	// MARK: - UITableViewDelegate
@@ -85,9 +100,26 @@ class AddTableViewController: UITableViewController {
 		switch item {
 		case .AddSource:
 			return .insert
+		case .Source:
+			return .delete
 		default:
 			return .none
 		}
+	}
+
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+		let item = sections[indexPath.section][indexPath.row]
+
+		guard item == .AddSource else {
+			return
+		}
+
+		tableView.beginUpdates()
+		tableView.deselectRow(at: indexPath, animated: true)
+		sections[indexPath.section].insert(.Source, at: indexPath.row)
+		tableView.insertRows(at: [indexPath], with: .automatic)
+		tableView.endUpdates()
 	}
 
 	override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
