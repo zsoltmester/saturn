@@ -45,18 +45,25 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 	- egy navigation controllerbe van ágyazva.
 	- címe arra utal, hogy egy új hírfolyamot hoz létre a user. Például: *Add Feed*.
 	- fejlécének bal oldalán egy cancel button található, ami eldobja a képernyőt.
-	- fejlécének jobb oldalán egy done button található, ami elmenti a megadott értékek alapján a hírfolyamot, úgy, hogy a hírfolyamválasztó lista első helyére kerüljün. Ezután eldobja a képernyőt. A gomb csak akkor aktív, ha valid a név és legalább 1 hírforrás ki van választva.
+	- fejlécének jobb oldalán egy done button található, ami elmenti a megadott értékek alapján a hírfolyamot, úgy, hogy a hírfolyamválasztó lista első helyére kerüljün. Ezután eldobja a képernyőt. A gomb csak akkor aktív, ha valid a név és legalább 1 hírforrás hozzá van adva.
 	- egy grouped table viewt tartalmaz.
 	- szekcióinak nincs neve.
 	- első szekciójának egy eleme van. Ebbe a nevet lehet beírni, hasonlóan, ahogy a calendar alkalmazásban egy új event nevét lehet beírni.
 	- második szekciójának egy eleme van. Ennek bal oldalán egy színre utaló szöveg szerepel, például *Color*. Jobb oldalán és egy disclosure indicator. Az elemre kattintva a színválasztó képernyőre jutunk.
-	- harmadik szekciója hasonlít a contact alkalmazás hozzáadás funkciójában lévő URL szekcióra. A különbség, hogy
-		- a felirat egy forrás hozzáadására utal, például *add source*.
-		- a választható típusok 2 kategóriába vannak osztva:
-			- az egyikbe van az RSS és az Atom,
-			- a másikban pedig azok a szolgáltatások, amikhez van integrációnk. Ilyen például a Facebook, Instagram, Twitter, Reddit. A default a Twitter. **TODO: Pontosan milyen szolgáltatások legyenek?**
-		- a választó címe az típusra utal, például *Type*.
-		- **TODO: Hol legyen info gomb és mit csináljon?**
+	- harmadik szekciója egy kicsit hasonlít a contact alkalmazás hozzáadás funkciójában lévő URL szekcióra. A létrehozóként funkcionáló cella
+		- tartalmaz egy gombot, egy magyarázó szöveget és egy beviteli mezőt. Az előző sorrendben, föntről lefele, balra rendezve.
+		- a gomb jobb oldalán egy disclosure indicator van.
+		- a gomb a forrásválasztó képernyőre visz el. Ha módosítással tért vissza, akkor frissítjük a gombot és a szöveget, és töröljük a beviteli mező tartalmát.
+		- ha a user rányomott a hozzáadás gombra, akkor a képernyőn minden action kikapcsoltá válik. A háttérben validáljuk, hogy helyes-e a forrás. Egy activity indicator + szöveg is megjelenik a harmadik szekció footerében. Ha a validáció sikeres volt, akkor hozzáadjuk a forrást, különben pedig egy alertet dobunk fel, hogy nem találtuk meg a forrást. Az alertet csak eldobni lehet.
+		- a forrás cellában csak egy szöveg van, amin a forrás típusáról és a serviceről.
+- A forrásválasztó képernyő:
+	- egy navigation controllerbe van ágyazva.
+	- címe arra utal, hogy egy hírforrás típusát választhatja ki a user. Például: *Type*.
+	- fejlécének bal oldalán a default back button található, ami visszanavigál a navigációs stacken.
+	- egy table view, ami két sectiont tartalmaz.
+	- első sectionjében az RSS és az Atom található.
+	- második sectionjében pedig azok a szolgáltatások, amikhez van integrációnk. Ilyen például a Facebook, Instagram, Twitter, Reddit.
+	- aktuálisan kiválasztott elemének jobb szélén egy pipa van.
 - A hírfolyammódosító képernyő:
 	- csak az alábbiakban különbözik a hírfolyamlétrehozó képernyőtől:
 		- címe arra utal, hogy egy hírfolyamot módosít a user. Például: *Edit Feed*.
