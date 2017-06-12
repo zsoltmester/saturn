@@ -1,3 +1,5 @@
+- Bekötni a SwiftLintet: https://github.com/realm/SwiftLint
+
 # Project Saturn
 
 ## Mi a problémám?
