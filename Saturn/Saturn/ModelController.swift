@@ -14,15 +14,15 @@ class ModelController {
 	// MARK: - Properties
 
 	private static let userDefaultsKeyIsModelPreloaded = "isModelPreloaded"
-	
-	var context: NSManagedObjectContext?
+
+	var context: NSManagedObjectContext!
 
 	// MARK: - Initialization
 
 	init() {
 
 		let container = NSPersistentContainer(name: "Saturn")
-		container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+		container.loadPersistentStores(completionHandler: { (_, error) in
 
 			if let error = error as NSError? {
 				/*
@@ -81,8 +81,6 @@ class ModelController {
 
 	func insertNewsSource(provider: String, service: String) -> NewsSource {
 
-		let context = getContext()
-
 		let newsSourceEntityDescription = getEntityDescription(for: String(describing: NewsSource.self), in: context)
 		guard let newsSource: NewsSource = NSManagedObject(entity: newsSourceEntityDescription, insertInto: context) as? NewsSource else {
 			fatalError("Couldn't convert the inserted news source to NewsSource.")
@@ -101,8 +99,6 @@ class ModelController {
 
 	func insertNewsFeed(name: String, colorIdentifier: Int16? = -1, sources: Set<NewsSource>) {
 
-		let context = getContext()
-
 		let newsFeedEntityDescription = getEntityDescription(for: String(describing: NewsFeed.self), in: context)
 		let newsFeed = NSManagedObject(entity: newsFeedEntityDescription, insertInto: context)
 		newsFeed.setValue(name, forKeyPath: #keyPath(NewsFeed.name))
@@ -119,8 +115,6 @@ class ModelController {
 
 	func deleteNewsFeed(_ feed: NewsFeed) {
 
-		let context = getContext()
-
 		do {
 			context.delete(feed)
 			try context.save()
@@ -131,8 +125,6 @@ class ModelController {
 
 	func getNewsSource(provider: String, service: String) -> NewsSource? {
 
-		let context = getContext()
-
 		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsSource.fetchRequest()
 		fetchRequest.predicate = NSPredicate(format: "\(#keyPath(NewsSource.provider)) == \"\(provider)\" AND \(#keyPath(NewsSource.service)) == \"\(service)\"")
 
@@ -140,22 +132,13 @@ class ModelController {
 			guard let sources = try context.fetch(fetchRequest) as? [NewsSource] else {
 				fatalError("Couldn't convert the fetched results to [NewsSource].")
 			}
-			return sources.first;
+			return sources.first
 		} catch let error as NSError {
 			fatalError("Couldn't fetch a news source. Error: \(error)")
 		}
 	}
 
 	// MARK: - Private Functions
-
-	private func getContext() -> NSManagedObjectContext {
-
-		guard let context = self.context else {
-			fatalError("The context is unavailable.")
-		}
-
-		return context
-	}
 
 	private func getEntityDescription(for entityName: String, in context: NSManagedObjectContext) -> NSEntityDescription {
 
@@ -168,10 +151,8 @@ class ModelController {
 
 	private func getNewsFeedOrderMin() -> Int16 {
 
-		let context = getContext()
-
 		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsFeed.fetchRequest()
-		fetchRequest.resultType = .dictionaryResultType;
+		fetchRequest.resultType = .dictionaryResultType
 
 		let expressionForNewsFeedOrderMin = NSExpression(forFunction: "min:", arguments: [NSExpression(forKeyPath: #keyPath(NewsFeed.order))])
 

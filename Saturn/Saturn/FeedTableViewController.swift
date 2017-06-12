@@ -27,7 +27,7 @@ class FeedTableViewController: ModelTableViewController {
 		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsFeed.fetchRequest()
 		fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(NewsFeed.order), ascending: true)]
 
-		fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: getModelController().context!, sectionNameKeyPath: nil, cacheName: nil)
+		fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: getModelController().context, sectionNameKeyPath: nil, cacheName: nil)
 	}
 
 	// MARK: - UITableViewDataSource
@@ -60,7 +60,7 @@ class FeedTableViewController: ModelTableViewController {
 			fatalError("Couldn't get fetched feeds.")
 		}
 
-		self.fetchedResultsController!.delegate = nil
+		self.fetchedResultsController.delegate = nil
 
 		let movedFeed = feeds.remove(at: sourceIndexPath.row)
 		feeds.insert(movedFeed, at: destinationIndexPath.row)
@@ -72,12 +72,12 @@ class FeedTableViewController: ModelTableViewController {
 		}
 
 		do {
-			try getModelController().context!.save()
+			try getModelController().context.save()
 		} catch {
 			fatalError("Couldn't save the reordered feeds.")
 		}
 
-		self.fetchedResultsController!.delegate = self
+		self.fetchedResultsController.delegate = self
 	}
 
 	// MARK: - UITableViewDelegate
@@ -103,22 +103,24 @@ class FeedTableViewController: ModelTableViewController {
 
 		var sourcesText: String = ""
 		for source in orderedSources {
-			let sourceText: String = source.provider! == source.service ? source.provider! : "\(source.provider!) - \(source.service!)"
-			sourcesText = sourcesText.isEmpty ? sourceText : "\(sourcesText), \(sourceText)"
+			if let provider: String = source.provider, let service: String = source.service {
+				let sourceText: String = provider == service ? provider : "\(provider) - \(service)"
+				sourcesText = sourcesText.isEmpty ? sourceText : "\(sourcesText), \(sourceText)"
+			}
 		}
 
 		return sourcesText
 	}
 
 	func getPastelGradient(colorIdentifier: Int16) -> PastelGradient {
-		
+
 		let colorIdentifier = colorIdentifier == -1 ? Int(arc4random_uniform(9)) : Int(colorIdentifier)
 
 		guard let colors: PastelGradient = PastelGradient(rawValue: colorIdentifier) else {
 			fatalError("Invalid colorIdentifier for a feed.")
 		}
 
-		return colors;
+		return colors
 	}
 
 }

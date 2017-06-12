@@ -11,15 +11,15 @@ import UIKit
 class AddTableViewController: UITableViewController {
 
 	private enum SectionItem {
-		case Name
-		case Color
-		case AddSource
-		case Source
+		case name
+		case color
+		case addSource
+		case source
 	}
 
 	// MARK: - Properties
 
-	private var sections: [[SectionItem]] = [ [.Name, .Color], [.AddSource] ]
+	private var sections: [[SectionItem]] = [ [.name], [.color], [.addSource] ]
 
 	var selectedColor = 0
 
@@ -47,13 +47,13 @@ class AddTableViewController: UITableViewController {
 		var cellIdentifier: String
 
 		switch item {
-		case .Name:
+		case .name:
 			cellIdentifier = NameTableViewCell.reuseIdentifier
-		case .Color:
+		case .color:
 			cellIdentifier = ColorTableViewCell.reuseIdentifier
-		case .AddSource:
+		case .addSource:
 			cellIdentifier = AddSourceTableViewCell.reuseIdentifier
-		case .Source:
+		case .source:
 			cellIdentifier = SourceTableViewCell.reuseIdentifier
 		}
 
@@ -67,7 +67,7 @@ class AddTableViewController: UITableViewController {
 		let item = sections[indexPath.section][indexPath.row]
 
 		switch item {
-		case .AddSource, .Source:
+		case .addSource, .source:
 			return true
 		default:
 			return false
@@ -98,9 +98,9 @@ class AddTableViewController: UITableViewController {
 		let item = sections[indexPath.section][indexPath.row]
 
 		switch item {
-		case .AddSource:
+		case .addSource:
 			return .insert
-		case .Source:
+		case .source:
 			return .delete
 		default:
 			return .none
@@ -111,13 +111,13 @@ class AddTableViewController: UITableViewController {
 
 		let item = sections[indexPath.section][indexPath.row]
 
-		guard item == .AddSource else {
+		guard item == .addSource else {
 			return
 		}
 
 		tableView.beginUpdates()
 		tableView.deselectRow(at: indexPath, animated: true)
-		sections[indexPath.section].insert(.Source, at: indexPath.row)
+		sections[indexPath.section].insert(.source, at: indexPath.row)
 		tableView.insertRows(at: [indexPath], with: .automatic)
 		tableView.endUpdates()
 	}

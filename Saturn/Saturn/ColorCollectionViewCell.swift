@@ -14,7 +14,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
 	// MARK: - Properties
 
 	static let reuseIdentifier = "Color Cell"
-    
+
 	@IBOutlet weak var colorPastelView: PastelView! {
 
 		didSet {
@@ -24,7 +24,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
 			colorPastelView.startPastelPoint = .top
 			colorPastelView.endPastelPoint = .bottom
 
-			colorPastelView.animationDuration = 2;
+			colorPastelView.animationDuration = 2
 		}
 	}
 }

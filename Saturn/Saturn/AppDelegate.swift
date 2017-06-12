@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	// MARK: - Application Lifecycle
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-		
+
 		modelController = ModelController()
 
 		return true
@@ -49,4 +49,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 }
-

@@ -13,10 +13,10 @@ class ModelTableViewController: UITableViewController, NSFetchedResultsControlle
 
 	// MARK: - Properties
 
-	var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? {
+	var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>! {
 
 		didSet {
-			fetchedResultsController?.delegate = self
+			fetchedResultsController.delegate = self
 			performFetch()
 		}
 	}
@@ -24,10 +24,6 @@ class ModelTableViewController: UITableViewController, NSFetchedResultsControlle
 	// MARK: - UITableViewDataSource
 
 	override func numberOfSections(in tableView: UITableView) -> Int {
-
-		guard let fetchedResultsController = self.fetchedResultsController else {
-			fatalError("fetchedResultsController didn't set before table view presented.")
-		}
 
 		guard let sections = fetchedResultsController.sections else {
 			fatalError("No sections in fetchedResultsController.")
@@ -37,10 +33,6 @@ class ModelTableViewController: UITableViewController, NSFetchedResultsControlle
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-		guard let fetchedResultsController = self.fetchedResultsController else {
-			fatalError("fetchedResultsController didn't set before table view presented.")
-		}
 
 		guard let sections = fetchedResultsController.sections else {
 			fatalError("No sections in fetchedResultsController.")
@@ -62,13 +54,25 @@ class ModelTableViewController: UITableViewController, NSFetchedResultsControlle
 
 		switch type {
 		case .insert:
-			tableView.insertRows(at: [newIndexPath!], with: .fade)
+			guard let newIndexPath: IndexPath = newIndexPath else {
+				fatalError("newIndexPath is nil.")
+			}
+			tableView.insertRows(at: [newIndexPath], with: .fade)
 		case .delete:
-			tableView.deleteRows(at: [indexPath!], with: .fade)
+			guard let indexPath: IndexPath = indexPath else {
+				fatalError("indexPath is nil.")
+			}
+			tableView.deleteRows(at: [indexPath], with: .fade)
 		case .update:
-			tableView.reloadRows(at: [indexPath!], with: .fade)
+			guard let indexPath: IndexPath = indexPath else {
+				fatalError("indexPath is nil.")
+			}
+			tableView.reloadRows(at: [indexPath], with: .fade)
 		case .move:
-			tableView.moveRow(at: indexPath!, to: newIndexPath!)
+			guard let indexPath: IndexPath = indexPath, let newIndexPath: IndexPath = newIndexPath else {
+				fatalError("indexPath or newIndexPath are nil.")
+			}
+			tableView.moveRow(at: indexPath, to: newIndexPath)
 		}
 	}
 
@@ -80,15 +84,14 @@ class ModelTableViewController: UITableViewController, NSFetchedResultsControlle
 
 	func getModelController() -> ModelController {
 
-		let appDelegate = UIApplication.shared.delegate as! AppDelegate
+		guard let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate else {
+			fatalError("appDelegate should never be anything than mine.")
+		}
+
 		return appDelegate.modelController
 	}
 
 	func getObject<Type>(at indexPath: IndexPath) -> Type {
-
-		guard let fetchedResultsController = self.fetchedResultsController else {
-			fatalError("fetchedResultsController didn't set yet.")
-		}
 
 		guard let object = fetchedResultsController.object(at: indexPath) as? Type else {
 			fatalError("Couldn't find object at index path: \(indexPath)")
@@ -100,10 +103,6 @@ class ModelTableViewController: UITableViewController, NSFetchedResultsControlle
 	// MARK: - Private Functions
 
 	private func performFetch() {
-
-		guard let fetchedResultsController = self.fetchedResultsController else {
-			return
-		}
 
 		do {
 			try fetchedResultsController.performFetch()

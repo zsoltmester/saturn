@@ -13,7 +13,7 @@ class ColorCollectionViewController: UICollectionViewController {
 
 	// MARK: - Properties
 
-	var selectedColor: Int = 0
+	var selectedColor = 0
 
     // MARK: - UICollectionViewDataSource
 
@@ -26,7 +26,7 @@ class ColorCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		
+
 		guard let cell: ColorCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: ColorCollectionViewCell.reuseIdentifier, for: indexPath) as? ColorCollectionViewCell else {
 			fatalError("Invalid cell type. Expected ColorCollectionViewCell.")
 		}
@@ -34,12 +34,15 @@ class ColorCollectionViewController: UICollectionViewController {
 		if indexPath.row == selectedColor {
 			cell.colorPastelView.layer.borderColor = self.view.tintColor.cgColor
 			cell.colorPastelView.layer.borderWidth = 2
-		}
-		else {
+		} else {
 			cell.colorPastelView.layer.borderWidth = 0
 		}
 
-		cell.colorPastelView.setPastelGradient(PastelGradient(rawValue: indexPath.row)!)
+		if let colorGradient: PastelGradient = PastelGradient(rawValue: indexPath.row) {
+			cell.colorPastelView.setPastelGradient(colorGradient)
+		} else {
+			fatalError("Invalid pastel gradient index: \(indexPath.row).")
+		}
 
         return cell
     }

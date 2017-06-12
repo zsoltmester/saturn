@@ -1,0 +1,29 @@
+excluded:
+    - Build/Intermediates/Saturn.build/Debug-iphonesimulator/Saturn.build/DerivedSources/CoreDataGenerated
+    - Build/Intermediates/Saturn.build/Debug-iphoneos/Saturn.build/DerivedSources/CoreDataGenerated
+    - Pods
+
+disabled_rules:
+    - line_length
+
+opt_in_rules:
+    - attributes
+    - closure_end_indentation
+    - closure_spacing
+    - conditional_returns_on_newline
+    - empty_count
+    - explicit_init
+    - fatal_error_message
+    - first_where
+    - force_unwrapping
+    - implicit_return
+    - nimble_operator
+    - no_extension_access_modifier
+    - number_separator
+    - object_literal
+    - operator_usage_whitespace
+    - overridden_super_call
+    - prohibited_super_call
+    - redundant_nil_coalescing
+    - sorted_imports
+    - switch_case_on_newline

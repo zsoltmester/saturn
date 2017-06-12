@@ -14,7 +14,7 @@ class FeedTableViewCell: UITableViewCell {
 	// MARK: - Properties
 
 	static let reuseIdentifier = "Feed Cell"
-	
+
 	@IBOutlet weak var colorPastelView: PastelView! {
 
 		didSet {
@@ -23,8 +23,8 @@ class FeedTableViewCell: UITableViewCell {
 
 			colorPastelView.startPastelPoint = .top
 			colorPastelView.endPastelPoint = .bottom
-			
-			colorPastelView.animationDuration = 2;
+
+			colorPastelView.animationDuration = 2
 		}
 	}
 

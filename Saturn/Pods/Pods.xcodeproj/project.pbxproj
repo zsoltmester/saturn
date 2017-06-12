@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		30584F685EC1DEB11CC2B16248C81CD7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		72389BDC33EDBE01FDAA7DA066557180 /* Pods-SaturnTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 91E6582FD81C1E70BEFDF8F2C71165BC /* Pods-SaturnTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		72DC14E956F45F642E3207BDA5E5E478 /* PastelGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EBC655D45F8500590724375FC56F15 /* PastelGradient.swift */; };
+		72DC14E956F45F642E3207BDA5E5E478 /* PastelGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D62C94A99E6EE8E3E21F3B671116C3 /* PastelGradient.swift */; };
 		80197F8B88BCB7D36A10AA79EC64DC24 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		8DD190F48F10D8A8CADAD74FD4F50205 /* Pods-Saturn-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 158C05EF9388330B045C6402A5E223D4 /* Pods-Saturn-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C3876E92B5D48CFC1C10A10AE2B3E812 /* PastelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9323B12B49B11D84C897027EF38DEA /* PastelView.swift */; };
+		C3876E92B5D48CFC1C10A10AE2B3E812 /* PastelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BD242975C4810167648DE241700A86 /* PastelView.swift */; };
 		DBA021780DC76E8A6FD9B8D1072B10F7 /* Pods-SaturnTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BFE53D21F47FE4EA810EC521A1F65A /* Pods-SaturnTests-dummy.m */; };
-		E03F419287F929DF0C7FCE665F0E96EA /* Pastel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 51DD6178169115AAA784DA3B80B4E7E3 /* Pastel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E4268869183317C5E39F79399AB6EFFB /* Pastel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B9582883A63FB959B0D5EE8A215E2D /* Pastel-dummy.m */; };
+		E03F419287F929DF0C7FCE665F0E96EA /* Pastel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FFC2674BCA458CD94E4A6E61BB58ABB3 /* Pastel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E4268869183317C5E39F79399AB6EFFB /* Pastel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F02654E0F9A9B74E87749D250C0D631 /* Pastel-dummy.m */; };
 		F05543A54F24CBFF88ACF08948BEFD5A /* Pods-Saturn-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 904E277C116D197155E86EACECF30EEA /* Pods-Saturn-dummy.m */; };
 		FFD7EC2E785ED7B99BA0071E5C16F575 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -34,36 +34,36 @@
 		041ED0A32880CBC0C469F9B445672765 /* Pastel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pastel.framework; path = Pastel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		074D77F91736BDE680E6F9D4EB2AD703 /* Pods-SaturnTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SaturnTests-resources.sh"; sourceTree = "<group>"; };
 		07C8E2DB7BFE03C992FDEC233E065CA9 /* Pods-SaturnTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SaturnTests.debug.xcconfig"; sourceTree = "<group>"; };
-		0EA6F3BD4894030789C8442107ACFCC1 /* Pastel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pastel-prefix.pch"; sourceTree = "<group>"; };
 		158C05EF9388330B045C6402A5E223D4 /* Pods-Saturn-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Saturn-umbrella.h"; sourceTree = "<group>"; };
-		16B9582883A63FB959B0D5EE8A215E2D /* Pastel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pastel-dummy.m"; sourceTree = "<group>"; };
 		185297BABC018A619F6D45775E9251B6 /* Pods-Saturn-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Saturn-acknowledgements.plist"; sourceTree = "<group>"; };
 		2067BD9E382A15368E367D48FCC55189 /* Pods-Saturn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Saturn.debug.xcconfig"; sourceTree = "<group>"; };
 		26BFE53D21F47FE4EA810EC521A1F65A /* Pods-SaturnTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SaturnTests-dummy.m"; sourceTree = "<group>"; };
-		309A98C7AF8441BBD4C18C6A43066C75 /* Pastel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pastel.xcconfig; sourceTree = "<group>"; };
+		279DACD1ED826707501F8B23176F2BC4 /* Pastel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Pastel.modulemap; sourceTree = "<group>"; };
 		35716DC1BEEBBFC640547FD115AB8C77 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		480EC9533749DAFA3986A8AADB1292F0 /* Pods-SaturnTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SaturnTests-frameworks.sh"; sourceTree = "<group>"; };
 		48AB7A53C8E473A1A98A8AD4F8D12145 /* Pods-SaturnTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SaturnTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		51DD6178169115AAA784DA3B80B4E7E3 /* Pastel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pastel-umbrella.h"; sourceTree = "<group>"; };
+		56BD242975C4810167648DE241700A86 /* PastelView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PastelView.swift; path = Pastel/Classes/PastelView.swift; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6CA29FC1C2B309738F03D81A6A26098A /* Pastel-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pastel-prefix.pch"; sourceTree = "<group>"; };
 		7219C2F10079693C15BDADB661CCE83B /* Pods-SaturnTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SaturnTests.release.xcconfig"; sourceTree = "<group>"; };
-		74B3F575D27F5F51DA2B1BA040ED9DB5 /* Pastel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Pastel.modulemap; sourceTree = "<group>"; };
 		758E8D08EBFDD040FAE4E0864FC07FE9 /* Pods-Saturn.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Saturn.modulemap"; sourceTree = "<group>"; };
-		7D9323B12B49B11D84C897027EF38DEA /* PastelView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PastelView.swift; path = Pastel/Classes/PastelView.swift; sourceTree = "<group>"; };
+		7F02654E0F9A9B74E87749D250C0D631 /* Pastel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pastel-dummy.m"; sourceTree = "<group>"; };
 		87D72AA09611368975802BC3803F43CD /* Pods-Saturn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Saturn.release.xcconfig"; sourceTree = "<group>"; };
 		8A8127650A711154B7D92BC8492D983B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E8417EF59C899624E6CCE82A1347006 /* Pods_SaturnTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SaturnTests.framework; path = "Pods-SaturnTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		904E277C116D197155E86EACECF30EEA /* Pods-Saturn-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Saturn-dummy.m"; sourceTree = "<group>"; };
+		90D62C94A99E6EE8E3E21F3B671116C3 /* PastelGradient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PastelGradient.swift; path = Pastel/Classes/PastelGradient.swift; sourceTree = "<group>"; };
 		91061655B53D7AEDE0CEC410FB01AE68 /* Pods-Saturn-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Saturn-frameworks.sh"; sourceTree = "<group>"; };
 		91E6582FD81C1E70BEFDF8F2C71165BC /* Pods-SaturnTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SaturnTests-umbrella.h"; sourceTree = "<group>"; };
-		91EBC655D45F8500590724375FC56F15 /* PastelGradient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PastelGradient.swift; path = Pastel/Classes/PastelGradient.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		94BBE444051C0D0CCE3FE31F7C073B4E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9C5788B0B0510AC36E4F4FBA41C95AF /* Pods_Saturn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Saturn.framework; path = "Pods-Saturn.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE25D0B0D1E38A5DD736E08E2ACAC2C9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B278F1919AD1885652BA13FDDB77C81F /* Pods-Saturn-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Saturn-acknowledgements.markdown"; sourceTree = "<group>"; };
 		DAA692421F6F5EA203A0890058569D87 /* Pods-SaturnTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SaturnTests.modulemap"; sourceTree = "<group>"; };
 		DF86F8170660DC70BB08169140EFFDE8 /* Pods-SaturnTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SaturnTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F97E0026753C6F75FEBB7D7B0B037D71 /* Pastel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pastel.xcconfig; sourceTree = "<group>"; };
 		FFB4E91D513C240538EC5DB7505D3E18 /* Pods-Saturn-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Saturn-resources.sh"; sourceTree = "<group>"; };
+		FFC2674BCA458CD94E4A6E61BB58ABB3 /* Pastel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pastel-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +94,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A7F65D2F48C3593033E7D62B4A4E4ED /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				94BBE444051C0D0CCE3FE31F7C073B4E /* Info.plist */,
+				279DACD1ED826707501F8B23176F2BC4 /* Pastel.modulemap */,
+				F97E0026753C6F75FEBB7D7B0B037D71 /* Pastel.xcconfig */,
+				7F02654E0F9A9B74E87749D250C0D631 /* Pastel-dummy.m */,
+				6CA29FC1C2B309738F03D81A6A26098A /* Pastel-prefix.pch */,
+				FFC2674BCA458CD94E4A6E61BB58ABB3 /* Pastel-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pastel";
+			sourceTree = "<group>";
+		};
+		17928C66F51D2395CE815A30D1876F9B /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SwiftLint;
+			path = SwiftLint;
+			sourceTree = "<group>";
+		};
 		6927445E9F12EBBA5DF712C4D857C6A4 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,40 +148,27 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				937D81996BF33AEBD55DE24FB866E3A3 /* Pods */,
+				A2A0FC6CA72E775BC68E2FBD61D5AC0F /* Pods */,
 				F9363466EC96214C1635D0717E22504A /* Products */,
 				6927445E9F12EBBA5DF712C4D857C6A4 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		937D81996BF33AEBD55DE24FB866E3A3 /* Pods */ = {
+		A2A0FC6CA72E775BC68E2FBD61D5AC0F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BB77C33CD4946EFF6E246063B07B8B53 /* Pastel */,
+				A6DCD4D73A5B7F70DFE01D111D538026 /* Pastel */,
+				17928C66F51D2395CE815A30D1876F9B /* SwiftLint */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		A7C8AE23D830666692D01E92E6C1177A /* Support Files */ = {
+		A6DCD4D73A5B7F70DFE01D111D538026 /* Pastel */ = {
 			isa = PBXGroup;
 			children = (
-				AE25D0B0D1E38A5DD736E08E2ACAC2C9 /* Info.plist */,
-				74B3F575D27F5F51DA2B1BA040ED9DB5 /* Pastel.modulemap */,
-				309A98C7AF8441BBD4C18C6A43066C75 /* Pastel.xcconfig */,
-				16B9582883A63FB959B0D5EE8A215E2D /* Pastel-dummy.m */,
-				0EA6F3BD4894030789C8442107ACFCC1 /* Pastel-prefix.pch */,
-				51DD6178169115AAA784DA3B80B4E7E3 /* Pastel-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Pastel";
-			sourceTree = "<group>";
-		};
-		BB77C33CD4946EFF6E246063B07B8B53 /* Pastel */ = {
-			isa = PBXGroup;
-			children = (
-				91EBC655D45F8500590724375FC56F15 /* PastelGradient.swift */,
-				7D9323B12B49B11D84C897027EF38DEA /* PastelView.swift */,
-				A7C8AE23D830666692D01E92E6C1177A /* Support Files */,
+				90D62C94A99E6EE8E3E21F3B671116C3 /* PastelGradient.swift */,
+				56BD242975C4810167648DE241700A86 /* PastelView.swift */,
+				0A7F65D2F48C3593033E7D62B4A4E4ED /* Support Files */,
 			);
 			name = Pastel;
 			path = Pastel;
@@ -360,7 +369,7 @@
 /* Begin XCBuildConfiguration section */
 		12952724D202DF31A7375A8605BA4E21 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 309A98C7AF8441BBD4C18C6A43066C75 /* Pastel.xcconfig */;
+			baseConfigurationReference = F97E0026753C6F75FEBB7D7B0B037D71 /* Pastel.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -636,7 +645,7 @@
 		};
 		DE88F48405372831384623080EE67DD2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 309A98C7AF8441BBD4C18C6A43066C75 /* Pastel.xcconfig */;
+			baseConfigurationReference = F97E0026753C6F75FEBB7D7B0B037D71 /* Pastel.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

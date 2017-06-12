@@ -201,6 +201,7 @@
 				E74D0FFC1EC4FE870057E519 /* Resources */,
 				A45535439B89B03E2831BB50 /* [CP] Embed Pods Frameworks */,
 				BAC8C0201EF72CFEDEB626B8 /* [CP] Copy Pods Resources */,
+				E733B64C1EEEEC7200FC1CEA /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -385,6 +386,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Saturn/Pods-Saturn-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E733B64C1EEEEC7200FC1CEA /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

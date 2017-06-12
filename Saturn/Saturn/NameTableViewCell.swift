@@ -21,7 +21,7 @@ class NameTableViewCell: UITableViewCell, UITextFieldDelegate {
 		}
 	}
 
-	//MARK: - UITextFieldDelegate
+	// MARK: - UITextFieldDelegate
 
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 
