@@ -47,46 +47,74 @@ class ModelController {
 
 	private func preloadModel() {
 
+		let rssNewsProvider: NewsProvider = insertNewsProvider(identifier: 0, name: "RSS", detail: "Description of RSS.")
+		let _: NewsProvider = insertNewsProvider(identifier: 1, name: "Atom", detail: "Description of Atom.")
+		let facebookNewsProvider: NewsProvider = insertNewsProvider(identifier: 2, name: "Facebook", detail: "Description of Facebook.")
+		let _: NewsProvider = insertNewsProvider(identifier: 3, name: "Twitter", detail: "Description of Twitter.")
+		let _: NewsProvider = insertNewsProvider(identifier: 4, name: "Instagram", detail: "Description of Instagram.")
+		let youtubeNewsProvider: NewsProvider = insertNewsProvider(identifier: 5, name: "YouTube", detail: "Description of YouTube.")
+		let redditNewsProvider: NewsProvider = insertNewsProvider(identifier: 6, name: "Reddit", detail: "Description of Reddit.")
+
 		var sources = Set<NewsSource>()
-		sources.insert(insertNewsSource(provider: "Battle.net", service: "Hearthstone"))
+		sources.insert(insertNewsSource(provider: facebookNewsProvider, query: "Hearthstone.en"))
+		sources.insert(insertNewsSource(provider: youtubeNewsProvider, query: "PlayHearthstone"))
 		insertNewsFeed(name: "Hearthstone", colorIdentifier:9, sources: sources)
 
 		sources.removeAll()
-		sources.insert(insertNewsSource(provider: "9gag", service: "9gag"))
-		sources.insert(insertNewsSource(provider: "Reddit", service: "Aww"))
-		sources.insert(insertNewsSource(provider: "Youtube", service: "Videómánia"))
+		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "http://9gag-rss.com/api/rss/get?code=9GAGHot&format=1", title: "9gag"))
+		sources.insert(insertNewsSource(provider: redditNewsProvider, query: "Aww"))
+		sources.insert(insertNewsSource(provider: youtubeNewsProvider, query: "VideomaniaFCS"))
 		insertNewsFeed(name: "Chill", colorIdentifier:5, sources: sources)
 
 		sources.removeAll()
-		sources.insert(insertNewsSource(provider: "BBC News", service: "BBC News"))
-		sources.insert(insertNewsSource(provider: "CNN", service: "CNN"))
-		sources.insert(insertNewsSource(provider: "Telegraph", service: "Telegraph"))
-		sources.insert(insertNewsSource(provider: "The Guardian", service: "The Guardian"))
-		sources.insert(insertNewsSource(provider: "The New York Times", service: "The New York Times"))
+		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "http://feeds.bbci.co.uk/news/rss.xml?edition=uk", title: "BBC News"))
+		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "http://rss.cnn.com/rss/edition.rss", title: "CNN"))
+		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "https://www.theguardian.com/uk/rss", title: "The Guardian"))
+		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml", title: "The New York Times"))
 		insertNewsFeed(name: "International News", colorIdentifier:6, sources: sources)
 
 		sources.removeAll()
-		sources.insert(insertNewsSource(provider: "Reddit", service: "Programming"))
-		sources.insert(insertNewsSource(provider: "Hacker News", service: "Hacker News"))
+		sources.insert(insertNewsSource(provider: redditNewsProvider, query: "Programming"))
+		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "https://news.ycombinator.com/rss", title: "Hacker News"))
 		insertNewsFeed(name: "Developer's Heaven", colorIdentifier:1, sources: sources)
 
 		sources.removeAll()
-		sources.insert(insertNewsSource(provider: "HVG", service: "HVG"))
-		sources.insert(insertNewsSource(provider: "Index", service: "Index"))
-		sources.insert(insertNewsSource(provider: "444", service: "444"))
+		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "http://hvg.hu/rss", title: "hvg.hu"))
+		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "http://index.hu/24ora/rss/", title: "Index"))
+		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "https://444.hu/feed", title: "444"))
 		insertNewsFeed(name: "Daily Essentials", colorIdentifier:4, sources: sources)
 	}
 
 	// MARK: - Public Functions
 
-	func insertNewsSource(provider: String, service: String) -> NewsSource {
+	func insertNewsProvider(identifier: Int16, name: String, detail: String) -> NewsProvider {
+
+		let newsProviderEntityDescription = getEntityDescription(for: String(describing: NewsProvider.self), in: context)
+		guard let newsProvider: NewsProvider = NSManagedObject(entity: newsProviderEntityDescription, insertInto: context) as? NewsProvider else {
+			fatalError("Couldn't convert the inserted news provider to NewsProvider.")
+		}
+		newsProvider.setValue(identifier, forKeyPath: #keyPath(NewsProvider.id))
+		newsProvider.setValue(name, forKeyPath: #keyPath(NewsProvider.name))
+		newsProvider.setValue(detail, forKeyPath: #keyPath(NewsProvider.detail))
+
+		do {
+			try context.save()
+		} catch let error as NSError {
+			fatalError("Couldn't insert the news provider. Error: \(error)")
+		}
+
+		return newsProvider
+	}
+
+	func insertNewsSource(provider: NewsProvider, query: String, title: String? = nil) -> NewsSource {
 
 		let newsSourceEntityDescription = getEntityDescription(for: String(describing: NewsSource.self), in: context)
 		guard let newsSource: NewsSource = NSManagedObject(entity: newsSourceEntityDescription, insertInto: context) as? NewsSource else {
 			fatalError("Couldn't convert the inserted news source to NewsSource.")
 		}
 		newsSource.setValue(provider, forKeyPath: #keyPath(NewsSource.provider))
-		newsSource.setValue(service, forKeyPath: #keyPath(NewsSource.service))
+		newsSource.setValue(query, forKeyPath: #keyPath(NewsSource.query))
+		newsSource.setValue(title, forKeyPath: #keyPath(NewsSource.title))
 
 		do {
 			try context.save()
@@ -123,10 +151,10 @@ class ModelController {
 		}
 	}
 
-	func getNewsSource(provider: String, service: String) -> NewsSource? {
+	func getNewsSource(provider: NewsProvider, query: String) -> NewsSource? {
 
 		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsSource.fetchRequest()
-		fetchRequest.predicate = NSPredicate(format: "\(#keyPath(NewsSource.provider)) == \"\(provider)\" AND \(#keyPath(NewsSource.service)) == \"\(service)\"")
+		fetchRequest.predicate = NSPredicate(format: "\(#keyPath(NewsSource.provider.id)) == \"\(provider.id)\" AND \(#keyPath(NewsSource.query)) == \"\(query)\"")
 
 		do {
 			guard let sources = try context.fetch(fetchRequest) as? [NewsSource] else {

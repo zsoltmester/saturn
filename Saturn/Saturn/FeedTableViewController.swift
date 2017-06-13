@@ -95,18 +95,27 @@ class FeedTableViewController: ModelTableViewController {
 
 	func getSourcesText(sources: NSSet?) -> String {
 
-		let sourcesProviderSorter = NSSortDescriptor(key: #keyPath(NewsSource.provider), ascending: true, selector: #selector(NSString.compare(_:)))
-		let sourcesServiceSorter = NSSortDescriptor(key: #keyPath(NewsSource.service), ascending: true, selector: #selector(NSString.compare(_:)))
-		guard let orderedSources: [NewsSource] = sources?.sortedArray(using: [sourcesProviderSorter, sourcesServiceSorter]) as? [NewsSource] else {
+		let sourcesTitleSorter = NSSortDescriptor(key: #keyPath(NewsSource.title), ascending: true, selector: #selector(NSString.compare(_:)))
+		let sourcesProviderSorter = NSSortDescriptor(key: #keyPath(NewsSource.provider.name), ascending: true, selector: #selector(NSString.compare(_:)))
+		let sourcesQuerySorter = NSSortDescriptor(key: #keyPath(NewsSource.query), ascending: true, selector: #selector(NSString.compare(_:)))
+		guard let orderedSources: [NewsSource] = sources?.sortedArray(using: [sourcesTitleSorter, sourcesProviderSorter, sourcesQuerySorter]) as? [NewsSource] else {
 			fatalError("No sources given.")
 		}
 
 		var sourcesText: String = ""
+
 		for source in orderedSources {
-			if let provider: String = source.provider, let service: String = source.service {
-				let sourceText: String = provider == service ? provider : "\(provider) - \(service)"
-				sourcesText = sourcesText.isEmpty ? sourceText : "\(sourcesText), \(sourceText)"
+
+			var sourceText: String
+			if let title: String = source.title {
+				sourceText = title
+			} else if let provider: String = source.provider?.name, let query: String = source.query {
+				sourceText = "\(provider) - \(query)"
+			} else {
+				fatalError("Invalid source text.")
 			}
+
+			sourcesText = sourcesText.isEmpty ? sourceText : "\(sourcesText), \(sourceText)"
 		}
 
 		return sourcesText
