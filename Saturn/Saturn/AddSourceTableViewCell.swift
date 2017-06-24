@@ -14,4 +14,7 @@ class AddSourceTableViewCell: UITableViewCell {
 
 	static let reuseIdentifier = "Add Source Cell"
 
+	@IBOutlet weak var providerNameLabel: UILabel!
+	@IBOutlet weak var providerDetailLabel: UILabel!
+	@IBOutlet weak var queryTextField: UITextField!
 }

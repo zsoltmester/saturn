@@ -27,7 +27,7 @@ class FeedTableViewController: ModelTableViewController {
 		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsFeed.fetchRequest()
 		fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(NewsFeed.order), ascending: true)]
 
-		fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: getModelController().context, sectionNameKeyPath: nil, cacheName: nil)
+		fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.get().modelController.context, sectionNameKeyPath: nil, cacheName: nil)
 	}
 
 	// MARK: - UITableViewDataSource
@@ -50,7 +50,7 @@ class FeedTableViewController: ModelTableViewController {
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 
 		if editingStyle == .delete {
-			getModelController().deleteNewsFeed(getObject(at: indexPath))
+			AppDelegate.get().modelController.deleteNewsFeed(getObject(at: indexPath))
 		}
 	}
 
@@ -72,7 +72,7 @@ class FeedTableViewController: ModelTableViewController {
 		}
 
 		do {
-			try getModelController().context.save()
+			try AppDelegate.get().modelController.context.save()
 		} catch {
 			fatalError("Couldn't save the reordered feeds.")
 		}

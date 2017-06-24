@@ -82,15 +82,6 @@ class ModelTableViewController: UITableViewController, NSFetchedResultsControlle
 
 	// MARK: - Public Functions
 
-	func getModelController() -> ModelController {
-
-		guard let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate else {
-			fatalError("appDelegate should never be anything than mine.")
-		}
-
-		return appDelegate.modelController
-	}
-
 	func getObject<Type>(at indexPath: IndexPath) -> Type {
 
 		guard let object = fetchedResultsController.object(at: indexPath) as? Type else {

@@ -19,7 +19,9 @@ class AddTableViewController: UITableViewController {
 
 	// MARK: - Properties
 
-	private var sections: [[SectionItem]] = [ [.name], [.color], [.addSource] ]
+	private var sections: [[SectionItem]] = [ [.name], [.color] ]
+
+	private var newsProviders: [Int: NewsProvider] = [:]
 
 	var selectedColor = 0
 
@@ -28,7 +30,16 @@ class AddTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.estimatedRowHeight = 44
+
 		self.setEditing(true, animated: false)
+
+		let newsProvidersInOrder = AppDelegate.get().modelController.getNewsProviders()
+		for newsProvider in newsProvidersInOrder {
+			newsProviders[sections.count] = newsProvider
+			sections.append([.addSource])
+		}
 	}
 
 	// MARK: - UITableViewDataSource
@@ -59,6 +70,15 @@ class AddTableViewController: UITableViewController {
 
 		let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
 
+		if let cell: AddSourceTableViewCell = cell as? AddSourceTableViewCell {
+			guard let newsProvider = newsProviders[indexPath.section] else {
+				fatalError("Couldn't find news provider for section \(indexPath.section)")
+			}
+			cell.providerNameLabel.text = newsProvider.name
+			cell.providerDetailLabel.text = newsProvider.detail
+			cell.queryTextField.placeholder = newsProvider.hint
+		}
+
 		return cell
 	}
 
@@ -79,8 +99,8 @@ class AddTableViewController: UITableViewController {
 		switch editingStyle {
 
 		case .insert:
-			editedTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-			tableView(editedTableView, didSelectRowAt: indexPath)
+			sections[indexPath.section].insert(.source, at: indexPath.row)
+			tableView.insertRows(at: [indexPath], with: .automatic)
 
 		case .delete:
 			sections[indexPath.section].remove(at: indexPath.row)
@@ -105,21 +125,6 @@ class AddTableViewController: UITableViewController {
 		default:
 			return .none
 		}
-	}
-
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-		let item = sections[indexPath.section][indexPath.row]
-
-		guard item == .addSource else {
-			return
-		}
-
-		tableView.beginUpdates()
-		tableView.deselectRow(at: indexPath, animated: true)
-		sections[indexPath.section].insert(.source, at: indexPath.row)
-		tableView.insertRows(at: [indexPath], with: .automatic)
-		tableView.endUpdates()
 	}
 
 	override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {

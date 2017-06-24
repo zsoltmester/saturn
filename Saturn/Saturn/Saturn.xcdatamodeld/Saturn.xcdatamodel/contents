@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="NewsFeed" representedClassName="NewsFeed" syncable="YES" codeGenerationType="class">
-        <attribute name="colorIdentifier" optional="YES" attributeType="Integer 16" minValueString="-1" maxValueString="9" defaultValueString="-1" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="colorIdentifier" attributeType="Integer 16" minValueString="0" maxValueString="9" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <attribute name="order" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="sources" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="NewsSource" inverseName="feeds" inverseEntity="NewsSource" syncable="YES"/>
@@ -15,7 +15,8 @@
         </uniquenessConstraints>
     </entity>
     <entity name="NewsProvider" representedClassName="NewsProvider" syncable="YES" codeGenerationType="class">
-        <attribute name="detail" attributeType="String" minValueString="1" maxValueString="64" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
+        <attribute name="detail" attributeType="String" minValueString="1" maxValueString="256" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
+        <attribute name="hint" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <attribute name="id" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <relationship name="sources" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NewsSource" inverseName="provider" inverseEntity="NewsSource" syncable="YES"/>
@@ -28,7 +29,7 @@
     </entity>
     <elements>
         <element name="NewsFeed" positionX="79" positionY="36" width="128" height="105"/>
+        <element name="NewsProvider" positionX="-27" positionY="72" width="128" height="120"/>
         <element name="NewsSource" positionX="-128" positionY="32" width="128" height="105"/>
-        <element name="NewsProvider" positionX="-27" positionY="72" width="128" height="105"/>
     </elements>
 </model>

@@ -47,13 +47,13 @@ class ModelController {
 
 	private func preloadModel() {
 
-		let rssNewsProvider: NewsProvider = insertNewsProvider(identifier: 0, name: "RSS", detail: "Description of RSS.")
-		let _: NewsProvider = insertNewsProvider(identifier: 1, name: "Atom", detail: "Description of Atom.")
-		let facebookNewsProvider: NewsProvider = insertNewsProvider(identifier: 2, name: "Facebook", detail: "Description of Facebook.")
-		let _: NewsProvider = insertNewsProvider(identifier: 3, name: "Twitter", detail: "Description of Twitter.")
-		let _: NewsProvider = insertNewsProvider(identifier: 4, name: "Instagram", detail: "Description of Instagram.")
-		let youtubeNewsProvider: NewsProvider = insertNewsProvider(identifier: 5, name: "YouTube", detail: "Description of YouTube.")
-		let redditNewsProvider: NewsProvider = insertNewsProvider(identifier: 6, name: "Reddit", detail: "Description of Reddit.")
+		let rssNewsProvider: NewsProvider = insertNewsProvider(identifier: 0, name: "RSS", detail: "Long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long description of RSS.", hint: "RSS URL")
+		let _: NewsProvider = insertNewsProvider(identifier: 1, name: "Atom", detail: "Description of Atom.", hint: "Atom URL")
+		let facebookNewsProvider: NewsProvider = insertNewsProvider(identifier: 2, name: "Facebook", detail: "Description of Facebook.", hint: "Page")
+		let _: NewsProvider = insertNewsProvider(identifier: 3, name: "Twitter", detail: "Description of Twitter.", hint: "Username")
+		let _: NewsProvider = insertNewsProvider(identifier: 4, name: "Instagram", detail: "Description of Instagram.", hint: "Username")
+		let youtubeNewsProvider: NewsProvider = insertNewsProvider(identifier: 5, name: "YouTube", detail: "Description of YouTube.", hint: "Channel")
+		let redditNewsProvider: NewsProvider = insertNewsProvider(identifier: 6, name: "Reddit", detail: "Description of Reddit.", hint: "Subreddit")
 
 		var sources = Set<NewsSource>()
 		sources.insert(insertNewsSource(provider: facebookNewsProvider, query: "Hearthstone.en"))
@@ -87,7 +87,7 @@ class ModelController {
 
 	// MARK: - Public Functions
 
-	func insertNewsProvider(identifier: Int16, name: String, detail: String) -> NewsProvider {
+	func insertNewsProvider(identifier: Int16, name: String, detail: String, hint: String) -> NewsProvider {
 
 		let newsProviderEntityDescription = getEntityDescription(for: String(describing: NewsProvider.self), in: context)
 		guard let newsProvider: NewsProvider = NSManagedObject(entity: newsProviderEntityDescription, insertInto: context) as? NewsProvider else {
@@ -96,6 +96,7 @@ class ModelController {
 		newsProvider.setValue(identifier, forKeyPath: #keyPath(NewsProvider.id))
 		newsProvider.setValue(name, forKeyPath: #keyPath(NewsProvider.name))
 		newsProvider.setValue(detail, forKeyPath: #keyPath(NewsProvider.detail))
+		newsProvider.setValue(hint, forKeyPath: #keyPath(NewsProvider.hint))
 
 		do {
 			try context.save()
@@ -125,7 +126,7 @@ class ModelController {
 		return newsSource
 	}
 
-	func insertNewsFeed(name: String, colorIdentifier: Int16? = -1, sources: Set<NewsSource>) {
+	func insertNewsFeed(name: String, colorIdentifier: Int16, sources: Set<NewsSource>) {
 
 		let newsFeedEntityDescription = getEntityDescription(for: String(describing: NewsFeed.self), in: context)
 		let newsFeed = NSManagedObject(entity: newsFeedEntityDescription, insertInto: context)
@@ -163,6 +164,21 @@ class ModelController {
 			return sources.first
 		} catch let error as NSError {
 			fatalError("Couldn't fetch a news source. Error: \(error)")
+		}
+	}
+
+	func getNewsProviders() -> [NewsProvider] {
+
+		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsProvider.fetchRequest()
+		fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(NewsProvider.name), ascending: true)]
+
+		do {
+			guard let providers = try context.fetch(fetchRequest) as? [NewsProvider] else {
+				fatalError("Couldn't convert the fetched results to [NewsProvider].")
+			}
+			return providers
+		} catch let error as NSError {
+			fatalError("Couldn't count the news providers. Error: \(error)")
 		}
 	}
 

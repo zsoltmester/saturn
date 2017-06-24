@@ -17,6 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var modelController: ModelController!
 	var window: UIWindow?
 
+	// MARK: - Public Functions
+
+	static func get() -> AppDelegate {
+
+		guard let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate else {
+			fatalError("Can be UIApplication.shared.delegate other than mine?.")
+		}
+
+		return appDelegate
+	}
+
 	// MARK: - Application Lifecycle
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

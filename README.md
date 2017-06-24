@@ -20,19 +20,12 @@ Egy olyan applikáció, ami képes egy felületen kezelni az engem érdeklő hí
 
 Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 
-Úgy gondolom, hogy a fönt leírt probléma sok embert érint, ezért egy bárki által könnyen használható, testreszabható appot készítek. A felület és a UX megfelel az Apple ajánlásainak és a jelenlegi trendeknek. A legalább 10-es OS főverzióval rendelkező iPhoneok és iPadek a támogatottak.
+Úgy gondolom, hogy a fönt leírt probléma sok embert érint, ezért egy bárki által könnyen használható, testreszabható appot készítek. A felület és a UX megfelel az Apple ajánlásainak és a jelenlegi trendeknek. A legalább 10-es OS főverzióval rendelkező iPhoneok a támogatottak.
 
 ### Specifikáció
 
-#### Fogalmak
-
-- **News** (hír): Egy cikk, egy videó, egy podcast, egy insta vagy fb post, stb.
-- **News Source** (hírforrás): Amik a híreket gyártják, például Index, YouTube, Twitter, stb.
-- **News Feed** (hírfolyam): Hírek egy halmaza.
-
 #### Funkcionális Specifikáció
 
-1. Telepíthető legyen az app storeból és azon keresztül frissüljön.
 - A hírfolyamválasztó képernyő:
 	- a kezdőképernyő.
 	- egy navigation controllerbe van ágyazva.
@@ -92,3 +85,5 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 - Translator
 - Alerts from Google for keywords
 - Share feeds
+- Bouncy layout
+- Pastel view before on color row before the disclosure indicator
