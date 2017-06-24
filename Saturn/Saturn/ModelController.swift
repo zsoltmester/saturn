@@ -171,7 +171,7 @@ class ModelController {
 		}
 	}
 
-	func getNewsProviders(with order: [NSSortDescriptor]) -> [NewsProvider] {
+	func getNewsProviders(ordered order: [NSSortDescriptor]) -> [NewsProvider] {
 
 		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsProvider.fetchRequest()
 		fetchRequest.sortDescriptors = order

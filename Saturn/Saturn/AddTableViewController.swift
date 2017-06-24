@@ -37,7 +37,7 @@ class AddTableViewController: UITableViewController {
 		self.setEditing(true, animated: false)
 
 		let order = [NSSortDescriptor(key: #keyPath(NewsProvider.name), ascending: true)]
-		let newsProvidersInOrder = AppDelegate.get().modelController.getNewsProviders(with: order)
+		let newsProvidersInOrder = AppDelegate.get().modelController.getNewsProviders(ordered: order)
 		for newsProvider in newsProvidersInOrder {
 			newsProviders[sections.count] = newsProvider
 			sections.append([.addSource])
@@ -96,17 +96,32 @@ class AddTableViewController: UITableViewController {
 		}
 	}
 
-	override func tableView(_ editedTableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 
 		switch editingStyle {
 
 		case .insert:
-			sections[indexPath.section].insert(.source, at: indexPath.row)
-			tableView.insertRows(at: [indexPath], with: .automatic)
+			// TODO: disable the actions
+
+			guard let cell = tableView.cellForRow(at: indexPath) as? AddSourceTableViewCell else {
+				fatalError("Couldn't cast cell to AddSourceTableViewCell at index path: \(indexPath)")
+			}
+
+			// TODO: check for empty input
+
+			do {
+				_ = try newsProviders[indexPath.section]?.executeQuery(cell.queryTextField.text ?? "")
+				sections[indexPath.section].insert(.source, at: indexPath.row)
+				tableView.insertRows(at: [indexPath], with: .automatic)
+			} catch {
+				// TODO: print the eror
+			}
+
+			// TODO: enable the actions
 
 		case .delete:
 			sections[indexPath.section].remove(at: indexPath.row)
-			editedTableView.deleteRows(at: [indexPath], with: .automatic)
+			tableView.deleteRows(at: [indexPath], with: .automatic)
 
 		default:
 			fatalError("Invalid editing style: \(editingStyle)")
