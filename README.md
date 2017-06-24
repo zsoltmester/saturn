@@ -43,6 +43,7 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 
 ### Ötletek
 
+- Feedback from users
 - Share news
 - "Read later" storage
 - Translator

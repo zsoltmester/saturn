@@ -47,6 +47,9 @@ class ModelController {
 
 	private func preloadModel() {
 
+		_ = insertNewsProvider(identifier: NewsProviderIdentifier.twitter.rawValue, name: "Twitter", detail: "Description of Twitter.", hint: "Username")
+
+		/*
 		let rssNewsProvider: NewsProvider = insertNewsProvider(identifier: 0, name: "RSS", detail: "Long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long description of RSS.", hint: "RSS URL")
 		let _: NewsProvider = insertNewsProvider(identifier: 1, name: "Atom", detail: "Description of Atom.", hint: "Atom URL")
 		let facebookNewsProvider: NewsProvider = insertNewsProvider(identifier: 2, name: "Facebook", detail: "Description of Facebook.", hint: "Page")
@@ -83,6 +86,7 @@ class ModelController {
 		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "http://index.hu/24ora/rss/", title: "Index"))
 		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "https://444.hu/feed", title: "444"))
 		insertNewsFeed(name: "Daily Essentials", colorIdentifier:4, sources: sources)
+		*/
 	}
 
 	// MARK: - Public Functions
@@ -93,7 +97,7 @@ class ModelController {
 		guard let newsProvider: NewsProvider = NSManagedObject(entity: newsProviderEntityDescription, insertInto: context) as? NewsProvider else {
 			fatalError("Couldn't convert the inserted news provider to NewsProvider.")
 		}
-		newsProvider.setValue(identifier, forKeyPath: #keyPath(NewsProvider.id))
+		newsProvider.setValue(identifier, forKeyPath: #keyPath(NewsProvider.identifier))
 		newsProvider.setValue(name, forKeyPath: #keyPath(NewsProvider.name))
 		newsProvider.setValue(detail, forKeyPath: #keyPath(NewsProvider.detail))
 		newsProvider.setValue(hint, forKeyPath: #keyPath(NewsProvider.hint))
@@ -155,7 +159,7 @@ class ModelController {
 	func getNewsSource(provider: NewsProvider, query: String) -> NewsSource? {
 
 		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsSource.fetchRequest()
-		fetchRequest.predicate = NSPredicate(format: "\(#keyPath(NewsSource.provider.id)) == \"\(provider.id)\" AND \(#keyPath(NewsSource.query)) == \"\(query)\"")
+		fetchRequest.predicate = NSPredicate(format: "\(#keyPath(NewsSource.provider.identifier)) == \"\(provider.identifier)\" AND \(#keyPath(NewsSource.query)) == \"\(query)\"")
 
 		do {
 			guard let sources = try context.fetch(fetchRequest) as? [NewsSource] else {
@@ -167,10 +171,10 @@ class ModelController {
 		}
 	}
 
-	func getNewsProviders() -> [NewsProvider] {
+	func getNewsProviders(with order: [NSSortDescriptor]) -> [NewsProvider] {
 
 		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsProvider.fetchRequest()
-		fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(NewsProvider.name), ascending: true)]
+		fetchRequest.sortDescriptors = order
 
 		do {
 			guard let providers = try context.fetch(fetchRequest) as? [NewsProvider] else {

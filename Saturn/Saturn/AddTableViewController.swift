@@ -11,6 +11,7 @@ import UIKit
 class AddTableViewController: UITableViewController {
 
 	private enum SectionItem {
+
 		case name
 		case color
 		case addSource
@@ -35,7 +36,8 @@ class AddTableViewController: UITableViewController {
 
 		self.setEditing(true, animated: false)
 
-		let newsProvidersInOrder = AppDelegate.get().modelController.getNewsProviders()
+		let order = [NSSortDescriptor(key: #keyPath(NewsProvider.name), ascending: true)]
+		let newsProvidersInOrder = AppDelegate.get().modelController.getNewsProviders(with: order)
 		for newsProvider in newsProvidersInOrder {
 			newsProviders[sections.count] = newsProvider
 			sections.append([.addSource])

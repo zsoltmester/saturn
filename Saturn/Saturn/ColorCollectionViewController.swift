@@ -31,12 +31,7 @@ class ColorCollectionViewController: UICollectionViewController {
 			fatalError("Invalid cell type. Expected ColorCollectionViewCell.")
 		}
 
-		if indexPath.row == selectedColor {
-			cell.colorPastelView.layer.borderColor = self.view.tintColor.cgColor
-			cell.colorPastelView.layer.borderWidth = 2
-		} else {
-			cell.colorPastelView.layer.borderWidth = 0
-		}
+		cell.setSelected(isSelected: indexPath.row == selectedColor)
 
 		if let colorGradient: PastelGradient = PastelGradient(rawValue: indexPath.row) {
 			cell.colorPastelView.setPastelGradient(colorGradient)

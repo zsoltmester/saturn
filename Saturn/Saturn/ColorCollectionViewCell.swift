@@ -27,4 +27,16 @@ class ColorCollectionViewCell: UICollectionViewCell {
 			colorPastelView.animationDuration = 2
 		}
 	}
+
+	// MARK: - Public Functions
+
+	func setSelected(isSelected: Bool) {
+
+		if isSelected {
+			colorPastelView.layer.borderColor = self.tintColor.cgColor
+			colorPastelView.layer.borderWidth = 2
+		} else {
+			colorPastelView.layer.borderWidth = 0
+		}
+	}
 }

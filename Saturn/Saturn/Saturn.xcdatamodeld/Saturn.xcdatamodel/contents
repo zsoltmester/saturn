@@ -17,7 +17,7 @@
     <entity name="NewsProvider" representedClassName="NewsProvider" syncable="YES" codeGenerationType="class">
         <attribute name="detail" attributeType="String" minValueString="1" maxValueString="256" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <attribute name="hint" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
-        <attribute name="id" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="identifier" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <relationship name="sources" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NewsSource" inverseName="provider" inverseEntity="NewsSource" syncable="YES"/>
     </entity>
