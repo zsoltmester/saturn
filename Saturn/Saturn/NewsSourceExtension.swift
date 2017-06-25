@@ -20,8 +20,12 @@ extension NewsSource {
 
 			var source: NewsSource?
 
-			if error != nil {
-				source = AppDelegate.get().modelController.insertNewsSource(provider: provider, query: query)
+			if error == nil {
+
+				source = AppDelegate.get().modelController.getNewsSource(provider: provider, query: query)
+				if source == nil {
+					source = AppDelegate.get().modelController.insertNewsSource(provider: provider, query: query)
+				}
 			}
 
 			completionHandler(source, error)

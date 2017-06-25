@@ -48,5 +48,6 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 - "Read later" storage
 - Translator
 - Alerts from Google for keywords
+- Twitter topics
 - Bouncy layout
 - Pastel view before the disclosure indicator, on the color row, in the add feed screen
