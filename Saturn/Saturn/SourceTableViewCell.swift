@@ -14,4 +14,5 @@ class SourceTableViewCell: UITableViewCell {
 
 	static let reuseIdentifier = "Source Cell"
 
+	@IBOutlet weak var queryLabel: UILabel!
 }

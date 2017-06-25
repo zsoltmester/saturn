@@ -47,7 +47,10 @@ class ModelController {
 
 	private func preloadModel() {
 
-		_ = insertNewsProvider(identifier: NewsProviderIdentifier.twitter.rawValue, name: "Twitter", detail: "Description of Twitter.", hint: "Username")
+		_ = insertNewsProvider(identifier: NewsProviderIdentifier.twitter.rawValue,
+		                       name: "Twitter",
+		                       detail: "Get the latest tweets from a user. Enter the username, for example “edsheeran”, “LeoDiCaprio” or “realDonaldTrump”.",
+		                       hint: "Username")
 
 		/*
 		let rssNewsProvider: NewsProvider = insertNewsProvider(identifier: 0, name: "RSS", detail: "Long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long description of RSS.", hint: "RSS URL")

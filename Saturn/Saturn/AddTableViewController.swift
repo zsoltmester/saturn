@@ -24,6 +24,8 @@ class AddTableViewController: UITableViewController {
 
 	private var newsProviders: [Int: NewsProvider] = [:]
 
+	private var newsSources: [Int:  [NewsSource]] = [:]
+
 	var selectedColor = 0
 
 	// MARK: - Initialization
@@ -73,12 +75,21 @@ class AddTableViewController: UITableViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
 
 		if let cell: AddSourceTableViewCell = cell as? AddSourceTableViewCell {
+
 			guard let newsProvider = newsProviders[indexPath.section] else {
 				fatalError("Couldn't find news provider for section \(indexPath.section)")
 			}
 			cell.providerNameLabel.text = newsProvider.name
 			cell.providerDetailLabel.text = newsProvider.detail
 			cell.queryTextField.placeholder = newsProvider.hint
+
+		} else if let cell: SourceTableViewCell = cell as? SourceTableViewCell {
+
+			guard let newsSource = newsSources[indexPath.section]?[indexPath.row] else {
+				fatalError("Couldn't find news source at \(indexPath).")
+			}
+
+			cell.queryLabel.text = newsSource.title ?? newsSource.query
 		}
 
 		return cell
@@ -101,40 +112,13 @@ class AddTableViewController: UITableViewController {
 		switch editingStyle {
 
 		case .insert:
-			// TODO: disable the actions
-
-			guard let cell = tableView.cellForRow(at: indexPath) as? AddSourceTableViewCell else {
-				fatalError("Couldn't cast cell to AddSourceTableViewCell at index path: \(indexPath)")
-			}
-
-			guard let query = cell.queryTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !query.isEmpty else {
-				// TODO: display the error
-				return
-			}
-
-			guard let newsProvider = newsProviders[indexPath.section] else {
-				fatalError("Couldn't find news provider for section \(indexPath.section)")
-			}
-
-			NewsSource.create(provider: newsProvider, query: query, completionHandler: { (source: NewsSource?, error: QueryError?) in
-
-				if let error = error {
-
-					// TODO: display the error
-					print("Received error: \(error)")
-
-				} else {
-
-					self.sections[indexPath.section].insert(.source, at: indexPath.row)
-					tableView.insertRows(at: [indexPath], with: .automatic)
-				}
-
-				// TODO: enable the actions
-			})
+			insertSource(from: indexPath)
 
 		case .delete:
 			sections[indexPath.section].remove(at: indexPath.row)
+			let removedNewsSource = newsSources[indexPath.section]!.remove(at: indexPath.row)
 			tableView.deleteRows(at: [indexPath], with: .automatic)
+			self.navigationItem.prompt = "Removed \(removedNewsSource.query ?? "")'s \(removedNewsSource.provider?.name ?? "")"
 
 		default:
 			fatalError("Invalid editing style: \(editingStyle)")
@@ -187,4 +171,84 @@ class AddTableViewController: UITableViewController {
 		dismiss(animated: true, completion: nil)
 	}
 
+	// MARK: - Private Functions
+
+	private func insertSource(from indexPath: IndexPath) {
+
+		guard let cell = tableView.cellForRow(at: indexPath) as? AddSourceTableViewCell else {
+			fatalError("Couldn't cast cell to AddSourceTableViewCell at index path: \(indexPath)")
+		}
+
+		guard let query = cell.queryTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !query.isEmpty else {
+			if !cell.queryTextField.isFirstResponder {
+				cell.queryTextField.becomeFirstResponder()
+			}
+			return
+		}
+
+		guard let newsProvider = newsProviders[indexPath.section] else {
+			fatalError("Couldn't find news provider for section \(indexPath.section)")
+		}
+
+		if let newsSourcesForThisSection = self.newsSources[indexPath.section] {
+			for newsSource in newsSourcesForThisSection where newsSource.query == query {
+				self.navigationItem.prompt = "\(query)'s \(newsProvider.name ?? "") already added."
+				return
+			}
+		}
+
+		cell.queryTextField.resignFirstResponder()
+		beginLoading()
+
+		self.navigationItem.prompt = "Searching \(query) on \(newsProvider.name ?? "")…"
+
+		NewsSource.create(provider: newsProvider, query: query, completionHandler: { (newsSource: NewsSource?, error: QueryError?) in
+
+			if error != nil {
+				self.navigationItem.prompt = "Couldn't find \(query)'s \(newsProvider.name ?? "")."
+
+			} else {
+
+				guard let newsSource = newsSource else {
+					fatalError("No error and no source at NewsSource.create's completionHandler.")
+				}
+
+				self.sections[indexPath.section].insert(.source, at: indexPath.row)
+
+				if self.newsSources[indexPath.section] == nil {
+					self.newsSources[indexPath.section] = [newsSource]
+				} else {
+					self.newsSources[indexPath.section]!.append(newsSource)
+				}
+
+				self.tableView.insertRows(at: [indexPath], with: .automatic)
+
+				cell.queryTextField.text = nil
+
+				self.navigationItem.prompt = "Successfully added \(query)'s \(newsProvider.name ?? "")"
+			}
+
+			self.endLoading()
+		})
+	}
+
+	private func beginLoading() {
+
+		UIApplication.shared.beginIgnoringInteractionEvents()
+
+		UIApplication.shared.isNetworkActivityIndicatorVisible = true
+
+		navigationItem.leftBarButtonItem?.isEnabled = false
+		navigationItem.rightBarButtonItem?.isEnabled = false
+	}
+
+	private func endLoading() {
+
+		UIApplication.shared.endIgnoringInteractionEvents()
+
+		UIApplication.shared.isNetworkActivityIndicatorVisible = false
+
+		navigationItem.leftBarButtonItem?.isEnabled = true
+		navigationItem.rightBarButtonItem?.isEnabled = true
+	}
 }
