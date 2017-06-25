@@ -8,9 +8,16 @@
 
 import Foundation
 
+typealias QueryResult = [Any]
+
+typealias QueryError = Error
+
+typealias QueryCompletionHandler = (QueryResult?, QueryError?) -> Void
+
 protocol QueryExecutor {
 
 	// MARK: - Functions
 
-	func executeQuery(_: String) throws -> QueryResult
+	func executeQuery(_: String, completionHandler: @escaping QueryCompletionHandler)
+
 }

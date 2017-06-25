@@ -12,7 +12,7 @@ extension NewsProvider {
 
 	// MARK: - Properties
 
-	private var queryExecutor: QueryExecutor {
+	var queryExecutor: QueryExecutor {
 
 		switch identifier {
 
@@ -20,14 +20,8 @@ extension NewsProvider {
 			return TwitterQueryExecutor.shared
 
 		default:
-			fatalError("Couldn't find news provider for identifier: \(identifier)")
+			fatalError("Couldn't find query executor for news provider: \(name ?? ""), \(identifier)")
 		}
-	}
-
-	// MARK: - Public Functions
-
-	func executeQuery(_ query: String) throws -> QueryResult {
-		return try queryExecutor.executeQuery(query)
 	}
 
 }

@@ -107,17 +107,30 @@ class AddTableViewController: UITableViewController {
 				fatalError("Couldn't cast cell to AddSourceTableViewCell at index path: \(indexPath)")
 			}
 
-			// TODO: check for empty input
-
-			do {
-				_ = try newsProviders[indexPath.section]?.executeQuery(cell.queryTextField.text ?? "")
-				sections[indexPath.section].insert(.source, at: indexPath.row)
-				tableView.insertRows(at: [indexPath], with: .automatic)
-			} catch {
-				// TODO: print the eror
+			guard let query = cell.queryTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !query.isEmpty else {
+				// TODO: display the error
+				return
 			}
 
-			// TODO: enable the actions
+			guard let newsProvider = newsProviders[indexPath.section] else {
+				fatalError("Couldn't find news provider for section \(indexPath.section)")
+			}
+
+			NewsSource.create(provider: newsProvider, query: query, completionHandler: { (source: NewsSource?, error: QueryError?) in
+
+				if let error = error {
+
+					// TODO: display the error
+					print("Received error: \(error)")
+
+				} else {
+
+					self.sections[indexPath.section].insert(.source, at: indexPath.row)
+					tableView.insertRows(at: [indexPath], with: .automatic)
+				}
+
+				// TODO: enable the actions
+			})
 
 		case .delete:
 			sections[indexPath.section].remove(at: indexPath.row)

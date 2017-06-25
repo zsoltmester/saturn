@@ -8,16 +8,24 @@
 
 import UIKit
 
+typealias CreateNewsSourceCompletionHandler = (NewsSource?, QueryError?) -> Void
+
 extension NewsSource {
 
 	// MARK: - Public Functions
 
-	static func create(provider: NewsProvider, query: String) throws -> NewsSource {
+	static func create(provider: NewsProvider, query: String, completionHandler: @escaping CreateNewsSourceCompletionHandler) {
 
-		_ = try provider.executeQuery(query)
+		provider.queryExecutor.executeQuery(query) { (_, error: QueryError?) in
 
-		// TODO: how to get the title?
+			var source: NewsSource?
 
-		return AppDelegate.get().modelController.insertNewsSource(provider: provider, query: query)
+			if error != nil {
+				source = AppDelegate.get().modelController.insertNewsSource(provider: provider, query: query)
+			}
+
+			completionHandler(source, error)
+		}
 	}
+
 }
