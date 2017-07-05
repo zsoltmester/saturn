@@ -24,7 +24,7 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 
 ### Támogatottság
 
-A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Egyelőre csak a portrait módhoz van design, de landscapeben is használható az app (de ilyenkor nincs semmi landscape specifikus kinézet).
+A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Egyelőre csak a portrait módban használható az app.
 
 ### Ami még biztos hátravan R1-ig
 
@@ -55,7 +55,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Egyelőre c
 - Twitter topics
 - Bouncy layout
 - Pastel view before the disclosure indicator, on the color row, in the add feed screen
-- Support iPad and big iPhones' landscape mode
+- Support iPad devices and iPhones' landscape mode
 - Analytics
 - Integrate LicensePlist
 - 3D touch
