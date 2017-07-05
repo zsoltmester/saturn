@@ -116,9 +116,8 @@ class AddTableViewController: UITableViewController {
 
 		case .delete:
 			sections[indexPath.section].remove(at: indexPath.row)
-			let removedNewsSource = newsSources[indexPath.section]!.remove(at: indexPath.row)
+			_ = newsSources[indexPath.section]!.remove(at: indexPath.row)
 			tableView.deleteRows(at: [indexPath], with: .automatic)
-			self.navigationItem.prompt = "Removed \(removedNewsSource.query ?? "")'s \(removedNewsSource.provider?.name ?? "")"
 
 		default:
 			fatalError("Invalid editing style: \(editingStyle)")
@@ -192,7 +191,6 @@ class AddTableViewController: UITableViewController {
 
 		if let newsSourcesForThisSection = self.newsSources[indexPath.section] {
 			for newsSource in newsSourcesForThisSection where newsSource.query == query {
-				self.navigationItem.prompt = "\(query)'s \(newsProvider.name ?? "") already added."
 				return
 			}
 		}
@@ -200,12 +198,12 @@ class AddTableViewController: UITableViewController {
 		cell.queryTextField.resignFirstResponder()
 		beginLoading()
 
-		self.navigationItem.prompt = "Searching \(query) on \(newsProvider.name ?? "")…"
-
 		NewsSource.create(provider: newsProvider, query: query, completionHandler: { (newsSource: NewsSource?, error: QueryError?) in
 
 			if error != nil {
-				self.navigationItem.prompt = "Couldn't find \(query)'s \(newsProvider.name ?? "")."
+				let alertViewController: UIAlertController = UIAlertController(title: "Couldn't find \(query)'s \(newsProvider.name ?? "")", message: nil, preferredStyle: .alert)
+				alertViewController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+				self.present(alertViewController, animated: true, completion: nil)
 
 			} else {
 
@@ -224,8 +222,6 @@ class AddTableViewController: UITableViewController {
 				self.tableView.insertRows(at: [indexPath], with: .automatic)
 
 				cell.queryTextField.text = nil
-
-				self.navigationItem.prompt = "Successfully added \(query)'s \(newsProvider.name ?? "")"
 			}
 
 			self.endLoading()
