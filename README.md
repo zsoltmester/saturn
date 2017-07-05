@@ -20,7 +20,11 @@ Egy olyan applikáció, ami képes egy felületen kezelni az engem érdeklő hí
 
 Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 
-Úgy gondolom, hogy a fönt leírt probléma sok embert érint, ezért egy bárki által könnyen használható, testreszabható appot készítek. A felület és a UX megfelel az Apple ajánlásainak és a jelenlegi trendeknek. A legalább 10-es OS főverzióval rendelkező iPhoneok a támogatottak.
+Úgy gondolom, hogy a fönt leírt probléma sok embert érint, ezért egy bárki által könnyen használható, testreszabható appot készítek. A felület és a UX megfelel az Apple ajánlásainak és a jelenlegi trendeknek.
+
+### Támogatottság
+
+A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Egyelőre csak a portrait módhoz van design, de landscapeben is használható az app (de ilyenkor nincs semmi landscape specifikus kinézet).
 
 ### Ami még biztos hátravan R1-ig
 
@@ -51,3 +55,14 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva.
 - Twitter topics
 - Bouncy layout
 - Pastel view before the disclosure indicator, on the color row, in the add feed screen
+- Support iPad and big iPhones' landscape mode
+- Analytics
+- Integrate LicensePlist
+- 3D touch
+- Night mode
+
+### Cikkek, amik még jól jöhetnek
+
+- iPad supporthoz: https://convertkit.s3.amazonaws.com/assets/documents/747/538975/iOS_Size_Classes_Quick_Guide_v1.3.pdf
+- Night mode supporthoz: https://github.com/Boerworz/Gagat
+- LicensePlist: https://github.com/mono0926/LicensePlist
