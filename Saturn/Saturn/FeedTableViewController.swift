@@ -20,6 +20,8 @@ class FeedTableViewController: ModelTableViewController {
 		prepareFetchedResultsController()
 
 		navigationItem.leftBarButtonItem = editButtonItem
+
+		NotificationCenter.default.addObserver(self, selector: #selector(startAnimations), name: .UIApplicationDidBecomeActive, object: nil)
     }
 
 	func prepareFetchedResultsController() {
@@ -28,6 +30,24 @@ class FeedTableViewController: ModelTableViewController {
 		fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(NewsFeed.order), ascending: true)]
 
 		fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.get().modelController.context, sectionNameKeyPath: nil, cacheName: nil)
+	}
+
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+
+		startAnimations()
+	}
+
+	func startAnimations() {
+
+		for cell in self.tableView.visibleCells {
+
+			guard let cell = cell as? FeedTableViewCell else {
+				fatalError("A cell on the Feeds screen is not a FeedTableViewCell.")
+			}
+
+			cell.colorPastelView.startAnimation()
+		}
 	}
 
 	// MARK: - UITableViewDataSource
@@ -43,6 +63,7 @@ class FeedTableViewController: ModelTableViewController {
 		cell.nameLabel.text = feed.name
 		cell.sourcesLabel.text = getSourcesText(sources: feed.sources)
 		cell.colorPastelView.setPastelGradient(getPastelGradient(colorIdentifier: feed.colorIdentifier))
+		cell.colorPastelView.startAnimation()
 
         return cell
     }
@@ -78,17 +99,6 @@ class FeedTableViewController: ModelTableViewController {
 		}
 
 		self.fetchedResultsController.delegate = self
-	}
-
-	// MARK: - UITableViewDelegate
-
-	override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-
-		guard let cell = cell as? FeedTableViewCell else {
-			fatalError("Invalid cell type. Expected FeedTableViewCell.")
-		}
-
-		cell.colorPastelView.startAnimation()
 	}
 
 	// MARK: - Actions

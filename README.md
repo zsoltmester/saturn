@@ -30,9 +30,6 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Egyelőre c
 
 - A hírfolyamválasztó képernyő:
 	- fejlécének bal oldalán található egy edit button, amivel a lista edit módba kapcsol, ahol a lista elemeit mozgatni, törölni és módosítani is lehet. A módosítás a hírfolyamódosító képernyőt indítja el, modal segue-el. Ha mentéssel érkeztünk vissza, akkor frissüljön a lista.
-	- fejlécének jobb oldalán található egy add button, amire kattintva egy modal segue visz el a hírfolyamlétrehozó képernyőre. Ha mentéssel érkeztünk vissza, akkor frissüljön a lista.
-- A hírfolyamlétrehozó képernyő:
-	- fejlécének jobb oldalán egy done button található, ami elmenti a megadott értékek alapján a hírfolyamot, úgy, hogy a hírfolyamválasztó lista első helyére kerüljün. Ezután eldobja a képernyőt. A gomb csak akkor aktív, ha valid a név és legalább 1 hírforrás hozzá van adva.
 - A hírfolyam képernyő:
 	- csak navigation controlleren keresztül érhető el, ezért mindig van a tetején egy fejléc.
 	- fejlécének bal oldalán a default back button található, ami visszanavigál a navigációs stacken.
