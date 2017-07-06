@@ -80,7 +80,7 @@
                             <outlet property="delegate" destination="b3M-Fj-s2L" id="9d9-Dg-Lpt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Your Feeds" id="NOp-nw-YqJ">
+                    <navigationItem key="navigationItem" title="Feeds" id="NOp-nw-YqJ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eCv-Ce-iWK">
                             <connections>
                                 <segue destination="1ah-zJ-0ac" kind="presentation" id="v2e-O9-jOF"/>

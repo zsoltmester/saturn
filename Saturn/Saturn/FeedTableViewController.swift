@@ -91,6 +91,16 @@ class FeedTableViewController: ModelTableViewController {
 		cell.colorPastelView.startAnimation()
 	}
 
+	// MARK: - Actions
+
+	@IBAction func unwindToFeedTableViewController(sender: UIStoryboardSegue) {
+
+		if sender.source is AddTableViewController {
+
+			self.tableView.reloadData()
+		}
+	}
+
 	// MARK: - Private Functions
 
 	func getSourcesText(sources: NSSet?) -> String {

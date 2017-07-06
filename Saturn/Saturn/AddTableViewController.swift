@@ -37,13 +37,6 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 		}
 	}
 
-	var isEditingSources = false {
-
-		didSet {
-			updateDoneButtonState()
-		}
-	}
-
 	// MARK: - Initialization
 
 	override func viewDidLoad() {
@@ -131,8 +124,6 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 
-		isEditingSources = true
-
 		switch editingStyle {
 
 		case .insert:
@@ -142,7 +133,7 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 			sections[indexPath.section].remove(at: indexPath.row)
 			_ = newsSources[indexPath.section]!.remove(at: indexPath.row)
 			tableView.deleteRows(at: [indexPath], with: .automatic)
-			isEditingSources = false
+			updateDoneButtonState()
 
 		default:
 			fatalError("Invalid editing style: \(editingStyle)")
@@ -205,6 +196,13 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 
 			colorCollectionViewController.selectedColor = selectedColor
 
+		case "Done":
+			guard let name: String = enteredName else {
+				fatalError("The enteredName is nil but the user pressed the done button.")
+			}
+
+			AppDelegate.get().modelController.insertNewsFeed(name: name, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
+
 		default:
 			fatalError("Unexpected segue identifier: \(String(describing: segue.identifier))")
 
@@ -215,10 +213,6 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 
 	@IBAction func cancel(_ sender: UIBarButtonItem) {
 		dismiss(animated: true, completion: nil)
-	}
-
-	@IBAction func done(_ sender: UIBarButtonItem) {
-		// TODO
 	}
 
 	// MARK: - Private Functions
@@ -277,7 +271,6 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 			}
 
 			self.endLoading()
-			self.isEditingSources = false
 		})
 	}
 
@@ -288,6 +281,7 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 		UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
 		navigationItem.leftBarButtonItem?.isEnabled = false
+		navigationItem.rightBarButtonItem?.isEnabled = false
 	}
 
 	private func endLoading() {
@@ -297,10 +291,11 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 		UIApplication.shared.isNetworkActivityIndicatorVisible = false
 
 		navigationItem.leftBarButtonItem?.isEnabled = true
+		updateDoneButtonState()
 	}
 
 	private func updateDoneButtonState() {
 
-		navigationItem.rightBarButtonItem?.isEnabled = !isEditingName && !isEditingSources && !(enteredName?.isEmpty ?? true) && !Array(newsSources.values.joined()).isEmpty
+		navigationItem.rightBarButtonItem?.isEnabled = !isEditingName && !(enteredName?.isEmpty ?? true) && !Array(newsSources.values.joined()).isEmpty
 	}
 }
