@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTableViewController: UITableViewController {
+class AddTableViewController: UITableViewController, UITextFieldDelegate {
 
 	private enum SectionItem {
 
@@ -28,6 +28,22 @@ class AddTableViewController: UITableViewController {
 
 	var selectedColor = 0
 
+	var enteredName: String?
+
+	var isEditingName = false {
+
+		didSet {
+			updateDoneButtonState()
+		}
+	}
+
+	var isEditingSources = false {
+
+		didSet {
+			updateDoneButtonState()
+		}
+	}
+
 	// MARK: - Initialization
 
 	override func viewDidLoad() {
@@ -44,6 +60,8 @@ class AddTableViewController: UITableViewController {
 			newsProviders[sections.count] = newsProvider
 			sections.append([.addSource])
 		}
+
+		updateDoneButtonState()
 	}
 
 	// MARK: - UITableViewDataSource
@@ -90,6 +108,10 @@ class AddTableViewController: UITableViewController {
 			}
 
 			cell.queryLabel.text = newsSource.title ?? newsSource.query
+
+		} else if let cell: NameTableViewCell = cell as? NameTableViewCell {
+
+			cell.nameTextField.delegate = self
 		}
 
 		return cell
@@ -109,6 +131,8 @@ class AddTableViewController: UITableViewController {
 
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 
+		isEditingSources = true
+
 		switch editingStyle {
 
 		case .insert:
@@ -118,6 +142,7 @@ class AddTableViewController: UITableViewController {
 			sections[indexPath.section].remove(at: indexPath.row)
 			_ = newsSources[indexPath.section]!.remove(at: indexPath.row)
 			tableView.deleteRows(at: [indexPath], with: .automatic)
+			isEditingSources = false
 
 		default:
 			fatalError("Invalid editing style: \(editingStyle)")
@@ -144,6 +169,28 @@ class AddTableViewController: UITableViewController {
 		return false
 	}
 
+	// MARK: - UITextFieldDelegate
+
+	func textFieldDidBeginEditing(_ textField: UITextField) {
+
+		isEditingName = true
+	}
+
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+		textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+		enteredName = textField.text
+
+		textField.resignFirstResponder()
+
+		return true
+	}
+
+	func textFieldDidEndEditing(_ textField: UITextField) {
+
+		isEditingName = false
+	}
+
 	// MARK: - Navigation
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -168,6 +215,10 @@ class AddTableViewController: UITableViewController {
 
 	@IBAction func cancel(_ sender: UIBarButtonItem) {
 		dismiss(animated: true, completion: nil)
+	}
+
+	@IBAction func done(_ sender: UIBarButtonItem) {
+		// TODO
 	}
 
 	// MARK: - Private Functions
@@ -201,6 +252,7 @@ class AddTableViewController: UITableViewController {
 		NewsSource.create(provider: newsProvider, query: query, completionHandler: { (newsSource: NewsSource?, error: QueryError?) in
 
 			if error != nil {
+
 				let alertViewController: UIAlertController = UIAlertController(title: "Couldn't find \(query)'s \(newsProvider.name ?? "")", message: nil, preferredStyle: .alert)
 				alertViewController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
 				self.present(alertViewController, animated: true, completion: nil)
@@ -225,6 +277,7 @@ class AddTableViewController: UITableViewController {
 			}
 
 			self.endLoading()
+			self.isEditingSources = false
 		})
 	}
 
@@ -235,7 +288,6 @@ class AddTableViewController: UITableViewController {
 		UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
 		navigationItem.leftBarButtonItem?.isEnabled = false
-		navigationItem.rightBarButtonItem?.isEnabled = false
 	}
 
 	private func endLoading() {
@@ -245,6 +297,10 @@ class AddTableViewController: UITableViewController {
 		UIApplication.shared.isNetworkActivityIndicatorVisible = false
 
 		navigationItem.leftBarButtonItem?.isEnabled = true
-		navigationItem.rightBarButtonItem?.isEnabled = true
+	}
+
+	private func updateDoneButtonState() {
+
+		navigationItem.rightBarButtonItem?.isEnabled = !isEditingName && !isEditingSources && !(enteredName?.isEmpty ?? true) && !Array(newsSources.values.joined()).isEmpty
 	}
 }
