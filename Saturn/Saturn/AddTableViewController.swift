@@ -169,15 +169,15 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 
-		textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-		enteredName = textField.text
-
 		textField.resignFirstResponder()
 
 		return true
 	}
 
 	func textFieldDidEndEditing(_ textField: UITextField) {
+
+		textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+		enteredName = textField.text
 
 		isEditingName = false
 	}
