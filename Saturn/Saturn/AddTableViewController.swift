@@ -190,6 +190,7 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 		switch segue.identifier ?? "" {
 
 		case "Show Color":
+
 			guard let colorCollectionViewController = segue.destination as? ColorCollectionViewController else {
 				fatalError("Unexpected destination: \(segue.destination)")
 			}
@@ -197,15 +198,47 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 			colorCollectionViewController.selectedColor = selectedColor
 
 		case "Done":
+
+			break
+
+		default:
+			fatalError("Unexpected segue identifier: \(segue.identifier ?? "")")
+		}
+	}
+
+	override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+		super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
+
+		switch identifier {
+
+		case "Show Color":
+
+			return true
+
+		case "Done":
+
 			guard let name: String = enteredName else {
 				fatalError("The enteredName is nil but the user pressed the done button.")
 			}
 
-			AppDelegate.get().modelController.insertNewsFeed(name: name, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
+			do {
+				try AppDelegate.get().modelController.insertNewsFeed(name: name, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
+			} catch ModelError.feedNameAlreadyInUse {
+
+				let alertViewController: UIAlertController = UIAlertController(title: "\(name) already exists", message: "Enter a new name.", preferredStyle: .alert)
+				alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+				self.present(alertViewController, animated: true, completion: nil)
+
+				return false
+
+			} catch {
+				fatalError("Unexpected error while inserting a new feed: \(error)")
+			}
+
+			return true
 
 		default:
-			fatalError("Unexpected segue identifier: \(String(describing: segue.identifier))")
-
+			fatalError("Unexpected segue identifier: \(identifier)")
 		}
 	}
 

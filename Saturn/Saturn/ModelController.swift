@@ -9,6 +9,11 @@
 import CoreData
 import UIKit
 
+enum ModelError: Error {
+
+	case feedNameAlreadyInUse
+}
+
 class ModelController {
 
 	// MARK: - Properties
@@ -133,7 +138,7 @@ class ModelController {
 		return newsSource
 	}
 
-	func insertNewsFeed(name: String, colorIdentifier: Int16, sources: Set<NewsSource>) {
+	func insertNewsFeed(name: String, colorIdentifier: Int16, sources: Set<NewsSource>) throws {
 
 		let newsFeedEntityDescription = getEntityDescription(for: String(describing: NewsFeed.self), in: context)
 		let newsFeed = NSManagedObject(entity: newsFeedEntityDescription, insertInto: context)
@@ -145,6 +150,23 @@ class ModelController {
 		do {
 			try context.save()
 		} catch let error as NSError {
+
+			if let conflictList = error.userInfo["conflictList"] as? [NSConstraintConflict] {
+
+				for conflict in conflictList {
+
+					if conflict.constraint.contains("name") {
+
+						guard let newsFeed: NewsFeed = newsFeed as? NewsFeed else {
+							fatalError("Created news feed type is not NewsFeed.")
+						}
+						deleteNewsFeed(newsFeed)
+
+						throw ModelError.feedNameAlreadyInUse
+					}
+				}
+			}
+
 			fatalError("Couldn't insert the news feed. Error: \(error)")
 		}
 	}
