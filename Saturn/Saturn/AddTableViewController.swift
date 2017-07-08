@@ -8,15 +8,15 @@
 
 import UIKit
 
+fileprivate enum SectionItem {
+
+	case name
+	case color
+	case addSource
+	case source
+}
+
 class AddTableViewController: UITableViewController, UITextFieldDelegate {
-
-	private enum SectionItem {
-
-		case name
-		case color
-		case addSource
-		case source
-	}
 
 	// MARK: - Properties
 
@@ -37,6 +37,8 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 		}
 	}
 
+	var feedToEdit: NewsFeed?
+
 	// MARK: - Initialization
 
 	override func viewDidLoad() {
@@ -54,7 +56,43 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 			sections.append([.addSource])
 		}
 
+		loadFeedToEdit()
+
 		updateDoneButtonState()
+	}
+
+	func loadFeedToEdit() {
+
+		guard let feedToEdit = feedToEdit else {
+			return
+		}
+
+		enteredName = feedToEdit.name
+
+		selectedColor = Int(feedToEdit.colorIdentifier)
+
+		guard let feedToEditNewsSources = feedToEdit.sources?.allObjects as? [NewsSource] else {
+			fatalError("Editing a feed, but it doesn't have any NewsSource.")
+		}
+
+		for (sectionIndex, sectionItems) in sections.enumerated() where sectionItems.last == .addSource {
+
+			guard let newsProvider = newsProviders[sectionIndex] else {
+				fatalError("Couldn't find news provider for section \(sectionIndex)")
+			}
+
+			for source in feedToEditNewsSources where source.provider?.identifier == newsProvider.identifier {
+
+				self.sections[sectionIndex].insert(.source, at: 0)
+
+				if self.newsSources[sectionIndex] == nil {
+					self.newsSources[sectionIndex] = [source]
+				} else {
+					self.newsSources[sectionIndex]!.append(source)
+				}
+
+			}
+		}
 	}
 
 	// MARK: - UITableViewDataSource
@@ -104,6 +142,7 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 
 		} else if let cell: NameTableViewCell = cell as? NameTableViewCell {
 
+			cell.nameTextField.text = enteredName
 			cell.nameTextField.delegate = self
 		}
 
@@ -197,12 +236,9 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 
 			colorCollectionViewController.selectedColor = selectedColor
 
-		case "Done":
+		default:
 
 			break
-
-		default:
-			fatalError("Unexpected segue identifier: \(segue.identifier ?? "")")
 		}
 	}
 
@@ -211,34 +247,47 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 
 		switch identifier {
 
-		case "Show Color":
-
-			return true
-
 		case "Done":
 
 			guard let name: String = enteredName else {
 				fatalError("The enteredName is nil but the user pressed the done button.")
 			}
 
-			do {
-				try AppDelegate.get().modelController.insertNewsFeed(name: name, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
-			} catch ModelError.feedNameAlreadyInUse {
+			if let feedToEdit = feedToEdit {
 
-				let alertViewController: UIAlertController = UIAlertController(title: "\(name) already exists", message: "Enter a new name.", preferredStyle: .alert)
-				alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-				self.present(alertViewController, animated: true, completion: nil)
+				do {
+					_ = try AppDelegate.get().modelController.updateNewsFeed(feedToEdit, name: enteredName, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
+				} catch ModelError.nameExists {
 
-				return false
+					showNameExistsAlertViewController(name)
 
-			} catch {
-				fatalError("Unexpected error while inserting a new feed: \(error)")
+					return false
+
+				} catch {
+					fatalError("Unexpected error while editing a new feed: \(error)")
+				}
+
+			} else {
+
+				do {
+					_ = try AppDelegate.get().modelController.insertNewsFeed(name: name, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
+				} catch ModelError.nameExists {
+
+					showNameExistsAlertViewController(name)
+
+					return false
+
+				} catch {
+					fatalError("Unexpected error while inserting a new feed: \(error)")
+				}
+
 			}
 
 			return true
 
 		default:
-			fatalError("Unexpected segue identifier: \(identifier)")
+
+			return true
 		}
 	}
 
@@ -330,5 +379,12 @@ class AddTableViewController: UITableViewController, UITextFieldDelegate {
 	private func updateDoneButtonState() {
 
 		navigationItem.rightBarButtonItem?.isEnabled = !isEditingName && !(enteredName?.isEmpty ?? true) && !Array(newsSources.values.joined()).isEmpty
+	}
+
+	private func showNameExistsAlertViewController(_ name: String) {
+
+		let alertViewController: UIAlertController = UIAlertController(title: "\(name) already exists", message: "Enter a new name.", preferredStyle: .alert)
+		alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		self.present(alertViewController, animated: true, completion: nil)
 	}
 }

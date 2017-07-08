@@ -101,6 +101,41 @@ class FeedTableViewController: ModelTableViewController {
 		self.fetchedResultsController.delegate = self
 	}
 
+	// MARK: - UITableViewDelegate
+
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+		if tableView.isEditing {
+
+			performSegue(withIdentifier: "Edit Feed", sender: indexPath)
+		}
+	}
+
+	// MARK: - Navigation
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		super.prepare(for: segue, sender: sender)
+
+		switch segue.identifier ?? "" {
+
+		case "Edit Feed":
+
+			guard let senderIndexPath = sender as? IndexPath, let feed: NewsFeed = getObject(at: senderIndexPath) else {
+				fatalError("Segue ID is Edit Feed, but the sender is not a valid index path, but \(sender ?? "nil").")
+			}
+
+			guard let addTableViewController = segue.destination.childViewControllers[0] as? AddTableViewController else {
+				fatalError("At Edit Feed segue the destination view controller's first child is not an AddTableViewController, but \(segue.destination).")
+			}
+
+			addTableViewController.feedToEdit = feed
+
+		default:
+
+			break
+		}
+	}
+
 	// MARK: - Actions
 
 	@IBAction func unwindToFeedTableViewController(sender: UIStoryboardSegue) {

@@ -11,7 +11,7 @@ import UIKit
 
 enum ModelError: Error {
 
-	case feedNameAlreadyInUse
+	case nameExists
 }
 
 class ModelController {
@@ -99,6 +99,8 @@ class ModelController {
 
 	// MARK: - Public Functions
 
+	// MARK: Create
+
 	func insertNewsProvider(identifier: Int16, name: String, detail: String, hint: String) -> NewsProvider {
 
 		let newsProviderEntityDescription = getEntityDescription(for: String(describing: NewsProvider.self), in: context)
@@ -138,10 +140,12 @@ class ModelController {
 		return newsSource
 	}
 
-	func insertNewsFeed(name: String, colorIdentifier: Int16, sources: Set<NewsSource>) throws {
+	func insertNewsFeed(name: String, colorIdentifier: Int16, sources: Set<NewsSource>) throws -> NewsFeed {
 
 		let newsFeedEntityDescription = getEntityDescription(for: String(describing: NewsFeed.self), in: context)
-		let newsFeed = NSManagedObject(entity: newsFeedEntityDescription, insertInto: context)
+		guard let newsFeed = NSManagedObject(entity: newsFeedEntityDescription, insertInto: context) as? NewsFeed else {
+			fatalError("Created news feed type is not NewsFeed.")
+		}
 		newsFeed.setValue(name, forKeyPath: #keyPath(NewsFeed.name))
 		newsFeed.setValue(colorIdentifier, forKey: #keyPath(NewsFeed.colorIdentifier))
 		newsFeed.setValue(sources, forKey: #keyPath(NewsFeed.sources))
@@ -151,33 +155,32 @@ class ModelController {
 			try context.save()
 		} catch let error as NSError {
 
-			if let conflictList = error.userInfo["conflictList"] as? [NSConstraintConflict] {
+			if isErrorContainsNameConflict(error) {
 
-				for conflict in conflictList {
-
-					if conflict.constraint.contains("name") {
-
-						guard let newsFeed: NewsFeed = newsFeed as? NewsFeed else {
-							fatalError("Created news feed type is not NewsFeed.")
-						}
-						deleteNewsFeed(newsFeed)
-
-						throw ModelError.feedNameAlreadyInUse
-					}
-				}
+				deleteNewsFeed(newsFeed)
+				throw ModelError.nameExists
 			}
 
 			fatalError("Couldn't insert the news feed. Error: \(error)")
 		}
+
+		return newsFeed
 	}
 
-	func deleteNewsFeed(_ feed: NewsFeed) {
+	// MARK: Read
+
+	func getNewsProviders(ordered order: [NSSortDescriptor]) -> [NewsProvider] {
+
+		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsProvider.fetchRequest()
+		fetchRequest.sortDescriptors = order
 
 		do {
-			context.delete(feed)
-			try context.save()
+			guard let providers = try context.fetch(fetchRequest) as? [NewsProvider] else {
+				fatalError("Couldn't convert the fetched results to [NewsProvider].")
+			}
+			return providers
 		} catch let error as NSError {
-			fatalError("Couldn't delete news feed. Error: \(error)")
+			fatalError("Couldn't count the news providers. Error: \(error)")
 		}
 	}
 
@@ -196,18 +199,59 @@ class ModelController {
 		}
 	}
 
-	func getNewsProviders(ordered order: [NSSortDescriptor]) -> [NewsProvider] {
+	// MARK: Update
 
-		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsProvider.fetchRequest()
-		fetchRequest.sortDescriptors = order
+	func updateNewsFeed(_ feed: NewsFeed, name: String?, colorIdentifier: Int16?, sources: Set<NewsSource>?) throws -> NewsFeed {
+
+		let previousName = feed.name
+		let previousColorIdentifier = feed.colorIdentifier
+		let previousSources = feed.sources
+
+		if let name = name {
+			feed.setValue(name, forKey:#keyPath(NewsFeed.name))
+		}
+
+		if let colorIdentifier = colorIdentifier {
+			feed.setValue(colorIdentifier, forKey:#keyPath(NewsFeed.colorIdentifier))
+		}
+
+		if let sources = sources {
+			feed.setValue(sources, forKey:#keyPath(NewsFeed.sources))
+		}
 
 		do {
-			guard let providers = try context.fetch(fetchRequest) as? [NewsProvider] else {
-				fatalError("Couldn't convert the fetched results to [NewsProvider].")
-			}
-			return providers
+			try context.save()
 		} catch let error as NSError {
-			fatalError("Couldn't count the news providers. Error: \(error)")
+
+			if isErrorContainsNameConflict(error) {
+
+				do {
+					feed.setValue(previousName, forKey:#keyPath(NewsFeed.name))
+					feed.setValue(previousColorIdentifier, forKey:#keyPath(NewsFeed.colorIdentifier))
+					feed.setValue(previousSources, forKey:#keyPath(NewsFeed.sources))
+					try context.save()
+				} catch let error as NSError {
+					fatalError("Couldn't rollback feed while updating it and the name conflicted. Error: \(error)")
+				}
+
+				throw ModelError.nameExists
+			}
+
+			fatalError("Couldn't update the news feed. Error: \(error)")
+		}
+
+		return feed
+	}
+
+	// MARK: Delete
+
+	func deleteNewsFeed(_ feed: NewsFeed) {
+
+		do {
+			context.delete(feed)
+			try context.save()
+		} catch let error as NSError {
+			fatalError("Couldn't delete news feed. Error: \(error)")
 		}
 	}
 
@@ -246,6 +290,22 @@ class ModelController {
 		} catch let error as NSError {
 			fatalError("Couldn't get the news feed orders' minimum. Error: \(error)")
 		}
+	}
+
+	private func isErrorContainsNameConflict(_ error: NSError) -> Bool {
+
+		if let conflictList = error.userInfo["conflictList"] as? [NSConstraintConflict] {
+
+			for conflict in conflictList {
+
+				if conflict.constraint.contains("name") {
+
+					return true
+				}
+			}
+		}
+
+		return false
 	}
 
 }

@@ -87,6 +87,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="1ah-zJ-0ac" kind="presentation" identifier="Edit Feed" id="bBN-Ye-te3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6K-Yr-yuq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -115,4 +118,7 @@
             <point key="canvasLocation" x="189.59999999999999" y="142.57871064467767"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="bBN-Ye-te3"/>
+    </inferredMetricsTieBreakers>
 </document>
