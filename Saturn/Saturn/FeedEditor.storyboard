@@ -166,7 +166,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="zRe-t2-U2t">
                             <connections>
-                                <segue destination="Son-gZ-VVC" kind="unwind" identifier="Done" unwindAction="unwindToFeedTableViewControllerWithSender:" id="DCH-bY-qCI"/>
+                                <segue destination="Son-gZ-VVC" kind="unwind" identifier="Done" unwindAction="unwindToFeedListTableViewControllerWithSender:" id="DCH-bY-qCI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

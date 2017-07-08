@@ -1,5 +1,5 @@
 //
-//  FeedTableViewController.swift
+//  FeedListTableViewController.swift
 //  Saturn
 //
 //  Created by Zsolt Mester on 2017. 05. 16..
@@ -10,7 +10,7 @@ import CoreData
 import Pastel
 import UIKit
 
-class FeedTableViewController: ModelTableViewController {
+class FeedListTableViewController: ModelTableViewController {
 
 	// MARK: - Initialization
 
@@ -138,7 +138,7 @@ class FeedTableViewController: ModelTableViewController {
 
 	// MARK: - Actions
 
-	@IBAction func unwindToFeedTableViewController(sender: UIStoryboardSegue) {
+	@IBAction func unwindToFeedListTableViewController(sender: UIStoryboardSegue) {
 
 		if sender.source is FeedEditorTableViewController {
 

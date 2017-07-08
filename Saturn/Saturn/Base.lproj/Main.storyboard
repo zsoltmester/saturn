@@ -21,7 +21,7 @@
         <!--Feed-->
         <scene sceneID="tS7-Ty-bbH">
             <objects>
-                <tableViewController title="Feed" id="b3M-Fj-s2L" customClass="FeedTableViewController" customModule="Saturn" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Feed" id="b3M-Fj-s2L" customClass="FeedListTableViewController" customModule="Saturn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="116" sectionHeaderHeight="28" sectionFooterHeight="28" id="EQP-xR-QHC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
