@@ -73,8 +73,8 @@ class ColorCollectionViewController: UICollectionViewController {
 		if parent == nil, let navigationController = self.navigationController, navigationController.viewControllers.count >= 2 {
 
 			let previousViewController = navigationController.viewControllers[navigationController.viewControllers.count - 2]
-			if let addTableViewController = previousViewController as? AddTableViewController {
-				addTableViewController.selectedColor = selectedColor
+			if let feedEditorTableViewController = previousViewController as? FeedEditorTableViewController {
+				feedEditorTableViewController.selectedColor = selectedColor
 			}
 		}
 	}

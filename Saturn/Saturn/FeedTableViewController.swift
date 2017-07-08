@@ -124,11 +124,11 @@ class FeedTableViewController: ModelTableViewController {
 				fatalError("Segue ID is Edit Feed, but the sender is not a valid index path, but \(sender ?? "nil").")
 			}
 
-			guard let addTableViewController = segue.destination.childViewControllers[0] as? AddTableViewController else {
-				fatalError("At Edit Feed segue the destination view controller's first child is not an AddTableViewController, but \(segue.destination).")
+			guard let feedEditorTableViewController = segue.destination.childViewControllers[0] as? FeedEditorTableViewController else {
+				fatalError("At Edit Feed segue the destination view controller's first child is not an FeedEditorTableViewController, but \(segue.destination).")
 			}
 
-			addTableViewController.feedToEdit = feed
+			feedEditorTableViewController.feedToEdit = feed
 
 		default:
 
@@ -140,7 +140,7 @@ class FeedTableViewController: ModelTableViewController {
 
 	@IBAction func unwindToFeedTableViewController(sender: UIStoryboardSegue) {
 
-		if sender.source is AddTableViewController {
+		if sender.source is FeedEditorTableViewController {
 
 			self.tableView.reloadData()
 		}

@@ -1,5 +1,5 @@
 //
-//  AddTableViewController.swift
+//  FeedEditorTableViewController.swift
 //  Saturn
 //
 //  Created by Zsolt Mester on 2017. 06. 04..
@@ -16,7 +16,7 @@ fileprivate enum SectionItem {
 	case source
 }
 
-class AddTableViewController: UITableViewController, UITextFieldDelegate {
+class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate {
 
 	// MARK: - Properties
 

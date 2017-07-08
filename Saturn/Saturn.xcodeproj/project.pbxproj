@@ -20,7 +20,7 @@
 		E74D100F1EC4FE870057E519 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74D100D1EC4FE870057E519 /* LaunchScreen.storyboard */; };
 		E74D101A1EC4FE870057E519 /* SaturnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74D10191EC4FE870057E519 /* SaturnTests.swift */; };
 		E74E59801EC9085C008F8248 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74E597F1EC9085C008F8248 /* ModelController.swift */; };
-		E75961931EE470C40030921F /* AddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75961921EE470C40030921F /* AddTableViewController.swift */; };
+		E75961931EE470C40030921F /* FeedEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75961921EE470C40030921F /* FeedEditorTableViewController.swift */; };
 		E75961951EE470EB0030921F /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E75961941EE470EB0030921F /* Add.storyboard */; };
 		E75961971EE4B0DE0030921F /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75961961EE4B0DE0030921F /* NameTableViewCell.swift */; };
 		E75961991EE4B3060030921F /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75961981EE4B3060030921F /* ColorTableViewCell.swift */; };
@@ -67,7 +67,7 @@
 		E74D10191EC4FE870057E519 /* SaturnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturnTests.swift; sourceTree = "<group>"; };
 		E74D101B1EC4FE870057E519 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E74E597F1EC9085C008F8248 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
-		E75961921EE470C40030921F /* AddTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTableViewController.swift; sourceTree = "<group>"; };
+		E75961921EE470C40030921F /* FeedEditorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedEditorTableViewController.swift; sourceTree = "<group>"; };
 		E75961941EE470EB0030921F /* Add.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Add.storyboard; sourceTree = "<group>"; };
 		E75961961EE4B0DE0030921F /* NameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
 		E75961981EE4B3060030921F /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
@@ -188,8 +188,8 @@
 		E7CA97C61EFEAFD300BD5DE6 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E75961921EE470C40030921F /* AddTableViewController.swift */,
 				E759619C1EE4D7C80030921F /* ColorCollectionViewController.swift */,
+				E75961921EE470C40030921F /* FeedEditorTableViewController.swift */,
 				E787C8B71ECB9175000D7728 /* FeedTableViewController.swift */,
 				E7705E561ECCDE2C0047D1E7 /* ModelTableViewController.swift */,
 			);
@@ -454,7 +454,7 @@
 				E74D100A1EC4FE870057E519 /* Saturn.xcdatamodeld in Sources */,
 				E73679541EFEDB0200859696 /* NewsProviderExtension.swift in Sources */,
 				E7AB991E1EE880ED00E3BFFF /* SourceTableViewCell.swift in Sources */,
-				E75961931EE470C40030921F /* AddTableViewController.swift in Sources */,
+				E75961931EE470C40030921F /* FeedEditorTableViewController.swift in Sources */,
 				E7705E571ECCDE2C0047D1E7 /* ModelTableViewController.swift in Sources */,
 				E7AB991C1EE8740C00E3BFFF /* AddSourceTableViewCell.swift in Sources */,
 				E787C8BA1ECB9267000D7728 /* FeedTableViewCell.swift in Sources */,
