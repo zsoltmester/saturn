@@ -230,11 +230,11 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 		case "Show Color":
 
-			guard let colorCollectionViewController = segue.destination as? ColorCollectionViewController else {
+			guard let colorSelectorCollectionViewController = segue.destination as? ColorSelectorCollectionViewController else {
 				fatalError("Unexpected destination: \(segue.destination)")
 			}
 
-			colorCollectionViewController.selectedColor = selectedColor
+			colorSelectorCollectionViewController.selectedColor = selectedColor
 
 		default:
 

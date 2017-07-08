@@ -1,5 +1,5 @@
 //
-//  ColorCollectionViewController.swift
+//  ColorSelectorCollectionViewController.swift
 //  Saturn
 //
 //  Created by Zsolt Mester on 2017. 06. 05..
@@ -9,7 +9,7 @@
 import Pastel
 import UIKit
 
-class ColorCollectionViewController: UICollectionViewController {
+class ColorSelectorCollectionViewController: UICollectionViewController {
 
 	// MARK: - Properties
 

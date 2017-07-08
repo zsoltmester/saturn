@@ -179,7 +179,7 @@
         <!--Color-->
         <scene sceneID="YBZ-Xe-7RE">
             <objects>
-                <collectionViewController title="Color" id="khB-uI-n2P" customClass="ColorCollectionViewController" customModule="Saturn" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController title="Color" id="khB-uI-n2P" customClass="ColorSelectorCollectionViewController" customModule="Saturn" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ceB-zv-Hu5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,7 +218,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z72-pa-6da" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2248" y="-512"/>
+            <point key="canvasLocation" x="2211" y="153"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1U1-Ux-Ehd">
