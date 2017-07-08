@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Add-->
+        <!--FeedEditor-->
         <scene sceneID="Dw1-lS-AiG">
             <objects>
-                <viewControllerPlaceholder storyboardName="Add" id="1ah-zJ-0ac" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="FeedEditor" id="1ah-zJ-0ac" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9d-GW-faW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1130" y="739"/>
