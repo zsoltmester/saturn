@@ -387,4 +387,5 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 		self.present(alertViewController, animated: true, completion: nil)
 	}
+
 }

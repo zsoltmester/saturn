@@ -125,10 +125,26 @@ class FeedListTableViewController: ModelTableViewController {
 			}
 
 			guard let feedEditorTableViewController = segue.destination.childViewControllers[0] as? FeedEditorTableViewController else {
-				fatalError("At Edit Feed segue the destination view controller's first child is not an FeedEditorTableViewController, but \(segue.destination).")
+				fatalError("At Edit Feed segue the destination view controller's first child is not a FeedEditorTableViewController, but \(segue.destination).")
 			}
 
 			feedEditorTableViewController.feedToEdit = feed
+
+		case "Show Feed":
+
+			guard let cell = sender as? FeedTableViewCell else {
+				fatalError("Show Feed sender is not a FeedTableViewCell, but \(sender ?? "nil").")
+			}
+
+			guard let cellIndexPath = tableView.indexPath(for: cell), let feed: NewsFeed = getObject(at: cellIndexPath) else {
+				fatalError("Couldn't get feed from a cell while prepared to show a feed.")
+			}
+
+			guard let feedTableViewController = segue.destination as? FeedTableViewController else {
+				fatalError("At Show Feed segue the destination view controller is not a FeedTableViewController, but \(segue.destination).")
+			}
+
+			feedTableViewController.feed = feed
 
 		default:
 
