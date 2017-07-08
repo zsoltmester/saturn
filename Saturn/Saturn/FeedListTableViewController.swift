@@ -136,6 +136,21 @@ class FeedListTableViewController: ModelTableViewController {
 		}
 	}
 
+	override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+		super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
+
+		switch identifier {
+
+		case "Show Feed":
+
+			return !tableView.isEditing
+
+		default:
+
+			return true
+		}
+	}
+
 	// MARK: - Actions
 
 	@IBAction func unwindToFeedListTableViewController(sender: UIStoryboardSegue) {

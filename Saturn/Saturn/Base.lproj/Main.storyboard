@@ -72,6 +72,7 @@
                                     <outlet property="colorPastelView" destination="zAh-k7-GyS" id="aXP-qV-JXr"/>
                                     <outlet property="nameLabel" destination="aeR-Xq-blD" id="o8d-gF-JOj"/>
                                     <outlet property="sourcesLabel" destination="uAY-8f-2Rd" id="A5B-VI-qY6"/>
+                                    <segue destination="2X6-f4-rRQ" kind="show" identifier="Show Feed" id="64z-b6-utC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -80,7 +81,7 @@
                             <outlet property="delegate" destination="b3M-Fj-s2L" id="9d9-Dg-Lpt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Feeds" id="NOp-nw-YqJ">
+                    <navigationItem key="navigationItem" title="Feed List" id="NOp-nw-YqJ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eCv-Ce-iWK">
                             <connections>
                                 <segue destination="1ah-zJ-0ac" kind="presentation" id="v2e-O9-jOF"/>
@@ -94,6 +95,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6K-Yr-yuq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1128.8" y="142.57871064467767"/>
+        </scene>
+        <!--Feed Table View Controller-->
+        <scene sceneID="Mfp-Xe-aTU">
+            <objects>
+                <tableViewController id="2X6-f4-rRQ" customClass="FeedTableViewController" customModule="Saturn" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="e3Y-Zs-2fd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ryr-OD-Hbt">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ryr-OD-Hbt" id="lUZ-Pj-hDG">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2X6-f4-rRQ" id="L4i-E1-pVk"/>
+                            <outlet property="delegate" destination="2X6-f4-rRQ" id="CV5-BM-C7n"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3D4-KG-xSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2106" y="142"/>
         </scene>
         <!--Main Navigation Stack-->
         <scene sceneID="Fj9-OO-aqX">
