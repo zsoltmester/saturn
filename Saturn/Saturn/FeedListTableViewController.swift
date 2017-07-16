@@ -24,7 +24,7 @@ class FeedListTableViewController: ModelTableViewController {
 		NotificationCenter.default.addObserver(self, selector: #selector(startAnimations), name: .UIApplicationDidBecomeActive, object: nil)
     }
 
-	func prepareFetchedResultsController() {
+	private func prepareFetchedResultsController() {
 
 		let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NewsFeed.fetchRequest()
 		fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(NewsFeed.order), ascending: true)]
@@ -179,7 +179,7 @@ class FeedListTableViewController: ModelTableViewController {
 
 	// MARK: - Private Functions
 
-	func getSourcesText(sources: NSSet?) -> String {
+	private func getSourcesText(sources: NSSet?) -> String {
 
 		let sourcesTitleSorter = NSSortDescriptor(key: #keyPath(NewsSource.title), ascending: true, selector: #selector(NSString.compare(_:)))
 		let sourcesProviderSorter = NSSortDescriptor(key: #keyPath(NewsSource.provider.name), ascending: true, selector: #selector(NSString.compare(_:)))
@@ -207,7 +207,7 @@ class FeedListTableViewController: ModelTableViewController {
 		return sourcesText
 	}
 
-	func getPastelGradient(colorIdentifier: Int16) -> PastelGradient {
+	private func getPastelGradient(colorIdentifier: Int16) -> PastelGradient {
 
 		let colorIdentifier = colorIdentifier == -1 ? Int(arc4random_uniform(9)) : Int(colorIdentifier)
 

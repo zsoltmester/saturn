@@ -32,16 +32,16 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 	private var newsSources: [Int: [NewsSource]] = [:]
 
-	var selectedColor = 0
+	private var enteredName: String?
 
-	var enteredName: String?
-
-	var isEditingName = false {
+	private var isEditingName = false {
 
 		didSet {
 			updateDoneButtonState()
 		}
 	}
+
+	var selectedColor = 0
 
 	var feedToEdit: NewsFeed?
 
@@ -67,7 +67,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		updateDoneButtonState()
 	}
 
-	func loadFeedToEdit() {
+	private func loadFeedToEdit() {
 
 		guard let feedToEdit = feedToEdit else {
 			return
