@@ -16,6 +16,12 @@ fileprivate enum SectionItem {
 	case source
 }
 
+fileprivate enum TextFieldTag: Int {
+
+	case nameTextField
+	case queryTextField
+}
+
 class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate {
 
 	// MARK: - Properties
@@ -24,7 +30,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 	private var newsProviders: [Int: NewsProvider] = [:]
 
-	private var newsSources: [Int:  [NewsSource]] = [:]
+	private var newsSources: [Int: [NewsSource]] = [:]
 
 	var selectedColor = 0
 
@@ -131,6 +137,8 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 			cell.providerNameLabel.text = newsProvider.name
 			cell.providerDetailLabel.text = newsProvider.detail
 			cell.queryTextField.placeholder = newsProvider.hint
+			cell.queryTextField.tag = TextFieldTag.queryTextField.rawValue
+			cell.queryTextField.delegate = self
 
 		} else if let cell: SourceTableViewCell = cell as? SourceTableViewCell {
 
@@ -143,6 +151,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		} else if let cell: NameTableViewCell = cell as? NameTableViewCell {
 
 			cell.nameTextField.text = enteredName
+			cell.nameTextField.tag = TextFieldTag.nameTextField.rawValue
 			cell.nameTextField.delegate = self
 		}
 
@@ -203,7 +212,10 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 	func textFieldDidBeginEditing(_ textField: UITextField) {
 
-		isEditingName = true
+		if textField.tag == TextFieldTag.nameTextField.rawValue {
+
+			isEditingName = true
+		}
 	}
 
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -215,10 +227,13 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 	func textFieldDidEndEditing(_ textField: UITextField) {
 
-		textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-		enteredName = textField.text
+		if textField.tag == TextFieldTag.nameTextField.rawValue {
 
-		isEditingName = false
+			textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+			enteredName = textField.text
+
+			isEditingName = false
+		}
 	}
 
 	// MARK: - Navigation

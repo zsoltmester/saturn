@@ -138,8 +138,8 @@
 		E74D10001EC4FE870057E519 /* Saturn */ = {
 			isa = PBXGroup;
 			children = (
-				E74D100B1EC4FE870057E519 /* Assets.xcassets */,
 				E74D10101EC4FE870057E519 /* Info.plist */,
+				E74D100B1EC4FE870057E519 /* Assets.xcassets */,
 				E74D10241EC50E120057E519 /* Model */,
 				E74D10271EC50E4C0057E519 /* Controller */,
 				E74D10251EC50E2B0057E519 /* View */,
@@ -191,22 +191,38 @@
 			isa = PBXGroup;
 			children = (
 				E7882B171F1BBFA1007E4512 /* Fetchable.swift */,
-				E7882B1B1F1BC20B007E4512 /* Twitter.swift */,
 				E73679531EFEDB0200859696 /* NewsProvider+Fetchable.swift */,
 				E736794D1EFED20A00859696 /* NewsSource+Fetchable.swift */,
 				E792068B1F13DFA400E81470 /* NewsFeed+Fetchable.swift */,
+				E7882B1B1F1BC20B007E4512 /* Twitter.swift */,
 			);
 			name = Fetchable;
+			sourceTree = "<group>";
+		};
+		E7882B1F1F1BD41C007E4512 /* Feed Editor Story */ = {
+			isa = PBXGroup;
+			children = (
+				E75961921EE470C40030921F /* FeedEditorTableViewController.swift */,
+				E759619C1EE4D7C80030921F /* ColorSelectorCollectionViewController.swift */,
+			);
+			name = "Feed Editor Story";
+			sourceTree = "<group>";
+		};
+		E7882B201F1BD44D007E4512 /* Main Story */ = {
+			isa = PBXGroup;
+			children = (
+				E787C8B71ECB9175000D7728 /* FeedListTableViewController.swift */,
+				E776FCF41F112DE4001CFC42 /* FeedTableViewController.swift */,
+			);
+			name = "Main Story";
 			sourceTree = "<group>";
 		};
 		E7CA97C61EFEAFD300BD5DE6 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E759619C1EE4D7C80030921F /* ColorSelectorCollectionViewController.swift */,
-				E75961921EE470C40030921F /* FeedEditorTableViewController.swift */,
-				E787C8B71ECB9175000D7728 /* FeedListTableViewController.swift */,
-				E776FCF41F112DE4001CFC42 /* FeedTableViewController.swift */,
 				E7705E561ECCDE2C0047D1E7 /* ModelTableViewController.swift */,
+				E7882B201F1BD44D007E4512 /* Main Story */,
+				E7882B1F1F1BD41C007E4512 /* Feed Editor Story */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";

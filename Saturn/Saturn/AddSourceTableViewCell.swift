@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddSourceTableViewCell: UITableViewCell, UITextFieldDelegate {
+class AddSourceTableViewCell: UITableViewCell {
 
 	// MARK: - Properties
 
@@ -16,19 +16,5 @@ class AddSourceTableViewCell: UITableViewCell, UITextFieldDelegate {
 
 	@IBOutlet weak var providerNameLabel: UILabel!
 	@IBOutlet weak var providerDetailLabel: UILabel!
-	@IBOutlet weak var queryTextField: UITextField! {
-
-		didSet {
-			queryTextField.delegate = self
-		}
-	}
-
-	// MARK: - UITextFieldDelegate
-
-	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-
-		textField.resignFirstResponder()
-
-		return true
-	}
+	@IBOutlet weak var queryTextField: UITextField!
 }
