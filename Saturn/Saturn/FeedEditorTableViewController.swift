@@ -50,7 +50,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		self.setEditing(true, animated: false)
 
 		let order = [NSSortDescriptor(key: #keyPath(NewsProvider.name), ascending: true)]
-		let newsProvidersInOrder = AppDelegate.get().modelController.getNewsProviders(ordered: order)
+		let newsProvidersInOrder = AppDelegate.shared.modelController.getNewsProviders(ordered: order)
 		for newsProvider in newsProvidersInOrder {
 			newsProviders[sections.count] = newsProvider
 			sections.append([.addSource])
@@ -256,7 +256,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 			if let feedToEdit = feedToEdit {
 
 				do {
-					_ = try AppDelegate.get().modelController.updateNewsFeed(feedToEdit, name: enteredName, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
+					_ = try AppDelegate.shared.modelController.updateNewsFeed(feedToEdit, name: enteredName, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
 				} catch ModelError.nameExists {
 
 					showNameExistsAlertViewController(name)
@@ -270,7 +270,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 			} else {
 
 				do {
-					_ = try AppDelegate.get().modelController.insertNewsFeed(name: name, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
+					_ = try AppDelegate.shared.modelController.insertNewsFeed(name: name, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
 				} catch ModelError.nameExists {
 
 					showNameExistsAlertViewController(name)
@@ -329,7 +329,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 			if error == nil {
 
-				let source = AppDelegate.get().modelController.getNewsSource(provider: newsProvider, query: query) ?? AppDelegate.get().modelController.insertNewsSource(provider: newsProvider, query: query)
+				let source = AppDelegate.shared.modelController.getNewsSource(provider: newsProvider, query: query) ?? AppDelegate.shared.modelController.insertNewsSource(provider: newsProvider, query: query)
 
 				self.sections[indexPath.section].insert(.source, at: indexPath.row)
 

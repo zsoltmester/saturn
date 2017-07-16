@@ -14,19 +14,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	// MARK: - Properties
 
-	var modelController: ModelController!
 	var window: UIWindow?
 
-	// MARK: - Public Functions
+	var modelController: ModelController!
 
-	static func get() -> AppDelegate {
+	static let shared: AppDelegate = {
 
 		guard let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate else {
 			fatalError("Can be UIApplication.shared.delegate other than mine?")
 		}
 
 		return appDelegate
-	}
+	}()
 
 	// MARK: - Application Lifecycle
 
