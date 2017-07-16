@@ -10,11 +10,11 @@ import Foundation
 
 typealias FetchRequest = String
 
-typealias FetchResults = [String] // TODO: should be news
+typealias FetchResult = String // TODO: should be news
 
 typealias FetchError = Error
 
-typealias FetchCompletionHandler = (FetchResults?, FetchError?) -> Void
+typealias FetchCompletionHandler = ([FetchResult]?, [FetchError]?) -> Void
 
 protocol Fetchable {
 

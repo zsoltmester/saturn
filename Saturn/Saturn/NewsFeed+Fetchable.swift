@@ -22,8 +22,8 @@ extension NewsFeed: Fetchable {
 			fatalError("Fetching a news feed, but the sources are not valid.")
 		}
 
-		var fetchResults = [FetchResults]()
-		var fetchErrors = [FetchError]()
+		var allResults = [FetchResult]()
+		var allErrors = [FetchError]()
 
 		let fetchDispatchGroup = DispatchGroup()
 
@@ -31,14 +31,14 @@ extension NewsFeed: Fetchable {
 
 			fetchDispatchGroup.enter()
 
-			source.fetch(request: nil, completionHandler: { (results: FetchResults?, error: FetchError?) in
+			source.fetch(request: nil, completionHandler: { (results: [FetchResult]?, errors: [FetchError]?) in
 
-				if let results: FetchResults = results {
-					fetchResults.append(results)
+				if let results: [FetchResult] = results {
+					allResults.append(contentsOf: results)
 				}
 
-				if let error: FetchError = error {
-					fetchErrors.append(error)
+				if let errors: [FetchError] = errors {
+					allErrors.append(contentsOf: errors)
 				}
 
 				fetchDispatchGroup.leave()
@@ -47,23 +47,9 @@ extension NewsFeed: Fetchable {
 
 		fetchDispatchGroup.notify(queue: DispatchQueue.main) {
 
-			let results: FetchResults? = self.mergeFetchResults(results: fetchResults)
-			let error: FetchError? = self.mergeFetchErrors(errors: fetchErrors)
-			completionHandler(results, error)
+			completionHandler(allResults, allErrors)
 		}
 
-	}
-
-	// MARK: - Private Functions
-
-	func mergeFetchResults(results: [FetchResults]) -> FetchResults? {
-		// TODO
-		return nil
-	}
-
-	func mergeFetchErrors(errors: [FetchError]) -> FetchError? {
-		// TODO
-		return nil
 	}
 
 }

@@ -56,7 +56,12 @@ class Twitter: Fetchable {
 				}
 			}
 
-			completionHandler(tweetsAsString, error)
+			var errors: [FetchError]?
+			if let error = error {
+				errors = [error]
+			}
+
+			completionHandler(tweetsAsString, errors)
 		}
 	}
 

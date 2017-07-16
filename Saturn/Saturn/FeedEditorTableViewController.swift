@@ -340,9 +340,9 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		cell.queryTextField.resignFirstResponder()
 		beginLoading()
 
-		newsProvider.fetch(request: query) { (_, error: FetchError?) in
+		newsProvider.fetch(request: query) { (_, errors: [FetchError]?) in
 
-			if error == nil {
+			if errors?.isEmpty ?? true {
 
 				let source = AppDelegate.shared.modelController.getNewsSource(provider: newsProvider, query: query) ?? AppDelegate.shared.modelController.insertNewsSource(provider: newsProvider, query: query)
 
