@@ -325,35 +325,34 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		cell.queryTextField.resignFirstResponder()
 		beginLoading()
 
-		NewsSource.create(provider: newsProvider, query: query, completionHandler: { (newsSource: NewsSource?, error: QueryError?) in
+		newsProvider.fetch(request: query) { (_, error: FetchError?) in
 
-			if error != nil {
+			if error == nil {
 
-				let alertViewController: UIAlertController = UIAlertController(title: "Couldn't find \(query)'s \(newsProvider.name ?? "")", message: nil, preferredStyle: .alert)
-				alertViewController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-				self.present(alertViewController, animated: true, completion: nil)
-
-			} else {
-
-				guard let newsSource = newsSource else {
-					fatalError("No error and no source at NewsSource.create's completionHandler.")
-				}
+				let source = AppDelegate.get().modelController.getNewsSource(provider: newsProvider, query: query) ?? AppDelegate.get().modelController.insertNewsSource(provider: newsProvider, query: query)
 
 				self.sections[indexPath.section].insert(.source, at: indexPath.row)
 
 				if self.newsSources[indexPath.section] == nil {
-					self.newsSources[indexPath.section] = [newsSource]
+					self.newsSources[indexPath.section] = [source]
 				} else {
-					self.newsSources[indexPath.section]!.append(newsSource)
+					self.newsSources[indexPath.section]!.append(source)
 				}
 
 				self.tableView.insertRows(at: [indexPath], with: .automatic)
 
 				cell.queryTextField.text = nil
+
+			} else {
+
+				let alertViewController: UIAlertController = UIAlertController(title: "Couldn't find \(query)'s \(newsProvider.name ?? "")", message: nil, preferredStyle: .alert)
+				alertViewController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+				self.present(alertViewController, animated: true, completion: nil)
+
 			}
 
 			self.endLoading()
-		})
+		}
 	}
 
 	private func beginLoading() {
