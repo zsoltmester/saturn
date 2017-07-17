@@ -105,13 +105,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ryr-OD-Hbt">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="News Cell" rowHeight="44" id="ryr-OD-Hbt" customClass="NewsTableViewCell" customModule="Saturn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ryr-OD-Hbt" id="lUZ-Pj-hDG">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="0GJ-AG-3rF">
+                                            <rect key="frame" x="8" y="8" width="304" height="27.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="0GJ-AG-3rF" firstAttribute="leading" secondItem="lUZ-Pj-hDG" secondAttribute="leadingMargin" id="2ax-fF-AAq"/>
+                                        <constraint firstItem="0GJ-AG-3rF" firstAttribute="top" secondItem="lUZ-Pj-hDG" secondAttribute="topMargin" id="39E-Bx-QNI"/>
+                                        <constraint firstItem="0GJ-AG-3rF" firstAttribute="bottom" secondItem="lUZ-Pj-hDG" secondAttribute="bottomMargin" id="8ef-Wq-F4y"/>
+                                        <constraint firstItem="0GJ-AG-3rF" firstAttribute="trailing" secondItem="lUZ-Pj-hDG" secondAttribute="trailingMargin" id="vw9-Mf-pbc"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="showcaseLabel" destination="0GJ-AG-3rF" id="EVB-Nc-mmw"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -122,7 +139,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3D4-KG-xSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2106" y="142"/>
+            <point key="canvasLocation" x="2105.625" y="141.5492957746479"/>
         </scene>
         <!--Main Navigation Stack-->
         <scene sceneID="Fj9-OO-aqX">

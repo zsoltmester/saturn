@@ -45,20 +45,17 @@ class Twitter: Fetchable {
 
 		userTimelineLoader.loadPreviousTweets(beforePosition: nil /* TODO: handle load more */) { (tweets: [TWTRTweet]?, _, error: Error?) in
 
-			// TODO: create news, instead of strings
-			var tweetsAsString = [String]()
-
-			if error != nil, let tweets = tweets {
-
-				for tweet in tweets {
-
-					tweetsAsString.append("Author: \(tweet.author) \nCreated: \(tweet.createdAt)") // TODO: Add more property
-				}
-			}
-
 			var errors: [FetchError]?
 			if let error = error {
 				errors = [error]
+			}
+
+			// TODO: create news, instead of strings
+			var tweetsAsString = [String]()
+			if let tweets = tweets {
+				for tweet in tweets {
+					tweetsAsString.append(tweet.description)
+				}
 			}
 
 			completionHandler(tweetsAsString, errors)

@@ -34,6 +34,7 @@
 		E7AB991C1EE8740C00E3BFFF /* AddSourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB991B1EE8740C00E3BFFF /* AddSourceTableViewCell.swift */; };
 		E7AB991E1EE880ED00E3BFFF /* SourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB991D1EE880ED00E3BFFF /* SourceTableViewCell.swift */; };
 		E7CA97C91EFEB44200BD5DE6 /* NewsProviderIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CA97C81EFEB44200BD5DE6 /* NewsProviderIdentifier.swift */; };
+		E7FC7E8B1F1C314C00734AAE /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FC7E8A1F1C314C00734AAE /* NewsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		E7AB991B1EE8740C00E3BFFF /* AddSourceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSourceTableViewCell.swift; sourceTree = "<group>"; };
 		E7AB991D1EE880ED00E3BFFF /* SourceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceTableViewCell.swift; sourceTree = "<group>"; };
 		E7CA97C81EFEB44200BD5DE6 /* NewsProviderIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsProviderIdentifier.swift; sourceTree = "<group>"; };
+		E7FC7E8A1F1C314C00734AAE /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 				E759619E1EE4D8240030921F /* ColorCollectionViewCell.swift */,
 				E787C8B91ECB9267000D7728 /* FeedTableViewCell.swift */,
 				E75961961EE4B0DE0030921F /* NameTableViewCell.swift */,
+				E7FC7E8A1F1C314C00734AAE /* NewsTableViewCell.swift */,
 				E7AB991D1EE880ED00E3BFFF /* SourceTableViewCell.swift */,
 			);
 			name = "Table View Cell";
@@ -479,6 +482,7 @@
 				E7705E571ECCDE2C0047D1E7 /* ModelTableViewController.swift in Sources */,
 				E7AB991C1EE8740C00E3BFFF /* AddSourceTableViewCell.swift in Sources */,
 				E787C8BA1ECB9267000D7728 /* FeedTableViewCell.swift in Sources */,
+				E7FC7E8B1F1C314C00734AAE /* NewsTableViewCell.swift in Sources */,
 				E7882B1C1F1BC20B007E4512 /* Twitter.swift in Sources */,
 				E776FCF51F112DE5001CFC42 /* FeedTableViewController.swift in Sources */,
 				E74D10021EC4FE870057E519 /* AppDelegate.swift in Sources */,
