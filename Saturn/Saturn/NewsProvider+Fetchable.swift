@@ -19,6 +19,9 @@ extension NewsProvider: Fetchable {
 		case NewsProviderIdentifier.twitter.rawValue:
 			Twitter.shared.fetch(request: request, completionHandler: completionHandler)
 
+		case NewsProviderIdentifier.facebook.rawValue:
+			Facebook.shared.fetch(request: request, completionHandler: completionHandler)
+
 		default:
 			fatalError("Couldn't find the fetcher for a news provider: \(name ?? ""), \(identifier)")
 		}

@@ -24,6 +24,7 @@
 		E75961991EE4B3060030921F /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75961981EE4B3060030921F /* ColorTableViewCell.swift */; };
 		E759619D1EE4D7C80030921F /* ColorSelectorCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759619C1EE4D7C80030921F /* ColorSelectorCollectionViewController.swift */; };
 		E759619F1EE4D8240030921F /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759619E1EE4D8240030921F /* ColorCollectionViewCell.swift */; };
+		E760B74A1F1D2FE00020BC81 /* Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = E760B7491F1D2FE00020BC81 /* Facebook.swift */; };
 		E7705E571ECCDE2C0047D1E7 /* ModelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7705E561ECCDE2C0047D1E7 /* ModelTableViewController.swift */; };
 		E776FCF51F112DE5001CFC42 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E776FCF41F112DE4001CFC42 /* FeedTableViewController.swift */; };
 		E787C8B81ECB9175000D7728 /* FeedListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787C8B71ECB9175000D7728 /* FeedListTableViewController.swift */; };
@@ -74,6 +75,7 @@
 		E75961981EE4B3060030921F /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		E759619C1EE4D7C80030921F /* ColorSelectorCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectorCollectionViewController.swift; sourceTree = "<group>"; };
 		E759619E1EE4D8240030921F /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		E760B7491F1D2FE00020BC81 /* Facebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facebook.swift; sourceTree = "<group>"; };
 		E7705E561ECCDE2C0047D1E7 /* ModelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTableViewController.swift; sourceTree = "<group>"; };
 		E776FCF41F112DE4001CFC42 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		E787C8B71ECB9175000D7728 /* FeedListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedListTableViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				E73679531EFEDB0200859696 /* NewsProvider+Fetchable.swift */,
 				E736794D1EFED20A00859696 /* NewsSource+Fetchable.swift */,
 				E792068B1F13DFA400E81470 /* NewsFeed+Fetchable.swift */,
+				E760B7491F1D2FE00020BC81 /* Facebook.swift */,
 				E7882B1B1F1BC20B007E4512 /* Twitter.swift */,
 			);
 			name = Fetchable;
@@ -483,6 +486,7 @@
 				E7AB991C1EE8740C00E3BFFF /* AddSourceTableViewCell.swift in Sources */,
 				E787C8BA1ECB9267000D7728 /* FeedTableViewCell.swift in Sources */,
 				E7FC7E8B1F1C314C00734AAE /* NewsTableViewCell.swift in Sources */,
+				E760B74A1F1D2FE00020BC81 /* Facebook.swift in Sources */,
 				E7882B1C1F1BC20B007E4512 /* Twitter.swift in Sources */,
 				E776FCF51F112DE5001CFC42 /* FeedTableViewController.swift in Sources */,
 				E74D10021EC4FE870057E519 /* AppDelegate.swift in Sources */,
