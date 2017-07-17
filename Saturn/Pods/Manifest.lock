@@ -1,4 +1,15 @@
 PODS:
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - FacebookCore (0.2.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.15)
+  - FBSDKCoreKit (4.24.0):
+    - Bolts (~> 1.7)
   - Pastel (0.3.0)
   - SwiftLint (0.19.0)
   - TwitterCore (3.0.0)
@@ -6,16 +17,20 @@ PODS:
     - TwitterCore (>= 3.0.0)
 
 DEPENDENCIES:
+  - FacebookCore (~> 0.2.0)
   - Pastel (~> 0.3.0)
   - SwiftLint (~> 0.19.0)
   - TwitterKit (~> 3.0.0)
 
 SPEC CHECKSUMS:
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
+  FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
   Pastel: 738740c84f2b15bbcd96ebe99c4e6c2f5dd42262
   SwiftLint: 3537a05b34060e78e7510f04fb7537d738247803
   TwitterCore: 8ce250be1eb34633a0e6acc89520d4165ec52c10
   TwitterKit: 202404be71aadd81d19f677b34579fe77d9cb67e
 
-PODFILE CHECKSUM: dd44b05f7abacee0588ecd3c15f1ef3bb1ff0331
+PODFILE CHECKSUM: c8bffb5e012317551bd0b60a6241b23c90e7ef70
 
 COCOAPODS: 1.2.1
