@@ -6,6 +6,8 @@
 //  Copyright © 2017. Zsolt Mester. All rights reserved.
 //
 
+import FacebookCore
+import FacebookLogin
 import UIKit
 
 fileprivate enum SectionItem {
@@ -320,15 +322,35 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 			fatalError("Couldn't cast cell to AddSourceTableViewCell at index path: \(indexPath)")
 		}
 
+		guard let newsProvider = newsProviders[indexPath.section] else {
+			fatalError("Couldn't find news provider for section \(indexPath.section)")
+		}
+
+		if newsProvider.identifier == NewsProviderIdentifier.facebook.rawValue && AccessToken.current == nil {
+
+			Facebook.shared.login(completion: { result in
+
+				switch result {
+
+				case .cancelled, .failed:
+					let alertViewController: UIAlertController = UIAlertController(title: "Failed to log in", message: "Please try again.", preferredStyle: .alert)
+					alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+					self.present(alertViewController, animated: true, completion: nil)
+
+				case .success:
+					self.insertSource(from: indexPath)
+
+				}
+			})
+
+			return
+		}
+
 		guard let query = cell.queryTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !query.isEmpty else {
 			if !cell.queryTextField.isFirstResponder {
 				cell.queryTextField.becomeFirstResponder()
 			}
 			return
-		}
-
-		guard let newsProvider = newsProviders[indexPath.section] else {
-			fatalError("Couldn't find news provider for section \(indexPath.section)")
 		}
 
 		if let newsSourcesForThisSection = self.newsSources[indexPath.section] {

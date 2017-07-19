@@ -59,8 +59,8 @@ class ModelController {
 
 		_ = insertNewsProvider(identifier: NewsProviderIdentifier.facebook.rawValue,
 		                       name: "Facebook",
-		                       detail: "Get the latest posts of a page. Enter the page's name, for example “GameOfThrones”, “zuck” or “coachella”.",
-		                       hint: "Page or username")
+		                       detail: "Get the latest posts from a page. Enter the page's name, for example “GameOfThrones” or “coachella”.",
+		                       hint: "Page")
 
 		/*
 		let rssNewsProvider: NewsProvider = insertNewsProvider(identifier: 0, name: "RSS", detail: "Long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long description of RSS.", hint: "RSS URL")
