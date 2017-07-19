@@ -42,7 +42,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 ### Possible new features
 
 - Cache (news, pictures, videos, other media...)
-- iOS 11 support
+- iOS 11 + Swift 4 support
 - Feedback from users
 - Share news
 - Save news
@@ -52,12 +52,33 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Integrate LicensePlist
 - 3D touch (can I use for something?)
 - Onboarding
+- Instagram integráció
 
 ### Cikkek, amik még jól jöhetnek
 
-- iPad supporthoz: https://convertkit.s3.amazonaws.com/assets/documents/747/538975/iOS_Size_Classes_Quick_Guide_v1.3.pdf
-- LicensePlist: https://github.com/mono0926/LicensePlist
-- Pricing: http://stephencoyle.net/appstore, https://www.dancounsell.com/articles/subscription-based-pricing-is-not-the-answer, "It’s much easier to upsell to an existing customer than it is to find an entirely new paying customer."
-- Design: https://appiconizer.com/, https://medium.dave-bailey.com/the-magic-formula-to-describe-a-product-in-one-sentence-175ce38619c7, http://incipia.co/post/app-marketing/the-essential-app-store-optimization-resources-list/
-- Onboardinghoz: https://www.appcues.com/blog/user-onboarding-messaging-apps/
-- iOS 11 supporthoz: https://medium.com/@hacknicity/working-with-multiple-versions-of-xcode-e331c01aa6bc, https://medium.com/the-traveled-ios-developers-guide/ios-11-notable-uikit-additions-92e5eb421c3b
+- Kép letöltéshez:
+	- https://medium.com/@matthew_healy/loading-images-in-ios-without-dependencies-aff1555dbf1e
+- iPad supporthoz:
+	- https://convertkit.s3.amazonaws.com/assets/documents/747/538975/iOS_Size_Classes_Quick_Guide_v1.3.pdf
+- LicensePlist:
+	- https://github.com/mono0926/LicensePlist
+- Onboardinghoz:
+	- https://www.appcues.com/blog/user-onboarding-messaging-apps/
+- iOS 11 + Swift 4 supporthoz:
+	- https://medium.com/@hacknicity/working-with-multiple-versions-of-xcode-e331c01aa6bc
+	- https://medium.com/the-traveled-ios-developers-guide/ios-11-notable-uikit-additions-92e5eb421c3b
+- Analitikához:
+	- https://golocalapps.com/find-your-apps-super-users-and-hack-your-growth/
+- Design, marketing, pricing, release:
+	- http://stephencoyle.net/appstore
+	- https://www.dancounsell.com/articles/subscription-based-pricing-is-not-the-answer
+	- "It’s much easier to upsell to an existing customer than it is to find an entirely new paying customer."
+	- https://medium.com/joytunes/wwdc-2017-amazing-new-features-for-subscriptions-676662a7d993
+	- https://appiconizer.com/
+	- https://medium.dave-bailey.com/the-magic-formula-to-describe-a-product-in-one-sentence-175ce38619c7
+	- http://incipia.co/post/app-marketing/the-essential-app-store-optimization-resources-list/
+	- https://www.apppartner.com/16-experts-strategies-downloads/
+	- https://www.appsposure.com/app-marketing-strategies/
+	- https://applaunchmap.com/blog/
+	- https://fabric.io/blog/introducing-fastlane-precheck
+	- https://developer.apple.com/app-store/product-page/
