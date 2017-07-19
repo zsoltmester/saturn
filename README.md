@@ -82,3 +82,16 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- https://applaunchmap.com/blog/
 	- https://fabric.io/blog/introducing-fastlane-precheck
 	- https://developer.apple.com/app-store/product-page/
+
+#### Facebook
+
+- https://developers.facebook.com/apps/325772207834932/dashboard/
+- https://developers.facebook.com/tools/explorer
+- https://developers.facebook.com/docs/swift/graph
+- https://developers.facebook.com/docs/graph-api/reference/page/#Overview
+- https://developers.facebook.com/docs/graph-api/reference/v2.9/post
+- https://developers.facebook.com/docs/graph-api/reference/v2.9/attachment
+
+#### Twitter
+
+- https://dev.twitter.com/twitterkit/ios/overview
