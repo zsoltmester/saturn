@@ -64,9 +64,6 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- https://github.com/mono0926/LicensePlist
 - Onboardinghoz:
 	- https://www.appcues.com/blog/user-onboarding-messaging-apps/
-- iOS 11 + Swift 4 supporthoz:
-	- https://medium.com/@hacknicity/working-with-multiple-versions-of-xcode-e331c01aa6bc
-	- https://medium.com/the-traveled-ios-developers-guide/ios-11-notable-uikit-additions-92e5eb421c3b
 - Analitikához:
 	- https://golocalapps.com/find-your-apps-super-users-and-hack-your-growth/
 - Design, marketing, pricing, release:
