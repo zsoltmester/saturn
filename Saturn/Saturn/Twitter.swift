@@ -40,8 +40,8 @@ class Twitter: Fetchable {
 		                                                    userID: nil,
 		                                                    apiClient: apiClient,
 		                                                    maxTweetsPerRequest: 10, // TODO: should be a global config
-															includeReplies: true, // TODO: should be a global config
-															includeRetweets: true) // TODO: should be a global config
+		                                                    includeReplies: true, // TODO: should be a global config
+		                                                    includeRetweets: true) // TODO: should be a global config
 
 		userTimelineLoader.loadPreviousTweets(beforePosition: nil /* TODO: handle load more */) { (tweets: [TWTRTweet]?, _, error: Error?) in
 

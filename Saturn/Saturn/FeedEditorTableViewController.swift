@@ -93,10 +93,11 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 				self.sections[sectionIndex].insert(.source, at: 0)
 
-				if self.newsSources[sectionIndex] == nil {
-					self.newsSources[sectionIndex] = [source]
+				if var sourcesInSection = self.newsSources[sectionIndex] {
+					sourcesInSection.append(source)
+					self.newsSources[sectionIndex] = sourcesInSection
 				} else {
-					self.newsSources[sectionIndex]!.append(source)
+					self.newsSources[sectionIndex] = [source]
 				}
 
 			}
@@ -181,7 +182,10 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 		case .delete:
 			sections[indexPath.section].remove(at: indexPath.row)
-			_ = newsSources[indexPath.section]!.remove(at: indexPath.row)
+			guard var sourcesInSection = newsSources[indexPath.section] else {
+				fatalError("No sources in section: \(indexPath.section)")
+			}
+			_ = sourcesInSection.remove(at: indexPath.row)
 			tableView.deleteRows(at: [indexPath], with: .automatic)
 			updateDoneButtonState()
 
@@ -370,10 +374,11 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 				self.sections[indexPath.section].insert(.source, at: indexPath.row)
 
-				if self.newsSources[indexPath.section] == nil {
-					self.newsSources[indexPath.section] = [source]
+				if var sourcesInSection = self.newsSources[indexPath.section] {
+					sourcesInSection.append(source)
+					self.newsSources[indexPath.section] = sourcesInSection
 				} else {
-					self.newsSources[indexPath.section]!.append(source)
+					self.newsSources[indexPath.section] = [source]
 				}
 
 				self.tableView.insertRows(at: [indexPath], with: .automatic)
