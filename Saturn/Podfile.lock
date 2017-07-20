@@ -18,7 +18,7 @@ PODS:
   - FBSDKLoginKit (4.24.0):
     - FBSDKCoreKit
   - Pastel (0.3.0)
-  - SwiftLint (0.19.0)
+  - SwiftLint (0.20.1)
   - TwitterCore (3.0.0)
   - TwitterKit (3.0.3):
     - TwitterCore (>= 3.0.0)
@@ -27,7 +27,7 @@ DEPENDENCIES:
   - FacebookCore (~> 0.2.0)
   - FacebookLogin (~> 0.2.0)
   - Pastel (~> 0.3.0)
-  - SwiftLint (~> 0.19.0)
+  - SwiftLint (~> 0.20.0)
   - TwitterKit (~> 3.0.0)
 
 SPEC CHECKSUMS:
@@ -37,10 +37,10 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
   FBSDKLoginKit: 1214c6d5a1c4995b694d8db8a9ba6910c6028acf
   Pastel: 738740c84f2b15bbcd96ebe99c4e6c2f5dd42262
-  SwiftLint: 3537a05b34060e78e7510f04fb7537d738247803
+  SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
   TwitterCore: 8ce250be1eb34633a0e6acc89520d4165ec52c10
   TwitterKit: 202404be71aadd81d19f677b34579fe77d9cb67e
 
-PODFILE CHECKSUM: 33fbed74995566b595258784ad36d93ce1a81611
+PODFILE CHECKSUM: 5a109913f544f9368534831af0a97c121c999cf6
 
 COCOAPODS: 1.2.1
