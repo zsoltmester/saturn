@@ -39,18 +39,17 @@ class Twitter: Fetchable {
 		let userTimelineLoader = TWTRUserTimelineDataSource(screenName: request,
 		                                                    userID: nil,
 		                                                    apiClient: apiClient,
-		                                                    maxTweetsPerRequest: 10, // TODO: should be a global config
-		                                                    includeReplies: true, // TODO: should be a global config
-		                                                    includeRetweets: true) // TODO: should be a global config
+		                                                    maxTweetsPerRequest: 10,
+		                                                    includeReplies: true,
+		                                                    includeRetweets: true)
 
-		userTimelineLoader.loadPreviousTweets(beforePosition: nil /* TODO: handle load more */) { (tweets: [TWTRTweet]?, _, error: Error?) in
+		userTimelineLoader.loadPreviousTweets(beforePosition: nil) { (tweets: [TWTRTweet]?, _, error: Error?) in
 
 			var errors: [FetchError]?
 			if let error = error {
 				errors = [error]
 			}
 
-			// TODO: create news, instead of strings
 			var tweetsAsString = [String]()
 			if let tweets = tweets {
 				for tweet in tweets {

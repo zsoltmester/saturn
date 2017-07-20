@@ -10,7 +10,7 @@ import Foundation
 
 typealias FetchRequest = String
 
-typealias FetchResult = String // TODO: should be news
+typealias FetchResult = String
 
 typealias FetchError = Error
 

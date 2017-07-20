@@ -39,7 +39,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- YouTube
 	- Reddit
 
-### Possible new features
+### Possible new features and improvements
 
 - Cache (news, pictures, videos, other media...)
 - Convert project to Swift 4
@@ -54,6 +54,10 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Onboarding
 - Instagram integráció
 - Copy API support
+- Validate news source before add
+- Fatal errors should be more descriptive
+- Move the strings to the Localizable.strings
+- Create a global constants file and move the constants there
 
 ### Cikkek, amik még jól jöhetnek
 
