@@ -42,7 +42,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 ### Possible new features
 
 - Cache (news, pictures, videos, other media...)
-- iOS 11 + Swift 4 support
+- Convert project to Swift 4
 - Feedback from users
 - Share news
 - Save news
@@ -53,6 +53,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - 3D touch (can I use for something?)
 - Onboarding
 - Instagram integráció
+- Copy API support
 
 ### Cikkek, amik még jól jöhetnek
 
