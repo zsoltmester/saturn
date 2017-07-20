@@ -9,11 +9,11 @@ Túl sok felületen kell végigmennem ahhoz, hogy az engem érdeklő híreket á
 Egy olyan hírolvasó app, amivel saját magam állíthatok össze hírfolyamokat.
 
 Például én ezeket hoznám létre magamnak első körben:
-- *Developer's Heaven*: Hacker News + reddit programming
-- *Chill*: some YouTube channels
-- *Hearthstone*: some YouTube channels of HS players and the official channel + Facebook posts by the HS official
-- *Essential*: Index + HVG
-- *AKPH*: FB + YouTube of AKPH
+- **Developer's Heaven**: Hacker News + reddit programming
+- **Chill**: some YouTube channels
+- **Hearthstone**: some YouTube channels of HS players and the official channel + Facebook posts by the HS official
+- **Essential**: Index + HVG
+- **AKPH**: FB + YouTube of AKPH
 
 ## Saturn.iOS
 
