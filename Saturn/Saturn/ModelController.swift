@@ -154,7 +154,7 @@ class ModelController {
 		newsFeed.setValue(name, forKeyPath: #keyPath(NewsFeed.name))
 		newsFeed.setValue(colorIdentifier, forKey: #keyPath(NewsFeed.colorIdentifier))
 		newsFeed.setValue(sources, forKey: #keyPath(NewsFeed.sources))
-		newsFeed.setValue(getNewsFeedOrderMin() - 1, forKey: #keyPath(NewsFeed.order))
+		newsFeed.setValue(getNewsFeedOrderMin() - Int16(1), forKey: #keyPath(NewsFeed.order))
 
 		do {
 			try context.save()
