@@ -15,15 +15,15 @@ extension NewsSource: Fetchable {
 	func fetch(request: FetchRequest?, completionHandler: @escaping FetchCompletionHandler) {
 
 		guard request == nil else {
-			fatalError("Fetching a news source with a request, which won't be used.")
+			fatalError("Fetching a NewsSource with a FetchRequest, which won't be used.")
 		}
 
 		guard let provider = provider else {
-			fatalError("No provider for a news source.")
+			fatalError("There is a news source without provider: \(self.debugDescription)")
 		}
 
 		guard let query = query else {
-			fatalError("No query for a news source.")
+			fatalError("There is a news source without query: \(self.debugDescription)")
 		}
 
 		provider.fetch(request: query, completionHandler: completionHandler)

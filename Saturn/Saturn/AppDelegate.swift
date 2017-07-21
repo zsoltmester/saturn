@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	static let shared: AppDelegate = {
 
 		guard let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate else {
-			fatalError("Can be UIApplication.shared.delegate other than mine?")
+			fatalError("The UIApplication.shared.delegate type is not AppDelegate.")
 		}
 
 		return appDelegate

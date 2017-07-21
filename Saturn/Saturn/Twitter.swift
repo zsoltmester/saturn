@@ -33,7 +33,7 @@ class Twitter: Fetchable {
 	func fetch(request: FetchRequest?, completionHandler: @escaping FetchCompletionHandler) {
 
 		guard let request = request else {
-			fatalError("Fetching Twitter without request.")
+			fatalError("Fetching Twitter without a FetchRequest.")
 		}
 
 		let userTimelineLoader = TWTRUserTimelineDataSource(screenName: request,

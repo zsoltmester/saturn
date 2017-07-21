@@ -26,7 +26,7 @@ extension NewsProvider: Fetchable {
 			YouTube.shared.fetch(request: request, completionHandler: completionHandler)
 
 		default:
-			fatalError("Couldn't find the fetcher for a news provider: \(name ?? ""), \(identifier)")
+			fatalError("Couldn't find a fetcher for a news provider: \(name ?? "nil"), \(identifier)")
 		}
 	}
 

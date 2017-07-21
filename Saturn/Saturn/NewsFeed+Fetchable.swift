@@ -15,11 +15,11 @@ extension NewsFeed: Fetchable {
 	func fetch(request: FetchRequest?, completionHandler: @escaping FetchCompletionHandler) {
 
 		guard request == nil else {
-			fatalError("Fetching a news feed with a request, which won't be used.")
+			fatalError("Fetching a NewsFeed with a FetchRequest, which won't be used.")
 		}
 
 		guard let sources = sources?.allObjects as? [NewsSource] else {
-			fatalError("Fetching a news feed, but the sources are not valid.")
+			fatalError("Fetching a news feed, but the sources are not valid: \(self.debugDescription)")
 		}
 
 		var allResults = [FetchResult]()

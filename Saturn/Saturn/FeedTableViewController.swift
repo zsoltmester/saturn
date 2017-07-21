@@ -53,7 +53,7 @@ class FeedTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.reuseIdentifier, for: indexPath) as? NewsTableViewCell else {
-			fatalError("Not a valid NewsTableViewCell while loading the cells for FeedTableViewController.")
+			fatalError("Not a valid NewsTableViewCell while loading the cells at FeedTableViewController.")
 		}
 
 		cell.showcaseLabel.text = fetchResults?[indexPath.row]

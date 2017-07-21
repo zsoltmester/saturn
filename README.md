@@ -47,7 +47,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Share news
 - Save news
 - Support iPad devices and iPhones' landscape mode
-- Analytics
+- Analytics (log the current print statements too)
 - Pastel view before the disclosure indicator, on the color row, in the add feed screen
 - Integrate LicensePlist
 - 3D touch (can I use for something?)
@@ -55,7 +55,6 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Instagram integráció
 - Copy API support
 - Validate news source before add
-- Fatal errors should be more descriptive
 - Move the strings to the Localizable.strings
 - Create a global constants file and move the constants there
 - Refactor FetchError to a concrete error enum

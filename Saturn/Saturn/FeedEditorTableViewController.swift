@@ -80,7 +80,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		selectedColor = Int(feedToEdit.colorIdentifier)
 
 		guard let feedToEditNewsSources = feedToEdit.sources?.allObjects as? [NewsSource] else {
-			fatalError("Editing a feed, but it doesn't have any NewsSource.")
+			fatalError("Editing a feed, but it doesn't have any sources.")
 		}
 
 		for (sectionIndex, sectionItems) in sections.enumerated() where sectionItems.last == .addSource {
@@ -146,7 +146,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		} else if let cell: SourceTableViewCell = cell as? SourceTableViewCell {
 
 			guard let newsSource = newsSources[indexPath.section]?[indexPath.row] else {
-				fatalError("Couldn't find news source at \(indexPath).")
+				fatalError("Couldn't find news source at \(indexPath.debugDescription).")
 			}
 
 			cell.queryLabel.text = newsSource.title ?? newsSource.query
@@ -253,7 +253,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		case "Show Color":
 
 			guard let colorSelectorCollectionViewController = segue.destination as? ColorSelectorCollectionViewController else {
-				fatalError("Unexpected destination: \(segue.destination)")
+				fatalError("Unexpected destination: \(segue.destination.debugDescription)")
 			}
 
 			colorSelectorCollectionViewController.selectedColor = selectedColor
@@ -282,11 +282,10 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 				} catch ModelError.nameExists {
 
 					showNameExistsAlertViewController(name)
-
 					return false
 
 				} catch {
-					fatalError("Unexpected error while editing a new feed: \(error)")
+					fatalError("Unexpected error while editing a news feed: \(error)")
 				}
 
 			} else {
@@ -296,7 +295,6 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 				} catch ModelError.nameExists {
 
 					showNameExistsAlertViewController(name)
-
 					return false
 
 				} catch {
@@ -324,7 +322,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 	private func insertSource(from indexPath: IndexPath) {
 
 		guard let cell = tableView.cellForRow(at: indexPath) as? AddSourceTableViewCell else {
-			fatalError("Couldn't cast cell to AddSourceTableViewCell at index path: \(indexPath)")
+			fatalError("Couldn't cast cell to AddSourceTableViewCell at index path: \(indexPath.debugDescription)")
 		}
 
 		guard let newsProvider = newsProviders[indexPath.section] else {

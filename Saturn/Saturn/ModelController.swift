@@ -37,7 +37,7 @@ class ModelController {
 				- The device is out of space.
 				- The store could not be migrated to the current model version.
 				*/
-				fatalError("Couldn't load the persistent stores. Error: \(error), \(error.userInfo)")
+				fatalError("Couldn't load the persistent stores: \(error.debugDescription)")
 			}
 
 			self.context = container.viewContext
@@ -122,7 +122,7 @@ class ModelController {
 		do {
 			try context.save()
 		} catch let error as NSError {
-			fatalError("Couldn't insert the news provider. Error: \(error)")
+			fatalError("Couldn't insert the news provider: \(error.debugDescription)")
 		}
 
 		return newsProvider
@@ -141,7 +141,7 @@ class ModelController {
 		do {
 			try context.save()
 		} catch let error as NSError {
-			fatalError("Couldn't insert the news source. Error: \(error)")
+			fatalError("Couldn't insert the news source: \(error.debugDescription)")
 		}
 
 		return newsSource
@@ -151,7 +151,7 @@ class ModelController {
 
 		let newsFeedEntityDescription = getEntityDescription(for: String(describing: NewsFeed.self), in: context)
 		guard let newsFeed = NSManagedObject(entity: newsFeedEntityDescription, insertInto: context) as? NewsFeed else {
-			fatalError("Created news feed type is not NewsFeed.")
+			fatalError("Couldn't convert the inserted news feed to NewsFeed.")
 		}
 		newsFeed.setValue(name, forKeyPath: #keyPath(NewsFeed.name))
 		newsFeed.setValue(colorIdentifier, forKey: #keyPath(NewsFeed.colorIdentifier))
@@ -168,7 +168,7 @@ class ModelController {
 				throw ModelError.nameExists
 			}
 
-			fatalError("Couldn't insert the news feed. Error: \(error)")
+			fatalError("Couldn't insert the news feed: \(error.debugDescription)")
 		}
 
 		return newsFeed
@@ -187,7 +187,7 @@ class ModelController {
 			}
 			return providers
 		} catch let error as NSError {
-			fatalError("Couldn't count the news providers. Error: \(error)")
+			fatalError("Couldn't count the news providers: \(error.debugDescription)")
 		}
 	}
 
@@ -202,7 +202,7 @@ class ModelController {
 			}
 			return sources.first
 		} catch let error as NSError {
-			fatalError("Couldn't fetch a news source. Error: \(error)")
+			fatalError("Couldn't fetch a news source: \(error.debugDescription)")
 		}
 	}
 
@@ -238,13 +238,13 @@ class ModelController {
 					feed.setValue(previousSources, forKey:#keyPath(NewsFeed.sources))
 					try context.save()
 				} catch let error as NSError {
-					fatalError("Couldn't rollback feed while updating it and the name conflicted. Error: \(error)")
+					fatalError("Couldn't rollback feed while updating it and the name conflicted: \(error.debugDescription)")
 				}
 
 				throw ModelError.nameExists
 			}
 
-			fatalError("Couldn't update the news feed. Error: \(error)")
+			fatalError("Couldn't update the news feed: \(error.debugDescription)")
 		}
 
 		return feed
@@ -258,7 +258,7 @@ class ModelController {
 			context.delete(feed)
 			try context.save()
 		} catch let error as NSError {
-			fatalError("Couldn't delete news feed. Error: \(error)")
+			fatalError("Couldn't delete news feed: \(error.debugDescription)")
 		}
 	}
 
@@ -291,11 +291,11 @@ class ModelController {
 
 		do {
 			guard let newsFeedOrderMin: Int16 = try (context.fetch(fetchRequest) as? [[String: Int16]])?.first?[propertyNameForNewsFeedOrderMin] else {
-				fatalError("Couldn't convert fetch result to Int16.")
+				fatalError("Couldn't convert fetched news feed order min to Int16.")
 			}
 			return newsFeedOrderMin
 		} catch let error as NSError {
-			fatalError("Couldn't get the news feed orders' minimum. Error: \(error)")
+			fatalError("Couldn't get the news feed order min: \(error.debugDescription)")
 		}
 	}
 

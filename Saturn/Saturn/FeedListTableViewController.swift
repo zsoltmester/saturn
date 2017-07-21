@@ -43,7 +43,7 @@ class FeedListTableViewController: ModelTableViewController {
 		for cell in self.tableView.visibleCells {
 
 			guard let cell = cell as? FeedTableViewCell else {
-				fatalError("A cell on the Feeds screen is not a FeedTableViewCell.")
+				fatalError("A cell on the Feed List screen is not a FeedTableViewCell.")
 			}
 
 			cell.colorPastelView.startAnimation()
@@ -60,8 +60,12 @@ class FeedListTableViewController: ModelTableViewController {
 
 		let feed: NewsFeed = getObject(at: indexPath)
 
+		guard let sources = feed.sources else {
+			fatalError("No sources for a feed: \(feed.debugDescription)")
+		}
+
 		cell.nameLabel.text = feed.name
-		cell.sourcesLabel.text = getSourcesText(sources: feed.sources)
+		cell.sourcesLabel.text = getSourcesText(sources: sources)
 		cell.colorPastelView.setPastelGradient(getPastelGradient(colorIdentifier: feed.colorIdentifier))
 		cell.colorPastelView.startAnimation()
 
@@ -78,7 +82,7 @@ class FeedListTableViewController: ModelTableViewController {
 	override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
 
 		guard var feeds = self.fetchedResultsController?.fetchedObjects as? [NewsFeed] else {
-			fatalError("Couldn't get fetched feeds.")
+			fatalError("Couldn't get fetched feeds at reorder.")
 		}
 
 		self.fetchedResultsController.delegate = nil
@@ -94,8 +98,8 @@ class FeedListTableViewController: ModelTableViewController {
 
 		do {
 			try AppDelegate.shared.modelController.context.save()
-		} catch {
-			fatalError("Couldn't save the reordered feeds.")
+		} catch let error as NSError {
+			fatalError("Couldn't save the reordered feeds: \(error.debugDescription)")
 		}
 
 		self.fetchedResultsController.delegate = self
@@ -121,11 +125,11 @@ class FeedListTableViewController: ModelTableViewController {
 		case "Edit Feed":
 
 			guard let senderIndexPath = sender as? IndexPath, let feed: NewsFeed = getObject(at: senderIndexPath) else {
-				fatalError("Segue ID is Edit Feed, but the sender is not a valid index path, but \(sender ?? "nil").")
+				fatalError("At Edit Feed segue the sender is not a valid index path, but \(sender ?? "nil").")
 			}
 
 			guard let feedEditorTableViewController = segue.destination.childViewControllers[0] as? FeedEditorTableViewController else {
-				fatalError("At Edit Feed segue the destination view controller's first child is not a FeedEditorTableViewController, but \(segue.destination).")
+				fatalError("At Edit Feed segue the destination view controller's first child is not a FeedEditorTableViewController, but \(segue.destination.debugDescription).")
 			}
 
 			feedEditorTableViewController.feedToEdit = feed
@@ -133,15 +137,15 @@ class FeedListTableViewController: ModelTableViewController {
 		case "Show Feed":
 
 			guard let cell = sender as? FeedTableViewCell else {
-				fatalError("Show Feed sender is not a FeedTableViewCell, but \(sender ?? "nil").")
+				fatalError("At Show Feed segue the sender is not a FeedTableViewCell, but \(sender ?? "nil").")
 			}
 
 			guard let cellIndexPath = tableView.indexPath(for: cell), let feed: NewsFeed = getObject(at: cellIndexPath) else {
-				fatalError("Couldn't get feed from a cell while prepared to show a feed.")
+				fatalError("At Show Feed segue couldn't get feed for a cell.")
 			}
 
 			guard let feedTableViewController = segue.destination as? FeedTableViewController else {
-				fatalError("At Show Feed segue the destination view controller is not a FeedTableViewController, but \(segue.destination).")
+				fatalError("At Show Feed segue the destination view controller is not a FeedTableViewController, but \(segue.destination.debugDescription).")
 			}
 
 			feedTableViewController.feed = feed
@@ -179,13 +183,13 @@ class FeedListTableViewController: ModelTableViewController {
 
 	// MARK: - Private Functions
 
-	private func getSourcesText(sources: NSSet?) -> String {
+	private func getSourcesText(sources: NSSet) -> String {
 
 		let sourcesTitleSorter = NSSortDescriptor(key: #keyPath(NewsSource.title), ascending: true, selector: #selector(NSString.compare(_:)))
 		let sourcesProviderSorter = NSSortDescriptor(key: #keyPath(NewsSource.provider.name), ascending: true, selector: #selector(NSString.compare(_:)))
 		let sourcesQuerySorter = NSSortDescriptor(key: #keyPath(NewsSource.query), ascending: true, selector: #selector(NSString.compare(_:)))
-		guard let orderedSources: [NewsSource] = sources?.sortedArray(using: [sourcesTitleSorter, sourcesProviderSorter, sourcesQuerySorter]) as? [NewsSource] else {
-			fatalError("No sources given.")
+		guard let orderedSources = sources.sortedArray(using: [sourcesTitleSorter, sourcesProviderSorter, sourcesQuerySorter]) as? [NewsSource] else {
+			fatalError("At getSourcesText the given sources are not [NewsSource] after the sort.")
 		}
 
 		var sourcesText: String = ""
@@ -198,7 +202,7 @@ class FeedListTableViewController: ModelTableViewController {
 			} else if let provider: String = source.provider?.name, let query: String = source.query {
 				sourceText = "\(provider) - \(query)"
 			} else {
-				fatalError("Invalid source text.")
+				fatalError("No title or provider + query for a news source: \(source.debugDescription)")
 			}
 
 			sourcesText = sourcesText.isEmpty ? sourceText : "\(sourcesText), \(sourceText)"
@@ -212,7 +216,7 @@ class FeedListTableViewController: ModelTableViewController {
 		let colorIdentifier = colorIdentifier == -1 ? Int(arc4random_uniform(9)) : Int(colorIdentifier)
 
 		guard let colors: PastelGradient = PastelGradient(rawValue: colorIdentifier) else {
-			fatalError("Invalid colorIdentifier for a feed.")
+			fatalError("Invalid colorIdentifier for a feed: \(colorIdentifier)")
 		}
 
 		return colors

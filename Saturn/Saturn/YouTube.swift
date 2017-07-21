@@ -95,7 +95,6 @@ extension YouTube: Fetchable {
 				completionHandler(response, nil)
 
 			} catch {
-				// data that came: print (String(data: data, encoding: .utf8))
 				completionHandler(nil, NSError())
 			}
 
@@ -126,7 +125,6 @@ extension YouTube: Fetchable {
 				completionHandler(response, nil)
 
 			} catch {
-				// data that came: print (String(data: data, encoding: .utf8))
 				completionHandler(nil, NSError())
 			}
 

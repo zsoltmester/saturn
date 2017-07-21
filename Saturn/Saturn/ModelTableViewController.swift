@@ -55,22 +55,22 @@ class ModelTableViewController: UITableViewController, NSFetchedResultsControlle
 		switch type {
 		case .insert:
 			guard let newIndexPath: IndexPath = newIndexPath else {
-				fatalError("newIndexPath is nil.")
+				fatalError("newIndexPath is nil at insert.")
 			}
 			tableView.insertRows(at: [newIndexPath], with: .fade)
 		case .delete:
 			guard let indexPath: IndexPath = indexPath else {
-				fatalError("indexPath is nil.")
+				fatalError("indexPath is nil at delete.")
 			}
 			tableView.deleteRows(at: [indexPath], with: .fade)
 		case .update:
 			guard let indexPath: IndexPath = indexPath else {
-				fatalError("indexPath is nil.")
+				fatalError("indexPath is nil at update.")
 			}
 			tableView.reloadRows(at: [indexPath], with: .fade)
 		case .move:
 			guard let indexPath: IndexPath = indexPath, let newIndexPath: IndexPath = newIndexPath else {
-				fatalError("indexPath or newIndexPath are nil.")
+				fatalError("indexPath or newIndexPath are nil at move.")
 			}
 			tableView.moveRow(at: indexPath, to: newIndexPath)
 		}
@@ -85,7 +85,7 @@ class ModelTableViewController: UITableViewController, NSFetchedResultsControlle
 	func getObject<Type>(at indexPath: IndexPath) -> Type {
 
 		guard let object = fetchedResultsController.object(at: indexPath) as? Type else {
-			fatalError("Couldn't find object at index path: \(indexPath)")
+			fatalError("Couldn't find object at index path: \(indexPath.debugDescription)")
 		}
 
 		return object
@@ -97,8 +97,8 @@ class ModelTableViewController: UITableViewController, NSFetchedResultsControlle
 
 		do {
 			try fetchedResultsController.performFetch()
-		} catch {
-			fatalError("Failed to fetch with fetchedResultsController: \(error)")
+		} catch let error as NSError {
+			fatalError("Failed to fetch with fetchedResultsController: \(error.debugDescription)")
 		}
 	}
 

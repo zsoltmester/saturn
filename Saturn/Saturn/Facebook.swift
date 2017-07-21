@@ -28,7 +28,7 @@ class Facebook: Fetchable {
 	func fetch(request: FetchRequest?, completionHandler: @escaping FetchCompletionHandler) {
 
 		guard let request = request else {
-			fatalError("Fetching Facebook without a request.")
+			fatalError("Fetching Facebook without a FetchRequest.")
 		}
 
 		let connection = GraphRequestConnection()
@@ -40,7 +40,8 @@ class Facebook: Fetchable {
 			case .success(let response):
 
 				guard let posts = response.dictionaryValue?["data"] as? [[String: String]] else {
-					fatalError("Couldn't parse Facebook response: \(response)")
+					completionHandler(nil, [NSError()])
+					return
 				}
 
 				var postsAsString = [String]()
