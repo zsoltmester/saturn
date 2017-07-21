@@ -22,6 +22,9 @@ extension NewsProvider: Fetchable {
 		case NewsProviderIdentifier.facebook.rawValue:
 			Facebook.shared.fetch(request: request, completionHandler: completionHandler)
 
+		case NewsProviderIdentifier.youtube.rawValue:
+			YouTube.shared.fetch(request: request, completionHandler: completionHandler)
+
 		default:
 			fatalError("Couldn't find the fetcher for a news provider: \(name ?? ""), \(identifier)")
 		}

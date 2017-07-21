@@ -34,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		modelController = ModelController()
 
+		URLSessionConfiguration.default.timeoutIntervalForRequest = Fetch.timeoutInterval
+
 		SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 
 		return true

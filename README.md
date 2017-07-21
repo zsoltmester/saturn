@@ -58,6 +58,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Fatal errors should be more descriptive
 - Move the strings to the Localizable.strings
 - Create a global constants file and move the constants there
+- Refactor FetchError to a concrete error enum
 
 ### Cikkek, amik még jól jöhetnek
 
@@ -97,3 +98,8 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 #### Twitter
 
 - https://dev.twitter.com/twitterkit/ios/overview
+
+#### YouTube
+
+- https://developers.google.com/youtube/v3/guides/ios_youtube_helper
+- https://developers.google.com/youtube/player_parameters

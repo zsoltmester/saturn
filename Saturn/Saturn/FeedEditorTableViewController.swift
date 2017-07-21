@@ -368,32 +368,34 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 		newsProvider.fetch(request: query) { (_, errors: [FetchError]?) in
 
-			if errors?.isEmpty ?? true {
+			DispatchQueue.main.async {
+				if errors?.isEmpty ?? true {
 
-				let source = AppDelegate.shared.modelController.getNewsSource(provider: newsProvider, query: query) ?? AppDelegate.shared.modelController.insertNewsSource(provider: newsProvider, query: query)
+					let source = AppDelegate.shared.modelController.getNewsSource(provider: newsProvider, query: query) ?? AppDelegate.shared.modelController.insertNewsSource(provider: newsProvider, query: query)
 
-				self.sections[indexPath.section].insert(.source, at: indexPath.row)
+					self.sections[indexPath.section].insert(.source, at: indexPath.row)
 
-				if var sourcesInSection = self.newsSources[indexPath.section] {
-					sourcesInSection.append(source)
-					self.newsSources[indexPath.section] = sourcesInSection
+					if var sourcesInSection = self.newsSources[indexPath.section] {
+						sourcesInSection.append(source)
+						self.newsSources[indexPath.section] = sourcesInSection
+					} else {
+						self.newsSources[indexPath.section] = [source]
+					}
+
+					self.tableView.insertRows(at: [indexPath], with: .automatic)
+
+					cell.queryTextField.text = nil
+
 				} else {
-					self.newsSources[indexPath.section] = [source]
+
+					let alertViewController: UIAlertController = UIAlertController(title: "Couldn't find \(query)'s \(newsProvider.name ?? "")", message: nil, preferredStyle: .alert)
+					alertViewController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+					self.present(alertViewController, animated: true, completion: nil)
+
 				}
 
-				self.tableView.insertRows(at: [indexPath], with: .automatic)
-
-				cell.queryTextField.text = nil
-
-			} else {
-
-				let alertViewController: UIAlertController = UIAlertController(title: "Couldn't find \(query)'s \(newsProvider.name ?? "")", message: nil, preferredStyle: .alert)
-				alertViewController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-				self.present(alertViewController, animated: true, completion: nil)
-
+				self.endLoading()
 			}
-
-			self.endLoading()
 		}
 	}
 

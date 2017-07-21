@@ -62,13 +62,15 @@ class ModelController {
 		                       detail: "Get the latest posts from a page. Enter the page's name, for example “GameOfThrones” or “coachella”.",
 		                       hint: "Page")
 
+		_ = insertNewsProvider(identifier: NewsProviderIdentifier.youtube.rawValue,
+		                       name: "YouTube",
+		                       detail: "Get the latest videos from a channel. Enter the channel's name, for example “PewDiePie” or “unboxtherapy”.",
+		                       hint: "Channel")
+
 		/*
 		let rssNewsProvider: NewsProvider = insertNewsProvider(identifier: 0, name: "RSS", detail: "Long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long description of RSS.", hint: "RSS URL")
 		let _: NewsProvider = insertNewsProvider(identifier: 1, name: "Atom", detail: "Description of Atom.", hint: "Atom URL")
-		let facebookNewsProvider: NewsProvider = insertNewsProvider(identifier: 2, name: "Facebook", detail: "Description of Facebook.", hint: "Page")
-		let _: NewsProvider = insertNewsProvider(identifier: 3, name: "Twitter", detail: "Description of Twitter.", hint: "Username")
 		let _: NewsProvider = insertNewsProvider(identifier: 4, name: "Instagram", detail: "Description of Instagram.", hint: "Username")
-		let youtubeNewsProvider: NewsProvider = insertNewsProvider(identifier: 5, name: "YouTube", detail: "Description of YouTube.", hint: "Channel")
 		let redditNewsProvider: NewsProvider = insertNewsProvider(identifier: 6, name: "Reddit", detail: "Description of Reddit.", hint: "Subreddit")
 
 		var sources = Set<NewsSource>()
