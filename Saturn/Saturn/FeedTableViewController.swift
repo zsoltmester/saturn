@@ -32,7 +32,9 @@ class FeedTableViewController: UITableViewController {
 			self.fetchResults = results
 			self.fetchErrors = errors
 
-			self.tableView.reloadData()
+			DispatchQueue.main.async {
+				self.tableView.reloadData()
+			}
 		}
 	}
 

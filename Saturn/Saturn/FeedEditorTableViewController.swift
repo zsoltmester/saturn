@@ -186,6 +186,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 				fatalError("No sources in section: \(indexPath.section)")
 			}
 			_ = sourcesInSection.remove(at: indexPath.row)
+			newsSources[indexPath.section] = sourcesInSection
 			tableView.deleteRows(at: [indexPath], with: .automatic)
 			updateDoneButtonState()
 
@@ -334,16 +335,17 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 			Facebook.shared.login(completion: { result in
 
-				switch result {
+				DispatchQueue.main.async {
+					switch result {
 
-				case .cancelled, .failed:
-					let alertViewController: UIAlertController = UIAlertController(title: "Failed to log in", message: "Please try again.", preferredStyle: .alert)
-					alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-					self.present(alertViewController, animated: true, completion: nil)
+					case .cancelled, .failed:
+						let alertViewController: UIAlertController = UIAlertController(title: "Failed to log in", message: "Please try again.", preferredStyle: .alert)
+						alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+						self.present(alertViewController, animated: true, completion: nil)
 
-				case .success:
-					self.insertSource(from: indexPath)
-
+					case .success:
+						self.insertSource(from: indexPath)
+					}
 				}
 			})
 
