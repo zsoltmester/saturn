@@ -12,7 +12,11 @@ typealias FetchRequest = String
 
 typealias FetchResult = String
 
-typealias FetchError = Error
+enum FetchError: Error {
+	case providerUnavailable
+	case sourceNotFound
+	case other(message: String)
+}
 
 typealias FetchCompletionHandler = ([FetchResult]?, [FetchError]?) -> Void
 

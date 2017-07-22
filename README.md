@@ -57,7 +57,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Validate news source before add
 - Move the strings to the Localizable.strings
 - Create a global constants file and move the constants there
-- Refactor FetchError to a concrete error enum
+- Use extensions where it has sense
 
 ### Cikkek, amik még jól jöhetnek
 
@@ -84,6 +84,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- https://applaunchmap.com/blog/
 	- https://fabric.io/blog/introducing-fastlane-precheck
 	- https://developer.apple.com/app-store/product-page/
+	- https://developer.apple.com/videos/play/wwdc2017/305/
 
 #### Facebook
 

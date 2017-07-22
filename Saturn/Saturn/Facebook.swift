@@ -40,7 +40,7 @@ class Facebook: Fetchable {
 			case .success(let response):
 
 				guard let posts = response.dictionaryValue?["data"] as? [[String: String]] else {
-					completionHandler(nil, [NSError()])
+					completionHandler(nil, [FetchError.other(message: "Couldn't parse a Facebook response: \(response)")])
 					return
 				}
 
@@ -53,7 +53,7 @@ class Facebook: Fetchable {
 
 			case .failed(let error):
 
-				completionHandler(nil, [error])
+				completionHandler(nil, [FetchError.other(message: "Facebook request failed with error: \(error)")])
 			}
 		}
 

@@ -44,7 +44,7 @@ extension YouTube: Fetchable {
 			}
 
 			guard let playlistId = response?.items.first?.contentDetails.relatedPlaylists.uploads else {
-				completionHandler(nil, [NSError()])
+				completionHandler(nil, [FetchError.other(message: "No 'uploads' playlist available for a Youtube user: \(request)")])
 				return
 			}
 
@@ -56,7 +56,7 @@ extension YouTube: Fetchable {
 				}
 
 				guard let playlistItems = response?.items else {
-					completionHandler(nil, [NSError()])
+					completionHandler(nil, [FetchError.other(message: "No items on a YouTube playlist with ID: \(playlistId)")])
 					return
 				}
 
@@ -80,12 +80,13 @@ extension YouTube: Fetchable {
 		URLSession.shared.dataTask(with: channelsService) { (data: Data?, _, error: Error?) in
 
 			guard error == nil else {
-				completionHandler(nil, error!) // swiftlint:disable:this force_unwrapping
+				print("Error in a YouTube channels service response: \(error!)") // swiftlint:disable:this force_unwrapping
+				completionHandler(nil, FetchError.providerUnavailable)
 				return
 			}
 
 			guard let data = data else {
-				completionHandler(nil, NSError())
+				completionHandler(nil, FetchError.other(message: "No error and data in a YouTube channels service response."))
 				return
 			}
 
@@ -95,7 +96,7 @@ extension YouTube: Fetchable {
 				completionHandler(response, nil)
 
 			} catch {
-				completionHandler(nil, NSError())
+				completionHandler(nil, FetchError.other(message: "Couldn't convert YouTube channels service response to ChannelsResponse: \(String(data: data, encoding: .utf8) ?? "couldn't convert the data to string.")"))
 			}
 
 		}.resume()
@@ -110,12 +111,13 @@ extension YouTube: Fetchable {
 		URLSession.shared.dataTask(with: playlistItemsService) { (data: Data?, _, error: Error?) in
 
 			guard error == nil else {
-				completionHandler(nil, error!) // swiftlint:disable:this force_unwrapping
+				print("Error in a YouTube playlist items service response: \(error!)") // swiftlint:disable:this force_unwrapping
+				completionHandler(nil, FetchError.providerUnavailable)
 				return
 			}
 
 			guard let data = data else {
-				completionHandler(nil, NSError())
+				completionHandler(nil, FetchError.other(message: "No error and data when in a YouTube playlist items service response."))
 				return
 			}
 
@@ -125,7 +127,7 @@ extension YouTube: Fetchable {
 				completionHandler(response, nil)
 
 			} catch {
-				completionHandler(nil, NSError())
+				completionHandler(nil, FetchError.other(message: "Couldn't convert YouTube playlist items service response to PlaylistItemsResponse.self: \(String(data: data, encoding: .utf8) ?? "couldn't convert the data to string.")"))
 			}
 
 		}.resume()

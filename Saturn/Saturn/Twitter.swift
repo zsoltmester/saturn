@@ -47,7 +47,7 @@ class Twitter: Fetchable {
 
 			var errors: [FetchError]?
 			if let error = error {
-				errors = [error]
+				errors = [FetchError.other(message: "Twitter request failed with error: \(error)")]
 			}
 
 			var tweetsAsString = [String]()
