@@ -13,7 +13,10 @@ class ColorSelectorCollectionViewController: UICollectionViewController {
 
 	// MARK: - Properties
 
-	var selectedColor = 0
+	static let defaultSelectedColor = 4
+	static let numberOfColors = 9
+
+	var selectedColor = defaultSelectedColor
 
     // MARK: - UICollectionViewDataSource
 
@@ -22,7 +25,7 @@ class ColorSelectorCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return ColorSelectorCollectionViewController.numberOfColors
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

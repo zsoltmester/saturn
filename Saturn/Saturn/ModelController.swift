@@ -27,7 +27,7 @@ class ModelController {
 	init() {
 
 		let container = NSPersistentContainer(name: "Saturn")
-		container.loadPersistentStores(completionHandler: { (_, error) in
+		container.loadPersistentStores(completionHandler: { _, error in
 
 			if let error = error as NSError? {
 				/*

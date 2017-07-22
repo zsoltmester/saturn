@@ -41,6 +41,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 ### Possible new features and improvements
 
+- Move all the strings to the Localizable.strings
 - Cache (news, pictures, videos, other media...)
 - Convert project to Swift 4
 - Feedback from users
@@ -55,9 +56,6 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Instagram integráció
 - Copy API support
 - Validate news source before add
-- Move the strings to the Localizable.strings
-- Create a global constants file and move the constants there
-- Use extensions where it has sense
 
 ### Cikkek, amik még jól jöhetnek
 

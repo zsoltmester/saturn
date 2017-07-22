@@ -16,6 +16,9 @@ class Twitter: Fetchable {
 	private let twitterConsumerKey = "TqDzFgxlfJITqE6rMv66nU0ci"
 	private let twitterConsumerSecret = "HgvP8uZYO7iTZmZL3R9MHg3XLq5cEzuACzpii5jz2PdAD2HOT7"
 
+	private let includeReplies = true
+	private let includeRetweets = true
+
 	static let shared = Twitter()
 
 	private var apiClient: TWTRAPIClient
@@ -39,9 +42,9 @@ class Twitter: Fetchable {
 		let userTimelineLoader = TWTRUserTimelineDataSource(screenName: request,
 		                                                    userID: nil,
 		                                                    apiClient: apiClient,
-		                                                    maxTweetsPerRequest: 10,
-		                                                    includeReplies: true,
-		                                                    includeRetweets: true)
+		                                                    maxTweetsPerRequest: UInt(FetchConstants.maxResults),
+		                                                    includeReplies: includeReplies,
+		                                                    includeRetweets: includeRetweets)
 
 		userTimelineLoader.loadPreviousTweets(beforePosition: nil) { (tweets: [TWTRTweet]?, _, error: Error?) in
 

@@ -4,6 +4,8 @@ excluded:
     - Pods
 
 disabled_rules:
+    - file_length
+    - type_body_length
     - line_length
     - nesting
 

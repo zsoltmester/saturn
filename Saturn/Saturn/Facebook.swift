@@ -10,7 +10,7 @@ import FacebookCore
 import FacebookLogin
 import Foundation
 
-class Facebook: Fetchable {
+class Facebook {
 
 	// MARK: - Properties
 
@@ -22,6 +22,17 @@ class Facebook: Fetchable {
 
 	private init() {
 	}
+
+	// MARK: - Public Functions
+
+	func login(completion: @escaping (LoginResult) -> Void) {
+
+		LoginManager().logIn(readPermissions, viewController: nil, completion: completion)
+	}
+
+}
+
+extension Facebook: Fetchable {
 
 	// MARK: - Fetchable
 
@@ -59,12 +70,4 @@ class Facebook: Fetchable {
 
 		connection.start()
 	}
-
-	// MARK: - Public Functions
-
-	func login(completion: @escaping (LoginResult) -> Void) {
-
-		LoginManager().logIn(readPermissions, viewController: nil, completion: completion)
-	}
-
 }

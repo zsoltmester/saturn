@@ -43,7 +43,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		}
 	}
 
-	var selectedColor = 0
+	var selectedColor = ColorSelectorCollectionViewController.defaultSelectedColor
 
 	var feedToEdit: NewsFeed?
 
@@ -351,9 +351,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		}
 
 		guard let query = cell.queryTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !query.isEmpty else {
-			if !cell.queryTextField.isFirstResponder {
-				cell.queryTextField.becomeFirstResponder()
-			}
+			cell.queryTextField.becomeFirstResponder()
 			return
 		}
 

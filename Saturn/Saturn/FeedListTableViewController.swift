@@ -213,7 +213,7 @@ class FeedListTableViewController: ModelTableViewController {
 
 	private func getPastelGradient(colorIdentifier: Int16) -> PastelGradient {
 
-		let colorIdentifier = colorIdentifier == -1 ? Int(arc4random_uniform(9)) : Int(colorIdentifier)
+		let colorIdentifier = colorIdentifier < 0 || colorIdentifier >= ColorSelectorCollectionViewController.numberOfColors ? Int(arc4random_uniform(UInt32(ColorSelectorCollectionViewController.numberOfColors))) : Int(colorIdentifier)
 
 		guard let colors: PastelGradient = PastelGradient(rawValue: colorIdentifier) else {
 			fatalError("Invalid colorIdentifier for a feed: \(colorIdentifier)")

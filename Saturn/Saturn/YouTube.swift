@@ -163,7 +163,7 @@ extension YouTube: Fetchable {
 		var request = [URLQueryItem]()
 		request.append(URLQueryItem(name: YouTubeApi.URL.Parameter.apiKey, value: YouTubeApi.key))
 		request.append(URLQueryItem(name: YouTubeApi.URL.Parameter.part, value: YouTubeApi.URL.Parameter.Value.snippet))
-		request.append(URLQueryItem(name: YouTubeApi.URL.Parameter.maxResults, value: String(Fetch.maxResults)))
+		request.append(URLQueryItem(name: YouTubeApi.URL.Parameter.maxResults, value: String(FetchConstants.maxResults)))
 		request.append(URLQueryItem(name: YouTubeApi.URL.Parameter.playlistId, value: playlistId))
 		return request
 	}

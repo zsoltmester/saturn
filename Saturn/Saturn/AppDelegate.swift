@@ -28,13 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return appDelegate
 	}()
 
-	// MARK: - Application Lifecycle
+	// MARK: - UIApplicationDelegate
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
 		modelController = ModelController()
 
-		URLSessionConfiguration.default.timeoutIntervalForRequest = Fetch.timeoutInterval
+		URLSessionConfiguration.default.timeoutIntervalForRequest = FetchConstants.timeoutInterval
 
 		SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 
