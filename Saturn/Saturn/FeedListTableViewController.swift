@@ -85,8 +85,6 @@ class FeedListTableViewController: ModelTableViewController {
 			fatalError("Couldn't get fetched feeds at reorder.")
 		}
 
-		self.fetchedResultsController.delegate = nil
-
 		let movedFeed = feeds.remove(at: sourceIndexPath.row)
 		feeds.insert(movedFeed, at: destinationIndexPath.row)
 
@@ -97,12 +95,12 @@ class FeedListTableViewController: ModelTableViewController {
 		}
 
 		do {
+			self.fetchedResultsController.delegate = nil
 			try AppDelegate.shared.modelController.context.save()
+			prepareFetchedResultsController()
 		} catch let error as NSError {
 			fatalError("Couldn't save the reordered feeds: \(error.debugDescription)")
 		}
-
-		self.fetchedResultsController.delegate = self
 	}
 
 	// MARK: - UITableViewDelegate
