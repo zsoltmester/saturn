@@ -27,7 +27,7 @@ class ModelController {
 	init() {
 
 		let container = NSPersistentContainer(name: "Saturn")
-		container.loadPersistentStores(completionHandler: { _, error in
+		container.loadPersistentStores { _, error in
 
 			if let error = error as NSError? {
 				/*
@@ -47,7 +47,7 @@ class ModelController {
 				self.preloadModel()
 				UserDefaults.standard.set(true, forKey: ModelController.userDefaultsKeyIsModelPreloaded)
 			}
-		})
+		}
 	}
 
 	private func preloadModel() {

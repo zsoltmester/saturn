@@ -48,7 +48,7 @@ extension YouTube: Fetchable {
 				return
 			}
 
-			self.fetchPlaylistItems(playlistId, completionHandler: { (response: PlaylistItemsResponse?, error: FetchError?) in
+			self.fetchPlaylistItems(playlistId) { (response: PlaylistItemsResponse?, error: FetchError?) in
 
 				guard error == nil else {
 					completionHandler(nil, [error!]) // swiftlint:disable:this force_unwrapping
@@ -66,7 +66,7 @@ extension YouTube: Fetchable {
 				}
 
 				completionHandler(playlistItemsAsString, nil)
-			})
+			}
 		}
 	}
 
@@ -170,7 +170,7 @@ extension YouTube: Fetchable {
 
 }
 
-fileprivate struct YouTubeApi {
+private struct YouTubeApi {
 
 	static let key = "AIzaSyBf1yQf80c3x-SHcx3VzSOdSuiPKTTtGDU"
 
@@ -208,7 +208,7 @@ fileprivate struct YouTubeApi {
 
 }
 
-fileprivate struct ChannelsResponse: Codable {
+private struct ChannelsResponse: Codable {
 
 	struct Item: Codable {
 
@@ -231,7 +231,7 @@ fileprivate struct ChannelsResponse: Codable {
 	let items: [Item]
 }
 
-fileprivate struct PlaylistItemsResponse: Codable {
+private struct PlaylistItemsResponse: Codable {
 
 	struct Item: Codable {
 

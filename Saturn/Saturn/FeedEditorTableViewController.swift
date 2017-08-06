@@ -10,7 +10,7 @@ import FacebookCore
 import FacebookLogin
 import UIKit
 
-fileprivate enum SectionItem {
+private enum SectionItem {
 
 	case name
 	case color
@@ -18,7 +18,7 @@ fileprivate enum SectionItem {
 	case source
 }
 
-fileprivate enum TextFieldTag: Int {
+private enum TextFieldTag: Int {
 
 	case nameTextField
 	case queryTextField
@@ -331,7 +331,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 		if newsProvider.identifier == NewsProviderIdentifier.facebook.rawValue && AccessToken.current == nil {
 
-			Facebook.shared.login(completion: { result in
+			Facebook.shared.login { result in
 
 				DispatchQueue.main.async {
 					switch result {
@@ -345,7 +345,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 						self.insertSource(from: indexPath)
 					}
 				}
-			})
+			}
 
 			return
 		}

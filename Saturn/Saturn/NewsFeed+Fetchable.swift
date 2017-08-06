@@ -31,7 +31,7 @@ extension NewsFeed: Fetchable {
 
 			fetchDispatchGroup.enter()
 
-			source.fetch(request: nil, completionHandler: { (results: [FetchResult]?, errors: [FetchError]?) in
+			source.fetch(request: nil) { (results: [FetchResult]?, errors: [FetchError]?) in
 
 				if let results: [FetchResult] = results {
 					allResults.append(contentsOf: results)
@@ -42,7 +42,7 @@ extension NewsFeed: Fetchable {
 				}
 
 				fetchDispatchGroup.leave()
-			})
+			}
 		}
 
 		fetchDispatchGroup.notify(queue: DispatchQueue.main) {
