@@ -11,4 +11,5 @@ enum NewsProviderIdentifier: Int16 {
 	case twitter = 1
 	case facebook = 2
 	case youtube = 3
+	case rss = 4
 }

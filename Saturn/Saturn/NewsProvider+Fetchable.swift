@@ -16,11 +16,14 @@ extension NewsProvider: Fetchable {
 
 		switch identifier {
 
-		case NewsProviderIdentifier.twitter.rawValue:
-			Twitter.shared.fetch(request: request, completionHandler: completionHandler)
-
 		case NewsProviderIdentifier.facebook.rawValue:
 			Facebook.shared.fetch(request: request, completionHandler: completionHandler)
+
+		case NewsProviderIdentifier.rss.rawValue:
+			RSS.shared.fetch(request: request, completionHandler: completionHandler)
+
+		case NewsProviderIdentifier.twitter.rawValue:
+			Twitter.shared.fetch(request: request, completionHandler: completionHandler)
 
 		case NewsProviderIdentifier.youtube.rawValue:
 			YouTube.shared.fetch(request: request, completionHandler: completionHandler)
