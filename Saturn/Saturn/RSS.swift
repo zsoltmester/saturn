@@ -45,10 +45,10 @@ extension RSS: Fetchable {
 			switch result {
 			case let .rss(feed):
 				completionHandler(self.getNewsAsStringFromFeed(feed), nil)
-			case .atom:
-				completionHandler(nil, [FetchError.other(message: "Unsupported feed type: Atom.")])
+			case let .atom(feed):
+				completionHandler(self.getNewsAsStringFromFeed(feed), nil)
 			case .json:
-				completionHandler(nil, [FetchError.other(message: "Unsupported feed type: JSON.")])
+				completionHandler(nil, [FetchError.other(message: "Unsupported RSS feed type: JSON.")])
 			case let .failure(error):
 				completionHandler(nil, [FetchError.other(message: "Error while fetching an RSS feed: \(error)")])
 			}
@@ -69,6 +69,22 @@ extension RSS: Fetchable {
 		for item in items {
 
 			newsAsString.append("\(item.title ?? "nil"): \(item.description ?? "nil")")
+		}
+
+		return newsAsString
+	}
+
+	private func getNewsAsStringFromFeed(_ feed: AtomFeed) -> [String] {
+
+		guard let items = feed.entries, !items.isEmpty else {
+			return [String]()
+		}
+
+		var newsAsString = [String]()
+
+		for item in items {
+
+			newsAsString.append("\(item.title ?? "nil"): \(item.summary?.value ?? "nil")")
 		}
 
 		return newsAsString
