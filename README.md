@@ -28,15 +28,12 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - A hírfolyam képernyő:
 	- Nem kell az, hogy cacheljünk!
 	- A table view nem frissíthető (se swipe, se refresh button)!
-	- Hogy mennyi hírt töltsünk le egy feedhez, az nem konfigurálható, csak az, hogy mennyi új hírt töltsön le egy Fetchable egy fetchnél. (default = 20)
+	- Hogy mennyi hírt töltsünk le egy feedhez, az nem konfigurálható, csak az, hogy mennyi új hírt töltsön le egy Fetchable egy fetchnél.
 	- Ha leértünk a screen aljára, akkor töltjük a következő adagot
 	- Megjeleníteni a híreket
 
-- Integrálni akarom:
+- Integrálni akarom még:
 	- RSS feed
-	- Twitter
-	- Facebook
-	- YouTube
 	- Reddit
 
 ### Possible new features and improvements
@@ -56,6 +53,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Instagram integráció
 - Copy API support
 - Validate news source before add
+- Animations
 
 ### Cikkek, amik még jól jöhetnek
 
@@ -69,6 +67,8 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- https://www.appcues.com/blog/user-onboarding-messaging-apps/
 - Analitikához:
 	- https://golocalapps.com/find-your-apps-super-users-and-hack-your-growth/
+- Gamificationhöz:
+	- https://uxplanet.org/gamification-in-2017-top-5-key-principles-cef948254dad
 - Design, marketing, pricing, release:
 	- http://stephencoyle.net/appstore
 	- https://www.dancounsell.com/articles/subscription-based-pricing-is-not-the-answer
@@ -83,6 +83,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- https://fabric.io/blog/introducing-fastlane-precheck
 	- https://developer.apple.com/app-store/product-page/
 	- https://developer.apple.com/videos/play/wwdc2017/305/
+	- https://stories.appbot.co/how-often-should-you-update-your-app-9405b85a967c
 
 #### Facebook
 
