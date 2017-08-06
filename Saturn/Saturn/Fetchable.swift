@@ -13,8 +13,7 @@ typealias FetchRequest = String
 typealias FetchResult = String
 
 enum FetchError: Error {
-	case providerUnavailable
-	case sourceNotFound
+	case invalidQuery
 	case other(message: String)
 }
 

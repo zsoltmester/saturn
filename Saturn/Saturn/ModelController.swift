@@ -59,7 +59,7 @@ class ModelController {
 
 		_ = insertNewsProvider(identifier: NewsProviderIdentifier.rss.rawValue,
 		                       name: "RSS",
-		                       detail: "Get the latest items from an RSS, Atom or JSON feed. Enter the feed's URL, for example “http://hvg.hu/rss” or “http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml”.",
+		                       detail: "Get the latest items from an RSS feed. Enter the feed's URL, for example “http://hvg.hu/rss” or “http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml”.",
 		                       hint: "URL")
 
 		_ = insertNewsProvider(identifier: NewsProviderIdentifier.twitter.rawValue,

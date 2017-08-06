@@ -6,6 +6,10 @@
 //  Copyright © 2017. Zsolt Mester. All rights reserved.
 //
 
+// FeedKit source: https://github.com/nmdias/FeedKit
+// FeedKit documentation: http://cocoadocs.org/docsets/FeedKit
+
+import FeedKit
 import Foundation
 
 class RSS {
@@ -26,6 +30,47 @@ extension RSS: Fetchable {
 	// MARK: - Fetchable
 
 	func fetch(request: FetchRequest?, completionHandler: @escaping FetchCompletionHandler) {
-		print("RSS-t fetchelne...")
+
+		guard let request = request else {
+			fatalError("Fetching an RSS feed, but the FetchRequest is nil.")
+		}
+
+		guard let url = URL(string: request), let parser = FeedParser(URL: url) else {
+			completionHandler(nil, [FetchError.invalidQuery])
+			return
+		}
+
+		parser.parseAsync { result in
+
+			switch result {
+			case let .rss(feed):
+				completionHandler(self.getNewsAsStringFromFeed(feed), nil)
+			case .atom:
+				completionHandler(nil, [FetchError.other(message: "Unsupported feed type: Atom.")])
+			case .json:
+				completionHandler(nil, [FetchError.other(message: "Unsupported feed type: JSON.")])
+			case let .failure(error):
+				completionHandler(nil, [FetchError.other(message: "Error while fetching an RSS feed: \(error)")])
+			}
+
+		}
+	}
+
+	// MARK: - Private Functions
+
+	private func getNewsAsStringFromFeed(_ feed: RSSFeed) -> [String] {
+
+		guard let items = feed.items, !items.isEmpty else {
+			return [String]()
+		}
+
+		var newsAsString = [String]()
+
+		for item in items {
+
+			newsAsString.append("\(item.title ?? "nil"): \(item.description ?? "nil")")
+		}
+
+		return newsAsString
 	}
 }

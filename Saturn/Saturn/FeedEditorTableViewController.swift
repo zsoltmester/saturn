@@ -386,10 +386,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 				} else {
 
-					let alertViewController: UIAlertController = UIAlertController(title: "Couldn't find \(query)'s \(newsProvider.name ?? "")", message: nil, preferredStyle: .alert)
-					alertViewController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-					self.present(alertViewController, animated: true, completion: nil)
-
+					self.handleFetchErrors(errors!, provider: newsProvider, query: query) // swiftlint:disable:this force_unwrapping
 				}
 
 				self.endLoading()
@@ -427,6 +424,36 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		let alertViewController: UIAlertController = UIAlertController(title: "\(name) already exists", message: "Enter a new name.", preferredStyle: .alert)
 		alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 		self.present(alertViewController, animated: true, completion: nil)
+	}
+
+	private func handleFetchErrors(_ errors: [FetchError], provider: NewsProvider, query: String) {
+
+		if errors.contains(where: { error -> Bool in
+
+			switch error {
+			case .invalidQuery:
+				return provider.identifier == NewsProviderIdentifier.rss.rawValue
+			default:
+				return false
+			}
+
+		}) {
+
+			let alertViewController: UIAlertController = UIAlertController(title: "Invalid URL", message: nil, preferredStyle: .alert)
+			alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+			self.present(alertViewController, animated: true, completion: nil)
+
+		} else {
+
+			let alertViewController: UIAlertController = UIAlertController(title: "Couldn't find \(query)'s \(provider.name ?? "")", message: nil, preferredStyle: .alert)
+			alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+			self.present(alertViewController, animated: true, completion: nil)
+
+		}
+
+		for error in errors {
+			print("Error while fetching \(provider.name ?? "") for \(query): \(error)")
+		}
 	}
 
 }

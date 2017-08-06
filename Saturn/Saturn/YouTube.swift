@@ -80,8 +80,7 @@ extension YouTube: Fetchable {
 		URLSession.shared.dataTask(with: channelsService) { (data: Data?, _, error: Error?) in
 
 			guard error == nil else {
-				print("Error in a YouTube channels service response: \(error!)") // swiftlint:disable:this force_unwrapping
-				completionHandler(nil, FetchError.providerUnavailable)
+				completionHandler(nil, FetchError.other(message: "Error in a YouTube channels service response: \(error!)")) // swiftlint:disable:this force_unwrapping
 				return
 			}
 
@@ -111,8 +110,7 @@ extension YouTube: Fetchable {
 		URLSession.shared.dataTask(with: playlistItemsService) { (data: Data?, _, error: Error?) in
 
 			guard error == nil else {
-				print("Error in a YouTube playlist items service response: \(error!)") // swiftlint:disable:this force_unwrapping
-				completionHandler(nil, FetchError.providerUnavailable)
+				completionHandler(nil, FetchError.other(message: "Error in a YouTube playlist items service response: \(error!)")) // swiftlint:disable:this force_unwrapping
 				return
 			}
 

@@ -33,7 +33,6 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- Megjeleníteni a híreket
 
 - Integrálni akarom még:
-	- RSS feed
 	- Reddit
 
 ### Possible new features and improvements
