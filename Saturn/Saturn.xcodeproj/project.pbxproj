@@ -20,7 +20,6 @@
 		E74D101A1EC4FE870057E519 /* SaturnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74D10191EC4FE870057E519 /* SaturnTests.swift */; };
 		E74E59801EC9085C008F8248 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74E597F1EC9085C008F8248 /* ModelController.swift */; };
 		E75961931EE470C40030921F /* FeedEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75961921EE470C40030921F /* FeedEditorTableViewController.swift */; };
-		E75961951EE470EB0030921F /* FeedEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E75961941EE470EB0030921F /* FeedEditor.storyboard */; };
 		E75961971EE4B0DE0030921F /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75961961EE4B0DE0030921F /* NameTableViewCell.swift */; };
 		E75961991EE4B3060030921F /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75961981EE4B3060030921F /* ColorTableViewCell.swift */; };
 		E759619D1EE4D7C80030921F /* ColorSelectorCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759619C1EE4D7C80030921F /* ColorSelectorCollectionViewController.swift */; };
@@ -38,6 +37,7 @@
 		E7AF54691F214E970011BF93 /* YouTube.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF54681F214E970011BF93 /* YouTube.swift */; };
 		E7C5FC441F3CFCC800F5D9C7 /* Reddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5FC431F3CFCC800F5D9C7 /* Reddit.swift */; };
 		E7CA97C91EFEB44200BD5DE6 /* NewsProviderIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CA97C81EFEB44200BD5DE6 /* NewsProviderIdentifier.swift */; };
+		E7D1CCD21F3D044900E31E5E /* FeedEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7D1CCD41F3D044900E31E5E /* FeedEditor.storyboard */; };
 		E7F3E8CB1F23E7F0003F80D4 /* FetchConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3E8CA1F23E7F0003F80D4 /* FetchConstants.swift */; };
 		E7FC7E8B1F1C314C00734AAE /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FC7E8A1F1C314C00734AAE /* NewsTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -75,7 +75,6 @@
 		E74D101B1EC4FE870057E519 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E74E597F1EC9085C008F8248 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		E75961921EE470C40030921F /* FeedEditorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedEditorTableViewController.swift; sourceTree = "<group>"; };
-		E75961941EE470EB0030921F /* FeedEditor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeedEditor.storyboard; sourceTree = "<group>"; };
 		E75961961EE4B0DE0030921F /* NameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
 		E75961981EE4B3060030921F /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
 		E759619C1EE4D7C80030921F /* ColorSelectorCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectorCollectionViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +92,7 @@
 		E7AF54681F214E970011BF93 /* YouTube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTube.swift; sourceTree = "<group>"; };
 		E7C5FC431F3CFCC800F5D9C7 /* Reddit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reddit.swift; sourceTree = "<group>"; };
 		E7CA97C81EFEB44200BD5DE6 /* NewsProviderIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsProviderIdentifier.swift; sourceTree = "<group>"; };
+		E7D1CCD31F3D044900E31E5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FeedEditor.storyboard; sourceTree = "<group>"; };
 		E7F3E8CA1F23E7F0003F80D4 /* FetchConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchConstants.swift; sourceTree = "<group>"; };
 		E7FC7E8A1F1C314C00734AAE /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,7 +180,7 @@
 		E74D10251EC50E2B0057E519 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E75961941EE470EB0030921F /* FeedEditor.storyboard */,
+				E7D1CCD41F3D044900E31E5E /* FeedEditor.storyboard */,
 				E74D100D1EC4FE870057E519 /* LaunchScreen.storyboard */,
 				E74D10051EC4FE870057E519 /* Main.storyboard */,
 				E7CA97C71EFEB01300BD5DE6 /* Table View Cell */,
@@ -363,7 +363,7 @@
 			files = (
 				E74D100F1EC4FE870057E519 /* LaunchScreen.storyboard in Resources */,
 				E74D100C1EC4FE870057E519 /* Assets.xcassets in Resources */,
-				E75961951EE470EB0030921F /* FeedEditor.storyboard in Resources */,
+				E7D1CCD21F3D044900E31E5E /* FeedEditor.storyboard in Resources */,
 				E74D10071EC4FE870057E519 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,6 +576,14 @@
 				E74D100E1EC4FE870057E519 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E7D1CCD41F3D044900E31E5E /* FeedEditor.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E7D1CCD31F3D044900E31E5E /* Base */,
+			);
+			name = FeedEditor.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
