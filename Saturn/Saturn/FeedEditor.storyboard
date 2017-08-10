@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NNQ-ck-xIz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NNQ-ck-xIz">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -131,11 +131,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dub-ie-asx">
-                                            <rect key="frame" x="8" y="-0.5" width="304" height="44"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="44" id="vLG-rH-QKJ"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="Dub-ie-asx">
+                                            <rect key="frame" x="8" y="0.0" width="304" height="43.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -143,6 +140,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Dub-ie-asx" firstAttribute="trailing" secondItem="P95-bc-hvp" secondAttribute="trailingMargin" id="CVN-HL-rgC"/>
+                                        <constraint firstAttribute="bottom" secondItem="Dub-ie-asx" secondAttribute="bottom" id="NF8-Fn-6GF"/>
                                         <constraint firstItem="Dub-ie-asx" firstAttribute="top" secondItem="P95-bc-hvp" secondAttribute="top" id="c4V-bf-zfk"/>
                                         <constraint firstItem="Dub-ie-asx" firstAttribute="leading" secondItem="P95-bc-hvp" secondAttribute="leadingMargin" id="nNE-if-Qsb"/>
                                     </constraints>
@@ -227,7 +225,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NNQ-ck-xIz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x7W-cc-P5V">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
