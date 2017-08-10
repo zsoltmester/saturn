@@ -57,6 +57,11 @@ class ModelController {
 		                       detail: "Get the latest posts from a page. Enter the page's name, for example “GameOfThrones” or “coachella”.",
 		                       hint: "Page")
 
+		_ = insertNewsProvider(identifier: NewsProviderIdentifier.reddit.rawValue,
+		                       name: "Reddit",
+		                       detail: "Get the latest posts from a subreddit. Enter the subreddit's name, for example “programming” or “todayilearned”.",
+		                       hint: "Subreddit")
+
 		_ = insertNewsProvider(identifier: NewsProviderIdentifier.rss.rawValue,
 		                       name: "RSS Feed",
 		                       detail: "Get the latest items from an RSS feed. Enter the feed's URL, for example “http://hvg.hu/rss” or “http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml”.",
@@ -71,42 +76,6 @@ class ModelController {
 		                       name: "YouTube",
 		                       detail: "Get the latest videos from a channel. Enter the channel's name, for example “PewDiePie” or “unboxtherapy”.",
 		                       hint: "Channel")
-
-		/*
-		let rssNewsProvider: NewsProvider = insertNewsProvider(identifier: 0, name: "RSS", detail: "Long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long description of RSS.", hint: "RSS URL")
-		let _: NewsProvider = insertNewsProvider(identifier: 1, name: "Atom", detail: "Description of Atom.", hint: "Atom URL")
-		let _: NewsProvider = insertNewsProvider(identifier: 4, name: "Instagram", detail: "Description of Instagram.", hint: "Username")
-		let redditNewsProvider: NewsProvider = insertNewsProvider(identifier: 6, name: "Reddit", detail: "Description of Reddit.", hint: "Subreddit")
-
-		var sources = Set<NewsSource>()
-		sources.insert(insertNewsSource(provider: facebookNewsProvider, query: "Hearthstone.en"))
-		sources.insert(insertNewsSource(provider: youtubeNewsProvider, query: "PlayHearthstone"))
-		insertNewsFeed(name: "Hearthstone", colorIdentifier:9, sources: sources)
-
-		sources.removeAll()
-		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "http://9gag-rss.com/api/rss/get?code=9GAGHot&format=1", title: "9gag"))
-		sources.insert(insertNewsSource(provider: redditNewsProvider, query: "Aww"))
-		sources.insert(insertNewsSource(provider: youtubeNewsProvider, query: "VideomaniaFCS"))
-		insertNewsFeed(name: "Chill", colorIdentifier:5, sources: sources)
-
-		sources.removeAll()
-		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "http://feeds.bbci.co.uk/news/rss.xml?edition=uk", title: "BBC News"))
-		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "http://rss.cnn.com/rss/edition.rss", title: "CNN"))
-		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "https://www.theguardian.com/uk/rss", title: "The Guardian"))
-		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml", title: "The New York Times"))
-		insertNewsFeed(name: "International News", colorIdentifier:6, sources: sources)
-
-		sources.removeAll()
-		sources.insert(insertNewsSource(provider: redditNewsProvider, query: "Programming"))
-		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "https://news.ycombinator.com/rss", title: "Hacker News"))
-		insertNewsFeed(name: "Developer's Heaven", colorIdentifier:1, sources: sources)
-
-		sources.removeAll()
-		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "http://hvg.hu/rss", title: "hvg.hu"))
-		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "http://index.hu/24ora/rss/", title: "Index"))
-		sources.insert(insertNewsSource(provider: rssNewsProvider, query: "https://444.hu/feed", title: "444"))
-		insertNewsFeed(name: "Daily Essentials", colorIdentifier:4, sources: sources)
-		*/
 	}
 
 	// MARK: - Public Functions

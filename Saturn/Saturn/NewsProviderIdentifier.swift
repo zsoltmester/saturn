@@ -12,4 +12,5 @@ enum NewsProviderIdentifier: Int16 {
 	case facebook = 2
 	case youtube = 3
 	case rss = 4
+	case reddit = 5
 }

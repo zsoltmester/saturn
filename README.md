@@ -32,9 +32,6 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- Ha leértünk a screen aljára, akkor töltjük a következő adagot
 	- Megjeleníteni a híreket
 
-- Integrálni akarom még:
-	- Reddit
-
 ### Possible new features and improvements
 
 - Move all the strings to the Localizable.strings
@@ -53,9 +50,14 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Copy API support
 - Validate news source before add
 - Animations
+- Using the new safe layout guides
+- When adding a news source, replace the input field hint with a label
+- Support more on Reddit, other then a subreddit's hot
 
 ### Cikkek, amik még jól jöhetnek
 
+- Safe layout guide-hoz:
+	- https://useyourloaf.com/blog/safe-area-layout-guide
 - Kép letöltéshez:
 	- https://medium.com/@matthew_healy/loading-images-in-ios-without-dependencies-aff1555dbf1e
 - iPad supporthoz:
@@ -83,6 +85,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- https://developer.apple.com/app-store/product-page/
 	- https://developer.apple.com/videos/play/wwdc2017/305/
 	- https://stories.appbot.co/how-often-should-you-update-your-app-9405b85a967c
+	- https://medium.com/mobile-growth/how-to-get-more-app-downloads-by-rethinking-your-mobile-marketing-strategy-150ed4cc4e28
 
 #### Facebook
 

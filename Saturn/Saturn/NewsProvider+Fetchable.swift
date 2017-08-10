@@ -19,6 +19,9 @@ extension NewsProvider: Fetchable {
 		case NewsProviderIdentifier.facebook.rawValue:
 			Facebook.shared.fetch(request: request, completionHandler: completionHandler)
 
+		case NewsProviderIdentifier.reddit.rawValue:
+			Reddit.shared.fetch(request: request, completionHandler: completionHandler)
+
 		case NewsProviderIdentifier.rss.rawValue:
 			RSS.shared.fetch(request: request, completionHandler: completionHandler)
 
