@@ -132,7 +132,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="Dub-ie-asx">
-                                            <rect key="frame" x="8" y="0.0" width="304" height="43.5"/>
+                                            <rect key="frame" x="8" y="8" width="304" height="27.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -140,8 +140,8 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Dub-ie-asx" firstAttribute="trailing" secondItem="P95-bc-hvp" secondAttribute="trailingMargin" id="CVN-HL-rgC"/>
-                                        <constraint firstAttribute="bottom" secondItem="Dub-ie-asx" secondAttribute="bottom" id="NF8-Fn-6GF"/>
-                                        <constraint firstItem="Dub-ie-asx" firstAttribute="top" secondItem="P95-bc-hvp" secondAttribute="top" id="c4V-bf-zfk"/>
+                                        <constraint firstItem="Dub-ie-asx" firstAttribute="bottom" secondItem="P95-bc-hvp" secondAttribute="bottomMargin" id="NF8-Fn-6GF"/>
+                                        <constraint firstItem="Dub-ie-asx" firstAttribute="top" secondItem="P95-bc-hvp" secondAttribute="topMargin" id="c4V-bf-zfk"/>
                                         <constraint firstItem="Dub-ie-asx" firstAttribute="leading" secondItem="P95-bc-hvp" secondAttribute="leadingMargin" id="nNE-if-Qsb"/>
                                     </constraints>
                                 </tableViewCellContentView>
