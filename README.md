@@ -55,6 +55,10 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Convert project to Swift 4
 - Integrate LicensePlist
 
+#### Bugs
+
+- Ha túl hosszú a név, mikor hozzáadunk egy feedet, crashel
+
 ### Cikkek, amik még jól jöhetnek
 
 - Safe layout guide-hoz:
