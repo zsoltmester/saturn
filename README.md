@@ -25,18 +25,15 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 ### Ami még biztos hátravan az MVP-ig
 
-- A hírfolyam képernyő:
-	- Nem kell az, hogy cacheljünk!
-	- A table view nem frissíthető (se swipe, se refresh button)!
-	- Hogy mennyi hírt töltsünk le egy feedhez, az nem konfigurálható, csak az, hogy mennyi új hírt töltsön le egy Fetchable egy fetchnél.
-	- Ha leértünk a screen aljára, akkor töltjük a következő adagot
-	- Megjeleníteni a híreket
+- Megjeleníteni a híreket
 
 ### Roadmap
 
 #### Features
 
 - Cache (news, pictures, videos, other media...)
+- Support refresh on the feed screen
+- Support loading more new on the feed screen
 - Feedback from users
 - Share news
 - Save news
