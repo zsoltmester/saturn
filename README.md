@@ -32,27 +32,31 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- Ha leértünk a screen aljára, akkor töltjük a következő adagot
 	- Megjeleníteni a híreket
 
-### Possible new features and improvements
+### Roadmap
 
-- Move all the strings to the Localizable.strings
+#### Features
+
 - Cache (news, pictures, videos, other media...)
-- Convert project to Swift 4
 - Feedback from users
 - Share news
 - Save news
 - Support iPad devices and iPhones' landscape mode
-- Analytics (log the current print statements too)
 - Pastel view before the disclosure indicator, on the color row, in the add feed screen
-- Integrate LicensePlist
-- 3D touch (can I use for something?)
+- 3D touch support
 - Onboarding
 - Instagram integráció
 - Copy API support
 - Validate news source before add
 - Animations
-- Using the new safe layout guides
 - When adding a news source, replace the input field hint with a label
 - Support more on Reddit, other then a subreddit's hot
+
+#### Technical improvements
+
+- Analytics (log the current print statements too)
+- Using the new safe layout guides
+- Convert project to Swift 4
+- Integrate LicensePlist
 
 ### Cikkek, amik még jól jöhetnek
 
@@ -86,6 +90,8 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- https://developer.apple.com/videos/play/wwdc2017/305/
 	- https://stories.appbot.co/how-often-should-you-update-your-app-9405b85a967c
 	- https://medium.com/mobile-growth/how-to-get-more-app-downloads-by-rethinking-your-mobile-marketing-strategy-150ed4cc4e28
+	- https://medium.com/flawless-app-stories/flawlessapp-on-producthunt-7db3e561ce7a
+	- https://www.sideprojectchecklist.com/marketing-checklist/
 
 #### Facebook
 

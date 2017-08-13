@@ -53,29 +53,29 @@ class ModelController {
 	private func preloadModel() {
 
 		_ = insertNewsProvider(identifier: NewsProviderIdentifier.facebook.rawValue,
-		                       name: "Facebook",
-		                       detail: "Get the latest posts from a page. Enter the page's name, for example “GameOfThrones” or “coachella”.",
-		                       hint: "Page")
+		                       name: NSLocalizedString("Facebook:Name", comment: ""),
+		                       detail: NSLocalizedString("FeedEditor:Facebook:Detail", comment: ""),
+		                       hint: NSLocalizedString("FeedEditor:Facebook:Hint", comment: ""))
 
 		_ = insertNewsProvider(identifier: NewsProviderIdentifier.reddit.rawValue,
-		                       name: "Reddit",
-		                       detail: "Get the latest posts from a subreddit. Enter the subreddit's name, for example “programming” or “todayilearned”.",
-		                       hint: "Subreddit")
+		                       name: NSLocalizedString("Reddit:Name", comment: ""),
+		                       detail: NSLocalizedString("FeedEditor:Reddit:Detail", comment: ""),
+		                       hint: NSLocalizedString("FeedEditor:Reddit:Hint", comment: ""))
 
 		_ = insertNewsProvider(identifier: NewsProviderIdentifier.rss.rawValue,
-		                       name: "RSS Feed",
-		                       detail: "Get the latest items from an RSS feed. Enter the feed's URL, for example “http://hvg.hu/rss” or “http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml”.",
-		                       hint: "URL")
+		                       name: NSLocalizedString("RSS:Name", comment: ""),
+		                       detail: NSLocalizedString("FeedEditor:RSS:Detail", comment: ""),
+		                       hint: NSLocalizedString("FeedEditor:RSS:Hint", comment: ""))
 
 		_ = insertNewsProvider(identifier: NewsProviderIdentifier.twitter.rawValue,
-		                       name: "Twitter",
-		                       detail: "Get the latest tweets from a user. Enter the username, for example “edsheeran”, “LeoDiCaprio” or “realDonaldTrump”.",
-		                       hint: "Username")
+		                       name: NSLocalizedString("Twitter:Name", comment: ""),
+		                       detail: NSLocalizedString("FeedEditor:Twitter:Detail", comment: ""),
+		                       hint: NSLocalizedString("FeedEditor:Twitter:Hint", comment: ""))
 
 		_ = insertNewsProvider(identifier: NewsProviderIdentifier.youtube.rawValue,
-		                       name: "YouTube",
-		                       detail: "Get the latest videos from a channel. Enter the channel's name, for example “PewDiePie” or “unboxtherapy”.",
-		                       hint: "Channel")
+		                       name: NSLocalizedString("YouTube:Name", comment: ""),
+		                       detail: NSLocalizedString("FeedEditor:YouTube:Detail", comment: ""),
+		                       hint: NSLocalizedString("FeedEditor:YouTube:Hint", comment: ""))
 	}
 
 	// MARK: - Public Functions

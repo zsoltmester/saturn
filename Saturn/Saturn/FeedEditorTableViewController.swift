@@ -337,8 +337,8 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 					switch result {
 
 					case .cancelled, .failed:
-						let alertViewController: UIAlertController = UIAlertController(title: "Failed to log in", message: "Please try again.", preferredStyle: .alert)
-						alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+						let alertViewController: UIAlertController = UIAlertController(title: NSLocalizedString("FeedEditor:Facebook:UnsuccessfulLoginAlert:Title", comment: ""), message: NSLocalizedString("FeedEditor:Facebook:UnsuccessfulLoginAlert:Message", comment: ""), preferredStyle: .alert)
+						alertViewController.addAction(UIAlertAction(title: NSLocalizedString("Alert:OkButton", comment: ""), style: .default, handler: nil))
 						self.present(alertViewController, animated: true, completion: nil)
 
 					case .success:
@@ -421,8 +421,8 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 	private func showNameExistsAlertViewController(_ name: String) {
 
-		let alertViewController: UIAlertController = UIAlertController(title: "\(name) already exists", message: "Enter a new name.", preferredStyle: .alert)
-		alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		let alertViewController: UIAlertController = UIAlertController(title: String(format: NSLocalizedString("FeedEditor:NameExistsAlert:Title", comment: ""), name), message: NSLocalizedString("FeedEditor:NameExistsAlert:Message", comment: ""), preferredStyle: .alert)
+		alertViewController.addAction(UIAlertAction(title: NSLocalizedString("Alert:OkButton", comment: ""), style: .default, handler: nil))
 		self.present(alertViewController, animated: true, completion: nil)
 	}
 
@@ -439,14 +439,14 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 		}) {
 
-			let alertViewController: UIAlertController = UIAlertController(title: "Invalid URL", message: nil, preferredStyle: .alert)
-			alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+			let alertViewController: UIAlertController = UIAlertController(title: NSLocalizedString("FeedEditor:RSS:InvalidUrlAlert:Title", comment: ""), message: nil, preferredStyle: .alert)
+			alertViewController.addAction(UIAlertAction(title: NSLocalizedString("Alert:OkButton", comment: ""), style: .default, handler: nil))
 			self.present(alertViewController, animated: true, completion: nil)
 
 		} else {
 
-			let alertViewController: UIAlertController = UIAlertController(title: "Couldn't find \(query)'s \(provider.name ?? "")", message: nil, preferredStyle: .alert)
-			alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+			let alertViewController: UIAlertController = UIAlertController(title: String(format: NSLocalizedString("FeedEditor:NotFoundAlert:Title", comment: ""), query, provider.name ?? ""), message: nil, preferredStyle: .alert)
+			alertViewController.addAction(UIAlertAction(title: NSLocalizedString("Alert:OkButton", comment: ""), style: .default, handler: nil))
 			self.present(alertViewController, animated: true, completion: nil)
 
 		}

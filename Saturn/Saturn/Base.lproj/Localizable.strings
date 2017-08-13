@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  Saturn
+
+  Created by Zsolt Mester on 2017. 08. 10..
+  Copyright © 2017. Zsolt Mester. All rights reserved.
+*/
+
+"Alert:OkButton" = "OK";
+
+"Facebook:Name" = "Facebook";
+"Reddit:Name" = "Reddit";
+"RSS:Name" = "RSS Feed";
+"Twitter:Name" = "Twitter";
+"YouTube:Name" = "YouTube";
+
+"FeedEditor:Facebook:Detail" = "Get the latest posts from a page. Enter the page's name, for example “GameOfThrones” or “coachella”.";
+"FeedEditor:Facebook:Hint" = "Page";
+"FeedEditor:Facebook:UnsuccessfulLoginAlert:Title" = "Failed to log in";
+"FeedEditor:Facebook:UnsuccessfulLoginAlert:Message" = "Please try again.";
+
+"FeedEditor:Reddit:Detail" = "Get the latest posts from a subreddit. Enter the subreddit's name, for example “programming” or “todayilearned”.";
+"FeedEditor:Reddit:Hint" = "Subreddit";
+
+"FeedEditor:RSS:Detail" = "Get the latest items from an RSS feed. Enter the feed's URL, for example “http://hvg.hu/rss” or “http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml”.";
+"FeedEditor:RSS:Hint" = "URL";
+"FeedEditor:RSS:InvalidUrlAlert:Title" = "Invalid URL";
+
+"FeedEditor:Twitter:Detail" = "Get the latest tweets from a user. Enter the username, for example “edsheeran”, “LeoDiCaprio” or “realDonaldTrump”.";
+"FeedEditor:Twitter:Hint" = "Username";
+
+"FeedEditor:YouTube:Detail" = "Get the latest videos from a channel. Enter the channel's name, for example “PewDiePie” or “unboxtherapy”.";
+"FeedEditor:YouTube:Hint" = "Channel";
+
+"FeedEditor:NameExistsAlert:Title" = "%@ already exists";
+"FeedEditor:NameExistsAlert:Message" = "Enter a new name.";
+"FeedEditor:NotFoundAlert:Title" = "Couldn't find %@'s %@";
+
+
