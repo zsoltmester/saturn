@@ -142,11 +142,11 @@ class FeedListTableViewController: ModelTableViewController {
 				fatalError("At Show Feed segue couldn't get feed for a cell.")
 			}
 
-			guard let feedTableViewController = segue.destination as? FeedTableViewController else {
-				fatalError("At Show Feed segue the destination view controller is not a FeedTableViewController, but \(segue.destination.debugDescription).")
+			guard let newsTableViewController = segue.destination as? NewsTableViewController else {
+				fatalError("At Show Feed segue the destination view controller is not a NewsTableViewController, but \(segue.destination.debugDescription).")
 			}
 
-			feedTableViewController.feed = feed
+			newsTableViewController.feed = feed
 
 		default:
 

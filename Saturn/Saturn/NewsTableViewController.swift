@@ -1,5 +1,5 @@
 //
-//  FeedTableViewController.swift
+//  NewsTableViewController.swift
 //  Saturn
 //
 //  Created by Zsolt Mester on 2017. 07. 08..
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedTableViewController: UITableViewController {
+class NewsTableViewController: UITableViewController {
 
 	// MARK: - Properties
 
@@ -53,10 +53,8 @@ class FeedTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.reuseIdentifier, for: indexPath) as? NewsTableViewCell else {
-			fatalError("Not a valid NewsTableViewCell while loading the cells at FeedTableViewController.")
+			fatalError("Not a valid NewsTableViewCell while loading the cells at NewsTableViewController.")
 		}
-
-		cell.showcaseLabel.text = fetchResults?[indexPath.row]
 
 		return cell
 	}

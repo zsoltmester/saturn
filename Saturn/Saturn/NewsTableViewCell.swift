@@ -14,6 +14,4 @@ class NewsTableViewCell: UITableViewCell {
 
 	static let reuseIdentifier = "News Cell"
 
-	@IBOutlet weak var showcaseLabel: UILabel!
-
 }
