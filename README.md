@@ -23,31 +23,28 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva. A
 
 A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mindig az aktuális és az előző főverzió támogatott. Egyelőre csak a portrait módban használható az app.
 
-### Ami még biztos hátravan az MVP-ig
-
-- Megjeleníteni a híreket
-
 ### Roadmap
 
 #### Features
 
-- On the feed list screen, the sources should be new lines grouped by providers
-- Remove the color pastel view from everywhere
+- Change `&amp;` to *&* in the text on a news cell
+- Make link clickable on the news screen
+- Refactor the feed list screen: remove the color pastel view (also from model and feed editor) and group the sources by providers, where each provider is a new line
 - Cache (news, pictures, videos, other media...)
-- Include replies and retweets on Twitter
-- Support refresh on the feed screen
-- Support loading more new on the feed screen
-- Feedback from users
+- Support refresh on the feed screen (swipe to refresh + button)
+- Support loading more news on the news screen
+- Sending app feedbacks
 - Share news
 - Save news
 - Support iPad devices and iPhones' landscape mode
-- 3D touch support
-- Onboarding
-- Instagram integráció
-- Copy API support
-- Validate news source before add
-- Animations
-- When adding a news source, replace the input field hint with a label
+- User onboarding
+- Improve feed editor screen: search, preview and select the source
+- Make texts selectable on the news screen
+
+#### News providers and sources
+
+- Include replies, quotes and retweets on Twitter
+- Integrate Instagram
 - Support more on Reddit, other then a subreddit's hot
 
 #### Technical improvements
