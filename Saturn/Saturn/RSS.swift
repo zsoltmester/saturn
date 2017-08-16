@@ -44,9 +44,9 @@ extension RSS: Fetchable {
 
 			switch result {
 			case let .rss(feed):
-				completionHandler(self.getNewsAsStringFromFeed(feed), nil)
+				completionHandler(self.getNews(from: feed), nil)
 			case let .atom(feed):
-				completionHandler(self.getNewsAsStringFromFeed(feed), nil)
+				completionHandler(self.getNews(from: feed), nil)
 			case .json:
 				completionHandler(nil, [FetchError.other(message: "Unsupported RSS feed type: JSON.")])
 			case let .failure(error):
@@ -58,35 +58,35 @@ extension RSS: Fetchable {
 
 	// MARK: - Private Functions
 
-	private func getNewsAsStringFromFeed(_ feed: RSSFeed) -> [String] {
+	private func getNews(from feed: RSSFeed) -> [News] {
 
 		guard let items = feed.items, !items.isEmpty else {
-			return [String]()
+			return [News]()
 		}
 
-		var newsAsString = [String]()
+		/*var newsAsString = [String]()
 
 		for item in items {
 
 			newsAsString.append("\(item.title ?? "nil"): \(item.description ?? "nil")")
-		}
+		}*/
 
-		return newsAsString
+		return [News]()
 	}
 
-	private func getNewsAsStringFromFeed(_ feed: AtomFeed) -> [String] {
+	private func getNews(from feed: AtomFeed) -> [News] {
 
 		guard let items = feed.entries, !items.isEmpty else {
-			return [String]()
+			return [News]()
 		}
 
-		var newsAsString = [String]()
+		/*var newsAsString = [String]()
 
 		for item in items {
 
 			newsAsString.append("\(item.title ?? "nil"): \(item.summary?.value ?? "nil")")
-		}
+		}*/
 
-		return newsAsString
+		return [News]()
 	}
 }

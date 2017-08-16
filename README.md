@@ -31,14 +31,16 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Features
 
+- On the feed list screen, the sources should be new lines grouped by providers
+- Remove the color pastel view from everywhere
 - Cache (news, pictures, videos, other media...)
+- Include replies and retweets on Twitter
 - Support refresh on the feed screen
 - Support loading more new on the feed screen
 - Feedback from users
 - Share news
 - Save news
 - Support iPad devices and iPhones' landscape mode
-- Pastel view before the disclosure indicator, on the color row, in the add feed screen
 - 3D touch support
 - Onboarding
 - Instagram integráció
@@ -93,6 +95,8 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- https://medium.com/mobile-growth/how-to-get-more-app-downloads-by-rethinking-your-mobile-marketing-strategy-150ed4cc4e28
 	- https://medium.com/flawless-app-stories/flawlessapp-on-producthunt-7db3e561ce7a
 	- https://www.sideprojectchecklist.com/marketing-checklist/
+	- https://blog.halide.cam/one-weird-trick-to-lose-size-c0a4013de331
+	- https://uxplanet.org/lean-and-mean-power-of-minimalism-in-ui-design-5ca37eb32ac8
 
 #### Facebook
 
@@ -102,10 +106,6 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - https://developers.facebook.com/docs/graph-api/reference/page/#Overview
 - https://developers.facebook.com/docs/graph-api/reference/v2.9/post
 - https://developers.facebook.com/docs/graph-api/reference/v2.9/attachment
-
-#### Twitter
-
-- https://dev.twitter.com/twitterkit/ios/overview
 
 #### YouTube
 

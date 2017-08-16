@@ -36,4 +36,4 @@
 "FeedEditor:NameExistsAlert:Message" = "Enter a new name.";
 "FeedEditor:NotFoundAlert:Title" = "Couldn't find %@'s %@";
 
-
+"News:TimeFormat" = "%@ ago";

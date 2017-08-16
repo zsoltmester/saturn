@@ -55,12 +55,12 @@ extension Facebook: Fetchable {
 					return
 				}
 
-				var postsAsString = [String]()
+				/*var postsAsString = [String]()
 				for post in posts {
 					postsAsString.append(post.description)
-				}
+				}*/
 
-				completionHandler(postsAsString, nil)
+				completionHandler([News](), nil)
 
 			case .failed(let error):
 

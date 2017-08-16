@@ -22,7 +22,7 @@ extension NewsFeed: Fetchable {
 			fatalError("Fetching a news feed, but the sources are not valid: \(self.debugDescription)")
 		}
 
-		var allResults = [FetchResult]()
+		var allResults = [News]()
 		var allErrors = [FetchError]()
 
 		let fetchDispatchGroup = DispatchGroup()
@@ -31,9 +31,9 @@ extension NewsFeed: Fetchable {
 
 			fetchDispatchGroup.enter()
 
-			source.fetch(request: nil) { (results: [FetchResult]?, errors: [FetchError]?) in
+			source.fetch(request: nil) { (results: [News]?, errors: [FetchError]?) in
 
-				if let results: [FetchResult] = results {
+				if let results: [News] = results {
 					allResults.append(contentsOf: results)
 				}
 

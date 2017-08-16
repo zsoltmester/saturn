@@ -60,12 +60,12 @@ extension YouTube: Fetchable {
 					return
 				}
 
-				var playlistItemsAsString = [String]()
+				/*var playlistItemsAsString = [String]()
 				for playlistItem in playlistItems {
 					playlistItemsAsString.append("\(playlistItem.snippet.title)\n\(playlistItem.snippet.description)")
-				}
+				}*/
 
-				completionHandler(playlistItemsAsString, nil)
+				completionHandler([News](), nil)
 			}
 		}
 	}

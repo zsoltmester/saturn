@@ -34,6 +34,7 @@
 		E792068C1F13DFA400E81470 /* NewsFeed+Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792068B1F13DFA400E81470 /* NewsFeed+Fetchable.swift */; };
 		E7AB991C1EE8740C00E3BFFF /* AddSourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB991B1EE8740C00E3BFFF /* AddSourceTableViewCell.swift */; };
 		E7AB991E1EE880ED00E3BFFF /* SourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AB991D1EE880ED00E3BFFF /* SourceTableViewCell.swift */; };
+		E7AF37571F44AFCB002060E9 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF37561F44AFCB002060E9 /* News.swift */; };
 		E7AF54691F214E970011BF93 /* YouTube.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF54681F214E970011BF93 /* YouTube.swift */; };
 		E7C5FC441F3CFCC800F5D9C7 /* Reddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5FC431F3CFCC800F5D9C7 /* Reddit.swift */; };
 		E7CA97C91EFEB44200BD5DE6 /* NewsProviderIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CA97C81EFEB44200BD5DE6 /* NewsProviderIdentifier.swift */; };
@@ -90,6 +91,7 @@
 		E792068B1F13DFA400E81470 /* NewsFeed+Fetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewsFeed+Fetchable.swift"; sourceTree = "<group>"; };
 		E7AB991B1EE8740C00E3BFFF /* AddSourceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSourceTableViewCell.swift; sourceTree = "<group>"; };
 		E7AB991D1EE880ED00E3BFFF /* SourceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceTableViewCell.swift; sourceTree = "<group>"; };
+		E7AF37561F44AFCB002060E9 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		E7AF54681F214E970011BF93 /* YouTube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTube.swift; sourceTree = "<group>"; };
 		E7C5FC431F3CFCC800F5D9C7 /* Reddit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reddit.swift; sourceTree = "<group>"; };
 		E7CA97C81EFEB44200BD5DE6 /* NewsProviderIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsProviderIdentifier.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				E74D10081EC4FE870057E519 /* Saturn.xcdatamodeld */,
 				E7CA97C81EFEB44200BD5DE6 /* NewsProviderIdentifier.swift */,
+				E7AF37561F44AFCB002060E9 /* News.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				E7882B181F1BBFA1007E4512 /* Fetchable.swift in Sources */,
 				E714F1661F375F7F006A76E4 /* RSS.swift in Sources */,
 				E787C8B81ECB9175000D7728 /* FeedListTableViewController.swift in Sources */,
+				E7AF37571F44AFCB002060E9 /* News.swift in Sources */,
 				E759619F1EE4D8240030921F /* ColorCollectionViewCell.swift in Sources */,
 				E75961971EE4B0DE0030921F /* NameTableViewCell.swift in Sources */,
 				E7C5FC441F3CFCC800F5D9C7 /* Reddit.swift in Sources */,

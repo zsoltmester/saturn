@@ -6,6 +6,8 @@
 //  Copyright © 2017. Zsolt Mester. All rights reserved.
 //
 
+// TwitterKit documentation: https://dev.twitter.com/twitterkit/ios/overview
+
 import Foundation
 import TwitterKit
 
@@ -16,8 +18,8 @@ class Twitter: Fetchable {
 	private let twitterConsumerKey = "TqDzFgxlfJITqE6rMv66nU0ci"
 	private let twitterConsumerSecret = "HgvP8uZYO7iTZmZL3R9MHg3XLq5cEzuACzpii5jz2PdAD2HOT7"
 
-	private let includeReplies = true
-	private let includeRetweets = true
+	private let includeReplies = false
+	private let includeRetweets = false
 
 	static let shared = Twitter()
 
@@ -53,14 +55,21 @@ class Twitter: Fetchable {
 				errors = [FetchError.other(message: "Twitter request failed with error: \(error)")]
 			}
 
-			var tweetsAsString = [String]()
+			var news = [News]()
+
 			if let tweets = tweets {
 				for tweet in tweets {
-					tweetsAsString.append(tweet.description)
+					let aNews = News()
+					aNews.timestamp = tweet.createdAt
+					aNews.avatarUrl = URL(string: tweet.author.profileImageURL)
+					aNews.title = tweet.author.name
+					aNews.text = tweet.text
+					aNews.link = tweet.permalink
+					news.append(aNews)
 				}
 			}
 
-			completionHandler(tweetsAsString, errors)
+			completionHandler(news, errors)
 		}
 	}
 

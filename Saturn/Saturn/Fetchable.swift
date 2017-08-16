@@ -10,14 +10,12 @@ import Foundation
 
 typealias FetchRequest = String
 
-typealias FetchResult = String
-
 enum FetchError: Error {
 	case invalidQuery
 	case other(message: String)
 }
 
-typealias FetchCompletionHandler = ([FetchResult]?, [FetchError]?) -> Void
+typealias FetchCompletionHandler = ([News]?, [FetchError]?) -> Void
 
 protocol Fetchable {
 

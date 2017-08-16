@@ -26,7 +26,14 @@ extension NewsSource: Fetchable {
 			fatalError("There is a news source without query: \(self.debugDescription)")
 		}
 
-		provider.fetch(request: query, completionHandler: completionHandler)
+		provider.fetch(request: query) { news, errors in
+
+			for aNews in news ?? [News]() {
+				aNews.source = self
+			}
+
+			completionHandler(news, errors)
+		}
 	}
 
 }
