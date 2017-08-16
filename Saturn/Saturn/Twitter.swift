@@ -25,6 +25,34 @@ class Twitter: Fetchable {
 
 	private var apiClient: TWTRAPIClient
 
+	private lazy var twitterResourceBundle: Bundle = {
+
+		let twitterBundle = Bundle(for: TWTRTweet.self)
+		guard let twitterResourceBundleUrl = twitterBundle.resourceURL?.appendingPathComponent("TwitterKitResources.bundle") else {
+			fatalError("Unable to load the Twitter resource bundle's URL.")
+		}
+		guard let twitterResourceBundle = Bundle(url: twitterResourceBundleUrl) else {
+			fatalError("Unable to load the Twitter resource bundle.")
+		}
+		return twitterResourceBundle
+	}()
+
+	lazy var errorImage: UIImage = {
+
+		guard let image = UIImage(named: "twttr-icn-tweet-place-holder-photo-error.png", in: self.twitterResourceBundle, compatibleWith: nil) else {
+			fatalError("Unable to load the Twitter's error image.")
+		}
+		return image
+	}()
+
+	lazy var placeholderImage: UIImage = {
+
+		guard let image = UIImage(named: "twttr-icn-tweet-place-holder-photo.png", in: self.twitterResourceBundle, compatibleWith: nil) else {
+			fatalError("Unable to load the Twitter's placeholder image.")
+		}
+		return image
+	}()
+
 	// MARK: - Initialization
 
 	private init() {
@@ -61,7 +89,7 @@ class Twitter: Fetchable {
 				for tweet in tweets {
 					let aNews = News()
 					aNews.timestamp = tweet.createdAt
-					aNews.avatarUrl = URL(string: tweet.author.profileImageURL)
+					aNews.avatarUrl = URL(string: tweet.author.profileImageLargeURL)
 					aNews.title = tweet.author.name
 					aNews.text = tweet.text
 					news.append(aNews)
@@ -71,5 +99,4 @@ class Twitter: Fetchable {
 			completionHandler(news, errors)
 		}
 	}
-
 }

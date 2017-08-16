@@ -6,6 +6,7 @@
 //  Copyright © 2017. Zsolt Mester. All rights reserved.
 //
 
+import SDWebImage
 import UIKit
 
 class NewsTableViewController: UITableViewController {
@@ -75,6 +76,20 @@ class NewsTableViewController: UITableViewController {
 			cell.timeLabel.text = String(format: NSLocalizedString("News:TimeFormat", comment: ""), timeText)
 		} else {
 			cell.timeLabel.isHidden = true
+		}
+
+		if let avatarUrl = aNews?.avatarUrl {
+
+			cell.avatarImageView.sd_setImage(with: avatarUrl, placeholderImage: Twitter.shared.placeholderImage, options: .refreshCached) { _, error, _, url in
+				if let error = error {
+					print("Error while downloading image at URL: \(url?.absoluteString ?? "nil"): \(error.localizedDescription)")
+					cell.avatarImageView.image = Twitter.shared.errorImage
+				}
+			}
+
+		} else {
+
+			cell.avatarImageView.image = Twitter.shared.errorImage
 		}
 
 		return cell
