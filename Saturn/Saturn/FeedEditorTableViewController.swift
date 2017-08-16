@@ -367,7 +367,11 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		newsProvider.fetch(request: query) { (_, errors: [FetchError]?) in
 
 			DispatchQueue.main.async {
-				if errors?.isEmpty ?? true {
+				if let errors = errors, !errors.isEmpty {
+
+					self.handleFetchErrors(errors, provider: newsProvider, query: query)
+
+				} else {
 
 					let source = AppDelegate.shared.modelController.getNewsSource(provider: newsProvider, query: query) ?? AppDelegate.shared.modelController.insertNewsSource(provider: newsProvider, query: query)
 
@@ -383,10 +387,6 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 					self.tableView.insertRows(at: [indexPath], with: .automatic)
 
 					cell.queryTextField.text = nil
-
-				} else {
-
-					self.handleFetchErrors(errors!, provider: newsProvider, query: query) // swiftlint:disable:this force_unwrapping
 				}
 
 				self.endLoading()

@@ -63,18 +63,18 @@ class NewsTableViewController: UITableViewController {
 		cell.newsTextLabel.text = aNews?.text
 		cell.newsTextLabel.isHidden = cell.newsTextLabel.text?.isEmpty ?? true
 
-		if aNews?.timestamp != nil {
+		if let timestamp = aNews?.timestamp {
 			let currentDate = Date()
 			let dateFormatter = DateComponentsFormatter()
 			dateFormatter.unitsStyle = .full
 			dateFormatter.maximumUnitCount = 1
-			cell.timeLabel.text = dateFormatter.string(from: aNews!.timestamp!, to: currentDate) // swiftlint:disable:this force_unwrapping
+			cell.timeLabel.text = dateFormatter.string(from: timestamp, to: currentDate)
 		}
-		if cell.timeLabel.text?.isEmpty ?? true {
-			cell.timeLabel.isHidden = true
-		} else {
+		if let timeText = cell.timeLabel.text, !timeText.isEmpty {
 			cell.timeLabel.isHidden = false
-			cell.timeLabel.text = String(format: NSLocalizedString("News:TimeFormat", comment: ""), cell.timeLabel.text!) // swiftlint:disable:this force_unwrapping
+			cell.timeLabel.text = String(format: NSLocalizedString("News:TimeFormat", comment: ""), timeText)
+		} else {
+			cell.timeLabel.isHidden = true
 		}
 
 		return cell
