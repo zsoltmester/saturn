@@ -65,8 +65,6 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 - Safe layout guide-hoz:
 	- https://useyourloaf.com/blog/safe-area-layout-guide
-- Kép letöltéshez:
-	- https://medium.com/@matthew_healy/loading-images-in-ios-without-dependencies-aff1555dbf1e
 - iPad supporthoz:
 	- https://convertkit.s3.amazonaws.com/assets/documents/747/538975/iOS_Size_Classes_Quick_Guide_v1.3.pdf
 - LicensePlist:

@@ -8,6 +8,7 @@ target 'Saturn' do
   pod 'FacebookLogin', '~> 0.2.0'
   pod 'FeedKit', '~> 6.1.0'
   pod 'Pastel', '~> 0.3.0'
+  pod 'SDWebImage', '~> 4.1.0'
   pod 'SwiftLint', '~> 0.21.0'
   pod 'TwitterKit', '~> 3.0.0'
 

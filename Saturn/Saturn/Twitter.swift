@@ -64,7 +64,6 @@ class Twitter: Fetchable {
 					aNews.avatarUrl = URL(string: tweet.author.profileImageURL)
 					aNews.title = tweet.author.name
 					aNews.text = tweet.text
-					aNews.link = tweet.permalink
 					news.append(aNews)
 				}
 			}
