@@ -31,5 +31,5 @@ class NewsTableViewCell: UITableViewCell {
 
 	@IBOutlet weak var timeLabel: UILabel!
 	@IBOutlet weak var titleLabel: UILabel!
-	@IBOutlet weak var newsTextLabel: UILabel!
+	@IBOutlet weak var textView: UITextView!
 }

@@ -11,6 +11,6 @@ import Foundation
 struct FetchConstants {
 
 	static let timeoutInterval: TimeInterval = 15
-	static let maxResults = 10
+	static let maxResults = 50
 
 }

@@ -56,15 +56,33 @@ class NewsTableViewController: UITableViewController {
 			fatalError("Not a valid NewsTableViewCell while loading the cells at NewsTableViewController.")
 		}
 
-		let aNews = news?[indexPath.row]
+		let news = self.news?[indexPath.row]
 
-		cell.titleLabel.text = aNews?.title ?? aNews?.source?.query
+		setupTitle(for: cell, with: news)
+		setupText(for: cell, with: news)
+		setupTime(for: cell, with: news)
+		setupAvatar(for: cell, with: news)
+
+		return cell
+	}
+
+	// MARK: - Cell Setup
+
+	private func setupTitle(for cell: NewsTableViewCell, with news: News?) {
+
+		cell.titleLabel.text = news?.title ?? news?.source?.query
 		cell.titleLabel.isHidden = cell.titleLabel.text?.isEmpty ?? true
+	}
 
-		cell.newsTextLabel.text = aNews?.text
-		cell.newsTextLabel.isHidden = cell.newsTextLabel.text?.isEmpty ?? true
+	private func setupText(for cell: NewsTableViewCell, with news: News?) {
 
-		if let timestamp = aNews?.timestamp {
+		cell.textView.text = news?.text
+		cell.textView.isHidden = cell.textView.text?.isEmpty ?? true
+	}
+
+	private func setupTime(for cell: NewsTableViewCell, with news: News?) {
+
+		if let timestamp = news?.timestamp {
 			let currentDate = Date()
 			let dateFormatter = DateComponentsFormatter()
 			dateFormatter.unitsStyle = .full
@@ -77,8 +95,11 @@ class NewsTableViewController: UITableViewController {
 		} else {
 			cell.timeLabel.isHidden = true
 		}
+	}
 
-		if let avatarUrl = aNews?.avatarUrl {
+	private func setupAvatar(for cell: NewsTableViewCell, with news: News?) {
+
+		if let avatarUrl = news?.avatarUrl {
 
 			cell.avatarImageView.sd_setImage(with: avatarUrl, placeholderImage: Twitter.shared.placeholderImage, options: .refreshCached) { _, error, _, url in
 				if let error = error {
@@ -91,8 +112,6 @@ class NewsTableViewController: UITableViewController {
 
 			cell.avatarImageView.image = Twitter.shared.errorImage
 		}
-
-		return cell
 	}
 
 }

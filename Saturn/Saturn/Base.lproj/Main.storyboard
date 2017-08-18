@@ -147,12 +147,13 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6o-FI-xdH">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cb3-Xq-xYi">
                                                     <rect key="frame" x="0.0" y="83" width="304" height="12.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                </textView>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -165,7 +166,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="avatarImageView" destination="xuj-p7-NO1" id="1Ru-M3-NOi"/>
-                                    <outlet property="newsTextLabel" destination="D6o-FI-xdH" id="Imi-HK-961"/>
+                                    <outlet property="textView" destination="cb3-Xq-xYi" id="inB-Tq-GPk"/>
                                     <outlet property="timeLabel" destination="Ar0-oe-VNF" id="VxP-vY-knY"/>
                                     <outlet property="titleLabel" destination="Ya1-E7-UTN" id="98K-Ce-LZy"/>
                                 </connections>
