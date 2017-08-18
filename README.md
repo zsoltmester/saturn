@@ -27,7 +27,6 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Features
 
-- Change `&amp;` to *&* in the text on a news cell
 - Refactor the feed list screen: remove the color pastel view (also from model and feed editor) and group the sources by providers, where each provider is a new line
 - Cache (news, pictures, videos, other media...)
 - Support refresh on the feed screen (swipe to refresh + button)

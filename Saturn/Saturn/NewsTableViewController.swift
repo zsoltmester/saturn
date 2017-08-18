@@ -78,6 +78,17 @@ class NewsTableViewController: UITableViewController {
 
 		cell.textView.text = news?.text
 		cell.textView.isHidden = cell.textView.text?.isEmpty ?? true
+
+		guard let textAsData = cell.textView.text.data(using: String.Encoding.utf8) else {
+			fatalError("Couldn't convert String to Data: \(cell.textView.text ?? "nil")")
+		}
+
+		do {
+			let attributedText = try NSAttributedString(data: textAsData, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue], documentAttributes: nil)
+			cell.textView.text = attributedText.string
+		} catch {
+			fatalError("Couldn't decode HTML characters : \(cell.textView.text ?? "nil")")
+		}
 	}
 
 	private func setupTime(for cell: NewsTableViewCell, with news: News?) {
