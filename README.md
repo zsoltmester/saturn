@@ -27,7 +27,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Features
 
-- Refactor the feed list screen: remove the color pastel view (also from model and feed editor) and group the sources by providers, where each provider is a new line
+- (nem ide való) Refactor the feed list screen: remove the color pastel view (also from model and feed editor) and group the sources by providers, where each provider is a new line
 - Cache (news, pictures, videos, other media...)
 - Support refresh on the feed screen (swipe to refresh + button)
 - Support loading more news on the news screen
@@ -41,6 +41,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### News providers and sources
 
+- Eliminate the links in Twitter texts
 - Include replies, quotes and retweets on Twitter
 - Integrate Instagram
 - Support more on Reddit, other then a subreddit's hot
