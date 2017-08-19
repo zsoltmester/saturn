@@ -9,7 +9,7 @@
 import SDWebImage
 import UIKit
 
-class NewsTableViewController: UITableViewController {
+class NewsTableViewController: UITableViewController, UITextViewDelegate {
 
 	// MARK: - Properties
 
@@ -76,6 +76,7 @@ class NewsTableViewController: UITableViewController {
 
 	private func setupText(for cell: NewsTableViewCell, with news: News?) {
 
+		cell.textView.delegate = self
 		cell.textView.text = news?.text
 		cell.textView.isHidden = cell.textView.text?.isEmpty ?? true
 
@@ -125,4 +126,37 @@ class NewsTableViewController: UITableViewController {
 		}
 	}
 
+	// MARK: - UITextViewDelegate
+
+	func textView(_ textView: UITextView, shouldInteractWith url: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+
+		performSegue(withIdentifier: "Show On Web", sender: url)
+
+		return false
+	}
+
+	// MARK: - Navigation
+
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		super.prepare(for: segue, sender: sender)
+
+		switch segue.identifier ?? "" {
+
+		case "Show On Web":
+
+			guard let url = sender as? URL else {
+				fatalError("At Show On Web segue the sender is not a valid URL, but \(sender ?? "nil").")
+			}
+
+			guard let webViewController = segue.destination as? WebViewController else {
+				fatalError("At Show On Web segue segue the destination view controller's first child is not a WebViewController, but \(segue.destination.debugDescription).")
+			}
+
+			webViewController.url = url
+
+		default:
+
+			break
+		}
+	}
 }

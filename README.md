@@ -25,9 +25,12 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 ### Roadmap
 
-#### Features
+#### TODO for MVP
 
 - (nem ide való) Refactor the feed list screen: remove the color pastel view (also from model and feed editor) and group the sources by providers, where each provider is a new line
+
+#### Features
+
 - Cache (news, pictures, videos, other media...)
 - Support refresh on the feed screen (swipe to refresh + button)
 - Support loading more news on the news screen
@@ -48,6 +51,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Technical improvements
 
+- Replace the WebView with WebKit from iOS 11
 - Analytics (log the current print statements too)
 - Using the new safe layout guides
 - Convert project to Swift 4
@@ -55,7 +59,7 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Bugs
 
-- Ha túl hosszú a név, mikor hozzáadunk egy feedet, crashel
+- Ha túl hosszú a név, mikor hozzáadunk egy feedet, crashel (valószínűleg  a query-nél is hansoló a helyzet)
 
 ### Cikkek, amik még jól jöhetnek
 
