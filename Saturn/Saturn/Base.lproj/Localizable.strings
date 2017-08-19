@@ -37,3 +37,4 @@
 "FeedEditor:NotFoundAlert:Title" = "Couldn't find %@'s %@";
 
 "News:TimeFormat" = "%@ ago";
+"News:Twitter:RetweetTitle" = "%@, retweeted by %@";

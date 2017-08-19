@@ -20,7 +20,7 @@ class Twitter: Fetchable {
 	private let twitterConsumerSecret = "HgvP8uZYO7iTZmZL3R9MHg3XLq5cEzuACzpii5jz2PdAD2HOT7"
 
 	private let includeReplies = false
-	private let includeRetweets = false
+	private let includeRetweets = true
 
 	static let shared = Twitter()
 
@@ -87,11 +87,21 @@ class Twitter: Fetchable {
 			var news = [News]()
 
 			if let tweets = tweets {
-				for tweet in tweets {
+				for var tweet in tweets {
+
 					let aNews = News()
+
+					if tweet.isRetweet, let retweeted = tweet.retweeted {
+
+						aNews.title = String(format: NSLocalizedString("News:Twitter:RetweetTitle", comment: ""), retweeted.author.name, tweet.author.name)
+						tweet = retweeted
+					} else {
+
+						aNews.title = tweet.author.name
+					}
+
 					aNews.timestamp = tweet.createdAt
 					aNews.avatarUrl = URL(string: tweet.author.profileImageLargeURL)
-					aNews.title = tweet.author.name
 					aNews.text = tweet.text
 					news.append(aNews)
 				}

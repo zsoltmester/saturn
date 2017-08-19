@@ -44,8 +44,8 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### News providers and sources
 
-- Eliminate the links in Twitter texts
-- Include replies, quotes and retweets on Twitter
+- Eliminate the links on Twitter texts
+- Include replies on Twitter
 - Integrate Instagram
 - Support more on Reddit, other then a subreddit's hot
 
