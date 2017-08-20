@@ -16,6 +16,7 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 	var feed: NewsFeed!
 	var news: [News]?
 	var fetchErrors: [FetchError]?
+	var activityIndicatorView: UIActivityIndicatorView!
 
 	// MARK: - Initialization
 
@@ -27,15 +28,29 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 		tableView.estimatedRowHeight = 44
 		tableView.rowHeight = UITableViewAutomaticDimension
 
+		setupActivityIndicatorView()
+		tableView.separatorStyle = .none
+		activityIndicatorView.startAnimating()
+
 		feed.fetch(request: nil) { (results: [News]?, errors: [FetchError]?) in
 
 			self.news = results
 			self.fetchErrors = errors
 
 			DispatchQueue.main.async {
+				self.activityIndicatorView.stopAnimating()
+				self.tableView.separatorStyle = .singleLine
 				self.tableView.reloadData()
 			}
 		}
+	}
+
+	private func setupActivityIndicatorView() {
+		activityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height:40))
+		activityIndicatorView.center = CGPoint(x: tableView.frame.width / 2, y: tableView.frame.height / 2)
+		activityIndicatorView.activityIndicatorViewStyle = .gray
+		activityIndicatorView.hidesWhenStopped = true
+		view.addSubview(activityIndicatorView)
 	}
 
 	// MARK: - UITableViewDataSource
