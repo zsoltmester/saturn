@@ -14,6 +14,9 @@ class NewsTableViewCell: UITableViewCell {
 
 	static let reuseIdentifier = "News Cell"
 
+	@IBOutlet weak var timeLabel: UILabel!
+	@IBOutlet weak var titleLabel: UILabel!
+
 	@IBOutlet weak var avatarImageView: UIImageView! {
 
 		didSet {
@@ -29,7 +32,13 @@ class NewsTableViewCell: UITableViewCell {
 		}
 	}
 
-	@IBOutlet weak var timeLabel: UILabel!
-	@IBOutlet weak var titleLabel: UILabel!
-	@IBOutlet weak var textView: UITextView!
+	@IBOutlet weak var textView: UITextView! {
+
+		didSet {
+
+			textView.textContainerInset = UIEdgeInsets.zero
+			textView.textContainer.lineFragmentPadding = 0
+		}
+	}
+
 }

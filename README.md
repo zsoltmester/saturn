@@ -28,7 +28,6 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 #### TODO for MVP
 
 - Refactor the feed list screen: remove the color pastel view (also from model and feed editor) and group the sources by providers, where each provider is a new line
-- Loading in the news table view and web view controller
 
 #### Features
 
@@ -42,9 +41,11 @@ A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - User onboarding
 - Improve feed editor screen: search, preview and select the source
 - Create a launch screen
+- Loading animation for the web view screen
 
 #### News providers and sources
 
+- Support for misc info (likes, shares, retweets, comments...)
 - Eliminate the links on Twitter texts
 - Integrate Instagram
 - Support more on Reddit, other then a subreddit's hot
