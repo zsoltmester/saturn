@@ -1,6 +1,5 @@
 excluded:
-    - Build/Intermediates/Saturn.build/Debug-iphonesimulator/Saturn.build/DerivedSources/CoreDataGenerated
-    - Build/Intermediates/Saturn.build/Debug-iphoneos/Saturn.build/DerivedSources/CoreDataGenerated
+    - Build
     - Pods
 
 disabled_rules:

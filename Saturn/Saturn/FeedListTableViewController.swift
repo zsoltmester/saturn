@@ -38,6 +38,7 @@ class FeedListTableViewController: ModelTableViewController {
 		startAnimations()
 	}
 
+	@objc
 	func startAnimations() {
 
 		for cell in self.tableView.visibleCells {
