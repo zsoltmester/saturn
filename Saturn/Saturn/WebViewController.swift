@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import WebKit
 
 class WebViewController: UIViewController {
 
 	// MARK: - Properties
 
-	@IBOutlet weak var webView: UIWebView!
+	@IBOutlet weak var webView: WKWebView!
 
 	var url: URL?
 
@@ -27,7 +28,7 @@ class WebViewController: UIViewController {
 
 		webView.scrollView.bounces = false
 
-		webView.loadRequest(URLRequest(url: url))
+		webView.load(URLRequest(url: url))
     }
 
 }

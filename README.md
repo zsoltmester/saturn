@@ -52,10 +52,8 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Technical improvements
 
-- Replace the WebView with WebKit from iOS 11
 - Analytics (log the current print statements too)
 - Using the new safe layout guides
-- Convert project to Swift 4
 - Integrate LicensePlist
 
 #### Bugs
