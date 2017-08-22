@@ -21,7 +21,7 @@ Az előző fejezetben nagyvonalakban leírt alkalmazás iOS-en implementálva. A
 
 ### Támogatottság
 
-A legalább 10-es főverzióval rendelkező iPhone-ok támogatottak. Utána mindig az aktuális és az előző főverzió támogatott. Egyelőre csak a portrait módban használható az app.
+A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mindig az aktuális és az előző főverzió támogatott. Egyelőre csak a portrait módban használható az app.
 
 ### Roadmap
 
