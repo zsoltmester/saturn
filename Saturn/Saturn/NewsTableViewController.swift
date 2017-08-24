@@ -88,7 +88,6 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 		cell.titleLabel.text = news?.title ?? news?.source?.query
 		cell.titleLabel.text = cell.titleLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines)
 		cell.titleLabel.isHidden = cell.titleLabel.text?.isEmpty ?? true
-
 	}
 
 	private func setupText(for cell: NewsTableViewCell, with news: News?) {
@@ -131,16 +130,17 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 
 		if let avatarUrl = news?.avatarUrl {
 
-			cell.avatarImageView.sd_setImage(with: avatarUrl, placeholderImage: Twitter.shared.placeholderImage, options: .refreshCached) { _, error, _, url in
+			cell.avatarImageView.isHidden = false
+			cell.avatarImageView.sd_setImage(with: avatarUrl, placeholderImage: Twitter.shared.placeholderImage, options: [.cacheMemoryOnly]) { _, error, _, url in
 				if let error = error {
 					print("Error while downloading image at URL: \(url?.absoluteString ?? "nil"): \(error.localizedDescription)")
-					cell.avatarImageView.image = Twitter.shared.errorImage
+					cell.avatarImageView.isHidden = true
 				}
 			}
 
 		} else {
 
-			cell.avatarImageView.image = Twitter.shared.errorImage
+			cell.avatarImageView.isHidden = true
 		}
 	}
 
