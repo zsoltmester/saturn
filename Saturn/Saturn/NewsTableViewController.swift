@@ -86,13 +86,16 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 	private func setupTitle(for cell: NewsTableViewCell, with news: News?) {
 
 		cell.titleLabel.text = news?.title ?? news?.source?.query
+		cell.titleLabel.text = cell.titleLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines)
 		cell.titleLabel.isHidden = cell.titleLabel.text?.isEmpty ?? true
+
 	}
 
 	private func setupText(for cell: NewsTableViewCell, with news: News?) {
 
 		cell.textView.delegate = self
 		cell.textView.text = news?.text
+		cell.textView.text = cell.textView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
 		cell.textView.isHidden = cell.textView.text?.isEmpty ?? true
 
 		guard let textAsData = cell.textView.text.data(using: String.Encoding.utf8) else {
