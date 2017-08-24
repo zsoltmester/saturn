@@ -75,7 +75,7 @@ extension RSS: Fetchable {
 
 			if let link = item.link {
 
-				aNews.link = URL(string: link)
+				aNews.url = URL(string: link)
 			}
 
 			aNews.text = item.description

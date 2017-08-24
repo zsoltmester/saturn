@@ -17,5 +17,5 @@ class News {
 	var avatarUrl: URL?
 	var title: String?
 	var text: String?
-	var link: URL?
+	var url: URL?
 }
