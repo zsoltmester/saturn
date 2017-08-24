@@ -94,6 +94,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- https://www.sideprojectchecklist.com/marketing-checklist/
 	- https://blog.halide.cam/one-weird-trick-to-lose-size-c0a4013de331
 	- https://uxplanet.org/lean-and-mean-power-of-minimalism-in-ui-design-5ca37eb32ac8
+	- https://developer.apple.com/news/?id=07182017a
 
 #### Facebook
 

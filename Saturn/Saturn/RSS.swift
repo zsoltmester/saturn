@@ -64,14 +64,35 @@ extension RSS: Fetchable {
 			return [News]()
 		}
 
-		/*var newsAsString = [String]()
+		var news = [News]()
 
 		for item in items {
 
-			newsAsString.append("\(item.title ?? "nil"): \(item.description ?? "nil")")
-		}*/
+			let aNews = News()
 
-		return [News]()
+			aNews.title = item.title
+			aNews.timestamp = item.pubDate
+
+			if let link = item.link {
+
+				aNews.link = URL(string: link)
+			}
+
+			aNews.text = item.description
+
+			if let imageLink = item.enclosure?.attributes?.url, let imageUrl = URL(string: imageLink) {
+
+				aNews.avatarUrl = imageUrl
+
+			} else if let avatarLink = feed.image?.url {
+
+				aNews.avatarUrl = URL(string: avatarLink)
+			}
+
+			news.append(aNews)
+		}
+
+		return news
 	}
 
 	private func getNews(from feed: AtomFeed) -> [News] {
