@@ -28,6 +28,13 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 #### TODO for MVP
 
 - Refactor the feed list screen: remove the color pastel view (also from model and feed editor) and group the sources by providers, where each provider is a new line
+- Click on news cells, where there are links
+- Show the source after the time on a news cell
+- Sort news based on time
+- Atom integration
+- Reddit integration
+- YouTube integration
+- Facebook integration
 
 #### Features
 
@@ -58,7 +65,8 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Bugs
 
-- Ha túl hosszú a név, mikor hozzáadunk egy feedet, crashel (valószínűleg  a query-nél is hansoló a helyzet)
+- Ha túl hosszú a név, mikor hozzáadunk egy feedet, crashel (valószínűleg a query-nél is hansonló a helyzet)
+- There is an autolayout exception on the news cell, related to the avatar's height
 
 ### Cikkek, amik még jól jöhetnek
 
