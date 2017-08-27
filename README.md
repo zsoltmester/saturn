@@ -28,8 +28,9 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 #### TODO for MVP
 
 - Refactor the feed list screen: remove the color pastel view (also from model and feed editor) and group the sources by providers, where each provider is a new line
-- Click on news cells, where there are links
+- Handle click on news cells, where there are links
 - Show the source after the time on a news cell
+- Try the Viewer lib for images and videos
 - Sort news based on time
 - Atom integration
 - Reddit integration
@@ -45,13 +46,8 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Share news
 - Save news
 - Support iPad devices and iPhones' landscape mode
-- User onboarding
 - Improve feed editor screen: search, preview and select the source
 - Create a launch screen
-- Loading animation for the web view screen
-
-#### News providers and sources
-
 - Support for misc info (likes, shares, retweets, comments...)
 - Eliminate the links on Twitter texts
 - Integrate Instagram
@@ -61,7 +57,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 - Analytics (log the current print statements too)
 - Using the new safe layout guides
-- Integrate LicensePlist
 
 #### Bugs
 
@@ -70,18 +65,14 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 ### Cikkek, amik még jól jöhetnek
 
-- Safe layout guide-hoz:
+- Viewer lib for images and videos:
+	- https://github.com/bakkenbaeck/Viewer
+- Safe layout guidehoz:
 	- https://useyourloaf.com/blog/safe-area-layout-guide
 - iPad supporthoz:
 	- https://convertkit.s3.amazonaws.com/assets/documents/747/538975/iOS_Size_Classes_Quick_Guide_v1.3.pdf
-- LicensePlist:
-	- https://github.com/mono0926/LicensePlist
-- Onboardinghoz:
-	- https://www.appcues.com/blog/user-onboarding-messaging-apps/
 - Analitikához:
 	- https://golocalapps.com/find-your-apps-super-users-and-hack-your-growth/
-- Gamificationhöz:
-	- https://uxplanet.org/gamification-in-2017-top-5-key-principles-cef948254dad
 - Design, marketing, pricing, release:
 	- http://stephencoyle.net/appstore
 	- https://www.dancounsell.com/articles/subscription-based-pricing-is-not-the-answer

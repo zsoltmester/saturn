@@ -102,7 +102,7 @@ class ModelController {
 		return newsProvider
 	}
 
-	func insertNewsSource(provider: NewsProvider, query: String, title: String? = nil) -> NewsSource {
+	func insertNewsSource(provider: NewsProvider, query: String, name: String? = nil) -> NewsSource {
 
 		let newsSourceEntityDescription = getEntityDescription(for: String(describing: NewsSource.self), in: context)
 		guard let newsSource: NewsSource = NSManagedObject(entity: newsSourceEntityDescription, insertInto: context) as? NewsSource else {
@@ -110,7 +110,7 @@ class ModelController {
 		}
 		newsSource.setValue(provider, forKeyPath: #keyPath(NewsSource.provider))
 		newsSource.setValue(query, forKeyPath: #keyPath(NewsSource.query))
-		newsSource.setValue(title, forKeyPath: #keyPath(NewsSource.title))
+		newsSource.setValue(name, forKeyPath: #keyPath(NewsSource.name))
 
 		do {
 			try context.save()

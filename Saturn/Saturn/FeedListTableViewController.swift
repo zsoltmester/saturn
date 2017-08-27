@@ -184,10 +184,9 @@ class FeedListTableViewController: ModelTableViewController {
 
 	private func getSourcesText(sources: NSSet) -> String {
 
-		let sourcesTitleSorter = NSSortDescriptor(key: #keyPath(NewsSource.title), ascending: true, selector: #selector(NSString.compare(_:)))
 		let sourcesProviderSorter = NSSortDescriptor(key: #keyPath(NewsSource.provider.name), ascending: true, selector: #selector(NSString.compare(_:)))
 		let sourcesQuerySorter = NSSortDescriptor(key: #keyPath(NewsSource.query), ascending: true, selector: #selector(NSString.compare(_:)))
-		guard let orderedSources = sources.sortedArray(using: [sourcesTitleSorter, sourcesProviderSorter, sourcesQuerySorter]) as? [NewsSource] else {
+		guard let orderedSources = sources.sortedArray(using: [sourcesProviderSorter, sourcesQuerySorter]) as? [NewsSource] else {
 			fatalError("At getSourcesText the given sources are not [NewsSource] after the sort.")
 		}
 
@@ -196,9 +195,7 @@ class FeedListTableViewController: ModelTableViewController {
 		for source in orderedSources {
 
 			var sourceText: String
-			if let title: String = source.title {
-				sourceText = title
-			} else if let provider: String = source.provider?.name, let query: String = source.query {
+			if let provider: String = source.provider?.name, let query: String = source.query {
 				sourceText = "\(provider) - \(query)"
 			} else {
 				fatalError("No title or provider + query for a news source: \(source.debugDescription)")

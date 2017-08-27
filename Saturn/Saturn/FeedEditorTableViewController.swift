@@ -149,7 +149,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 				fatalError("Couldn't find news source at \(indexPath.debugDescription).")
 			}
 
-			cell.queryLabel.text = newsSource.title ?? newsSource.query
+			cell.queryLabel.text = newsSource.query
 
 		} else if let cell: NameTableViewCell = cell as? NameTableViewCell {
 

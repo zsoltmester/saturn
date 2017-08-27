@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13233.4" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="NewsFeed" representedClassName="NewsFeed" syncable="YES" codeGenerationType="class">
         <attribute name="colorIdentifier" attributeType="Integer 16" minValueString="0" maxValueString="9" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
@@ -22,8 +22,8 @@
         <relationship name="sources" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NewsSource" inverseName="provider" inverseEntity="NewsSource" syncable="YES"/>
     </entity>
     <entity name="NewsSource" representedClassName="NewsSource" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <attribute name="query" attributeType="String" minValueString="1" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <relationship name="feeds" toMany="YES" deletionRule="Nullify" destinationEntity="NewsFeed" inverseName="sources" inverseEntity="NewsFeed" syncable="YES"/>
         <relationship name="provider" maxCount="1" deletionRule="Nullify" destinationEntity="NewsProvider" inverseName="sources" inverseEntity="NewsProvider" syncable="YES"/>
     </entity>
