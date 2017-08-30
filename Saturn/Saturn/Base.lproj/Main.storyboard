@@ -159,7 +159,7 @@
                                     <constraints>
                                         <constraint firstItem="QuW-SR-bRw" firstAttribute="leading" secondItem="lUZ-Pj-hDG" secondAttribute="leadingMargin" id="0sD-Hk-ila"/>
                                         <constraint firstItem="QuW-SR-bRw" firstAttribute="trailing" secondItem="lUZ-Pj-hDG" secondAttribute="trailingMargin" id="2Pl-xu-oTn"/>
-                                        <constraint firstItem="QuW-SR-bRw" firstAttribute="bottom" secondItem="lUZ-Pj-hDG" secondAttribute="bottomMargin" id="6Kv-5N-ywY"/>
+                                        <constraint firstItem="QuW-SR-bRw" firstAttribute="bottom" secondItem="lUZ-Pj-hDG" secondAttribute="bottomMargin" priority="999" id="6Kv-5N-ywY"/>
                                         <constraint firstItem="QuW-SR-bRw" firstAttribute="top" secondItem="lUZ-Pj-hDG" secondAttribute="topMargin" id="dlP-JQ-ojV"/>
                                     </constraints>
                                 </tableViewCellContentView>

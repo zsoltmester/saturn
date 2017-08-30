@@ -61,7 +61,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 #### Bugs
 
 - Ha túl hosszú a név, mikor hozzáadunk egy feedet, crashel (valószínűleg a query-nél is hansonló a helyzet)
-- There is an autolayout exception on the news cell, related to the avatar's height. Maybe this could help: https://www.wtfautolayout.com/
 
 ### Cikkek, amik még jól jöhetnek
 
