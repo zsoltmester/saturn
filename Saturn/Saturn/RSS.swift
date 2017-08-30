@@ -18,6 +18,8 @@ class RSS {
 
 	static let shared = RSS()
 
+	var screenNameMemoryCache = [String: String]()
+
 	// MARK: - Initialization
 
 	private init() {
@@ -44,8 +46,10 @@ extension RSS: Fetchable {
 
 			switch result {
 			case let .rss(feed):
+				self.screenNameMemoryCache[query] = feed.title
 				completionHandler(self.getNews(from: feed), nil)
 			case let .atom(feed):
+				self.screenNameMemoryCache[query] = feed.title
 				completionHandler(self.getNews(from: feed), nil)
 			case .json:
 				completionHandler(nil, [FetchError.other(message: "Unsupported RSS feed type: JSON.")])

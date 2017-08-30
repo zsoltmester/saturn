@@ -182,6 +182,37 @@ class ModelController {
 
 	// MARK: Update
 
+	func updateNewsSource(_ source: NewsSource, name: String?, provider: NewsProvider?) -> NewsSource {
+
+		let previousName = source.name
+		let previousProvider = source.provider
+
+		if let name = name {
+			source.setValue(name, forKey:#keyPath(NewsSource.name))
+		}
+
+		if let provider = provider {
+			source.setValue(provider, forKey:#keyPath(NewsSource.provider))
+		}
+
+		do {
+			try context.save()
+		} catch let error as NSError {
+
+			do {
+				source.setValue(previousName, forKey:#keyPath(NewsSource.name))
+				source.setValue(previousProvider, forKey:#keyPath(NewsSource.provider))
+				try context.save()
+			} catch let error as NSError {
+				fatalError("Couldn't rollback source while updating it: \(error.debugDescription)")
+			}
+
+			fatalError("Couldn't update the news source: \(error.debugDescription)")
+		}
+
+		return source
+	}
+
 	func updateNewsFeed(_ feed: NewsFeed, name: String?, colorIdentifier: Int16?, sources: Set<NewsSource>?) throws -> NewsFeed {
 
 		let previousName = feed.name

@@ -149,7 +149,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 				fatalError("Couldn't find news source at \(indexPath.debugDescription).")
 			}
 
-			cell.queryLabel.text = newsSource.query
+			cell.queryLabel.text = newsSource.name ?? newsSource.query
 
 		} else if let cell: NameTableViewCell = cell as? NameTableViewCell {
 
@@ -374,6 +374,8 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 				} else {
 
 					let source = AppDelegate.shared.modelController.getNewsSource(provider: newsProvider, query: query) ?? AppDelegate.shared.modelController.insertNewsSource(provider: newsProvider, query: query)
+
+					source.updateName()
 
 					self.sections[indexPath.section].insert(.source, at: indexPath.row)
 

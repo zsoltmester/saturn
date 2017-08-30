@@ -18,6 +18,8 @@ class Facebook {
 
 	private let readPermissions: [ReadPermission] = [ .publicProfile ]
 
+	var screenNameMemoryCache = [String: String]()
+
 	// MARK: - Initialization
 
 	private init() {
@@ -50,10 +52,13 @@ extension Facebook: Fetchable {
 
 			case .success(let response):
 
-				guard let posts = response.dictionaryValue?["data"] as? [[String: String]] else {
+				//guard let posts = response.dictionaryValue?["data"] as? [[String: String]] else {
+				guard (response.dictionaryValue?["data"] as? [[String: String]]) != nil else {
 					completionHandler(nil, [FetchError.other(message: "Couldn't parse a Facebook response: \(response)")])
 					return
 				}
+
+				self.screenNameMemoryCache[query] = query
 
 				/*var postsAsString = [String]()
 				for post in posts {

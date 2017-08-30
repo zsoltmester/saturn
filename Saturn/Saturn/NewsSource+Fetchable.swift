@@ -10,6 +10,20 @@ import Foundation
 
 extension NewsSource: Fetchable {
 
+	// MARK: - Public Functions
+
+	func updateName() {
+
+		guard let query = query else {
+			fatalError("There is a news source without query: \(self.debugDescription)")
+		}
+
+		if let newName = provider?.screenName(for: query) {
+
+			_ = AppDelegate.shared.modelController.updateNewsSource(self, name: newName, provider: nil)
+		}
+	}
+
 	// MARK: - Fetchable
 
 	func fetch(with _: String?, completionHandler: @escaping FetchCompletionHandler) {

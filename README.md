@@ -27,7 +27,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Fill a NewsSource's name property. There should be an other method in the fetchable for this
 - Refactor the feed list screen: remove the color pastel view (also from model and feed editor) and group the sources by providers, where each provider is a new line
 - Handle click on news cells, where there are links
 - Show the source after the time on a news cell
@@ -56,6 +55,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Technical improvements
 
+- Create a shared ModelController
 - Analytics (log the current print statements too)
 - Using the new safe layout guides
 

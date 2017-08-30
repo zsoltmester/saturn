@@ -54,6 +54,8 @@ class Twitter: Fetchable {
 		return image
 	}()
 
+	var screenNameMemoryCache = [String: String]()
+
 	// MARK: - Initialization
 
 	private init() {
@@ -82,6 +84,8 @@ class Twitter: Fetchable {
 			var errors: [FetchError]?
 			if let error = error {
 				errors = [FetchError.other(message: "Twitter request failed with error: \(error)")]
+				completionHandler(nil, errors)
+				return
 			}
 
 			var news = [News]()
@@ -98,6 +102,8 @@ class Twitter: Fetchable {
 					} else {
 
 						aNews.title = tweet.author.name
+
+						self.screenNameMemoryCache[query] = tweet.author.name
 					}
 
 					aNews.timestamp = tweet.createdAt
@@ -107,7 +113,7 @@ class Twitter: Fetchable {
 				}
 			}
 
-			completionHandler(news, errors)
+			completionHandler(news, nil)
 		}
 	}
 }

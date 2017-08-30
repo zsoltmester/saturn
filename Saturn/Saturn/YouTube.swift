@@ -19,6 +19,8 @@ class YouTube {
 
 	static let shared = YouTube()
 
+	var screenNameMemoryCache = [String: String]()
+
 	// MARK: - Initialization
 
 	private init() {
@@ -55,10 +57,13 @@ extension YouTube: Fetchable {
 					return
 				}
 
-				guard let playlistItems = response?.items else {
+				//guard let playlistItems = response?.items else {
+				guard response?.items != nil else {
 					completionHandler(nil, [FetchError.other(message: "No items on a YouTube playlist with ID: \(playlistId)")])
 					return
 				}
+
+				self.screenNameMemoryCache[query] = query
 
 				/*var playlistItemsAsString = [String]()
 				for playlistItem in playlistItems {

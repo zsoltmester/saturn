@@ -16,6 +16,8 @@ class Reddit {
 
 	static let shared = Reddit()
 
+	var screenNameMemoryCache = [String: String]()
+
 	// MARK: - Initialization
 
 	private init() {
@@ -29,13 +31,21 @@ extension Reddit: Fetchable {
 
 	func fetch(with query: String?, completionHandler: @escaping FetchCompletionHandler) {
 
-		guard var query = query else {
+		guard let query = query else {
 			fatalError("Fetching Reddit without a query.")
 		}
 
-		query = String(format:subredditRssUrlTemplate, query)
+		let subredditUrl = String(format:subredditRssUrlTemplate, query)
 
-		RSS.shared.fetch(with: query, completionHandler: completionHandler)
+		RSS.shared.fetch(with: subredditUrl) { news, errors in
+
+			if errors == nil {
+
+				self.screenNameMemoryCache[query] = RSS.shared.screenNameMemoryCache[subredditUrl]
+			}
+
+			completionHandler(news, errors)
+		}
 	}
 
 }
