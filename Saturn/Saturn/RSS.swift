@@ -29,13 +29,13 @@ extension RSS: Fetchable {
 
 	// MARK: - Fetchable
 
-	func fetch(request: FetchRequest?, completionHandler: @escaping FetchCompletionHandler) {
+	func fetch(with query: String?, completionHandler: @escaping FetchCompletionHandler) {
 
-		guard let request = request else {
-			fatalError("Fetching an RSS feed, but the FetchRequest is nil.")
+		guard let query = query else {
+			fatalError("Fetching RSS without a query.")
 		}
 
-		guard let url = URL(string: request), let parser = FeedParser(URL: url) else {
+		guard let url = URL(string: query), let parser = FeedParser(URL: url) else {
 			completionHandler(nil, [FetchError.invalidQuery])
 			return
 		}

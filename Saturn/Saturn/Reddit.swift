@@ -27,15 +27,15 @@ extension Reddit: Fetchable {
 
 	// MARK: - Fetchable
 
-	func fetch(request: FetchRequest?, completionHandler: @escaping FetchCompletionHandler) {
+	func fetch(with query: String?, completionHandler: @escaping FetchCompletionHandler) {
 
-		guard var request = request else {
-			fatalError("Fetching a Reddit feed, but the FetchRequest is nil.")
+		guard var query = query else {
+			fatalError("Fetching Reddit without a query.")
 		}
 
-		request = String(format:subredditRssUrlTemplate, request)
+		query = String(format:subredditRssUrlTemplate, query)
 
-		RSS.shared.fetch(request: request, completionHandler: completionHandler)
+		RSS.shared.fetch(with: query, completionHandler: completionHandler)
 	}
 
 }

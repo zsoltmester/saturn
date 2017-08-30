@@ -36,15 +36,15 @@ extension Facebook: Fetchable {
 
 	// MARK: - Fetchable
 
-	func fetch(request: FetchRequest?, completionHandler: @escaping FetchCompletionHandler) {
+	func fetch(with query: String?, completionHandler: @escaping FetchCompletionHandler) {
 
-		guard let request = request else {
-			fatalError("Fetching Facebook without a FetchRequest.")
+		guard let query = query else {
+			fatalError("Fetching Facebook without a query.")
 		}
 
 		let connection = GraphRequestConnection()
 
-		connection.add(GraphRequest(graphPath: "/\(request)/posts")) { _, result in
+		connection.add(GraphRequest(graphPath: "/\(query)/posts")) { _, result in
 
 			switch result {
 

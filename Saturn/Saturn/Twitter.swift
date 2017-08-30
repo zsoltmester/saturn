@@ -64,13 +64,13 @@ class Twitter: Fetchable {
 
 	// MARK: - Fetchable
 
-	func fetch(request: FetchRequest?, completionHandler: @escaping FetchCompletionHandler) {
+	func fetch(with query: String?, completionHandler: @escaping FetchCompletionHandler) {
 
-		guard let request = request else {
-			fatalError("Fetching Twitter without a FetchRequest.")
+		guard let query = query else {
+			fatalError("Fetching Twitter without a query.")
 		}
 
-		let userTimelineLoader = TWTRUserTimelineDataSource(screenName: request,
+		let userTimelineLoader = TWTRUserTimelineDataSource(screenName: query,
 		                                                    userID: nil,
 		                                                    apiClient: apiClient,
 		                                                    maxTweetsPerRequest: UInt(FetchConstants.maxResults),

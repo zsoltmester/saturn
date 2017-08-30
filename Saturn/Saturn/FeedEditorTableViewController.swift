@@ -364,7 +364,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		cell.queryTextField.resignFirstResponder()
 		beginLoading()
 
-		newsProvider.fetch(request: query) { (_, errors: [FetchError]?) in
+		newsProvider.fetch(with: query) { (_, errors: [FetchError]?) in
 
 			DispatchQueue.main.async {
 				if let errors = errors, !errors.isEmpty {

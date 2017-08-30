@@ -12,11 +12,7 @@ extension NewsFeed: Fetchable {
 
 	// MARK: - Fetchable
 
-	func fetch(request: FetchRequest?, completionHandler: @escaping FetchCompletionHandler) {
-
-		guard request == nil else {
-			fatalError("Fetching a NewsFeed with a FetchRequest, which won't be used.")
-		}
+	func fetch(with _: String?, completionHandler: @escaping FetchCompletionHandler) {
 
 		guard let sources = sources?.allObjects as? [NewsSource] else {
 			fatalError("Fetching a news feed, but the sources are not valid: \(self.debugDescription)")
@@ -31,7 +27,7 @@ extension NewsFeed: Fetchable {
 
 			fetchDispatchGroup.enter()
 
-			source.fetch(request: nil) { (results: [News]?, errors: [FetchError]?) in
+			source.fetch(with: nil) { (results: [News]?, errors: [FetchError]?) in
 
 				if let results: [News] = results {
 					allResults.append(contentsOf: results)

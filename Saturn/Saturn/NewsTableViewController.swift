@@ -32,7 +32,7 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 		tableView.separatorStyle = .none
 		activityIndicatorView.startAnimating()
 
-		feed.fetch(request: nil) { (results: [News]?, errors: [FetchError]?) in
+		feed.fetch(with: nil) { (results: [News]?, errors: [FetchError]?) in
 
 			self.news = results
 			self.fetchErrors = errors

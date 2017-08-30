@@ -27,7 +27,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Fill a NewsSource's name property. I could add fetch options and more complex fetch results.
+- Fill a NewsSource's name property. There should be an other method in the fetchable for this
 - Refactor the feed list screen: remove the color pastel view (also from model and feed editor) and group the sources by providers, where each provider is a new line
 - Handle click on news cells, where there are links
 - Show the source after the time on a news cell
@@ -62,7 +62,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 #### Bugs
 
 - Ha túl hosszú a név, mikor hozzáadunk egy feedet, crashel (valószínűleg a query-nél is hansonló a helyzet)
-- There is an autolayout exception on the news cell, related to the avatar's height
+- There is an autolayout exception on the news cell, related to the avatar's height. Maybe this could help: https://www.wtfautolayout.com/
 
 ### Cikkek, amik még jól jöhetnek
 
@@ -95,6 +95,14 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- https://blog.halide.cam/one-weird-trick-to-lose-size-c0a4013de331
 	- https://uxplanet.org/lean-and-mean-power-of-minimalism-in-ui-design-5ca37eb32ac8
 	- https://developer.apple.com/news/?id=07182017a
+	- https://medium.com/@garyvee/make-money-dont-raise-money-24a92dde76c5
+	- https://appradar.com/blog/how-apple-crushes-your-usual-app-store-optimization-strategy
+	- https://blog.branch.io/and-the-winners-of-the-mobile-growth-stories-challenge-are
+	- http://martiancraft.com/blog/2017/05/demystifying-ios-provisioning-part1/
+	- http://martiancraft.com/blog/2017/07/demystifying-provisioning-part2/
+	- https://www.andrewcbancroft.com/2017/08/01/local-receipt-validation-swift-start-finish/
+	- https://www.apptamin.com/blog/ios-11-app-previews/
+	- https://www.theverge.com/2017/8/15/16147954/liftoff-report-apple-ios-android-app-subscriptions-conversion-rate-2017
 
 #### Facebook
 

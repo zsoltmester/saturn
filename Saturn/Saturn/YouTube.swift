@@ -30,13 +30,13 @@ extension YouTube: Fetchable {
 
 	// MARK: - Fetchable
 
-	func fetch(request: FetchRequest?, completionHandler: @escaping FetchCompletionHandler) {
+	func fetch(with query: String?, completionHandler: @escaping FetchCompletionHandler) {
 
-		guard let request = request else {
-			fatalError("Fetching YouTube without a FetchRequest.")
+		guard let query = query else {
+			fatalError("Fetching Twitter without a query.")
 		}
 
-		fetchChannel(request) { (response: ChannelsResponse?, error: FetchError?) in
+		fetchChannel(query) { (response: ChannelsResponse?, error: FetchError?) in
 
 			guard error == nil else {
 				completionHandler(nil, [error!]) // swiftlint:disable:this force_unwrapping
@@ -44,7 +44,7 @@ extension YouTube: Fetchable {
 			}
 
 			guard let playlistId = response?.items.first?.contentDetails.relatedPlaylists.uploads else {
-				completionHandler(nil, [FetchError.other(message: "No 'uploads' playlist available for a Youtube user: \(request)")])
+				completionHandler(nil, [FetchError.other(message: "No 'uploads' playlist available for a Youtube user: \(query)")])
 				return
 			}
 

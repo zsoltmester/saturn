@@ -8,8 +8,6 @@
 
 import Foundation
 
-typealias FetchRequest = String
-
 enum FetchError: Error {
 	case invalidQuery
 	case other(message: String)
@@ -21,6 +19,6 @@ protocol Fetchable {
 
 	// MARK: - Functions
 
-	func fetch(request: FetchRequest?, completionHandler: @escaping FetchCompletionHandler)
+	func fetch(with query: String?, completionHandler: @escaping FetchCompletionHandler)
 
 }
