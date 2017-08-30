@@ -55,7 +55,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Technical improvements
 
-- Create a shared ModelController
 - Analytics (log the current print statements too)
 - Using the new safe layout guides
 

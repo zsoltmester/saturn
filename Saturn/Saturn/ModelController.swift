@@ -18,13 +18,15 @@ class ModelController {
 
 	// MARK: - Properties
 
+	static let shared = ModelController()
+
 	private static let userDefaultsKeyIsModelPreloaded = "isModelPreloaded"
 
 	var context: NSManagedObjectContext!
 
 	// MARK: - Initialization
 
-	init() {
+	private init() {
 
 		let container = NSPersistentContainer(name: "Saturn")
 		container.loadPersistentStores { _, error in

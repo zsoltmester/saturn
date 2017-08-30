@@ -58,7 +58,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		self.setEditing(true, animated: false)
 
 		let order = [NSSortDescriptor(key: #keyPath(NewsProvider.name), ascending: true)]
-		let newsProvidersInOrder = AppDelegate.shared.modelController.getNewsProviders(ordered: order)
+		let newsProvidersInOrder = ModelController.shared.getNewsProviders(ordered: order)
 		for newsProvider in newsProvidersInOrder {
 			newsProviders[sections.count] = newsProvider
 			sections.append([.addSource])
@@ -278,7 +278,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 			if let feedToEdit = feedToEdit {
 
 				do {
-					_ = try AppDelegate.shared.modelController.updateNewsFeed(feedToEdit, name: enteredName, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
+					_ = try ModelController.shared.updateNewsFeed(feedToEdit, name: enteredName, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
 				} catch ModelError.nameExists {
 
 					showNameExistsAlertViewController(name)
@@ -291,7 +291,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 			} else {
 
 				do {
-					_ = try AppDelegate.shared.modelController.insertNewsFeed(name: name, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
+					_ = try ModelController.shared.insertNewsFeed(name: name, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
 				} catch ModelError.nameExists {
 
 					showNameExistsAlertViewController(name)
@@ -373,7 +373,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 				} else {
 
-					let source = AppDelegate.shared.modelController.getNewsSource(provider: newsProvider, query: query) ?? AppDelegate.shared.modelController.insertNewsSource(provider: newsProvider, query: query)
+					let source = ModelController.shared.getNewsSource(provider: newsProvider, query: query) ?? ModelController.shared.insertNewsSource(provider: newsProvider, query: query)
 
 					source.updateName()
 

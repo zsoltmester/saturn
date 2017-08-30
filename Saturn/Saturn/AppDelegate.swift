@@ -17,8 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 
-	var modelController: ModelController!
-
 	static let shared: AppDelegate = {
 
 		guard let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -32,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-		modelController = ModelController()
+		_ = ModelController.shared // for initialization of the model
 
 		URLSessionConfiguration.default.timeoutIntervalForRequest = FetchConstants.timeoutInterval
 

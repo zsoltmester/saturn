@@ -20,7 +20,7 @@ extension NewsSource: Fetchable {
 
 		if let newName = provider?.screenName(for: query) {
 
-			_ = AppDelegate.shared.modelController.updateNewsSource(self, name: newName, provider: nil)
+			_ = ModelController.shared.updateNewsSource(self, name: newName, provider: nil)
 		}
 	}
 
