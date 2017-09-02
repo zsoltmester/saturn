@@ -164,23 +164,59 @@ class FeedListTableViewController: ModelTableViewController {
 	private func getSourcesText(sources: NSSet) -> String {
 
 		let sourcesProviderSorter = NSSortDescriptor(key: #keyPath(NewsSource.provider.name), ascending: true, selector: #selector(NSString.compare(_:)))
-		let sourcesQuerySorter = NSSortDescriptor(key: #keyPath(NewsSource.query), ascending: true, selector: #selector(NSString.compare(_:)))
-		guard let orderedSources = sources.sortedArray(using: [sourcesProviderSorter, sourcesQuerySorter]) as? [NewsSource] else {
-			fatalError("At getSourcesText the given sources are not [NewsSource] after the sort.")
+		let sourcesNameSorter = NSSortDescriptor(key: #keyPath(NewsSource.name), ascending: true, selector: #selector(NSString.compare(_:)))
+		guard let orderedSources = sources.sortedArray(using: [sourcesProviderSorter, sourcesNameSorter]) as? [NewsSource] else {
+			fatalError("The given sources are not [NewsSource] after the sort.")
 		}
 
-		var sourcesText: String = ""
+		var groupedAndOrderedSources = [(provider: NewsProvider, sources: [NewsSource])]()
 
 		for source in orderedSources {
 
-			var sourceText: String
-			if let provider: String = source.provider?.name, let query: String = source.query {
-				sourceText = "\(provider) - \(query)"
+			if let groupIndex = groupedAndOrderedSources.index(where: { $0.provider.identifier == source.provider?.identifier }) {
+
+				groupedAndOrderedSources[groupIndex].sources.append(source)
+
 			} else {
-				fatalError("No title or provider + query for a news source: \(source.debugDescription)")
+
+				guard let provider = source.provider else {
+					fatalError("No provider for a source: \(source.debugDescription)")
+				}
+
+				groupedAndOrderedSources.append((provider: provider, sources: [source]))
+			}
+		}
+
+		var sourcesText = ""
+
+		for i in 0..<groupedAndOrderedSources.count {
+
+			guard let providerName = groupedAndOrderedSources[i].provider.name else {
+				fatalError("No name for a provider: \(groupedAndOrderedSources[i].provider.debugDescription)")
 			}
 
-			sourcesText = sourcesText.isEmpty ? sourceText : "\(sourcesText), \(sourceText)"
+			var textForProvider = "\(providerName): "
+			for source in groupedAndOrderedSources[i].sources {
+
+				guard let sourceName = source.name else {
+					fatalError("No name for a source: \(source.debugDescription)")
+				}
+
+				if source === groupedAndOrderedSources[i].sources.first {
+
+					textForProvider.append(sourceName)
+
+				} else {
+
+					textForProvider.append(", \(sourceName)")
+				}
+			}
+
+			if sourcesText.isEmpty {
+				sourcesText = textForProvider
+			} else {
+				sourcesText.append("\n\(textForProvider)")
+			}
 		}
 
 		return sourcesText
