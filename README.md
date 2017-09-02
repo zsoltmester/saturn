@@ -38,7 +38,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Features
 
-- The sources label's providers name text should be more strong
 - Cache (news, pictures, videos, other media...)
 - Support refresh on the feed screen (swipe to refresh + button)
 - Support loading more news on the news screen
@@ -62,6 +61,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 #### Bugs
 
 - Ha túl hosszú a név, mikor hozzáadunk egy feedet, crashel (valószínűleg a query-nél is hansonló a helyzet)
+- Sokáig tölt a feed list képernyőn, ha egy feedre akarok navigálni
 
 ### Cikkek, amik még jól jöhetnek
 

@@ -47,7 +47,7 @@ class FeedListTableViewController: ModelTableViewController {
 		}
 
 		cell.nameLabel.text = feed.name
-		cell.sourcesLabel.text = getSourcesText(sources: sources)
+		cell.sourcesLabel.attributedText = getSourcesText(sources: sources)
 
         return cell
     }
@@ -161,7 +161,7 @@ class FeedListTableViewController: ModelTableViewController {
 
 	// MARK: - Private Functions
 
-	private func getSourcesText(sources: NSSet) -> String {
+	private func getSourcesText(sources: NSSet) -> NSAttributedString {
 
 		let sourcesProviderSorter = NSSortDescriptor(key: #keyPath(NewsSource.provider.name), ascending: true, selector: #selector(NSString.compare(_:)))
 		let sourcesNameSorter = NSSortDescriptor(key: #keyPath(NewsSource.name), ascending: true, selector: #selector(NSString.compare(_:)))
@@ -187,7 +187,7 @@ class FeedListTableViewController: ModelTableViewController {
 			}
 		}
 
-		var sourcesText = ""
+		var sourcesText = NSMutableAttributedString(string: "")
 
 		for i in 0..<groupedAndOrderedSources.count {
 
@@ -195,7 +195,9 @@ class FeedListTableViewController: ModelTableViewController {
 				fatalError("No name for a provider: \(groupedAndOrderedSources[i].provider.debugDescription)")
 			}
 
-			var textForProvider = "\(providerName): "
+			let textForProvider = NSMutableAttributedString(string: "\(providerName): ")
+			textForProvider.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.darkText, range: NSRange(location: 0, length: textForProvider.length))
+
 			for source in groupedAndOrderedSources[i].sources {
 
 				guard let sourceName = source.name else {
@@ -204,22 +206,34 @@ class FeedListTableViewController: ModelTableViewController {
 
 				if source === groupedAndOrderedSources[i].sources.first {
 
-					textForProvider.append(sourceName)
+					textForProvider.append(NSAttributedString(string: sourceName))
 
 				} else {
 
-					textForProvider.append(", \(sourceName)")
+					textForProvider.append(getSourceSeparator())
+					textForProvider.append(NSAttributedString(string: sourceName))
 				}
 			}
 
-			if sourcesText.isEmpty {
+			if sourcesText.length == 0 {
+
 				sourcesText = textForProvider
+
 			} else {
-				sourcesText.append("\n\(textForProvider)")
+
+				sourcesText.append(getSourceSeparator())
+				sourcesText.append(textForProvider)
 			}
 		}
 
 		return sourcesText
+	}
+
+	func getSourceSeparator() -> NSAttributedString {
+
+		let comma = NSMutableAttributedString(string: ", ")
+		comma.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.darkText, range: NSRange(location: 0, length: comma.length))
+		return comma
 	}
 
 }
