@@ -13,7 +13,6 @@ import UIKit
 private enum SectionItem {
 
 	case name
-	case color
 	case addSource
 	case source
 }
@@ -28,7 +27,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 	// MARK: - Properties
 
-	private var sections: [[SectionItem]] = [ [.name], [.color] ]
+	private var sections: [[SectionItem]] = [ [.name] ]
 
 	private var newsProviders: [Int: NewsProvider] = [:]
 
@@ -42,8 +41,6 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 			updateDoneButtonState()
 		}
 	}
-
-	var selectedColor = ColorSelectorCollectionViewController.defaultSelectedColor
 
 	var feedToEdit: NewsFeed?
 
@@ -76,8 +73,6 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		}
 
 		enteredName = feedToEdit.name
-
-		selectedColor = Int(feedToEdit.colorIdentifier)
 
 		guard let feedToEditNewsSources = feedToEdit.sources?.allObjects as? [NewsSource] else {
 			fatalError("Editing a feed, but it doesn't have any sources.")
@@ -122,8 +117,6 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 		switch item {
 		case .name:
 			cellIdentifier = NameTableViewCell.reuseIdentifier
-		case .color:
-			cellIdentifier = ColorTableViewCell.reuseIdentifier
 		case .addSource:
 			cellIdentifier = AddSourceTableViewCell.reuseIdentifier
 		case .source:
@@ -245,25 +238,6 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 
 	// MARK: - Navigation
 
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		super.prepare(for: segue, sender: sender)
-
-		switch segue.identifier ?? "" {
-
-		case "Show Color":
-
-			guard let colorSelectorCollectionViewController = segue.destination as? ColorSelectorCollectionViewController else {
-				fatalError("Unexpected destination: \(segue.destination.debugDescription)")
-			}
-
-			colorSelectorCollectionViewController.selectedColor = selectedColor
-
-		default:
-
-			break
-		}
-	}
-
 	override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
 		super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
 
@@ -278,7 +252,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 			if let feedToEdit = feedToEdit {
 
 				do {
-					_ = try ModelController.shared.updateNewsFeed(feedToEdit, name: enteredName, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
+					_ = try ModelController.shared.updateNewsFeed(feedToEdit, name: enteredName, sources: Set(newsSources.values.joined()))
 				} catch ModelError.nameExists {
 
 					showNameExistsAlertViewController(name)
@@ -291,7 +265,7 @@ class FeedEditorTableViewController: UITableViewController, UITextFieldDelegate 
 			} else {
 
 				do {
-					_ = try ModelController.shared.insertNewsFeed(name: name, colorIdentifier: Int16(selectedColor), sources: Set(newsSources.values.joined()))
+					_ = try ModelController.shared.insertNewsFeed(name: name, sources: Set(newsSources.values.joined()))
 				} catch ModelError.nameExists {
 
 					showNameExistsAlertViewController(name)

@@ -123,14 +123,13 @@ class ModelController {
 		return newsSource
 	}
 
-	func insertNewsFeed(name: String, colorIdentifier: Int16, sources: Set<NewsSource>) throws -> NewsFeed {
+	func insertNewsFeed(name: String, sources: Set<NewsSource>) throws -> NewsFeed {
 
 		let newsFeedEntityDescription = getEntityDescription(for: String(describing: NewsFeed.self), in: context)
 		guard let newsFeed = NSManagedObject(entity: newsFeedEntityDescription, insertInto: context) as? NewsFeed else {
 			fatalError("Couldn't convert the inserted news feed to NewsFeed.")
 		}
 		newsFeed.setValue(name, forKeyPath: #keyPath(NewsFeed.name))
-		newsFeed.setValue(colorIdentifier, forKey: #keyPath(NewsFeed.colorIdentifier))
 		newsFeed.setValue(sources, forKey: #keyPath(NewsFeed.sources))
 		newsFeed.setValue(getNewsFeedOrderMin() - Int16(1), forKey: #keyPath(NewsFeed.order))
 
@@ -215,18 +214,13 @@ class ModelController {
 		return source
 	}
 
-	func updateNewsFeed(_ feed: NewsFeed, name: String?, colorIdentifier: Int16?, sources: Set<NewsSource>?) throws -> NewsFeed {
+	func updateNewsFeed(_ feed: NewsFeed, name: String?, sources: Set<NewsSource>?) throws -> NewsFeed {
 
 		let previousName = feed.name
-		let previousColorIdentifier = feed.colorIdentifier
 		let previousSources = feed.sources
 
 		if let name = name {
 			feed.setValue(name, forKey:#keyPath(NewsFeed.name))
-		}
-
-		if let colorIdentifier = colorIdentifier {
-			feed.setValue(colorIdentifier, forKey:#keyPath(NewsFeed.colorIdentifier))
 		}
 
 		if let sources = sources {
@@ -241,7 +235,6 @@ class ModelController {
 
 				do {
 					feed.setValue(previousName, forKey:#keyPath(NewsFeed.name))
-					feed.setValue(previousColorIdentifier, forKey:#keyPath(NewsFeed.colorIdentifier))
 					feed.setValue(previousSources, forKey:#keyPath(NewsFeed.sources))
 					try context.save()
 				} catch let error as NSError {

@@ -27,7 +27,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Refactor the feed list screen: remove the color pastel view (also from model and feed editor) and group the sources by providers, where each provider is a new line
+- Refactor the feed list screen: group the sources by providers, where each provider is a new line
 - Handle click on news cells, where there are links
 - Show the source after the time on a news cell
 - Try the Viewer lib for images and videos

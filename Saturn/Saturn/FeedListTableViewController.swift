@@ -7,7 +7,6 @@
 //
 
 import CoreData
-import Pastel
 import UIKit
 
 class FeedListTableViewController: ModelTableViewController {
@@ -17,11 +16,12 @@ class FeedListTableViewController: ModelTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		prepareFetchedResultsController()
+		tableView.estimatedRowHeight = 44
+		tableView.rowHeight = UITableViewAutomaticDimension
 
 		navigationItem.leftBarButtonItem = editButtonItem
 
-		NotificationCenter.default.addObserver(self, selector: #selector(startAnimations), name: .UIApplicationDidBecomeActive, object: nil)
+		prepareFetchedResultsController()
     }
 
 	private func prepareFetchedResultsController() {
@@ -30,25 +30,6 @@ class FeedListTableViewController: ModelTableViewController {
 		fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(NewsFeed.order), ascending: true)]
 
 		fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: ModelController.shared.context, sectionNameKeyPath: nil, cacheName: nil)
-	}
-
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-
-		startAnimations()
-	}
-
-	@objc
-	func startAnimations() {
-
-		for cell in self.tableView.visibleCells {
-
-			guard let cell = cell as? FeedTableViewCell else {
-				fatalError("A cell on the Feed List screen is not a FeedTableViewCell.")
-			}
-
-			cell.colorPastelView.startAnimation()
-		}
 	}
 
 	// MARK: - UITableViewDataSource
@@ -67,8 +48,6 @@ class FeedListTableViewController: ModelTableViewController {
 
 		cell.nameLabel.text = feed.name
 		cell.sourcesLabel.text = getSourcesText(sources: sources)
-		cell.colorPastelView.setPastelGradient(getPastelGradient(colorIdentifier: feed.colorIdentifier))
-		cell.colorPastelView.startAnimation()
 
         return cell
     }
@@ -205,17 +184,6 @@ class FeedListTableViewController: ModelTableViewController {
 		}
 
 		return sourcesText
-	}
-
-	private func getPastelGradient(colorIdentifier: Int16) -> PastelGradient {
-
-		let colorIdentifier = colorIdentifier < 0 || colorIdentifier >= ColorSelectorCollectionViewController.numberOfColors ? Int(arc4random_uniform(UInt32(ColorSelectorCollectionViewController.numberOfColors))) : Int(colorIdentifier)
-
-		guard let colors: PastelGradient = PastelGradient(rawValue: colorIdentifier) else {
-			fatalError("Invalid colorIdentifier for a feed: \(colorIdentifier)")
-		}
-
-		return colors
 	}
 
 }
