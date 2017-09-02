@@ -32,10 +32,12 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 		tableView.separatorStyle = .none
 		activityIndicatorView.startAnimating()
 
-		feed.fetch(with: nil) { (results: [News]?, errors: [FetchError]?) in
+		feed.fetch(with: nil) { (news: [News]?, errors: [FetchError]?) in
 
-			self.news = results
+			self.news = news
 			self.fetchErrors = errors
+
+			self.sortNews()
 
 			DispatchQueue.main.async {
 				self.activityIndicatorView.stopAnimating()
@@ -176,5 +178,12 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 
 			break
 		}
+	}
+
+	// MARK: - Private Functions
+
+	func sortNews() {
+
+		self.news?.sort { $0.timestamp?.compare($1.timestamp ?? Date()) == .orderedDescending }
 	}
 }

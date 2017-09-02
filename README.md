@@ -30,7 +30,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Handle click on news cells, where there are links
 - Show the source after the time on a news cell
 - Try the Viewer lib for images and videos
-- Sort news based on time
 - Atom integration
 - Reddit integration
 - YouTube integration
@@ -62,6 +61,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 - Ha túl hosszú a név, mikor hozzáadunk egy feedet, crashel (valószínűleg a query-nél is hansonló a helyzet)
 - Sokáig tölt a feed list képernyőn, ha egy feedre akarok navigálni
+- Ha nincs idő egy hírhez, akkor a time label nem helyesen jelenik meg
 
 ### Cikkek, amik még jól jöhetnek
 
