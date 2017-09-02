@@ -95,9 +95,11 @@ class Twitter: Fetchable {
 
 					let aNews = News()
 
+					aNews.sourceScreenName = NSLocalizedString("Twitter:Name", comment: "")
+
 					if tweet.isRetweet, let retweeted = tweet.retweeted {
 
-						aNews.title = String(format: NSLocalizedString("News:Twitter:RetweetTitle", comment: ""), retweeted.author.name, tweet.author.name)
+						aNews.title = String(format: NSLocalizedString("News:Twitter:RetweetTitle", comment: ""), tweet.author.name, retweeted.author.name)
 						tweet = retweeted
 					} else {
 

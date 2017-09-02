@@ -79,7 +79,7 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 
 		setupTitle(for: cell, with: news)
 		setupText(for: cell, with: news)
-		setupTime(for: cell, with: news)
+		setupTimeAndSource(for: cell, with: news)
 		setupAvatar(for: cell, with: news)
 
 		return cell
@@ -129,21 +129,63 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 		}
 	}
 
-	private func setupTime(for cell: NewsTableViewCell, with news: News?) {
+	private func setupTimeAndSource(for cell: NewsTableViewCell, with news: News?) {
+
+		let timeText = getTimeText(for: cell, with: news)
+		let sourceText = getSourceText(for: cell, with: news)
+
+		cell.timeAndSourceLabel.isHidden = timeText == nil && sourceText == nil
+
+		guard !cell.timeAndSourceLabel.isHidden else {
+			return
+		}
+
+		if sourceText == nil {
+
+			cell.timeAndSourceLabel.text = timeText
+
+		} else if timeText == nil {
+
+			cell.timeAndSourceLabel.text = sourceText
+
+		} else {
+
+			cell.timeAndSourceLabel.text = "\(timeText!) \(sourceText!)"	// swiftlint:disable:this force_unwrapping
+		}
+	}
+
+	private func getTimeText(for cell: NewsTableViewCell, with news: News?) -> String? {
+
+		var timeText: String?
 
 		if let timestamp = news?.timestamp {
 			let currentDate = Date()
 			let dateFormatter = DateComponentsFormatter()
 			dateFormatter.unitsStyle = .full
 			dateFormatter.maximumUnitCount = 1
-			cell.timeLabel.text = dateFormatter.string(from: timestamp, to: currentDate)
+			timeText = dateFormatter.string(from: timestamp, to: currentDate)
 		}
-		if let timeText = cell.timeLabel.text, !timeText.isEmpty {
-			cell.timeLabel.isHidden = false
-			cell.timeLabel.text = String(format: NSLocalizedString("News:TimeFormat", comment: ""), timeText)
-		} else {
-			cell.timeLabel.isHidden = true
+
+		if let timeText = timeText, !timeText.isEmpty {
+			return String(format: NSLocalizedString("News:TimeFormat", comment: ""), timeText)
 		}
+
+		return nil
+	}
+
+	private func getSourceText(for cell: NewsTableViewCell, with news: News?) -> String? {
+
+		var sourceText: String?
+
+		if let sourceScreenName = news?.sourceScreenName {
+			sourceText = sourceScreenName.trimmingCharacters(in: .whitespacesAndNewlines)
+		}
+
+		if let sourceText = sourceText, !sourceText.isEmpty {
+			return String(format: NSLocalizedString("News:SourceFormat", comment: ""), sourceText)
+		}
+
+		return nil
 	}
 
 	private func setupAvatar(for cell: NewsTableViewCell, with news: News?) {

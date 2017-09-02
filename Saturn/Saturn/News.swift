@@ -13,6 +13,7 @@ class News {
 	// MARK: - Properties
 
 	var source: NewsSource?
+	var sourceScreenName: String?
 	var timestamp: Date?
 	var avatarUrl: URL?
 	var title: String?

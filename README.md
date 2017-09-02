@@ -27,7 +27,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Show the source after the time on a news cell
 - Try the Viewer lib for images and videos
 - Atom integration
 - Reddit integration
@@ -49,6 +48,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Eliminate the links on Twitter texts
 - Integrate Instagram
 - Support more on Reddit, other then a subreddit's hot
+- Loading animation on the web view
 
 #### Technical improvements
 

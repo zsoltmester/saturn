@@ -14,8 +14,8 @@ class NewsTableViewCell: UITableViewCell {
 
 	static let reuseIdentifier = "News Cell"
 
-	@IBOutlet weak var timeLabel: UILabel!
 	@IBOutlet weak var titleLabel: UILabel!
+	@IBOutlet weak var timeAndSourceLabel: UILabel!
 
 	@IBOutlet weak var avatarImageView: UIImageView! {
 

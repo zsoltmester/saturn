@@ -76,6 +76,7 @@ extension RSS: Fetchable {
 
 			aNews.title = item.title
 			aNews.timestamp = item.pubDate
+			aNews.sourceScreenName = feed.title
 
 			if let link = item.link {
 
