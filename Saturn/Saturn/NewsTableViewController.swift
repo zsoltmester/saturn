@@ -67,6 +67,8 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 		return news?.count ?? 0
 	}
 
+	// MARK: - UITableViewDataSource
+
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.reuseIdentifier, for: indexPath) as? NewsTableViewCell else {
@@ -81,6 +83,22 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 		setupAvatar(for: cell, with: news)
 
 		return cell
+	}
+
+	// MARK: - UITableViewDelegate
+
+	override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+
+		if canSelectRow(at: indexPath.row) {
+			return indexPath
+		} else {
+			return nil
+		}
+	}
+
+	override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+
+		return canSelectRow(at: indexPath.row)
 	}
 
 	// MARK: - Cell Setup
@@ -164,8 +182,19 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 
 		case "Show On Web":
 
-			guard let url = sender as? URL else {
-				fatalError("At Show On Web segue the sender is not a valid URL, but \(sender ?? "nil").")
+			var url = sender as? URL
+
+			if url == nil {
+
+				if let selectedRow = self.tableView.indexPathForSelectedRow?.row, let selectedNews = self.news?[selectedRow] {
+
+					url = selectedNews.url
+				}
+			}
+
+			guard url != nil else {
+
+				fatalError("At Show On Web segue there are no valid URL. Sender: \(sender ?? "nil").")
 			}
 
 			guard let webViewController = segue.destination as? WebViewController else {
@@ -185,5 +214,11 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 	func sortNews() {
 
 		self.news?.sort { $0.timestamp?.compare($1.timestamp ?? Date()) == .orderedDescending }
+	}
+
+	func canSelectRow(at row: Int) -> Bool {
+
+		let news = self.news?[row]
+		return news?.url != nil
 	}
 }

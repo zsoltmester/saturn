@@ -27,7 +27,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Handle click on news cells, where there are links
 - Show the source after the time on a news cell
 - Try the Viewer lib for images and videos
 - Atom integration
