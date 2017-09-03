@@ -30,6 +30,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Try the Viewer lib for images and videos
 - YouTube integration
 - Facebook integration
+- Deep testing and bug fixing
 
 #### Features
 
@@ -50,7 +51,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Technical improvements
 
-- The non-optional core data properties should be non-optional
 - Analytics (log the current print statements too)
 - Using the new safe layout guides
 
