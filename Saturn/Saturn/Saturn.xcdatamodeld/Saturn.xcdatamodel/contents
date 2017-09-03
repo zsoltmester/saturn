@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13233.4" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="NewsFeed" representedClassName="NewsFeed" syncable="YES" codeGenerationType="class">
-        <attribute name="name" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
+        <attribute name="name" attributeType="String" minValueString="1" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <attribute name="order" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="sources" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="NewsSource" inverseName="feeds" inverseEntity="NewsSource" syncable="YES"/>
         <uniquenessConstraints>
@@ -14,15 +14,15 @@
         </uniquenessConstraints>
     </entity>
     <entity name="NewsProvider" representedClassName="NewsProvider" syncable="YES" codeGenerationType="class">
-        <attribute name="detail" attributeType="String" minValueString="1" maxValueString="256" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
-        <attribute name="hint" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
+        <attribute name="detail" attributeType="String" minValueString="1" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
+        <attribute name="hint" attributeType="String" minValueString="1" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <attribute name="identifier" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
+        <attribute name="name" attributeType="String" minValueString="1" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <relationship name="sources" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NewsSource" inverseName="provider" inverseEntity="NewsSource" syncable="YES"/>
     </entity>
     <entity name="NewsSource" representedClassName="NewsSource" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String" minValueString="1" maxValueString="32" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
-        <attribute name="query" attributeType="String" minValueString="1" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" minValueString="1" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
+        <attribute name="query" attributeType="String" minValueString="1" regularExpressionString="^\S(.*\S)?$" syncable="YES"/>
         <relationship name="feeds" toMany="YES" deletionRule="Nullify" destinationEntity="NewsFeed" inverseName="sources" inverseEntity="NewsFeed" syncable="YES"/>
         <relationship name="provider" maxCount="1" deletionRule="Nullify" destinationEntity="NewsProvider" inverseName="sources" inverseEntity="NewsProvider" syncable="YES"/>
     </entity>

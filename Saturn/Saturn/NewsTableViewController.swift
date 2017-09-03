@@ -123,7 +123,7 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 
 		do {
 			let attributedText = try NSAttributedString(data: textAsData, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
-			cell.textView.text = attributedText.string
+			cell.textView.text = attributedText.string.trimmingCharacters(in: .whitespacesAndNewlines)
 		} catch {
 			fatalError("Couldn't decode HTML characters : \(cell.textView.text ?? "nil")")
 		}

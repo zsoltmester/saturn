@@ -106,13 +106,38 @@ extension RSS: Fetchable {
 			return [News]()
 		}
 
-		/*var newsAsString = [String]()
+		var news = [News]()
 
 		for item in items {
 
-			newsAsString.append("\(item.title ?? "nil"): \(item.summary?.value ?? "nil")")
-		}*/
+			let aNews = News()
 
-		return [News]()
+			aNews.title = item.title
+			aNews.timestamp = item.published ?? item.updated
+			aNews.sourceScreenName = feed.title
+
+			if let link = item.links?.first?.attributes?.href {
+
+				aNews.url = URL(string: link)
+			}
+
+			if item.content?.attributes?.type?.lowercased().range(of: "text") != nil {
+
+				aNews.text = item.content?.value
+			}
+
+			if let iconLink = feed.icon, let iconUrl = URL(string: iconLink) {
+
+				aNews.avatarUrl = iconUrl
+
+			} else if let logoLink = feed.logo, let logoUrl = URL(string: logoLink) {
+
+				aNews.avatarUrl = logoUrl
+			}
+
+			news.append(aNews)
+		}
+
+		return news
 	}
 }

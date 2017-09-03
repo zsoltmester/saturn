@@ -28,7 +28,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 #### TODO for MVP
 
 - Try the Viewer lib for images and videos
-- Atom integration
 - Reddit integration
 - YouTube integration
 - Facebook integration
