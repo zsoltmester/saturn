@@ -89,7 +89,21 @@ extension RSS: Fetchable {
 
 				aNews.avatarUrl = imageUrl
 
-			} else if let avatarLink = feed.image?.url {
+			}
+
+			if aNews.avatarUrl == nil, let media = item.media?.mediaContents, !media.isEmpty {
+
+				for aMedia in media {
+
+					if aMedia.attributes?.medium?.range(of: "image") != nil, let mediaLink = aMedia.attributes?.url, let mediaUrl = URL(string: mediaLink) {
+
+						aNews.avatarUrl = mediaUrl
+						break
+					}
+				}
+			}
+
+			if aNews.avatarUrl == nil, let avatarLink = feed.image?.url {
 
 				aNews.avatarUrl = URL(string: avatarLink)
 			}
