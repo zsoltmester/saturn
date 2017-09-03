@@ -39,9 +39,18 @@ extension Reddit: Fetchable {
 
 		RSS.shared.fetch(with: subredditUrl) { news, errors in
 
-			if errors == nil {
+			if errors == nil, let news = news {
 
-				self.screenNameMemoryCache[query] = RSS.shared.screenNameMemoryCache[subredditUrl]
+				let subredditName = RSS.shared.screenNameMemoryCache[subredditUrl] ?? query
+
+				self.screenNameMemoryCache[query] = subredditName
+
+				let sourceScreenName = String(format: NSLocalizedString("News:Reddit:ScreenName", comment: ""), NSLocalizedString("Reddit:Name", comment: ""), subredditName)
+
+				for aNews in news {
+
+					aNews.sourceScreenName = sourceScreenName
+				}
 			}
 
 			completionHandler(news, errors)

@@ -39,3 +39,4 @@
 "News:TimeFormat" = "%@ ago";
 "News:SourceFormat" = "on %@";
 "News:Twitter:RetweetTitle" = "%@ retweeted %@";
+"News:Reddit:ScreenName" = "%@ - %@";
