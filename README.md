@@ -27,12 +27,15 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Try the Viewer lib for images and videos
 - YouTube integration
 - Facebook integration
+- Try the Viewer lib for FB images and videos (https://github.com/bakkenbaeck/Viewer)
+- Allow users to send feedback
+- Set up a revenue model and support it in the app
 - Deep testing and bug fixing
+- Release
 
-#### Features
+#### Features and technical improvements
 
 - Cache (news, pictures, videos, other media...)
 - Support refresh on the feed screen (swipe to refresh + button)
@@ -40,7 +43,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Sending app feedbacks
 - Share news
 - Save news
-- Support iPad devices and iPhones' landscape mode
+- Adaptive layout: support iPad devices and iPhones' landscape mode (https://www.raywenderlich.com/162311/adaptive-layout-tutorial-ios-11-getting-started, https://convertkit.s3.amazonaws.com/assets/documents/747/538975/iOS_Size_Classes_Quick_Guide_v1.3.pdf)
 - Improve feed editor screen: search, preview and select the source
 - Create a launch screen
 - Support for misc info (likes, shares, retweets, comments...)
@@ -48,34 +51,36 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Integrate Instagram
 - Support more on Reddit, other then a subreddit's hot
 - Loading animation on the web view
-
-#### Technical improvements
-
 - Analytics (log the current print statements too)
-- Using the new safe layout guides
+- Using the new safe layout guides (https://useyourloaf.com/blog/safe-area-layout-guide)
 
 #### Bugs
 
 - Ha túl hosszú a név, mikor hozzáadunk egy feedet, crashel (valószínűleg a query-nél is hansonló a helyzet)
 - Sokáig tölt a feed list képernyőn, ha egy feedre akarok navigálni
-- Ha nincs idő egy hírhez, akkor a time label nem helyesen jelenik meg
+- Ha nincs idő egy hírhez, akkor a time label helytelenül jelenik meg
+
+### Revenue
+
+- Az IAP egy járható út.
+	1. Lehetne egy korlátozott tartalommal rendelkező ingyenes és egy teljes tartalommal rendelkező pro verzió is.
+ 	2. Lehetne egy reklámmal teli teljes tartalommal rendelkező ingyenes app, aminél a reklámmentességért kell fizetni.
+	3. Az előbbi 2 keveréke.
+- A reklámok nagyon kevés pénzt adnak az IAP-hez képest. A reklámokból viszont minden user után profitálhatok, az IAP-ből meg csak vásárlás után, amire kevés user hajlandó.
+- "It’s much easier to upsell to an existing customer than it is to find an entirely new paying customer."
+
+### Marketing
+
+- Mobile appokkal foglalkozó siteokon review.
+- Social médiában megosztás általam vagy az ismerőseim által.
 
 ### Cikkek, amik még jól jöhetnek
 
-- Viewer lib for images and videos:
-	- https://github.com/bakkenbaeck/Viewer
-- Safe layout guidehoz:
-	- https://useyourloaf.com/blog/safe-area-layout-guide
-- iPad supporthoz:
-	- https://convertkit.s3.amazonaws.com/assets/documents/747/538975/iOS_Size_Classes_Quick_Guide_v1.3.pdf
-- Analitikához:
-	- https://golocalapps.com/find-your-apps-super-users-and-hack-your-growth/
+- Revenue:
+	- Subscriptions: https://medium.com/joytunes/wwdc-2017-amazing-new-features-for-subscriptions-676662a7d993, https://www.theverge.com/2017/8/15/16147954/liftoff-report-apple-ios-android-app-subscriptions-conversion-rate-2017
+- App store and design:
+	- https://appiconizer.com
 - Design, marketing, pricing, release:
-	- http://stephencoyle.net/appstore
-	- https://www.dancounsell.com/articles/subscription-based-pricing-is-not-the-answer
-	- "It’s much easier to upsell to an existing customer than it is to find an entirely new paying customer."
-	- https://medium.com/joytunes/wwdc-2017-amazing-new-features-for-subscriptions-676662a7d993
-	- https://appiconizer.com/
 	- https://medium.dave-bailey.com/the-magic-formula-to-describe-a-product-in-one-sentence-175ce38619c7
 	- http://incipia.co/post/app-marketing/the-essential-app-store-optimization-resources-list/
 	- https://www.apppartner.com/16-experts-strategies-downloads/
@@ -98,7 +103,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- http://martiancraft.com/blog/2017/07/demystifying-provisioning-part2/
 	- https://www.andrewcbancroft.com/2017/08/01/local-receipt-validation-swift-start-finish/
 	- https://www.apptamin.com/blog/ios-11-app-previews/
-	- https://www.theverge.com/2017/8/15/16147954/liftoff-report-apple-ios-android-app-subscriptions-conversion-rate-2017
 
 #### Facebook
 
@@ -108,8 +112,3 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - https://developers.facebook.com/docs/graph-api/reference/page/#Overview
 - https://developers.facebook.com/docs/graph-api/reference/v2.9/post
 - https://developers.facebook.com/docs/graph-api/reference/v2.9/attachment
-
-#### YouTube
-
-- https://developers.google.com/youtube/v3/guides/ios_youtube_helper
-- https://developers.google.com/youtube/player_parameters

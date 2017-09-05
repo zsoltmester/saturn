@@ -63,8 +63,6 @@ extension YouTube: Fetchable {
 					return
 				}
 
-				self.screenNameMemoryCache[query] = query
-
 				/*var playlistItemsAsString = [String]()
 				for playlistItem in playlistItems {
 					playlistItemsAsString.append("\(playlistItem.snippet.title)\n\(playlistItem.snippet.description)")
@@ -97,6 +95,16 @@ extension YouTube: Fetchable {
 			do {
 
 				let response = try JSONDecoder().decode(ChannelsResponse.self, from: data)
+
+				if let channelTitle = response.items.first?.snippet.title, !channelTitle.isEmpty {
+
+					self.screenNameMemoryCache[channel] = channelTitle
+
+				} else {
+
+					self.screenNameMemoryCache[channel] = channel
+				}
+
 				completionHandler(response, nil)
 
 			} catch {
@@ -155,7 +163,7 @@ extension YouTube: Fetchable {
 
 		var request = [URLQueryItem]()
 		request.append(URLQueryItem(name: YouTubeApi.URL.Parameter.apiKey, value: YouTubeApi.key))
-		request.append(URLQueryItem(name: YouTubeApi.URL.Parameter.part, value: YouTubeApi.URL.Parameter.Value.contentDetails))
+		request.append(URLQueryItem(name: YouTubeApi.URL.Parameter.part, value: "\(YouTubeApi.URL.Parameter.Value.contentDetails),\(YouTubeApi.URL.Parameter.Value.snippet)"))
 		request.append(URLQueryItem(name: YouTubeApi.URL.Parameter.maxResults, value: "1"))
 		request.append(URLQueryItem(name: YouTubeApi.URL.Parameter.forUsername, value: channel))
 		return request
@@ -217,6 +225,8 @@ private struct ChannelsResponse: Codable {
 
 		let contentDetails: ContentDetails
 
+		let snippet: Snippet
+
 		struct ContentDetails: Codable {
 
 			let relatedPlaylists: RelatedPlaylists
@@ -229,9 +239,16 @@ private struct ChannelsResponse: Codable {
 
 		}
 
+		struct Snippet: Codable {
+
+			let title: String
+
+		}
+
 	}
 
 	let items: [Item]
+
 }
 
 private struct PlaylistItemsResponse: Codable {
@@ -250,4 +267,5 @@ private struct PlaylistItemsResponse: Codable {
 	}
 
 	let items: [Item]
+
 }
