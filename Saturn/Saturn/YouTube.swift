@@ -57,8 +57,8 @@ extension YouTube: Fetchable {
 					return
 				}
 
-				//guard let playlistItems = response?.items else {
-				guard response?.items != nil else {
+                //guard let playlistItems = response?.items else {
+                guard response?.items != nil else {
 					completionHandler(nil, [FetchError.other(message: "No items on a YouTube playlist with ID: \(playlistId)")])
 					return
 				}
@@ -261,6 +261,13 @@ private struct PlaylistItemsResponse: Codable {
 
 			let title: String
 			let description: String
+			let resourceId: ResourceId
+
+			struct ResourceId: Codable {
+
+				let videoId: String
+
+			}
 
 		}
 
