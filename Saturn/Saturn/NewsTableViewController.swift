@@ -220,7 +220,6 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 		}
 	}
 
-
 	// MARK: - UITextViewDelegate
 
 	func textView(_ textView: UITextView, shouldInteractWith url: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {

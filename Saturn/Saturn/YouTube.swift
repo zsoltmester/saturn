@@ -39,26 +39,26 @@ extension YouTube: Fetchable {
 			fatalError("Fetching Twitter without a query.")
 		}
 
-		fetchChannel(query) { (response: ChannelsResponse?, error: FetchError?) in
+		fetchChannel(query) { (channelsResponse: ChannelsResponse?, error: FetchError?) in
 
 			guard error == nil else {
 				completionHandler(nil, [error!]) // swiftlint:disable:this force_unwrapping
 				return
 			}
 
-			guard let playlistId = response?.items.first?.contentDetails.relatedPlaylists.uploads else {
+			guard let playlistId = channelsResponse?.items.first?.contentDetails.relatedPlaylists.uploads else {
 				completionHandler(nil, [FetchError.other(message: "No 'uploads' playlist available for a Youtube user: \(query)")])
 				return
 			}
 
-			self.fetchPlaylistItems(playlistId) { (response: PlaylistItemsResponse?, error: FetchError?) in
+			self.fetchPlaylistItems(playlistId) { (playlistItemsResponse: PlaylistItemsResponse?, error: FetchError?) in
 
 				guard error == nil else {
 					completionHandler(nil, [error!]) // swiftlint:disable:this force_unwrapping
 					return
 				}
 
-				guard let playlistItems = response?.items else {
+				guard let playlistItems = playlistItemsResponse?.items else {
 					completionHandler(nil, [FetchError.other(message: "No items on a YouTube playlist with ID: \(playlistId)")])
 					return
 				}
@@ -68,7 +68,11 @@ extension YouTube: Fetchable {
 
 					let aNews = News()
 
-					aNews.title = playlistItem.snippet.title
+					aNews.avatarUrl = channelsResponse?.items.first?.snippet.thumbnails.high.url
+					aNews.sourceScreenName = NSLocalizedString("YouTube:Name", comment: "")
+					aNews.timestamp = playlistItem.snippet.publishedAt
+					aNews.title = channelsResponse?.items.first?.snippet.title
+					aNews.url = URL(string: YouTubeApi.baseVideoUrl + playlistItem.snippet.resourceId.videoId)
 					aNews.youTubeVideoId = playlistItem.snippet.resourceId.videoId
 
 					news.append(aNews)
@@ -140,7 +144,13 @@ extension YouTube: Fetchable {
 
 			do {
 
-				let response = try JSONDecoder().decode(PlaylistItemsResponse.self, from: data)
+				let dateFormatter = DateFormatter()
+				dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"
+
+				let jsonDecoder = JSONDecoder()
+				jsonDecoder.dateDecodingStrategy = .formatted(dateFormatter)
+
+				let response = try jsonDecoder.decode(PlaylistItemsResponse.self, from: data)
 				completionHandler(response, nil)
 
 			} catch {
@@ -190,6 +200,7 @@ extension YouTube: Fetchable {
 private struct YouTubeApi {
 
 	static let key = "AIzaSyBf1yQf80c3x-SHcx3VzSOdSuiPKTTtGDU"
+	static let baseVideoUrl = "https://www.youtube.com/watch?v="
 
 	struct URL {
 
@@ -246,7 +257,20 @@ private struct ChannelsResponse: Codable {
 
 		struct Snippet: Codable {
 
+			let thumbnails: Thumbnails
 			let title: String
+
+			struct Thumbnails: Codable {
+
+				let high: High
+
+				struct High: Codable {
+
+					let url: URL
+
+				}
+
+			}
 
 		}
 
@@ -265,6 +289,7 @@ private struct PlaylistItemsResponse: Codable {
 		struct Snippet: Codable {
 
 			let description: String
+			let publishedAt: Date
 			let resourceId: ResourceId
 			let title: String
 
