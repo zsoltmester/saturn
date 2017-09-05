@@ -81,6 +81,7 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 		setupText(for: cell, with: news)
 		setupTimeAndSource(for: cell, with: news)
 		setupAvatar(for: cell, with: news)
+		setupYouTubeVideoPlayer(for: cell, with: news)
 
 		return cell
 	}
@@ -205,6 +206,20 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 			cell.avatarImageView.isHidden = true
 		}
 	}
+
+	private func setupYouTubeVideoPlayer(for cell: NewsTableViewCell, with news: News?) {
+
+		if let youTubeVideoId = news?.youTubeVideoId {
+
+			cell.youTubePlayerView.isHidden = false
+			cell.youTubePlayerView.load(withVideoId: youTubeVideoId)
+
+		} else {
+
+			cell.youTubePlayerView.isHidden = true
+		}
+	}
+
 
 	// MARK: - UITextViewDelegate
 

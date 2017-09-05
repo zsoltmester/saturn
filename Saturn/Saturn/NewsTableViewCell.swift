@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import youtube_ios_player_helper
 
 class NewsTableViewCell: UITableViewCell {
 
@@ -16,7 +17,8 @@ class NewsTableViewCell: UITableViewCell {
 
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var timeAndSourceLabel: UILabel!
-
+	@IBOutlet weak var youTubePlayerView: YTPlayerView!
+	
 	@IBOutlet weak var avatarImageView: UIImageView! {
 
 		didSet {

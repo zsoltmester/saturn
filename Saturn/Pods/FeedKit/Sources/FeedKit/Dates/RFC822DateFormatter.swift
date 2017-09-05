@@ -24,17 +24,14 @@
 
 import Foundation
 
-/**
-
- Converts date and time textual representations within the RFC822
- date specification into `Date` objects
- 
- */
+/// Converts date and time textual representations within the RFC822
+/// date specification into `Date` objects
 class RFC822DateFormatter: DateFormatter {
     
     let dateFormats = [
         "EEE, d MMM yyyy HH:mm:ss zzz",
-        "EEE, d MMM yyyy HH:mm zzz"
+        "EEE, d MMM yyyy HH:mm zzz",
+        "d MMM yyyy HH:mm:ss Z"
     ]
     
     override init() {

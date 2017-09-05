@@ -12,11 +12,12 @@ class News {
 
 	// MARK: - Properties
 
+	var avatarUrl: URL?
 	var source: NewsSource?
 	var sourceScreenName: String?
 	var timestamp: Date?
-	var avatarUrl: URL?
 	var title: String?
 	var text: String?
 	var url: URL?
+	var youTubeVideoId: String?
 }

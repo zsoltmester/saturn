@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -101,15 +102,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="News Cell" rowHeight="136" id="ryr-OD-Hbt" customClass="NewsTableViewCell" customModule="Saturn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="136"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="News Cell" rowHeight="315" id="ryr-OD-Hbt" customClass="NewsTableViewCell" customModule="Saturn" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="315"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ryr-OD-Hbt" id="lUZ-Pj-hDG">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="135.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="314.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QuW-SR-bRw">
-                                            <rect key="frame" x="8" y="8" width="304" height="119.5"/>
+                                            <rect key="frame" x="8" y="8" width="304" height="298.5"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Kaz-A5-LBb">
                                                     <rect key="frame" x="0.0" y="0.0" width="304" height="75"/>
@@ -147,6 +148,13 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                                 </textView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xE8-ja-3lw" customClass="YTPlayerView">
+                                                    <rect key="frame" x="0.0" y="127.5" width="304" height="171"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="xE8-ja-3lw" secondAttribute="height" multiplier="16:9" id="vx5-cH-P9x"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -162,6 +170,7 @@
                                     <outlet property="textView" destination="cb3-Xq-xYi" id="inB-Tq-GPk"/>
                                     <outlet property="timeAndSourceLabel" destination="Ar0-oe-VNF" id="DQy-4K-ada"/>
                                     <outlet property="titleLabel" destination="Ya1-E7-UTN" id="98K-Ce-LZy"/>
+                                    <outlet property="youTubePlayerView" destination="xE8-ja-3lw" id="Io1-Cx-gWO"/>
                                     <segue destination="FPt-sG-uB6" kind="show" identifier="Show On Web" id="nuE-nX-llh"/>
                                 </connections>
                             </tableViewCell>

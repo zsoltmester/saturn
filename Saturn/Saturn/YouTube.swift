@@ -10,6 +10,7 @@
 //	YouTube Data API docs: https://developers.google.com/youtube/v3/
 //	Youtube Data API explorer: https://developers.google.com/apis-explorer/#p/youtube/v3/
 //	Used services: https://developers.google.com/youtube/v3/docs/channels/list, playlistItems/list
+//  YouTube Player: https://developers.google.com/youtube/v3/guides/ios_youtube_helper
 
 import Foundation
 
@@ -57,18 +58,23 @@ extension YouTube: Fetchable {
 					return
 				}
 
-                //guard let playlistItems = response?.items else {
-                guard response?.items != nil else {
+				guard let playlistItems = response?.items else {
 					completionHandler(nil, [FetchError.other(message: "No items on a YouTube playlist with ID: \(playlistId)")])
 					return
 				}
 
-				/*var playlistItemsAsString = [String]()
+				var news = [News]()
 				for playlistItem in playlistItems {
-					playlistItemsAsString.append("\(playlistItem.snippet.title)\n\(playlistItem.snippet.description)")
-				}*/
 
-				completionHandler([News](), nil)
+					let aNews = News()
+
+					aNews.title = playlistItem.snippet.title
+					aNews.youTubeVideoId = playlistItem.snippet.resourceId.videoId
+
+					news.append(aNews)
+				}
+
+				completionHandler(news, nil)
 			}
 		}
 	}
@@ -224,7 +230,6 @@ private struct ChannelsResponse: Codable {
 	struct Item: Codable {
 
 		let contentDetails: ContentDetails
-
 		let snippet: Snippet
 
 		struct ContentDetails: Codable {
@@ -259,9 +264,9 @@ private struct PlaylistItemsResponse: Codable {
 
 		struct Snippet: Codable {
 
-			let title: String
 			let description: String
 			let resourceId: ResourceId
+			let title: String
 
 			struct ResourceId: Codable {
 
