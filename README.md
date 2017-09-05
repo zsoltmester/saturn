@@ -58,6 +58,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Ha túl hosszú a név, mikor hozzáadunk egy feedet, crashel (valószínűleg a query-nél is hansonló a helyzet)
 - Sokáig tölt a feed list képernyőn, ha egy feedre akarok navigálni
 - Ha nincs idő egy hírhez, akkor a time label helytelenül jelenik meg
+- Nem lehet tovább navigálni, ha egy hír cellában a textviewra kattintunk
 
 ### Revenue
 

@@ -126,20 +126,6 @@ extension RSS: Fetchable {
 
 			let aNews = News()
 
-			aNews.title = item.title
-			aNews.timestamp = item.published ?? item.updated
-			aNews.sourceScreenName = feed.title
-
-			if let link = item.links?.first?.attributes?.href {
-
-				aNews.url = URL(string: link)
-			}
-
-			if item.content?.attributes?.type?.lowercased().range(of: "text") != nil {
-
-				aNews.text = item.content?.value
-			}
-
 			if let iconLink = feed.icon, let iconUrl = URL(string: iconLink) {
 
 				aNews.avatarUrl = iconUrl
@@ -147,6 +133,21 @@ extension RSS: Fetchable {
 			} else if let logoLink = feed.logo, let logoUrl = URL(string: logoLink) {
 
 				aNews.avatarUrl = logoUrl
+			}
+
+			aNews.sourceScreenName = feed.title
+
+			if item.content?.attributes?.type?.lowercased().range(of: "text") != nil {
+
+				aNews.text = item.content?.value
+			}
+
+			aNews.timestamp = item.published ?? item.updated
+			aNews.title = item.title
+
+			if let link = item.links?.first?.attributes?.href {
+
+				aNews.url = URL(string: link)
 			}
 
 			news.append(aNews)

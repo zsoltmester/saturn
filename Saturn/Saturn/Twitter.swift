@@ -95,7 +95,10 @@ class Twitter: Fetchable {
 
 					let aNews = News()
 
+					aNews.avatarUrl = URL(string: tweet.author.profileImageLargeURL)
 					aNews.sourceScreenName = NSLocalizedString("Twitter:Name", comment: "")
+					aNews.text = tweet.text
+					aNews.timestamp = tweet.createdAt
 
 					if tweet.isRetweet, let retweeted = tweet.retweeted {
 
@@ -108,9 +111,8 @@ class Twitter: Fetchable {
 						self.screenNameMemoryCache[query] = tweet.author.name
 					}
 
-					aNews.timestamp = tweet.createdAt
-					aNews.avatarUrl = URL(string: tweet.author.profileImageLargeURL)
-					aNews.text = tweet.text
+					aNews.url = tweet.permalink
+
 					news.append(aNews)
 				}
 			}
