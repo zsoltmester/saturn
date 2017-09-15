@@ -69,36 +69,37 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - A reklámok nagyon kevés pénzt adnak az IAP-hez képest. A reklámokból viszont minden user után profitálhatok, az IAP-ből meg csak vásárlás után, amire kevés user hajlandó.
 - "It’s much easier to upsell to an existing customer than it is to find an entirely new paying customer."
 
+### App Store Optimization
+
+- Hasznos cikkek vannak itt kigyűjtve az ASO-hoz: https://www.mindmeister.com/875122694/app-store-optimization-the-essential-aso-resources-list
+- *The format of both descriptions is the same: “You do X and Y happens.” X is the input and Y is the output. This input-output pair matches our intuition about how software works. Simplifying the product as a straightforward input and desirable output creates the sense that it’s an ingenious idea.*
+- *All the users follow the same process: check the icon, view the first two screenshots, and scan the first line of the app description.* Egy átlagos user 7 másodpercet szán erre. Ez viszont csak a régi app storeban volt igaz! Az újban már autoplay fognak futni a videók és a search result is sokkal tartalmasabb lesz.
+
 ### Marketing
 
+- Az app store page a legfontosabb.
+- A jó értékelés számít, mert a potencionális user meg fogja nézni őket letöltés előtt. Kérhetem az appon belül a usereket, hogy értékeljék azt.
 - Mobile appokkal foglalkozó siteokon review.
 - Social médiában megosztás általam vagy az ismerőseim által.
+- Hírdetés bannereken (Google, Apple, stb).
+- Hírdetés emailben.
+
+### Design
+
+- Ikon generáláshoz hasznos lehet: https://appiconizer.com
 
 ### Cikkek, amik még jól jöhetnek
 
-- Revenue:
-	- Subscriptions: https://medium.com/joytunes/wwdc-2017-amazing-new-features-for-subscriptions-676662a7d993, https://www.theverge.com/2017/8/15/16147954/liftoff-report-apple-ios-android-app-subscriptions-conversion-rate-2017
-- App store and design:
-	- https://appiconizer.com
 - Design, marketing, pricing, release:
-	- https://medium.dave-bailey.com/the-magic-formula-to-describe-a-product-in-one-sentence-175ce38619c7
-	- http://incipia.co/post/app-marketing/the-essential-app-store-optimization-resources-list/
-	- https://www.apppartner.com/16-experts-strategies-downloads/
 	- https://www.appsposure.com/app-marketing-strategies/
 	- https://applaunchmap.com/blog/
 	- https://fabric.io/blog/introducing-fastlane-precheck
 	- https://developer.apple.com/app-store/product-page/
 	- https://developer.apple.com/videos/play/wwdc2017/305/
-	- https://stories.appbot.co/how-often-should-you-update-your-app-9405b85a967c
-	- https://medium.com/mobile-growth/how-to-get-more-app-downloads-by-rethinking-your-mobile-marketing-strategy-150ed4cc4e28
 	- https://medium.com/flawless-app-stories/flawlessapp-on-producthunt-7db3e561ce7a
 	- https://www.sideprojectchecklist.com/marketing-checklist/
 	- https://blog.halide.cam/one-weird-trick-to-lose-size-c0a4013de331
-	- https://uxplanet.org/lean-and-mean-power-of-minimalism-in-ui-design-5ca37eb32ac8
-	- https://developer.apple.com/news/?id=07182017a
 	- https://medium.com/@garyvee/make-money-dont-raise-money-24a92dde76c5
-	- https://appradar.com/blog/how-apple-crushes-your-usual-app-store-optimization-strategy
-	- https://blog.branch.io/and-the-winners-of-the-mobile-growth-stories-challenge-are
 	- http://martiancraft.com/blog/2017/05/demystifying-ios-provisioning-part1/
 	- http://martiancraft.com/blog/2017/07/demystifying-provisioning-part2/
 	- https://www.andrewcbancroft.com/2017/08/01/local-receipt-validation-swift-start-finish/
