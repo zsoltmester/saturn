@@ -6,12 +6,11 @@ An RSS, Atom and JSON Feed parser written in Swift
 [![cocoapods compatible](https://img.shields.io/badge/cocoapods-compatible-brightgreen.svg)](https://cocoapods.org/pods/FeedKit)
 [![carthage compatible](https://img.shields.io/badge/carthage-compatible-brightgreen.svg)](https://github.com/Carthage/Carthage)
 [![language](https://img.shields.io/badge/spm-compatible-brightgreen.svg)](https://swift.org)
-[![release](https://img.shields.io/badge/release-6.1.2-orange.svg)](https://github.com/nmdias/FeedKit/releases)
 
 ## Features
 
 - [x] [Atom](https://tools.ietf.org/html/rfc4287)
-- [x] [RSS2](http://cyber.law.harvard.edu/rss/rss.html)
+- [x] [RSS 0.90](http://www.rssboard.org/rss-0-9-0), [0.91](http://www.rssboard.org/rss-0-9-1), [2.00](http://cyber.law.harvard.edu/rss/rss.html)
 - [x] [JSON](https://jsonfeed.org/version/1)  
 - [x] Namespaces
     - [x] [Dublin Core](http://web.resource.org/rss/1.0/modules/dc/)
@@ -44,49 +43,47 @@ Build a URL pointing to an RSS, Atom or JSON Feed.
 let feedURL = URL(string: "http://images.apple.com/main/rss/hotnews/hotnews.rss")!
 ```
 
-FeedKit will do asynchronous parsing on the main queue by default. You can safely update your UI from within the result closure.
+Get an instance of `FeedParser`
 ```swift
-FeedParser(URL: feedURL)?.parseAsync { result in
-    
-    switch result {
-    case let .atom(feed):       break
-    case let .rss(feed):        break
-    case let .json(feed):       break
-    case let .failure(error):   break
-    }
+let parser = FeedParser(URL: feedURL) // or FeedParser(data: data)
+```
 
+Then call `parse` or `parseAsync` to start parsing the feed...
+
+> A **common scenario** in UI environments would be parsing a feed **asynchronously** from a user initiated action, such as the touch of a button. e.g.
+
+```swift
+// Parse asynchronously, not to block the UI.
+parser.parseAsync(queue: DispatchQueue.global(qos: .userInitiated)) { (result) in
+    // Do your thing, then back to the Main thread
+    DispatchQueue.main.async {
+        // ..and update the UI
+    }
 }
 ```     
 
-If a different queue is specified, you are responsible to manually bring the result closure to whichever queue is apropriate. Usually `DispatchQueue.main.async`. If you're unsure, don't provide the `queue` parameter.
+Remember, you are responsible to manually bring the result closure to whichever queue is apropriate. Usually to the Main thread, for UI apps, by calling `DispatchQueue.main.async` .
+
+Alternatively, you can also parse synchronously.
+
 ```swift
-FeedParser(URL: feedURL)?.parseAsync(queue: myQueue, result: { (result) in 
-    // Do your thing
-})
+let result = parser.parse()
 ```
 
-Alternatively, you can also parse `synchronously`.
-```swift
-FeedParser(URL: feedURL)?.parse()
-```
+## Parse Result
 
-#### Initializers
-
-> An aditional initializer can be found for `Data` objects.
+Whichever the case, if parsing succeeds you should now have a `Strongly Typed Model` of an `RSS`, `Atom` or `JSON Feed`.
 ```swift
-FeedParser(data: data)
-```
-
-#### Feed Models
-FeedKit provides `strongly typed` models for `RSS`, `Atom` and `JSON Feed` formats.    
-```swift
-result.rssFeed      // Really Simple Syndication Feed Model
-result.atomFeed     // Atom Syndication Format Feed Model
-result.jsonFeed     // JSON Feed Model
+switch result {
+case let .atom(feed):       // Really Simple Syndication Feed Model
+case let .rss(feed):        // Atom Syndication Format Feed Model
+case let .json(feed):       // JSON Feed Model
+case let .failure(error):   
+}
 ```
 
 
-#### Parsing Success
+#### Parse Success
 You can check if a Feed was `successfully` parsed or not.
 ```swift
 result.isSuccess    // If parsing was a success
@@ -94,15 +91,19 @@ result.isFailure    // If parsing failed
 result.error        // An error, if any
 ```
 
-### Model Preview
+## Model Preview
 Safely bind a feed of your choosing:
+> You may find the example bellow useful, if you're dealing with only a single type of feed.
 ```swift
 guard let feed = result.rssFeed, result.isSuccess else {
     print(result.error)
     return
 }
 ```
-Then go through it's properties. The RSS, Atom and JSON Feed Models are rather extensive. These are just a preview.
+Then go through it's properties:
+
+> The RSS and Atom feed Models are rather extensive throughout the supported namespaces. These are just a preview of what's available.
+
 #### RSS
 
 ```swift
@@ -151,7 +152,7 @@ item?.media
 // ...
 ```
 
-> Refer to the [`documentation`](http://cocoadocs.org/docsets/FeedKit) for the complete model properties and description
+> Refer to the [`documentation`](http://cocoadocs.org/docsets/FeedKit) for the complete model properties and descriptions
 
 #### Atom
 
@@ -186,7 +187,7 @@ entry?.rights
 // ...
 ```
 
-> Refer to the [`documentation`](http://cocoadocs.org/docsets/FeedKit) for the complete model properties and description
+> Refer to the [`documentation`](http://cocoadocs.org/docsets/FeedKit) for the complete model properties and descriptions
 
 #### JSON
 
@@ -227,7 +228,7 @@ item?.extensions
 // ...
 ```
 
-> Refer to the [`documentation`](http://cocoadocs.org/docsets/FeedKit) for the complete model properties and description
+> Refer to the [`documentation`](http://cocoadocs.org/docsets/FeedKit) for the complete model properties and descriptions
 
 ## License
 

@@ -17,23 +17,23 @@ PODS:
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.26.0):
     - FBSDKCoreKit
-  - FeedKit (6.1.2)
+  - FeedKit (6.2.0)
   - SDWebImage (4.1.0):
     - SDWebImage/Core (= 4.1.0)
   - SDWebImage/Core (4.1.0)
   - SwiftLint (0.21.0)
-  - TwitterCore (3.0.0)
-  - TwitterKit (3.0.4):
-    - TwitterCore (>= 3.0.0)
+  - TwitterCore (3.0.1)
+  - TwitterKit (3.1.1):
+    - TwitterCore (>= 3.0.1)
   - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
   - FacebookCore (~> 0.2.0)
   - FacebookLogin (~> 0.2.0)
-  - FeedKit (~> 6.1.0)
+  - FeedKit (~> 6.2.0)
   - SDWebImage (~> 4.1.0)
   - SwiftLint (~> 0.21.0)
-  - TwitterKit (~> 3.0.0)
+  - TwitterKit (~> 3.1.0)
   - youtube-ios-player-helper (~> 0.1.0)
 
 SPEC CHECKSUMS:
@@ -42,13 +42,13 @@ SPEC CHECKSUMS:
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
   FBSDKCoreKit: c8b8582311ec11b145451d8b9717dc6cc2ae5a76
   FBSDKLoginKit: f3f03b94c21eb834af243c0a881d48641f47ca60
-  FeedKit: 14a2dd5c9b83fbc6abbef99fbb2e1af4781a139d
+  FeedKit: 48e371d0884b3bc7d87253f5ae3313c91d2a7e72
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SwiftLint: 6de8b2d15f43c482bdec2953b8cfd696faa876e8
-  TwitterCore: 8ce250be1eb34633a0e6acc89520d4165ec52c10
-  TwitterKit: 5064d99632a8d6e5f1364e6e8f7b211d196c0840
+  TwitterCore: 6856288a1c25e5281363250681f33b42fce1da42
+  TwitterKit: 313bf02baee8427f7649b3640169178e5a8b5a99
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: e4bed118f217af06a259d9ac05b789ba5f3fb536
+PODFILE CHECKSUM: da5515ded63eed42547d4951bea366dc153ba16b
 
 COCOAPODS: 1.3.1
