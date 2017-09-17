@@ -91,18 +91,22 @@ class Twitter: Fetchable {
 			var news = [News]()
 
 			if let tweets = tweets {
+
+				let sourceScreenName = NSLocalizedString("Twitter:Name", comment: "")
+				let retweetTitle = NSLocalizedString("News:Twitter:RetweetTitle", comment: "")
+
 				for var tweet in tweets {
 
 					let aNews = News()
 
 					aNews.avatarUrl = URL(string: tweet.author.profileImageLargeURL)
-					aNews.sourceScreenName = NSLocalizedString("Twitter:Name", comment: "")
+					aNews.sourceScreenName = sourceScreenName
 					aNews.text = tweet.text
 					aNews.timestamp = tweet.createdAt
 
 					if tweet.isRetweet, let retweeted = tweet.retweeted {
 
-						aNews.title = String(format: NSLocalizedString("News:Twitter:RetweetTitle", comment: ""), tweet.author.name, retweeted.author.name)
+						aNews.title = String(format: retweetTitle, tweet.author.name, retweeted.author.name)
 						tweet = retweeted
 					} else {
 

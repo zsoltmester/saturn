@@ -70,6 +70,8 @@ extension RSS: Fetchable {
 
 		var news = [News]()
 
+		let feedImageLink = feed.image?.url
+
 		for item in items {
 
 			let aNews = News()
@@ -103,9 +105,9 @@ extension RSS: Fetchable {
 				}
 			}
 
-			if aNews.avatarUrl == nil, let avatarLink = feed.image?.url {
+			if aNews.avatarUrl == nil, let feedImageLink = feedImageLink {
 
-				aNews.avatarUrl = URL(string: avatarLink)
+				aNews.avatarUrl = URL(string: feedImageLink)
 			}
 
 			news.append(aNews)

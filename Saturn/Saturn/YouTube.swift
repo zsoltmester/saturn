@@ -64,14 +64,19 @@ extension YouTube: Fetchable {
 				}
 
 				var news = [News]()
+
+				let avatarUrl = channelsResponse?.items.first?.snippet.thumbnails.high.url
+				let sourceScreenName = NSLocalizedString("YouTube:Name", comment: "")
+				let title = channelsResponse?.items.first?.snippet.title
+
 				for playlistItem in playlistItems {
 
 					let aNews = News()
 
-					aNews.avatarUrl = channelsResponse?.items.first?.snippet.thumbnails.high.url
-					aNews.sourceScreenName = NSLocalizedString("YouTube:Name", comment: "")
+					aNews.avatarUrl = avatarUrl
+					aNews.sourceScreenName = sourceScreenName
 					aNews.timestamp = playlistItem.snippet.publishedAt
-					aNews.title = channelsResponse?.items.first?.snippet.title
+					aNews.title = title
 					aNews.url = URL(string: YouTubeApi.baseVideoUrl + playlistItem.snippet.resourceId.videoId)
 					aNews.youTubeVideoId = playlistItem.snippet.resourceId.videoId
 

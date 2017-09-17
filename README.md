@@ -27,8 +27,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Facebook integration
-- Try the Viewer lib for FB images and videos (https://github.com/bakkenbaeck/Viewer)
+- Facebook picture and video integration (try this: https://github.com/bakkenbaeck/Viewer)
 - Allow users to send feedback
 - Set up a revenue model and support it in the app
 - Deep testing and bug fixing
