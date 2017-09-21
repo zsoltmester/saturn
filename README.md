@@ -27,7 +27,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Facebook picture and video integration (try this: https://github.com/bakkenbaeck/Viewer)
 - Allow users to send feedback
 - Set up a revenue model and support it in the app
 - Deep testing and bug fixing
@@ -35,6 +34,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Features and technical improvements
 
+- Facebook picture and video integration (try this: https://github.com/bakkenbaeck/Viewer)
 - Cache (news, pictures, videos, other media...)
 - Support refresh on the feed screen (swipe to refresh + button)
 - Support loading more news on the news screen

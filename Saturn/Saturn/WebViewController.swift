@@ -28,6 +28,8 @@ class WebViewController: UIViewController {
 
 		webView.scrollView.bounces = false
 
+		navigationItem.title = url.host
+
 		webView.load(URLRequest(url: url))
     }
 
