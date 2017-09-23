@@ -27,13 +27,13 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Allow users to send feedback
-- Set up a revenue model and support it in the app
+- Some design improvements
 - Deep testing and bug fixing
 - Release
 
 #### Features and technical improvements
 
+- Allow users to send feedback
 - Facebook picture and video integration (try this: https://github.com/bakkenbaeck/Viewer)
 - Cache (news, pictures, videos, other media...)
 - Support refresh on the feed screen (swipe to refresh + button)
@@ -61,6 +61,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 ### Revenue
 
+- Apple-ös összefoglaló: https://developer.apple.com/app-store/business-models/
 - Az IAP egy járható út.
 	1. Lehetne egy korlátozott tartalommal rendelkező ingyenes és egy teljes tartalommal rendelkező pro verzió is.
  	2. Lehetne egy reklámmal teli teljes tartalommal rendelkező ingyenes app, aminél a reklámmentességért kell fizetni.
