@@ -54,7 +54,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Bugs
 
-- Ha nincs idő egy hírhez, akkor a time label helytelenül jelenik meg
 - Nem lehet tovább navigálni, ha egy hír cellában a textviewra kattintunk
 
 ### Revenue
