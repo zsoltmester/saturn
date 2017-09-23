@@ -27,12 +27,12 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Some design improvements
 - Deep testing and bug fixing
 - Release
 
 #### Features and technical improvements
 
+- Refactor the feed list screen (groupped by feed; 1 source 1 line, with image)
 - Allow users to send feedback
 - Facebook picture and video integration (try this: https://github.com/bakkenbaeck/Viewer)
 - Cache (news, pictures, videos, other media...)
@@ -54,8 +54,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Bugs
 
-- Ha túl hosszú a név, mikor hozzáadunk egy feedet, crashel (valószínűleg a query-nél is hansonló a helyzet)
-- Sokáig tölt a feed list képernyőn, ha egy feedre akarok navigálni
 - Ha nincs idő egy hírhez, akkor a time label helytelenül jelenik meg
 - Nem lehet tovább navigálni, ha egy hír cellában a textviewra kattintunk
 

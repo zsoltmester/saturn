@@ -32,17 +32,21 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 		tableView.separatorStyle = .none
 		activityIndicatorView.startAnimating()
 
-		feed.fetch(with: nil) { (news: [News]?, errors: [FetchError]?) in
+		DispatchQueue.global().async {
 
-			self.news = news
-			self.fetchErrors = errors
+			self.feed.fetch(with: nil) { (news: [News]?, errors: [FetchError]?) in
 
-			self.sortNews()
+				self.news = news
+				self.fetchErrors = errors
 
-			DispatchQueue.main.async {
-				self.activityIndicatorView.stopAnimating()
-				self.tableView.separatorStyle = .singleLine
-				self.tableView.reloadData()
+				self.sortNews()
+
+				DispatchQueue.main.async {
+
+					self.activityIndicatorView.stopAnimating()
+					self.tableView.separatorStyle = .singleLine
+					self.tableView.reloadData()
+				}
 			}
 		}
 	}
