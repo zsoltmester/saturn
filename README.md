@@ -27,11 +27,12 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Deep testing and bug fixing
+- Replace the WKWebView with the SafariWebViewController
 - Release
 
 #### Features and technical improvements
 
+- Facebook ismerősöket is hozzá lehessen adni
 - Refactor the feed list screen (groupped by feed; 1 source 1 line, with image)
 - Allow users to send feedback
 - Facebook picture and video integration (try this: https://github.com/bakkenbaeck/Viewer)
@@ -55,6 +56,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 #### Bugs
 
 - Nem lehet tovább navigálni, ha egy hír cellában a textviewra kattintunk
+- Nem rendereli jól a hír listán a kép nélküli cellákat
 
 ### Revenue
 
@@ -101,12 +103,3 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 	- http://martiancraft.com/blog/2017/07/demystifying-provisioning-part2/
 	- https://www.andrewcbancroft.com/2017/08/01/local-receipt-validation-swift-start-finish/
 	- https://www.apptamin.com/blog/ios-11-app-previews/
-
-#### Facebook
-
-- https://developers.facebook.com/apps/325772207834932/dashboard/
-- https://developers.facebook.com/tools/explorer
-- https://developers.facebook.com/docs/swift/graph
-- https://developers.facebook.com/docs/graph-api/reference/page/#Overview
-- https://developers.facebook.com/docs/graph-api/reference/v2.9/post
-- https://developers.facebook.com/docs/graph-api/reference/v2.9/attachment

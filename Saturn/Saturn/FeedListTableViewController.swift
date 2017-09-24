@@ -196,7 +196,7 @@ class FeedListTableViewController: ModelTableViewController {
 			}
 
 			let textForProvider = NSMutableAttributedString(string: "\(providerName): ")
-			textForProvider.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.darkText, range: NSRange(location: 0, length: textForProvider.length))
+			textForProvider.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.lightGray, range: NSRange(location: 0, length: textForProvider.length))
 
 			for source in groupedAndOrderedSources[i].sources {
 
@@ -232,7 +232,7 @@ class FeedListTableViewController: ModelTableViewController {
 	func getSourceSeparator() -> NSAttributedString {
 
 		let comma = NSMutableAttributedString(string: ", ")
-		comma.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.darkText, range: NSRange(location: 0, length: comma.length))
+		comma.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.lightGray, range: NSRange(location: 0, length: comma.length))
 		return comma
 	}
 
