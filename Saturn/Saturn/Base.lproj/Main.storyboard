@@ -163,7 +163,6 @@
                                     <outlet property="timeAndSourceLabel" destination="Ar0-oe-VNF" id="DQy-4K-ada"/>
                                     <outlet property="titleLabel" destination="Ya1-E7-UTN" id="98K-Ce-LZy"/>
                                     <outlet property="youTubePlayerView" destination="xE8-ja-3lw" id="Io1-Cx-gWO"/>
-                                    <segue destination="FPt-sG-uB6" kind="show" identifier="Show On Web" id="nuE-nX-llh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -177,39 +176,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3D4-KG-xSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2105.625" y="141.5492957746479"/>
-        </scene>
-        <!--Web View Controller-->
-        <scene sceneID="cbW-e5-asN">
-            <objects>
-                <viewController id="FPt-sG-uB6" customClass="WebViewController" customModule="Saturn" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9ua-zP-wZ7"/>
-                        <viewControllerLayoutGuide type="bottom" id="Or6-R3-zfL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Tc6-P4-ju4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" allowsBackForwardNavigationGestures="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UBY-V5-eRg">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="6kW-JI-0Sy"/>
-                    <connections>
-                        <outlet property="webView" destination="UBY-V5-eRg" id="E4B-lM-JlB"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SRe-oy-a5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2956.875" y="141.5492957746479"/>
         </scene>
         <!--Main Navigation Stack-->
         <scene sceneID="Fj9-OO-aqX">

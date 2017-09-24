@@ -6,6 +6,7 @@
 //  Copyright © 2017. Zsolt Mester. All rights reserved.
 //
 
+import SafariServices
 import SDWebImage
 import UIKit
 
@@ -71,8 +72,6 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 		return news?.count ?? 0
 	}
 
-	// MARK: - UITableViewDataSource
-
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.reuseIdentifier, for: indexPath) as? NewsTableViewCell else {
@@ -104,6 +103,16 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 	override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
 
 		return canSelectRow(at: indexPath.row)
+	}
+
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+		guard let selectedRow = self.tableView.indexPathForSelectedRow?.row, let selectedNews = self.news?[selectedRow], let url = selectedNews.url else {
+
+			fatalError("The seleted row doesn't have a valid URL.")
+		}
+
+		showSafariViewController(with: url)
 	}
 
 	// MARK: - Cell Setup
@@ -228,45 +237,9 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 
 	func textView(_ textView: UITextView, shouldInteractWith url: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
 
-		performSegue(withIdentifier: "Show On Web", sender: url)
+		showSafariViewController(with: url)
 
 		return false
-	}
-
-	// MARK: - Navigation
-
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		super.prepare(for: segue, sender: sender)
-
-		switch segue.identifier ?? "" {
-
-		case "Show On Web":
-
-			var url = sender as? URL
-
-			if url == nil {
-
-				if let selectedRow = self.tableView.indexPathForSelectedRow?.row, let selectedNews = self.news?[selectedRow] {
-
-					url = selectedNews.url
-				}
-			}
-
-			guard url != nil else {
-
-				fatalError("At Show On Web segue there are no valid URL. Sender: \(sender ?? "nil").")
-			}
-
-			guard let webViewController = segue.destination as? WebViewController else {
-				fatalError("At Show On Web segue segue the destination view controller's first child is not a WebViewController, but \(segue.destination.debugDescription).")
-			}
-
-			webViewController.url = url
-
-		default:
-
-			break
-		}
 	}
 
 	// MARK: - Private Functions
@@ -280,5 +253,11 @@ class NewsTableViewController: UITableViewController, UITextViewDelegate {
 
 		let news = self.news?[row]
 		return news?.url != nil
+	}
+
+	func showSafariViewController(with url: URL) {
+
+		let safariViewController = SFSafariViewController(url: url)
+		present(safariViewController, animated: true, completion: nil)
 	}
 }

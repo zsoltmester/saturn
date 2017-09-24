@@ -27,20 +27,18 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Replace the WKWebView with the SafariWebViewController
+- Add a default feed set
 - Release
 
 #### Features and technical improvements
 
 - Facebook ismerősöket is hozzá lehessen adni
 - Refactor the feed list screen (groupped by feed; 1 source 1 line, with image)
-- Allow users to send feedback
 - Facebook picture and video integration (try this: https://github.com/bakkenbaeck/Viewer)
 - Cache (news, pictures, videos, other media...)
 - Support refresh on the feed screen (swipe to refresh + button)
 - Support loading more news on the news screen
 - Sending app feedbacks
-- Share news
 - Save news
 - Adaptive layout: support iPad devices and iPhones' landscape mode (https://www.raywenderlich.com/162311/adaptive-layout-tutorial-ios-11-getting-started, https://convertkit.s3.amazonaws.com/assets/documents/747/538975/iOS_Size_Classes_Quick_Guide_v1.3.pdf)
 - Improve feed editor screen: search, preview and select the source
@@ -49,7 +47,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Eliminate the links on Twitter texts
 - Integrate Instagram
 - Support more on Reddit, other then a subreddit's hot
-- Loading animation on the web view
 - Analytics (log the current print statements too)
 - Using the new safe layout guides (https://useyourloaf.com/blog/safe-area-layout-guide)
 
