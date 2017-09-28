@@ -32,7 +32,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### Features and technical improvements
 
-- Facebook ismerősöket is hozzá lehessen adni
+- Facebook ismerősöket is hozzá lehessen adni (vagy jelezzük, hogy az API ilyet nem enged)
 - Refactor the feed list screen (groupped by feed; 1 source 1 line, with image)
 - Facebook picture and video integration (try this: https://github.com/bakkenbaeck/Viewer)
 - Cache (news, pictures, videos, other media...)
@@ -74,7 +74,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 ### Marketing
 
 - Az app store page a legfontosabb.
-- A jó értékelés számít, mert a potencionális user meg fogja nézni őket letöltés előtt. Kérhetem az appon belül a usereket, hogy értékeljék azt.
+- A jó értékelés számít, mert a potencionális user meg fogja nézni őket letöltés előtt. Kérhetem az appon belül a usereket, hogy értékeljék azt. Az instagram példája: https://medium.com/huggingface/instagram-doubled-its-ios-reviews-in-a-week-thanks-to-this-new-in-app-review-popup-52333d4f4ce6.
 - Mobile appokkal foglalkozó siteokon review.
 - Social médiában megosztás általam vagy az ismerőseim által.
 - Hírdetés bannereken (Google, Apple, stb).
