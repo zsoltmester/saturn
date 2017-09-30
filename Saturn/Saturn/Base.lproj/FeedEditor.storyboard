@@ -57,18 +57,18 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="t17-Nt-e7U"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="qxq-wF-Joo">
-                                            <rect key="frame" x="8" y="44" width="304" height="59.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <rect key="frame" x="8" y="44" width="304" height="43.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type here..." adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Wrh-fQ-bFC">
-                                            <rect key="frame" x="8" y="103.5" width="304" height="44"/>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type here..." adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Wrh-fQ-bFC">
+                                            <rect key="frame" x="8" y="95.5" width="304" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="cGw-sb-Qmt"/>
                                             </constraints>
@@ -81,8 +81,8 @@
                                         <constraint firstItem="Gdd-hy-vaa" firstAttribute="top" secondItem="csi-cf-awi" secondAttribute="top" id="2ye-0g-bey"/>
                                         <constraint firstItem="Wrh-fQ-bFC" firstAttribute="leading" secondItem="csi-cf-awi" secondAttribute="leadingMargin" id="3Q4-qA-Jhh"/>
                                         <constraint firstItem="Wrh-fQ-bFC" firstAttribute="trailing" secondItem="csi-cf-awi" secondAttribute="trailingMargin" id="6d5-YT-nkc"/>
-                                        <constraint firstItem="qxq-wF-Joo" firstAttribute="bottom" secondItem="Wrh-fQ-bFC" secondAttribute="top" id="7t4-xN-cvC"/>
-                                        <constraint firstItem="Wrh-fQ-bFC" firstAttribute="bottom" secondItem="csi-cf-awi" secondAttribute="bottom" id="ALf-hb-G7a"/>
+                                        <constraint firstItem="qxq-wF-Joo" firstAttribute="bottom" secondItem="Wrh-fQ-bFC" secondAttribute="top" constant="-8" id="7t4-xN-cvC"/>
+                                        <constraint firstItem="Wrh-fQ-bFC" firstAttribute="bottom" secondItem="csi-cf-awi" secondAttribute="bottomMargin" id="ALf-hb-G7a"/>
                                         <constraint firstItem="qxq-wF-Joo" firstAttribute="top" secondItem="Gdd-hy-vaa" secondAttribute="bottom" id="YCM-rx-0Fi"/>
                                         <constraint firstItem="qxq-wF-Joo" firstAttribute="trailing" secondItem="csi-cf-awi" secondAttribute="trailingMargin" id="YWa-qK-kCw"/>
                                         <constraint firstItem="Gdd-hy-vaa" firstAttribute="leading" secondItem="csi-cf-awi" secondAttribute="leadingMargin" id="dqa-xp-f41"/>
