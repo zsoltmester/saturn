@@ -68,6 +68,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 ### App Store Optimization
 
 - Hasznos cikkek vannak itt kigyűjtve az ASO-hoz: https://www.mindmeister.com/875122694/app-store-optimization-the-essential-aso-resources-list
+- Apple magyarázatok: https://developer.apple.com/app-store/product-page/
 - *The format of both descriptions is the same: “You do X and Y happens.” X is the input and Y is the output. This input-output pair matches our intuition about how software works. Simplifying the product as a straightforward input and desirable output creates the sense that it’s an ingenious idea.*
 - *All the users follow the same process: check the icon, view the first two screenshots, and scan the first line of the app description.* Egy átlagos user 7 másodpercet szán erre. Ez viszont csak a régi app storeban volt igaz! Az újban már autoplay fognak futni a videók és a search result is sokkal tartalmasabb lesz.
 
@@ -83,20 +84,3 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 ### Design
 
 - Ikon generáláshoz hasznos lehet: https://appiconizer.com
-
-### Cikkek, amik még jól jöhetnek
-
-- Design, marketing, pricing, release:
-	- https://www.appsposure.com/app-marketing-strategies/
-	- https://applaunchmap.com/blog/
-	- https://fabric.io/blog/introducing-fastlane-precheck
-	- https://developer.apple.com/app-store/product-page/
-	- https://developer.apple.com/videos/play/wwdc2017/305/
-	- https://medium.com/flawless-app-stories/flawlessapp-on-producthunt-7db3e561ce7a
-	- https://www.sideprojectchecklist.com/marketing-checklist/
-	- https://blog.halide.cam/one-weird-trick-to-lose-size-c0a4013de331
-	- https://medium.com/@garyvee/make-money-dont-raise-money-24a92dde76c5
-	- http://martiancraft.com/blog/2017/05/demystifying-ios-provisioning-part1/
-	- http://martiancraft.com/blog/2017/07/demystifying-provisioning-part2/
-	- https://www.andrewcbancroft.com/2017/08/01/local-receipt-validation-swift-start-finish/
-	- https://www.apptamin.com/blog/ios-11-app-previews/
