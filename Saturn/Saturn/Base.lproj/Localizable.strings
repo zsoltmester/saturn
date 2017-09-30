@@ -14,7 +14,7 @@
 "Twitter:Name" = "Twitter";
 "YouTube:Name" = "YouTube";
 
-"FeedEditor:Facebook:Detail" = "Get the latest posts of a Facebook page. Enter the page's ID, for example “GameOfThrones”, “coachella” or “sarsasmLOL”, and not it's screen name.";
+"FeedEditor:Facebook:Detail" = "Get the latest posts of a Facebook page. Enter the page's ID, for example “GameOfThrones”, “coachella” or “sarsasmLOL”. You can find the ID below the page's screen name, prefixed with an “@“ symbol.";
 "FeedEditor:Facebook:Hint" = "Page ID…";
 "FeedEditor:Facebook:UnsuccessfulLoginAlert:Title" = "Failed to log in";
 "FeedEditor:Facebook:UnsuccessfulLoginAlert:Message" = "Please try again.";
@@ -26,10 +26,10 @@
 "FeedEditor:RSS:Hint" = "Full URL…";
 "FeedEditor:RSS:InvalidUrlAlert:Title" = "Invalid URL";
 
-"FeedEditor:Twitter:Detail" = "Get the latest tweets of a Twitter page. Enter the page's ID, for example “realDonaldTrump”, “BillGates” or “NASA”, and not it's screen name.";
+"FeedEditor:Twitter:Detail" = "Get the latest tweets of a Twitter page. Enter the page's ID, for example “realDonaldTrump”, “BillGates” or “NASA“. You can find the ID below the page's screen name, prefixed with an “@“ symbol.";
 "FeedEditor:Twitter:Hint" = "Page ID…";
 
-"FeedEditor:YouTube:Detail" = "Get the latest videos of a YouTube channel. Enter the channel's ID, for example “PewDiePie”, “unboxtherapy” or “EdSheeran”, and not it's screen name.";
+"FeedEditor:YouTube:Detail" = "Get the latest videos of a YouTube channel. Enter the channel's ID, for example “PewDiePie”, “unboxtherapy” or “EdSheeran”. You can find the ID in the channel's URL, after the “/user/“ part.";
 "FeedEditor:YouTube:Hint" = "Channel ID…";
 
 "FeedEditor:NameExistsAlert:Title" = "%@ already exists";
