@@ -59,25 +59,40 @@ class ModelController {
 		                       detail: NSLocalizedString("FeedEditor:Facebook:Detail", comment: ""),
 		                       hint: NSLocalizedString("FeedEditor:Facebook:Hint", comment: ""))
 
-		_ = insertNewsProvider(identifier: NewsProviderIdentifier.reddit.rawValue,
-		                       name: NSLocalizedString("Reddit:Name", comment: ""),
-		                       detail: NSLocalizedString("FeedEditor:Reddit:Detail", comment: ""),
-		                       hint: NSLocalizedString("FeedEditor:Reddit:Hint", comment: ""))
+		let reddit = insertNewsProvider(identifier: NewsProviderIdentifier.reddit.rawValue,
+		                                name: NSLocalizedString("Reddit:Name", comment: ""),
+		                                detail: NSLocalizedString("FeedEditor:Reddit:Detail", comment: ""),
+		                                hint: NSLocalizedString("FeedEditor:Reddit:Hint", comment: ""))
 
-		_ = insertNewsProvider(identifier: NewsProviderIdentifier.rss.rawValue,
-		                       name: NSLocalizedString("RSS:Name", comment: ""),
-		                       detail: NSLocalizedString("FeedEditor:RSS:Detail", comment: ""),
-		                       hint: NSLocalizedString("FeedEditor:RSS:Hint", comment: ""))
+		let rss = insertNewsProvider(identifier: NewsProviderIdentifier.rss.rawValue,
+		                             name: NSLocalizedString("RSS:Name", comment: ""),
+		                             detail: NSLocalizedString("FeedEditor:RSS:Detail", comment: ""),
+		                             hint: NSLocalizedString("FeedEditor:RSS:Hint", comment: ""))
 
-		_ = insertNewsProvider(identifier: NewsProviderIdentifier.twitter.rawValue,
-		                       name: NSLocalizedString("Twitter:Name", comment: ""),
-		                       detail: NSLocalizedString("FeedEditor:Twitter:Detail", comment: ""),
-		                       hint: NSLocalizedString("FeedEditor:Twitter:Hint", comment: ""))
+		let twitter = insertNewsProvider(identifier: NewsProviderIdentifier.twitter.rawValue,
+		                                 name: NSLocalizedString("Twitter:Name", comment: ""),
+		                                 detail: NSLocalizedString("FeedEditor:Twitter:Detail", comment: ""),
+		                                 hint: NSLocalizedString("FeedEditor:Twitter:Hint", comment: ""))
 
-		_ = insertNewsProvider(identifier: NewsProviderIdentifier.youtube.rawValue,
-		                       name: NSLocalizedString("YouTube:Name", comment: ""),
-		                       detail: NSLocalizedString("FeedEditor:YouTube:Detail", comment: ""),
-		                       hint: NSLocalizedString("FeedEditor:YouTube:Hint", comment: ""))
+		let youTube = insertNewsProvider(identifier: NewsProviderIdentifier.youtube.rawValue,
+		                                 name: NSLocalizedString("YouTube:Name", comment: ""),
+		                                 detail: NSLocalizedString("FeedEditor:YouTube:Detail", comment: ""),
+		                                 hint: NSLocalizedString("FeedEditor:YouTube:Hint", comment: ""))
+
+		let hackerNews = insertNewsSource(provider: rss, query: "https://news.ycombinator.com/rss", name: "Hacker News")
+		let redditProgramming = insertNewsSource(provider: reddit, query: "programming", name: "programming")
+		_ = try? insertNewsFeed(name: "Programming", sources: [hackerNews, redditProgramming])
+
+		let gameOfThronesTwitter = insertNewsSource(provider: twitter, query: "GameOfThrones", name: "Game Of Thrones")
+		let gameOfThronesYouTube = insertNewsSource(provider: youTube, query: "GameofThrones", name: "GameofThrones")
+		_ = try? insertNewsFeed(name: "Game Of Thrones", sources: [gameOfThronesTwitter, gameOfThronesYouTube])
+
+		let unboxTherapy = insertNewsSource(provider: youTube, query: "unboxtherapy", name: "Unbox Therapy")
+		_ = try? insertNewsFeed(name: "Chill", sources: [unboxTherapy])
+
+		let macworld = insertNewsSource(provider: rss, query: "http://www.macworld.co.uk/news/apple/rss", name: "Latest Apple News Articles from Macworld UK")
+		let everythingApplePro = insertNewsSource(provider: youTube, query: "EverythingApplePro", name: "EverythingApplePro")
+		_ = try? insertNewsFeed(name: "Apple", sources: [macworld, everythingApplePro])
 	}
 
 	// MARK: - Public Functions

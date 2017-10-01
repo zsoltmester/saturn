@@ -27,7 +27,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Add a default feed set
 - Release
 
 #### Features and technical improvements
