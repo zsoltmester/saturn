@@ -27,6 +27,9 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
+- Ikont találni
+- Enroll in apple developer program
+- Upload the app fill the app store page
 - Release
 
 #### Features and technical improvements
@@ -82,4 +85,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 ### Design
 
-- Ikon generáláshoz hasznos lehet: https://appiconizer.com
+- Ikont itt keressek: https://www.flaticon.com
+- Ikon generáláshoz: https://makeappicon.com/
+- Ami jó lehet: https://www.flaticon.com/free-icon/rss_190585
+- Az ikon készítőjét meg kell említeni: Icon made by Roundicons from www.flaticon.com
