@@ -27,7 +27,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Ikont találni
 - Enroll in apple developer program
 - Upload the app fill the app store page
 - Release
