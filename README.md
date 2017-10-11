@@ -27,8 +27,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Enroll in apple developer program
-- Upload the app fill the app store page
+- Upload the app fill the app store page: https://developer.apple.com/app-store/
 - Release
 
 #### Features and technical improvements
