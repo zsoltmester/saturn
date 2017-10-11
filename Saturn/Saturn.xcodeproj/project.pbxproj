@@ -323,9 +323,9 @@
 				TargetAttributes = {
 					E74D0FFD1EC4FE870057E519 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = D7H64P2565;
+						DevelopmentTeam = TA8QE3C2AH;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					E74D10141EC4FE870057E519 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -625,9 +625,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mester Zsolt (3E562M2SE8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mester Zsolt (3E562M2SE8)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = TA8QE3C2AH;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -682,9 +684,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mester Zsolt (TA8QE3C2AH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mester Zsolt (TA8QE3C2AH)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = TA8QE3C2AH;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -709,11 +713,16 @@
 			baseConfigurationReference = E06FCF65D2E3A172E1C31169 /* Pods-Saturn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = D7H64P2565;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mester Zsolt (3E562M2SE8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mester Zsolt (3E562M2SE8)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = TA8QE3C2AH;
 				INFOPLIST_FILE = Saturn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zsoltmester.Saturn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "fabe2d23-a8e7-46fb-81e7-fea47e0821da";
+				PROVISIONING_PROFILE_SPECIFIER = SaturnDevelopmentProvisioningProfile;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -725,11 +734,16 @@
 			baseConfigurationReference = 69CA75CC4FC4BFA3BE21445E /* Pods-Saturn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = D7H64P2565;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mester Zsolt (TA8QE3C2AH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mester Zsolt (TA8QE3C2AH)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = TA8QE3C2AH;
 				INFOPLIST_FILE = Saturn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zsoltmester.Saturn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e3ef756e-241f-482e-9211-4b13ed4f36d1";
+				PROVISIONING_PROFILE_SPECIFIER = SaturnDistributionProvisioningProfile;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
