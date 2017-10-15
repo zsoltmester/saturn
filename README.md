@@ -27,9 +27,6 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Upload the app fill the app store page: https://developer.apple.com/app-store/
-- Release
-
 #### Features and technical improvements
 
 - Facebook ismerősöket is hozzá lehessen adni (vagy jelezzük, hogy az API ilyet nem enged)
