@@ -27,6 +27,12 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
+- Remove the default feeds
+- Add an onboarding widget to the empty dashboard
+- Update the screenshots in the store
+- Check for the dependent beta framework
+- Release
+
 #### Features and technical improvements
 
 - Facebook ismerősöket is hozzá lehessen adni (vagy jelezzük, hogy az API ilyet nem enged)
@@ -46,6 +52,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 - Support more on Reddit, other then a subreddit's hot
 - Analytics (log the current print statements too)
 - Using the new safe layout guides (https://useyourloaf.com/blog/safe-area-layout-guide)
+- iPhone X support
 
 #### Bugs
 
