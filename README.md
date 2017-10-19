@@ -36,6 +36,7 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 #### Features and technical improvements
 
 - Facebook ismerősöket is hozzá lehessen adni (vagy jelezzük, hogy az API ilyet nem enged)
+- UX redesign (onboarding, user stories...)
 - Refactor the feed list screen (groupped by feed; 1 source 1 line, with image)
 - Facebook picture and video integration (try this: https://github.com/bakkenbaeck/Viewer)
 - Cache (news, pictures, videos, other media...)
