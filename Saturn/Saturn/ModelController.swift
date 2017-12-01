@@ -53,7 +53,6 @@ class ModelController {
 	}
 
 	private func preloadModel() {
-
 		_ = insertNewsProvider(identifier: NewsProviderIdentifier.facebook.rawValue,
 		                       name: NSLocalizedString("Facebook:Name", comment: ""),
 		                       detail: NSLocalizedString("FeedEditor:Facebook:Detail", comment: ""),
@@ -79,6 +78,7 @@ class ModelController {
 		                                 detail: NSLocalizedString("FeedEditor:YouTube:Detail", comment: ""),
 		                                 hint: NSLocalizedString("FeedEditor:YouTube:Hint", comment: ""))
 
+		/* for testing
 		let hackerNews = insertNewsSource(provider: rss, query: "https://news.ycombinator.com/rss", name: "Hacker News")
 		let redditProgramming = insertNewsSource(provider: reddit, query: "programming", name: "programming")
 		_ = try? insertNewsFeed(name: "Programming", sources: [hackerNews, redditProgramming])
@@ -93,6 +93,7 @@ class ModelController {
 		let macworld = insertNewsSource(provider: rss, query: "http://www.macworld.co.uk/news/apple/rss", name: "Latest Apple News Articles from Macworld UK")
 		let everythingApplePro = insertNewsSource(provider: youTube, query: "EverythingApplePro", name: "EverythingApplePro")
 		_ = try? insertNewsFeed(name: "Apple", sources: [macworld, everythingApplePro])
+		*/
 	}
 
 	// MARK: - Public Functions

@@ -13,16 +13,16 @@ PODS:
     - FacebookCore (~> 0.2)
     - FBSDKCoreKit (~> 4.15)
     - FBSDKLoginKit (~> 4.15)
-  - FBSDKCoreKit (4.26.0):
+  - FBSDKCoreKit (4.28.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.26.0):
+  - FBSDKLoginKit (4.28.0):
     - FBSDKCoreKit
-  - FeedKit (7.0.0)
-  - SDWebImage (4.1.0):
-    - SDWebImage/Core (= 4.1.0)
-  - SDWebImage/Core (4.1.0)
+  - FeedKit (7.0.1)
+  - SDWebImage (4.1.2):
+    - SDWebImage/Core (= 4.1.2)
+  - SDWebImage/Core (4.1.2)
   - SwiftLint (0.22.0)
-  - TwitterCore (3.0.1)
+  - TwitterCore (3.0.3)
   - TwitterKit (3.1.1):
     - TwitterCore (>= 3.0.1)
   - youtube-ios-player-helper (0.1.6)
@@ -40,12 +40,12 @@ SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
-  FBSDKCoreKit: c8b8582311ec11b145451d8b9717dc6cc2ae5a76
-  FBSDKLoginKit: f3f03b94c21eb834af243c0a881d48641f47ca60
-  FeedKit: 5f044bbefb6eea7b2f1ff1321b575295bfbdf3fc
-  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  FBSDKCoreKit: ca961e279113f691fd83dc634c0bbad9d4e3f370
+  FBSDKLoginKit: b077381c27d800f21661757e8140cf2c80a91e4a
+  FeedKit: 9be69ab57ef0eb922ee4b6c31cb6b8840a5bbb29
+  SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
   SwiftLint: 1134786caedd2caab0560d2f36b76414a5a56808
-  TwitterCore: 6856288a1c25e5281363250681f33b42fce1da42
+  TwitterCore: 549c74ed5f3d6134392dc944c6d215e233e50ad8
   TwitterKit: 313bf02baee8427f7649b3640169178e5a8b5a99
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
