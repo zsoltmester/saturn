@@ -27,14 +27,13 @@ A legalább 11-es főverzióval rendelkező iPhone-ok támogatottak. Utána mind
 
 #### TODO for MVP
 
-- Remove the default feeds
-- Add an onboarding widget to the empty dashboard
 - Update the screenshots in the store
 - Check for the dependent beta framework
 - Release
 
 #### Features and technical improvements
 
+- Add an onboarding widget to the empty dashboard
 - Facebook ismerősöket is hozzá lehessen adni (vagy jelezzük, hogy az API ilyet nem enged)
 - UX redesign (onboarding, user stories...)
 - Refactor the feed list screen (groupped by feed; 1 source 1 line, with image)
