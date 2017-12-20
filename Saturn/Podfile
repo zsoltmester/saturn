@@ -17,3 +17,12 @@ target 'Saturn' do
   end
 
 end
+
+plugin 'cocoapods-keys', {
+  :project => "Saturn",
+  :keys => [
+    "TwitterConsumerKey",
+    "TwitterConsumerSecret",
+    "YouTubeKey"
+  ]
+}

@@ -10,14 +10,15 @@
 // TwitterKit API explorer: https://dev.twitter.com/rest/tools/console
 
 import Foundation
+import Keys
 import TwitterKit
 
 class Twitter: Fetchable {
 
 	// MARK: - Properties
 
-	private let twitterConsumerKey = "TqDzFgxlfJITqE6rMv66nU0ci"
-	private let twitterConsumerSecret = "HgvP8uZYO7iTZmZL3R9MHg3XLq5cEzuACzpii5jz2PdAD2HOT7"
+	private let twitterConsumerKey = SaturnKeys().twitterConsumerKey
+	private let twitterConsumerSecret = SaturnKeys().twitterConsumerSecret
 
 	private let includeReplies = false
 	private let includeRetweets = true

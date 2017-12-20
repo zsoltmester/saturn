@@ -13,6 +13,7 @@
 //  YouTube Player: https://developers.google.com/youtube/v3/guides/ios_youtube_helper
 
 import Foundation
+import Keys
 
 class YouTube {
 
@@ -204,7 +205,7 @@ extension YouTube: Fetchable {
 
 private struct YouTubeApi {
 
-	static let key = "AIzaSyBf1yQf80c3x-SHcx3VzSOdSuiPKTTtGDU"
+	static let key = SaturnKeys().youTubeKey
 	static let baseVideoUrl = "https://www.youtube.com/watch?v="
 
 	struct URL {
