@@ -2,9 +2,6 @@
 
 # Tasks
 
-- Fix the Facebook login in the app in production
-- Publish the fixed ipa
-
 # Someday
 
 - Add an onboarding process
